@@ -380,6 +380,7 @@ namespace POS.Forms
                                         (new object[]
                                             {
                                             r["itemId"],
+                                            "",
                                             r["totalItem"],
                                             r["quantity"],
                                             r["price"],
@@ -654,8 +655,8 @@ namespace POS.Forms
                     for (int i = 0; i < dgvItems.Rows.Count; i++)
                     {
                         DataRow dro = tables.Tables["dtTables"].NewRow();
-                        dro["itemName"] = dgvItems[4, i].Value;
-                        dro["itemQuantity"] = dgvItems[2, i].Value;
+                        dro["itemName"] = dgvItems[5, i].Value;
+                        dro["itemQuantity"] = dgvItems[3, i].Value;
                         tables.Tables["dtTables"].Rows.Add(dro);
                     }
 
@@ -740,9 +741,9 @@ namespace POS.Forms
 
                     cmd.Parameters.AddWithValue("@orderId", orderId);
                     cmd.Parameters.AddWithValue("@itemId", dgvItems[0, i].Value);
-                    cmd.Parameters.AddWithValue("@quantity", dgvItems[2, i].Value);
-                    cmd.Parameters.AddWithValue("@price", dgvItems[3, i].Value);
-                    cmd.Parameters.AddWithValue("@totalItem", dgvItems[1, i].Value);
+                    cmd.Parameters.AddWithValue("@quantity", dgvItems[3, i].Value);
+                    cmd.Parameters.AddWithValue("@price", dgvItems[4, i].Value);
+                    cmd.Parameters.AddWithValue("@totalItem", dgvItems[2, i].Value);
                     cmd.ExecuteNonQuery();
                     cmd.Parameters.Clear();
                     
@@ -798,22 +799,21 @@ namespace POS.Forms
                         cmd = new SqlCommand("Insert into OrderItems (orderId,itemId,quantity,price,totalItem) values (@orderId,@itemId,@quantity,@price,@totalItem)", adoClass.sqlcn);
                         cmd.Parameters.AddWithValue("@orderId", orderId);
                         cmd.Parameters.AddWithValue("@itemId", dgvItems[0, i].Value);
-                        cmd.Parameters.AddWithValue("@quantity", dgvItems[2, i].Value);
-                        cmd.Parameters.AddWithValue("@price", dgvItems[3, i].Value);
-                        cmd.Parameters.AddWithValue("@totalItem", dgvItems[1, i].Value);
+                        cmd.Parameters.AddWithValue("@quantity", dgvItems[3, i].Value);
+                        cmd.Parameters.AddWithValue("@price", dgvItems[4, i].Value);
+                        cmd.Parameters.AddWithValue("@totalItem", dgvItems[2, i].Value);
                         cmd.ExecuteNonQuery();
                         cmd.Parameters.Clear();
                     }
 
 
                   // print table order
-
                     dsTables tables = new dsTables();
                     for (int i = 0; i < dgvItems.Rows.Count; i++)
                     {
                         DataRow dro = tables.Tables["dtTables"].NewRow();
-                        dro["itemName"] = dgvItems[4, i].Value;
-                        dro["itemQuantity"] = dgvItems[2, i].Value;
+                        dro["itemName"] = dgvItems[5, i].Value;
+                        dro["itemQuantity"] = dgvItems[3, i].Value;
                         tables.Tables["dtTables"].Rows.Add(dro);
                     }
 
@@ -861,15 +861,6 @@ namespace POS.Forms
                 adoClass.sqlcn.Close();
             }
 
-            ////
-            ///
-
-
-
-
-
-            ///
-
             dgvItems.Rows.Clear();
             txtTax.Text = "0";
             txtDiscount.Text = "0";
@@ -879,7 +870,7 @@ namespace POS.Forms
             comboRegions.Text = "";
             txtAddress.Text = "";
             txtTotal.Text = "";
-
+            comboOrderType.Text = "تيك اوي";
             tableIdHidden.Text = "";
             btnUpdateTable.Visible = false;
             MessageBox.Show("تم");
@@ -892,8 +883,5 @@ namespace POS.Forms
             CalcCheck();
         }
 
-        
-
-        
     }
 }
