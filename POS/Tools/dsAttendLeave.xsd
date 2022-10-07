@@ -1,0 +1,28 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<xs:schema id="dsAttendLeave" targetNamespace="http://tempuri.org/dsAttendLeave.xsd" xmlns:mstns="http://tempuri.org/dsAttendLeave.xsd" xmlns="http://tempuri.org/dsAttendLeave.xsd" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata" xmlns:msprop="urn:schemas-microsoft-com:xml-msprop" attributeFormDefault="qualified" elementFormDefault="qualified">
+  <xs:annotation>
+    <xs:appinfo source="urn:schemas-microsoft-com:xml-msdatasource">
+      <DataSource DefaultConnectionIndex="0" FunctionsComponentName="QueriesTableAdapter" Modifier="AutoLayout, AnsiClass, Class, Public" SchemaSerializationMode="IncludeSchema" xmlns="urn:schemas-microsoft-com:xml-msdatasource">
+        <Connections />
+        <Tables />
+        <Sources />
+      </DataSource>
+    </xs:appinfo>
+  </xs:annotation>
+  <xs:element name="dsAttendLeave" msdata:IsDataSet="true" msdata:UseCurrentLocale="true" msprop:EnableTableAdapterManager="true" msprop:Generator_DataSetName="dsAttendLeave" msprop:Generator_UserDSName="dsAttendLeave">
+    <xs:complexType>
+      <xs:choice minOccurs="0" maxOccurs="unbounded">
+        <xs:element name="dtAttendLeave" msprop:Generator_TableClassName="dtAttendLeaveDataTable" msprop:Generator_TableVarName="tabledtAttendLeave" msprop:Generator_TablePropName="dtAttendLeave" msprop:Generator_RowDeletingName="dtAttendLeaveRowDeleting" msprop:Generator_RowChangingName="dtAttendLeaveRowChanging" msprop:Generator_RowEvHandlerName="dtAttendLeaveRowChangeEventHandler" msprop:Generator_RowDeletedName="dtAttendLeaveRowDeleted" msprop:Generator_UserTableName="dtAttendLeave" msprop:Generator_RowChangedName="dtAttendLeaveRowChanged" msprop:Generator_RowEvArgName="dtAttendLeaveRowChangeEvent" msprop:Generator_RowClassName="dtAttendLeaveRow">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="name" msprop:Generator_ColumnVarNameInTable="columnname" msprop:Generator_ColumnPropNameInRow="name" msprop:Generator_ColumnPropNameInTable="nameColumn" msprop:Generator_UserColumnName="name" type="xs:string" minOccurs="0" />
+              <xs:element name="dateAttend" msprop:Generator_ColumnVarNameInTable="columndateAttend" msprop:Generator_ColumnPropNameInRow="dateAttend" msprop:Generator_ColumnPropNameInTable="dateAttendColumn" msprop:Generator_UserColumnName="dateAttend" type="xs:dateTime" minOccurs="0" />
+              <xs:element name="dateLeave" msprop:Generator_ColumnVarNameInTable="columndateLeave" msprop:Generator_ColumnPropNameInRow="dateLeave" msprop:Generator_ColumnPropNameInTable="dateLeaveColumn" msprop:Generator_UserColumnName="dateLeave" type="xs:dateTime" minOccurs="0" />
+              <xs:element name="Notes" msprop:Generator_ColumnVarNameInTable="columnNotes" msprop:Generator_ColumnPropNameInRow="Notes" msprop:Generator_ColumnPropNameInTable="NotesColumn" msprop:Generator_UserColumnName="Notes" type="xs:string" minOccurs="0" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+      </xs:choice>
+    </xs:complexType>
+  </xs:element>
+</xs:schema>

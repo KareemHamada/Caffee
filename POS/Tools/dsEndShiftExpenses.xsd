@@ -1,0 +1,53 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<xs:schema id="dsEndShiftExpenses" targetNamespace="http://tempuri.org/dsEndShiftExpenses.xsd" xmlns:mstns="http://tempuri.org/dsEndShiftExpenses.xsd" xmlns="http://tempuri.org/dsEndShiftExpenses.xsd" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata" xmlns:msprop="urn:schemas-microsoft-com:xml-msprop" attributeFormDefault="qualified" elementFormDefault="qualified">
+  <xs:annotation>
+    <xs:appinfo source="urn:schemas-microsoft-com:xml-msdatasource">
+      <DataSource DefaultConnectionIndex="0" FunctionsComponentName="QueriesTableAdapter" Modifier="AutoLayout, AnsiClass, Class, Public" SchemaSerializationMode="IncludeSchema" xmlns="urn:schemas-microsoft-com:xml-msdatasource">
+        <Connections>
+          <Connection AppSettingsObjectName="Settings" AppSettingsPropertyName="Connection" ConnectionStringObject="" IsAppSettingsProperty="true" Modifier="Assembly" Name="Connection (Settings)" ParameterPrefix="@" PropertyReference="ApplicationSettings.POS.Properties.Settings.GlobalReference.Default.Connection" Provider="System.Data.SqlClient" />
+        </Connections>
+        <Tables>
+          <TableAdapter BaseClass="System.ComponentModel.Component" DataAccessorModifier="AutoLayout, AnsiClass, Class, Public" DataAccessorName="EndshiftExpensesTableAdapter" GeneratorDataComponentClassName="EndshiftExpensesTableAdapter" Name="EndshiftExpenses" UserDataComponentName="EndshiftExpensesTableAdapter">
+            <MainSource>
+              <DbSource ConnectionRef="Connection (Settings)" DbObjectName="POS.dbo.EndshiftExpenses" DbObjectType="View" FillMethodModifier="Public" FillMethodName="Fill" GenerateMethods="Both" GenerateShortCommands="false" GeneratorGetMethodName="GetData" GeneratorSourceName="Fill" GetMethodModifier="Public" GetMethodName="GetData" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetData" UserSourceName="Fill">
+                <SelectCommand>
+                  <DbCommand CommandType="Text" ModifiedByUser="true">
+                    <CommandText>SELECT name, price
+FROM     EndshiftExpenses</CommandText>
+                    <Parameters />
+                  </DbCommand>
+                </SelectCommand>
+              </DbSource>
+            </MainSource>
+            <Mappings>
+              <Mapping SourceColumn="name" DataSetColumn="name" />
+              <Mapping SourceColumn="price" DataSetColumn="price" />
+            </Mappings>
+            <Sources />
+          </TableAdapter>
+        </Tables>
+        <Sources />
+      </DataSource>
+    </xs:appinfo>
+  </xs:annotation>
+  <xs:element name="dsEndShiftExpenses" msdata:IsDataSet="true" msdata:UseCurrentLocale="true" msprop:EnableTableAdapterManager="true" msprop:Generator_DataSetName="dsEndShiftExpenses" msprop:Generator_UserDSName="dsEndShiftExpenses">
+    <xs:complexType>
+      <xs:choice minOccurs="0" maxOccurs="unbounded">
+        <xs:element name="EndshiftExpenses" msprop:Generator_TableClassName="EndshiftExpensesDataTable" msprop:Generator_TableVarName="tableEndshiftExpenses" msprop:Generator_TablePropName="EndshiftExpenses" msprop:Generator_RowDeletingName="EndshiftExpensesRowDeleting" msprop:Generator_RowChangingName="EndshiftExpensesRowChanging" msprop:Generator_RowEvHandlerName="EndshiftExpensesRowChangeEventHandler" msprop:Generator_RowDeletedName="EndshiftExpensesRowDeleted" msprop:Generator_UserTableName="EndshiftExpenses" msprop:Generator_RowChangedName="EndshiftExpensesRowChanged" msprop:Generator_RowEvArgName="EndshiftExpensesRowChangeEvent" msprop:Generator_RowClassName="EndshiftExpensesRow">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="name" msprop:Generator_ColumnVarNameInTable="columnname" msprop:Generator_ColumnPropNameInRow="name" msprop:Generator_ColumnPropNameInTable="nameColumn" msprop:Generator_UserColumnName="name">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="200" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="price" msprop:Generator_ColumnVarNameInTable="columnprice" msprop:Generator_ColumnPropNameInRow="price" msprop:Generator_ColumnPropNameInTable="priceColumn" msprop:Generator_UserColumnName="price" type="xs:decimal" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+      </xs:choice>
+    </xs:complexType>
+  </xs:element>
+</xs:schema>

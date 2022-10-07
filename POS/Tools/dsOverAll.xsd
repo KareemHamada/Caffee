@@ -1,0 +1,29 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<xs:schema id="dsOverAll" targetNamespace="http://tempuri.org/dsOverAll.xsd" xmlns:mstns="http://tempuri.org/dsOverAll.xsd" xmlns="http://tempuri.org/dsOverAll.xsd" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata" xmlns:msprop="urn:schemas-microsoft-com:xml-msprop" attributeFormDefault="qualified" elementFormDefault="qualified">
+  <xs:annotation>
+    <xs:appinfo source="urn:schemas-microsoft-com:xml-msdatasource">
+      <DataSource DefaultConnectionIndex="0" FunctionsComponentName="QueriesTableAdapter" Modifier="AutoLayout, AnsiClass, Class, Public" SchemaSerializationMode="IncludeSchema" xmlns="urn:schemas-microsoft-com:xml-msdatasource">
+        <Connections />
+        <Tables />
+        <Sources />
+      </DataSource>
+    </xs:appinfo>
+  </xs:annotation>
+  <xs:element name="dsOverAll" msdata:IsDataSet="true" msdata:UseCurrentLocale="true" msprop:EnableTableAdapterManager="true" msprop:Generator_DataSetName="dsOverAll" msprop:Generator_UserDSName="dsOverAll">
+    <xs:complexType>
+      <xs:choice minOccurs="0" maxOccurs="unbounded">
+        <xs:element name="dtOverAll" msprop:Generator_TableClassName="dtOverAllDataTable" msprop:Generator_TableVarName="tabledtOverAll" msprop:Generator_TablePropName="dtOverAll" msprop:Generator_RowDeletingName="dtOverAllRowDeleting" msprop:Generator_RowChangingName="dtOverAllRowChanging" msprop:Generator_RowEvHandlerName="dtOverAllRowChangeEventHandler" msprop:Generator_RowDeletedName="dtOverAllRowDeleted" msprop:Generator_UserTableName="dtOverAll" msprop:Generator_RowChangedName="dtOverAllRowChanged" msprop:Generator_RowEvArgName="dtOverAllRowChangeEvent" msprop:Generator_RowClassName="dtOverAllRow">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="wared" msprop:Generator_ColumnVarNameInTable="columnwared" msprop:Generator_ColumnPropNameInRow="wared" msprop:Generator_ColumnPropNameInTable="waredColumn" msprop:Generator_UserColumnName="wared" type="xs:double" minOccurs="0" />
+              <xs:element name="expenses" msprop:Generator_ColumnVarNameInTable="columnexpenses" msprop:Generator_ColumnPropNameInRow="expenses" msprop:Generator_ColumnPropNameInTable="expensesColumn" msprop:Generator_UserColumnName="expenses" type="xs:double" minOccurs="0" />
+              <xs:element name="salaries" msprop:Generator_ColumnVarNameInTable="columnsalaries" msprop:Generator_ColumnPropNameInRow="salaries" msprop:Generator_ColumnPropNameInTable="salariesColumn" msprop:Generator_UserColumnName="salaries" type="xs:double" minOccurs="0" />
+              <xs:element name="stores" msprop:Generator_ColumnVarNameInTable="columnstores" msprop:Generator_ColumnPropNameInRow="stores" msprop:Generator_ColumnPropNameInTable="storesColumn" msprop:Generator_UserColumnName="stores" type="xs:double" minOccurs="0" />
+              <xs:element name="total" msprop:Generator_ColumnVarNameInTable="columntotal" msprop:Generator_ColumnPropNameInRow="total" msprop:Generator_ColumnPropNameInTable="totalColumn" msprop:Generator_UserColumnName="total" type="xs:double" minOccurs="0" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+      </xs:choice>
+    </xs:complexType>
+  </xs:element>
+</xs:schema>

@@ -1,0 +1,67 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<xs:schema id="dsReports" targetNamespace="http://tempuri.org/dsReports.xsd" xmlns:mstns="http://tempuri.org/dsReports.xsd" xmlns="http://tempuri.org/dsReports.xsd" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata" xmlns:msprop="urn:schemas-microsoft-com:xml-msprop" attributeFormDefault="qualified" elementFormDefault="qualified">
+  <xs:annotation>
+    <xs:appinfo source="urn:schemas-microsoft-com:xml-msdatasource">
+      <DataSource DefaultConnectionIndex="0" FunctionsComponentName="QueriesTableAdapter" Modifier="AutoLayout, AnsiClass, Class, Public" SchemaSerializationMode="IncludeSchema" xmlns="urn:schemas-microsoft-com:xml-msdatasource">
+        <Connections>
+          <Connection AppSettingsObjectName="Settings" AppSettingsPropertyName="Connection" ConnectionStringObject="" IsAppSettingsProperty="true" Modifier="Assembly" Name="Connection (Settings)" ParameterPrefix="@" PropertyReference="ApplicationSettings.POS.Properties.Settings.GlobalReference.Default.Connection" Provider="System.Data.SqlClient" />
+        </Connections>
+        <Tables>
+          <TableAdapter BaseClass="System.ComponentModel.Component" DataAccessorModifier="AutoLayout, AnsiClass, Class, Public" DataAccessorName="vwShiftsTableAdapter" GeneratorDataComponentClassName="vwShiftsTableAdapter" Name="vwShifts" UserDataComponentName="vwShiftsTableAdapter">
+            <MainSource>
+              <DbSource ConnectionRef="Connection (Settings)" DbObjectName="POS.dbo.vwShifts" DbObjectType="View" FillMethodModifier="Public" FillMethodName="Fill" GenerateMethods="Both" GenerateShortCommands="false" GeneratorGetMethodName="GetData" GeneratorSourceName="Fill" GetMethodModifier="Public" GetMethodName="GetData" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetData" UserSourceName="Fill">
+                <SelectCommand>
+                  <DbCommand CommandType="Text" ModifiedByUser="true">
+                    <CommandText>SELECT dateTimeStart, wared, expenses, fullName, total, dateTimeEnd, id
+FROM     vwShifts</CommandText>
+                    <Parameters />
+                  </DbCommand>
+                </SelectCommand>
+              </DbSource>
+            </MainSource>
+            <Mappings>
+              <Mapping SourceColumn="dateTimeStart" DataSetColumn="dateTimeStart" />
+              <Mapping SourceColumn="wared" DataSetColumn="wared" />
+              <Mapping SourceColumn="expenses" DataSetColumn="expenses" />
+              <Mapping SourceColumn="fullName" DataSetColumn="fullName" />
+              <Mapping SourceColumn="total" DataSetColumn="total" />
+              <Mapping SourceColumn="dateTimeEnd" DataSetColumn="dateTimeEnd" />
+              <Mapping SourceColumn="id" DataSetColumn="id" />
+            </Mappings>
+            <Sources />
+          </TableAdapter>
+        </Tables>
+        <Sources />
+      </DataSource>
+    </xs:appinfo>
+  </xs:annotation>
+  <xs:element name="dsReports" msdata:IsDataSet="true" msdata:UseCurrentLocale="true" msprop:EnableTableAdapterManager="true" msprop:Generator_DataSetName="dsReports" msprop:Generator_UserDSName="dsReports">
+    <xs:complexType>
+      <xs:choice minOccurs="0" maxOccurs="unbounded">
+        <xs:element name="vwShifts" msprop:Generator_TableClassName="vwShiftsDataTable" msprop:Generator_TableVarName="tablevwShifts" msprop:Generator_TablePropName="vwShifts" msprop:Generator_RowDeletingName="vwShiftsRowDeleting" msprop:Generator_RowChangingName="vwShiftsRowChanging" msprop:Generator_RowEvHandlerName="vwShiftsRowChangeEventHandler" msprop:Generator_RowDeletedName="vwShiftsRowDeleted" msprop:Generator_UserTableName="vwShifts" msprop:Generator_RowChangedName="vwShiftsRowChanged" msprop:Generator_RowEvArgName="vwShiftsRowChangeEvent" msprop:Generator_RowClassName="vwShiftsRow">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="dateTimeStart" msprop:Generator_ColumnVarNameInTable="columndateTimeStart" msprop:Generator_ColumnPropNameInRow="dateTimeStart" msprop:Generator_ColumnPropNameInTable="dateTimeStartColumn" msprop:Generator_UserColumnName="dateTimeStart" type="xs:dateTime" />
+              <xs:element name="wared" msprop:Generator_ColumnVarNameInTable="columnwared" msprop:Generator_ColumnPropNameInRow="wared" msprop:Generator_ColumnPropNameInTable="waredColumn" msprop:Generator_UserColumnName="wared" type="xs:decimal" minOccurs="0" />
+              <xs:element name="expenses" msprop:Generator_ColumnVarNameInTable="columnexpenses" msprop:Generator_ColumnPropNameInRow="expenses" msprop:Generator_ColumnPropNameInTable="expensesColumn" msprop:Generator_UserColumnName="expenses" type="xs:decimal" minOccurs="0" />
+              <xs:element name="fullName" msprop:Generator_ColumnVarNameInTable="columnfullName" msprop:Generator_ColumnPropNameInRow="fullName" msprop:Generator_ColumnPropNameInTable="fullNameColumn" msprop:Generator_UserColumnName="fullName" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="100" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="total" msprop:Generator_ColumnVarNameInTable="columntotal" msprop:Generator_ColumnPropNameInRow="total" msprop:Generator_ColumnPropNameInTable="totalColumn" msprop:Generator_UserColumnName="total" type="xs:decimal" minOccurs="0" />
+              <xs:element name="dateTimeEnd" msprop:Generator_ColumnVarNameInTable="columndateTimeEnd" msprop:Generator_ColumnPropNameInRow="dateTimeEnd" msprop:Generator_ColumnPropNameInTable="dateTimeEndColumn" msprop:Generator_UserColumnName="dateTimeEnd" type="xs:dateTime" minOccurs="0" />
+              <xs:element name="id" msprop:Generator_ColumnVarNameInTable="columnid" msprop:Generator_ColumnPropNameInRow="id" msprop:Generator_ColumnPropNameInTable="idColumn" msprop:Generator_UserColumnName="id" type="xs:int" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+      </xs:choice>
+    </xs:complexType>
+    <xs:unique name="Constraint1" msdata:PrimaryKey="true">
+      <xs:selector xpath=".//mstns:vwShifts" />
+      <xs:field xpath="mstns:id" />
+    </xs:unique>
+  </xs:element>
+</xs:schema>
