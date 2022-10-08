@@ -306,7 +306,7 @@ namespace POS.Forms
                 for (int i = 0; i < FormPOSResponsive.instance.dgvItems.Rows.Count; i++)
                 {
 
-                    cmd = new SqlCommand("Insert into OrderItems (orderId,itemId,quantity,price,totalItem,dateTime) values (@orderId,@itemId,@quantity,@price,@totalItem,@dateTime)", adoClass.sqlcn);
+                    cmd = new SqlCommand("Insert into OrderItems (orderId,itemId,quantity,price,totalItem,dateTime,notes) values (@orderId,@itemId,@quantity,@price,@totalItem,@dateTime,@notes)", adoClass.sqlcn);
 
                     cmd.Parameters.AddWithValue("@orderId", orderId);
                     cmd.Parameters.AddWithValue("@itemId", FormPOSResponsive.instance.dgvItems[0, i].Value);
@@ -314,6 +314,7 @@ namespace POS.Forms
                     cmd.Parameters.AddWithValue("@price", FormPOSResponsive.instance.dgvItems[4, i].Value);
                     cmd.Parameters.AddWithValue("@totalItem", FormPOSResponsive.instance.dgvItems[2, i].Value);
                     cmd.Parameters.AddWithValue("@dateTime", DateTime.Now);
+                    cmd.Parameters.AddWithValue("@notes", FormPOSResponsive.instance.dgvItems[1, i].Value);
                     cmd.ExecuteNonQuery();
                     cmd.Parameters.Clear();
 

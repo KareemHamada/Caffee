@@ -53,12 +53,6 @@ namespace POS.Forms
             this.pnlItems = new System.Windows.Forms.FlowLayoutPanel();
             this.tableLayoutPanel3 = new System.Windows.Forms.TableLayoutPanel();
             this.dgvItems = new System.Windows.Forms.DataGridView();
-            this.ColId = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.notes = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ColTotal = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ColQuan = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ColPrice = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ColName = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.pnlData = new System.Windows.Forms.TableLayoutPanel();
             this.btnDone = new System.Windows.Forms.Button();
             this.tableLayoutPanel7 = new System.Windows.Forms.TableLayoutPanel();
@@ -93,6 +87,12 @@ namespace POS.Forms
             this.btnUpdateTable = new System.Windows.Forms.Button();
             this.btnClear = new System.Windows.Forms.Button();
             this.timer1 = new System.Windows.Forms.Timer(this.components);
+            this.ColId = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.notes = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ColTotal = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ColQuan = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ColPrice = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ColName = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.pnlTitle.SuspendLayout();
             this.tableLayoutPanel1.SuspendLayout();
             this.pnlContainer.SuspendLayout();
@@ -398,7 +398,6 @@ namespace POS.Forms
             this.dgvItems.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dgvItems.Location = new System.Drawing.Point(6, 6);
             this.dgvItems.Name = "dgvItems";
-            this.dgvItems.ReadOnly = true;
             dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
             dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Control;
             dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -414,56 +413,6 @@ namespace POS.Forms
             this.dgvItems.RowTemplate.Height = 30;
             this.dgvItems.Size = new System.Drawing.Size(624, 335);
             this.dgvItems.TabIndex = 1;
-            // 
-            // ColId
-            // 
-            this.ColId.FillWeight = 1F;
-            this.ColId.HeaderText = "id";
-            this.ColId.MinimumWidth = 6;
-            this.ColId.Name = "ColId";
-            this.ColId.ReadOnly = true;
-            this.ColId.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
-            this.ColId.Visible = false;
-            // 
-            // notes
-            // 
-            this.notes.HeaderText = "ملاحظات";
-            this.notes.MinimumWidth = 6;
-            this.notes.Name = "notes";
-            this.notes.ReadOnly = true;
-            // 
-            // ColTotal
-            // 
-            this.ColTotal.HeaderText = "الاجمالي";
-            this.ColTotal.MinimumWidth = 6;
-            this.ColTotal.Name = "ColTotal";
-            this.ColTotal.ReadOnly = true;
-            this.ColTotal.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
-            // 
-            // ColQuan
-            // 
-            this.ColQuan.HeaderText = "العدد";
-            this.ColQuan.MinimumWidth = 6;
-            this.ColQuan.Name = "ColQuan";
-            this.ColQuan.ReadOnly = true;
-            this.ColQuan.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
-            // 
-            // ColPrice
-            // 
-            this.ColPrice.HeaderText = "السعر";
-            this.ColPrice.MinimumWidth = 6;
-            this.ColPrice.Name = "ColPrice";
-            this.ColPrice.ReadOnly = true;
-            this.ColPrice.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
-            // 
-            // ColName
-            // 
-            this.ColName.FillWeight = 200F;
-            this.ColName.HeaderText = "العنصر";
-            this.ColName.MinimumWidth = 6;
-            this.ColName.Name = "ColName";
-            this.ColName.ReadOnly = true;
-            this.ColName.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
             // 
             // pnlData
             // 
@@ -533,7 +482,7 @@ namespace POS.Forms
             this.comboOrderType.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.comboOrderType.Font = new System.Drawing.Font("Microsoft Sans Serif", 16.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.comboOrderType.FormattingEnabled = true;
-            this.comboOrderType.Location = new System.Drawing.Point(3, 16);
+            this.comboOrderType.Location = new System.Drawing.Point(3, 17);
             this.comboOrderType.Name = "comboOrderType";
             this.comboOrderType.Size = new System.Drawing.Size(309, 39);
             this.comboOrderType.TabIndex = 12;
@@ -970,6 +919,55 @@ namespace POS.Forms
             // 
             this.timer1.Enabled = true;
             this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
+            // 
+            // ColId
+            // 
+            this.ColId.FillWeight = 1F;
+            this.ColId.HeaderText = "id";
+            this.ColId.MinimumWidth = 6;
+            this.ColId.Name = "ColId";
+            this.ColId.ReadOnly = true;
+            this.ColId.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            this.ColId.Visible = false;
+            // 
+            // notes
+            // 
+            this.notes.HeaderText = "ملاحظات";
+            this.notes.MinimumWidth = 6;
+            this.notes.Name = "notes";
+            // 
+            // ColTotal
+            // 
+            this.ColTotal.HeaderText = "الاجمالي";
+            this.ColTotal.MinimumWidth = 6;
+            this.ColTotal.Name = "ColTotal";
+            this.ColTotal.ReadOnly = true;
+            this.ColTotal.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            // 
+            // ColQuan
+            // 
+            this.ColQuan.HeaderText = "العدد";
+            this.ColQuan.MinimumWidth = 6;
+            this.ColQuan.Name = "ColQuan";
+            this.ColQuan.ReadOnly = true;
+            this.ColQuan.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            // 
+            // ColPrice
+            // 
+            this.ColPrice.HeaderText = "السعر";
+            this.ColPrice.MinimumWidth = 6;
+            this.ColPrice.Name = "ColPrice";
+            this.ColPrice.ReadOnly = true;
+            this.ColPrice.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            // 
+            // ColName
+            // 
+            this.ColName.FillWeight = 200F;
+            this.ColName.HeaderText = "العنصر";
+            this.ColName.MinimumWidth = 6;
+            this.ColName.Name = "ColName";
+            this.ColName.ReadOnly = true;
+            this.ColName.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
             // 
             // FormPOSResponsive
             // 

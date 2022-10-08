@@ -365,7 +365,7 @@ namespace POS.Forms
                             {
                                 adoClass.sqlcn.Open();
                             }
-                            cmd = new SqlCommand("select OrderItems.itemId,OrderItems.totalItem,OrderItems.quantity,OrderItems.price,Items.name from OrderItems LEFT JOIN Items on OrderItems.itemId = Items.id  where orderId = '" + orderId + "'", adoClass.sqlcn);
+                            cmd = new SqlCommand("select OrderItems.itemId,OrderItems.totalItem,OrderItems.notes,OrderItems.quantity,OrderItems.price,Items.name from OrderItems LEFT JOIN Items on OrderItems.itemId = Items.id  where orderId = '" + orderId + "'", adoClass.sqlcn);
                             SqlDataAdapter adapter = new SqlDataAdapter(cmd);
                             adapter.Fill(tableOrderItems);
                             adoClass.sqlcn.Close();
@@ -380,7 +380,7 @@ namespace POS.Forms
                                         (new object[]
                                             {
                                             r["itemId"],
-                                            "",
+                                            r["notes"],
                                             r["totalItem"],
                                             r["quantity"],
                                             r["price"],
@@ -657,6 +657,7 @@ namespace POS.Forms
                         DataRow dro = tables.Tables["dtTables"].NewRow();
                         dro["itemName"] = dgvItems[5, i].Value;
                         dro["itemQuantity"] = dgvItems[3, i].Value;
+                        dro["notes"] = dgvItems[1, i].Value;
                         tables.Tables["dtTables"].Rows.Add(dro);
                     }
 
@@ -737,13 +738,14 @@ namespace POS.Forms
                 for (int i = 0; i < dgvItems.Rows.Count; i++)
                 {
 
-                    cmd = new SqlCommand("Insert into OrderItems (orderId,itemId,quantity,price,totalItem) values (@orderId,@itemId,@quantity,@price,@totalItem)", adoClass.sqlcn);
+                    cmd = new SqlCommand("Insert into OrderItems (orderId,itemId,quantity,price,totalItem,notes) values (@orderId,@itemId,@quantity,@price,@totalItem,@notes)", adoClass.sqlcn);
 
                     cmd.Parameters.AddWithValue("@orderId", orderId);
                     cmd.Parameters.AddWithValue("@itemId", dgvItems[0, i].Value);
                     cmd.Parameters.AddWithValue("@quantity", dgvItems[3, i].Value);
                     cmd.Parameters.AddWithValue("@price", dgvItems[4, i].Value);
                     cmd.Parameters.AddWithValue("@totalItem", dgvItems[2, i].Value);
+                    cmd.Parameters.AddWithValue("@notes", dgvItems[1, i].Value);
                     cmd.ExecuteNonQuery();
                     cmd.Parameters.Clear();
                     
@@ -796,12 +798,13 @@ namespace POS.Forms
                     cmd.ExecuteNonQuery();
                     for (int i = 0; i < dgvItems.Rows.Count; i++)
                     {
-                        cmd = new SqlCommand("Insert into OrderItems (orderId,itemId,quantity,price,totalItem) values (@orderId,@itemId,@quantity,@price,@totalItem)", adoClass.sqlcn);
+                        cmd = new SqlCommand("Insert into OrderItems (orderId,itemId,quantity,price,totalItem,notes) values (@orderId,@itemId,@quantity,@price,@totalItem,@notes)", adoClass.sqlcn);
                         cmd.Parameters.AddWithValue("@orderId", orderId);
                         cmd.Parameters.AddWithValue("@itemId", dgvItems[0, i].Value);
                         cmd.Parameters.AddWithValue("@quantity", dgvItems[3, i].Value);
                         cmd.Parameters.AddWithValue("@price", dgvItems[4, i].Value);
                         cmd.Parameters.AddWithValue("@totalItem", dgvItems[2, i].Value);
+                        cmd.Parameters.AddWithValue("@notes", dgvItems[1, i].Value);
                         cmd.ExecuteNonQuery();
                         cmd.Parameters.Clear();
                     }
@@ -814,6 +817,7 @@ namespace POS.Forms
                         DataRow dro = tables.Tables["dtTables"].NewRow();
                         dro["itemName"] = dgvItems[5, i].Value;
                         dro["itemQuantity"] = dgvItems[3, i].Value;
+                        dro["notes"] = dgvItems[1, i].Value;
                         tables.Tables["dtTables"].Rows.Add(dro);
                     }
 

@@ -283,6 +283,8 @@ namespace POS.Tools {
             
             private global::System.Data.DataColumn columnitemQuantity;
             
+            private global::System.Data.DataColumn columnnotes;
+            
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             public dtTablesDataTable() {
@@ -334,6 +336,14 @@ namespace POS.Tools {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public global::System.Data.DataColumn notesColumn {
+                get {
+                    return this.columnnotes;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             [global::System.ComponentModel.Browsable(false)]
             public int Count {
                 get {
@@ -369,11 +379,12 @@ namespace POS.Tools {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public dtTablesRow AdddtTablesRow(string itemName, long itemQuantity) {
+            public dtTablesRow AdddtTablesRow(string itemName, long itemQuantity, string notes) {
                 dtTablesRow rowdtTablesRow = ((dtTablesRow)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
                         itemName,
-                        itemQuantity};
+                        itemQuantity,
+                        notes};
                 rowdtTablesRow.ItemArray = columnValuesArray;
                 this.Rows.Add(rowdtTablesRow);
                 return rowdtTablesRow;
@@ -398,6 +409,7 @@ namespace POS.Tools {
             internal void InitVars() {
                 this.columnitemName = base.Columns["itemName"];
                 this.columnitemQuantity = base.Columns["itemQuantity"];
+                this.columnnotes = base.Columns["notes"];
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -407,6 +419,8 @@ namespace POS.Tools {
                 base.Columns.Add(this.columnitemName);
                 this.columnitemQuantity = new global::System.Data.DataColumn("itemQuantity", typeof(long), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnitemQuantity);
+                this.columnnotes = new global::System.Data.DataColumn("notes", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnnotes);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -581,6 +595,22 @@ namespace POS.Tools {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public string notes {
+                get {
+                    try {
+                        return ((string)(this[this.tabledtTables.notesColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'notes\' in table \'dtTables\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tabledtTables.notesColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             public bool IsitemNameNull() {
                 return this.IsNull(this.tabledtTables.itemNameColumn);
             }
@@ -601,6 +631,18 @@ namespace POS.Tools {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             public void SetitemQuantityNull() {
                 this[this.tabledtTables.itemQuantityColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public bool IsnotesNull() {
+                return this.IsNull(this.tabledtTables.notesColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public void SetnotesNull() {
+                this[this.tabledtTables.notesColumn] = global::System.Convert.DBNull;
             }
         }
         

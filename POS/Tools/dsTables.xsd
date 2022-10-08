@@ -12,11 +12,12 @@
   <xs:element name="dsTables" msdata:IsDataSet="true" msdata:UseCurrentLocale="true" msprop:EnableTableAdapterManager="true" msprop:Generator_DataSetName="dsTables" msprop:Generator_UserDSName="dsTables">
     <xs:complexType>
       <xs:choice minOccurs="0" maxOccurs="unbounded">
-        <xs:element name="dtTables" msprop:Generator_TableClassName="dtTablesDataTable" msprop:Generator_TableVarName="tabledtTables" msprop:Generator_RowChangedName="dtTablesRowChanged" msprop:Generator_TablePropName="dtTables" msprop:Generator_RowDeletingName="dtTablesRowDeleting" msprop:Generator_RowChangingName="dtTablesRowChanging" msprop:Generator_RowEvHandlerName="dtTablesRowChangeEventHandler" msprop:Generator_RowDeletedName="dtTablesRowDeleted" msprop:Generator_RowClassName="dtTablesRow" msprop:Generator_UserTableName="dtTables" msprop:Generator_RowEvArgName="dtTablesRowChangeEvent">
+        <xs:element name="dtTables" msprop:Generator_TableClassName="dtTablesDataTable" msprop:Generator_TableVarName="tabledtTables" msprop:Generator_TablePropName="dtTables" msprop:Generator_RowDeletingName="dtTablesRowDeleting" msprop:Generator_RowChangingName="dtTablesRowChanging" msprop:Generator_RowEvHandlerName="dtTablesRowChangeEventHandler" msprop:Generator_RowDeletedName="dtTablesRowDeleted" msprop:Generator_UserTableName="dtTables" msprop:Generator_RowChangedName="dtTablesRowChanged" msprop:Generator_RowEvArgName="dtTablesRowChangeEvent" msprop:Generator_RowClassName="dtTablesRow">
           <xs:complexType>
             <xs:sequence>
               <xs:element name="itemName" msprop:Generator_ColumnVarNameInTable="columnitemName" msprop:Generator_ColumnPropNameInRow="itemName" msprop:Generator_ColumnPropNameInTable="itemNameColumn" msprop:Generator_UserColumnName="itemName" type="xs:string" minOccurs="0" />
               <xs:element name="itemQuantity" msprop:Generator_ColumnVarNameInTable="columnitemQuantity" msprop:Generator_ColumnPropNameInRow="itemQuantity" msprop:Generator_ColumnPropNameInTable="itemQuantityColumn" msprop:Generator_UserColumnName="itemQuantity" type="xs:long" minOccurs="0" />
+              <xs:element name="notes" msprop:Generator_ColumnVarNameInTable="columnnotes" msprop:Generator_ColumnPropNameInRow="notes" msprop:Generator_ColumnPropNameInTable="notesColumn" msprop:Generator_UserColumnName="notes" type="xs:string" minOccurs="0" />
             </xs:sequence>
           </xs:complexType>
         </xs:element>
