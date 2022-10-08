@@ -604,8 +604,8 @@ namespace POS.Forms
 
         private void tableCalculations()
         {
-            //try
-            //{
+            try
+            {
                 if (adoClass.sqlcn.State != ConnectionState.Open)
                 {
                     adoClass.sqlcn.Open();
@@ -709,19 +709,17 @@ namespace POS.Forms
                 btnUpdateTable.Visible = false;
                 MessageBox.Show("تم");
 
-                adoClass.sqlcn.Close();
 
-            //printChecks checks = new printChecks();
-            //checks.runPrintCheck(int.Parse(tableOrderId));
-            //}
-            //catch (Exception ex)
-            //{
-            //    MessageBox.Show(ex.Message);
-            //}
-            //finally
-            //{
-            //    adoClass.sqlcn.Close();
-            //}
+
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+            finally
+            {
+                adoClass.sqlcn.Close();
+            }
 
         }
 
@@ -847,10 +845,7 @@ namespace POS.Forms
                         rptForm.mainReport.LocalReport.SetParameters(reportParameters);
                         rptForm.ShowDialog();
                     }
-
-
                     // end of print table order
-
                 }
 
 

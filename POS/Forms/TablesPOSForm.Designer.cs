@@ -34,6 +34,8 @@ namespace POS.Forms
             // 
             // pnlRest
             // 
+            this.pnlRest.AutoScroll = true;
+            this.pnlRest.AutoSize = true;
             this.pnlRest.Dock = System.Windows.Forms.DockStyle.Fill;
             this.pnlRest.Location = new System.Drawing.Point(0, 0);
             this.pnlRest.Name = "pnlRest";
@@ -55,6 +57,7 @@ namespace POS.Forms
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Load += new System.EventHandler(this.TablesPOSForm_Load);
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
