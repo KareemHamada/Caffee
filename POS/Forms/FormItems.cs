@@ -22,39 +22,61 @@ namespace POS.Forms
         private SqlCommand cmd;
         private TextBox txtHidden;
 
-        private DataTable loadTable()
+        //private DataTable loadTable()
+        //{
+        //    DataTable dt = new DataTable();
+
+        //    if (adoClass.sqlcn.State != ConnectionState.Open)
+        //    {
+        //        adoClass.sqlcn.Open();
+        //    }
+        //    cmd = new SqlCommand("Select Categories.name as cat,Items.image,Items.price,Items.name,Items.id from Items LEFT JOIN Categories on Items.CategoryId = Categories.id", adoClass.sqlcn);
+        //    SqlDataAdapter da = new SqlDataAdapter(cmd);
+        //    da.Fill(dt);
+        //    adoClass.sqlcn.Close();
+        //    return dt;
+        //}
+
+        private void loadTable(string query)
         {
+            dgvItems.Rows.Clear();
             DataTable dt = new DataTable();
 
             if (adoClass.sqlcn.State != ConnectionState.Open)
             {
                 adoClass.sqlcn.Open();
             }
-            cmd = new SqlCommand("Select Categories.name,Items.image,Items.price,Items.name,Items.id from Items LEFT JOIN Categories on Items.CategoryId = Categories.id", adoClass.sqlcn);
+            cmd = new SqlCommand(query, adoClass.sqlcn);
             SqlDataAdapter da = new SqlDataAdapter(cmd);
             da.Fill(dt);
             adoClass.sqlcn.Close();
-            return dt;
+            if (dt.Rows.Count > 0)
+            {
+                foreach (DataRow row in dt.Rows)
+                {
+                    
+                    dgvItems.Rows.Add
+                        (new object[]
+                            {
+                            row["multiPrice"],
+                            row["cat"],
+                            row["image"],
+                            row["price"],
+                            row["name"],
+                            row["id"]
+                            }
+                        ); ;
+                }
+            }
+
         }
 
-        
+
         private void FormItems_Load(object sender, EventArgs e)
         {
             Helper.fillComboBox(comboCategory, "Select id,name from Categories", "name", "id");
-            try
-            {
-                dgvItems.DataSource = loadTable();
-                dgvItems.Columns[0].HeaderText = "الصنف";
-                dgvItems.Columns[1].HeaderText = "الصورة";
-                dgvItems.Columns[2].HeaderText = "السعر";
-                dgvItems.Columns[3].HeaderText = "العنصر";
-                dgvItems.Columns[4].HeaderText = "#";
 
-            }
-            catch
-            {
-
-            }
+            loadTable("Select Categories.name as cat,Items.image,Items.price,Items.name,Items.id,Items.multiPrice from Items LEFT JOIN Categories on Items.CategoryId = Categories.id");
             // hidden text box
             txtHidden = new TextBox();
             txtHidden.Visible = false;
@@ -93,20 +115,22 @@ namespace POS.Forms
             {
                 if (picBox.BackgroundImage != null)
                 {
-                    cmd = new SqlCommand("Insert into Items (name,price,image,categoryId,quantity) values (@name,@price,@image,@categoryId,@quantity)", adoClass.sqlcn);
+                    cmd = new SqlCommand("Insert into Items (name,price,image,categoryId,quantity,multiPrice) values (@name,@price,@image,@categoryId,@quantity,@multiPrice)", adoClass.sqlcn);
                     cmd.Parameters.AddWithValue("@name", txtName.Text);
                     cmd.Parameters.AddWithValue("@price", txtPrice.Text);
                     cmd.Parameters.AddWithValue("@quantity", 0);
                     cmd.Parameters.AddWithValue("@image", Helper.ImageTOByte(picBox.BackgroundImage));
                     cmd.Parameters.AddWithValue("@categoryId", comboCategory.SelectedValue);
+                    cmd.Parameters.AddWithValue("@multiPrice", checkPrice.Checked.ToString());
                 }
                 else
                 {
-                    cmd = new SqlCommand("Insert into Items (name,price,categoryId,quantity) values (@name,@price,@categoryId,@quantity)", adoClass.sqlcn);
+                    cmd = new SqlCommand("Insert into Items (name,price,categoryId,quantity,multiPrice) values (@name,@price,@categoryId,@quantity,@multiPrice)", adoClass.sqlcn);
                     cmd.Parameters.AddWithValue("@name", txtName.Text);
                     cmd.Parameters.AddWithValue("@price", txtPrice.Text);
                     cmd.Parameters.AddWithValue("@categoryId", comboCategory.SelectedValue);
                     cmd.Parameters.AddWithValue("@quantity", 0);
+                    cmd.Parameters.AddWithValue("@multiPrice", checkPrice.Checked.ToString());
                 }
                 if (adoClass.sqlcn.State != ConnectionState.Open)
                 {
@@ -128,7 +152,7 @@ namespace POS.Forms
                 adoClass.sqlcn.Close();
             }
 
-            dgvItems.DataSource = loadTable();
+            loadTable("Select Categories.name as cat,Items.image,Items.price,Items.name,Items.id,Items.multiPrice from Items LEFT JOIN Categories on Items.CategoryId = Categories.id");
 
             txtName.Text = "";
             picBox.BackgroundImage = null;
@@ -167,23 +191,26 @@ namespace POS.Forms
             {
                 if (picBox.BackgroundImage != null)
                 {
-                    cmd = new SqlCommand("Update Items set name = @name,price=@price,image=@image,categoryId = @categoryId Where id = '" + id + "'", adoClass.sqlcn);
+                    cmd = new SqlCommand("Update Items set name = @name,price=@price,image=@image,categoryId = @categoryId,multiPrice=@multiPrice Where id = '" + id + "'", adoClass.sqlcn);
 
                     cmd.Parameters.AddWithValue("@name", txtName.Text);
                     cmd.Parameters.AddWithValue("@price", txtPrice.Text);
                     cmd.Parameters.AddWithValue("@image", Helper.ImageTOByte(picBox.BackgroundImage));
                     cmd.Parameters.AddWithValue("@categoryId", comboCategory.SelectedValue);
+                    cmd.Parameters.AddWithValue("@multiPrice", checkPrice.Checked.ToString());
                 }
                 else
                 {
-                    cmd = new SqlCommand("Update Items set name = @name,price=@price,categoryId = @categoryId Where id = '" + id + "'", adoClass.sqlcn);
+                    cmd = new SqlCommand("Update Items set name = @name,price=@price,categoryId = @categoryId,multiPrice=@multiPrice Where id = '" + id + "'", adoClass.sqlcn);
 
                     cmd.Parameters.AddWithValue("@name", txtName.Text);
                     cmd.Parameters.AddWithValue("@price", txtPrice.Text);
                     cmd.Parameters.AddWithValue("@categoryId", comboCategory.SelectedValue);
+                    cmd.Parameters.AddWithValue("@multiPrice", checkPrice.Checked.ToString());
+
+                    
                 }
 
-                ////////////////////////////
                 
 
                 if (adoClass.sqlcn.State != ConnectionState.Open)
@@ -205,7 +232,7 @@ namespace POS.Forms
                 adoClass.sqlcn.Close();
             }
 
-            dgvItems.DataSource = loadTable();
+            loadTable("Select Categories.name as cat,Items.image,Items.price,Items.name,Items.id,Items.multiPrice from Items LEFT JOIN Categories on Items.CategoryId = Categories.id");
 
             txtName.Text = "";
             picBox.BackgroundImage = null;
@@ -246,7 +273,7 @@ namespace POS.Forms
             {
                 adoClass.sqlcn.Close();
             }
-            dgvItems.DataSource = loadTable();
+            loadTable("Select Categories.name as cat,Items.image,Items.price,Items.name,Items.id,Items.multiPrice from Items LEFT JOIN Categories on Items.CategoryId = Categories.id");
             txtName.Text = "";
             picBox.BackgroundImage = null;
             txtImage.Text = "";
@@ -261,9 +288,6 @@ namespace POS.Forms
         }
 
 
-
-
-
         private void txtPrice_KeyPress(object sender, KeyPressEventArgs e)
         {
             char ch = e.KeyChar;
@@ -275,14 +299,15 @@ namespace POS.Forms
 
         private void dgvItems_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
-            comboCategory.Text = dgvItems.CurrentRow.Cells[0].Value.ToString();
-            picBox.BackgroundImage = Helper.ByteToImage(dgvItems.CurrentRow.Cells[1].Value);
-            txtPrice.Text = dgvItems.CurrentRow.Cells[2].Value.ToString();
-            txtName.Text = dgvItems.CurrentRow.Cells[3].Value.ToString();
-            txtHidden.Text = dgvItems.CurrentRow.Cells[4].Value.ToString();
+            bool multiPrice = false;
+            bool.TryParse(dgvItems.CurrentRow.Cells[0].Value.ToString(), out multiPrice);
+            checkPrice.Checked = multiPrice;
+
+            comboCategory.Text = dgvItems.CurrentRow.Cells[1].Value.ToString();
+            picBox.BackgroundImage = Helper.ByteToImage(dgvItems.CurrentRow.Cells[2].Value);
+            txtPrice.Text = dgvItems.CurrentRow.Cells[3].Value.ToString();
+            txtName.Text = dgvItems.CurrentRow.Cells[4].Value.ToString();
+            txtHidden.Text = dgvItems.CurrentRow.Cells[5].Value.ToString();
         }
-
-
-
     }
 }

@@ -323,6 +323,7 @@ namespace POS.Forms
             // picBox
             // 
             this.picBox.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.picBox.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.picBox.Dock = System.Windows.Forms.DockStyle.Fill;
             this.picBox.Location = new System.Drawing.Point(3, 58);
             this.picBox.Name = "picBox";

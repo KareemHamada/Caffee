@@ -57,6 +57,14 @@ namespace POS.Forms
             this.picBox = new System.Windows.Forms.PictureBox();
             this.btnChoose = new System.Windows.Forms.Button();
             this.txtImage = new System.Windows.Forms.TextBox();
+            this.label5 = new System.Windows.Forms.Label();
+            this.checkPrice = new System.Windows.Forms.CheckBox();
+            this.multiPric = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.cat = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.pic = new System.Windows.Forms.DataGridViewImageColumn();
+            this.price = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.name = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.id = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.parient.SuspendLayout();
             this.tableLayoutPanel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvItems)).BeginInit();
@@ -113,6 +121,13 @@ namespace POS.Forms
             dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
             this.dgvItems.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             this.dgvItems.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvItems.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.multiPric,
+            this.cat,
+            this.pic,
+            this.price,
+            this.name,
+            this.id});
             dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
             dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Window;
             dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 16.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -274,6 +289,8 @@ namespace POS.Forms
             this.tableLayoutPanel5.Controls.Add(this.picBox, 0, 3);
             this.tableLayoutPanel5.Controls.Add(this.btnChoose, 1, 4);
             this.tableLayoutPanel5.Controls.Add(this.txtImage, 0, 4);
+            this.tableLayoutPanel5.Controls.Add(this.label5, 1, 6);
+            this.tableLayoutPanel5.Controls.Add(this.checkPrice, 0, 6);
             this.tableLayoutPanel5.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel5.Location = new System.Drawing.Point(0, 203);
             this.tableLayoutPanel5.Margin = new System.Windows.Forms.Padding(0);
@@ -285,8 +302,8 @@ namespace POS.Forms
             this.tableLayoutPanel5.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 25.73333F));
             this.tableLayoutPanel5.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 6F));
             this.tableLayoutPanel5.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 4.266667F));
-            this.tableLayoutPanel5.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 4.4F));
-            this.tableLayoutPanel5.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 10F));
+            this.tableLayoutPanel5.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 6.666667F));
+            this.tableLayoutPanel5.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 7.733333F));
             this.tableLayoutPanel5.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 10F));
             this.tableLayoutPanel5.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 10F));
             this.tableLayoutPanel5.Size = new System.Drawing.Size(437, 750);
@@ -379,6 +396,7 @@ namespace POS.Forms
             // picBox
             // 
             this.picBox.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.picBox.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.picBox.Dock = System.Windows.Forms.DockStyle.Fill;
             this.picBox.Location = new System.Drawing.Point(3, 224);
             this.picBox.Name = "picBox";
@@ -405,6 +423,74 @@ namespace POS.Forms
             this.txtImage.Size = new System.Drawing.Size(257, 22);
             this.txtImage.TabIndex = 26;
             this.txtImage.Visible = false;
+            // 
+            // label5
+            // 
+            this.label5.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.label5.AutoSize = true;
+            this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label5.Location = new System.Drawing.Point(305, 498);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(129, 36);
+            this.label5.TabIndex = 27;
+            this.label5.Text = "متعدد السعر";
+            this.label5.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // checkPrice
+            // 
+            this.checkPrice.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.checkPrice.AutoSize = true;
+            this.checkPrice.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.checkPrice.Location = new System.Drawing.Point(142, 507);
+            this.checkPrice.Name = "checkPrice";
+            this.checkPrice.Size = new System.Drawing.Size(18, 17);
+            this.checkPrice.TabIndex = 28;
+            this.checkPrice.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.checkPrice.UseVisualStyleBackColor = true;
+            // 
+            // multiPric
+            // 
+            this.multiPric.HeaderText = "متعدد الاسعر";
+            this.multiPric.MinimumWidth = 6;
+            this.multiPric.Name = "multiPric";
+            this.multiPric.ReadOnly = true;
+            // 
+            // cat
+            // 
+            this.cat.HeaderText = "الصنف";
+            this.cat.MinimumWidth = 6;
+            this.cat.Name = "cat";
+            this.cat.ReadOnly = true;
+            // 
+            // pic
+            // 
+            this.pic.HeaderText = "الصورة";
+            this.pic.MinimumWidth = 6;
+            this.pic.Name = "pic";
+            this.pic.ReadOnly = true;
+            this.pic.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.pic.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
+            // 
+            // price
+            // 
+            this.price.HeaderText = "السعر";
+            this.price.MinimumWidth = 6;
+            this.price.Name = "price";
+            this.price.ReadOnly = true;
+            // 
+            // name
+            // 
+            this.name.HeaderText = "العنصر";
+            this.name.MinimumWidth = 6;
+            this.name.Name = "name";
+            this.name.ReadOnly = true;
+            // 
+            // id
+            // 
+            this.id.HeaderText = "#";
+            this.id.MinimumWidth = 6;
+            this.id.Name = "id";
+            this.id.ReadOnly = true;
             // 
             // FormItems
             // 
@@ -461,5 +547,13 @@ namespace POS.Forms
         private System.Windows.Forms.PictureBox picBox;
         private System.Windows.Forms.Button btnChoose;
         private System.Windows.Forms.TextBox txtImage;
+        private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.CheckBox checkPrice;
+        private System.Windows.Forms.DataGridViewTextBoxColumn multiPric;
+        private System.Windows.Forms.DataGridViewTextBoxColumn cat;
+        private System.Windows.Forms.DataGridViewImageColumn pic;
+        private System.Windows.Forms.DataGridViewTextBoxColumn price;
+        private System.Windows.Forms.DataGridViewTextBoxColumn name;
+        private System.Windows.Forms.DataGridViewTextBoxColumn id;
     }
 }

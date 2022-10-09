@@ -482,7 +482,7 @@ namespace POS.Forms
             this.comboOrderType.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.comboOrderType.Font = new System.Drawing.Font("Microsoft Sans Serif", 16.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.comboOrderType.FormattingEnabled = true;
-            this.comboOrderType.Location = new System.Drawing.Point(3, 17);
+            this.comboOrderType.Location = new System.Drawing.Point(3, 16);
             this.comboOrderType.Name = "comboOrderType";
             this.comboOrderType.Size = new System.Drawing.Size(309, 39);
             this.comboOrderType.TabIndex = 12;
@@ -935,6 +935,7 @@ namespace POS.Forms
             this.notes.HeaderText = "ملاحظات";
             this.notes.MinimumWidth = 6;
             this.notes.Name = "notes";
+            this.notes.Visible = false;
             // 
             // ColTotal
             // 

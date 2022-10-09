@@ -124,13 +124,40 @@ namespace POS.Forms
                         {
                             flagExist = true;
                             place = i;
-                            
                         }
                     }
                 }
                 if (flagExist == false)
                 {
-                    dgvItems.Rows.Add(new object[]{
+                    bool multiPrice =  loadTable("select * from Items where id = '" + button.AccessibleDescription + "'");
+
+                    if (multiPrice)
+                    {
+                        //string price;
+                        FormMultiPriceItem frm = new FormMultiPriceItem();
+                        //frm.Show();
+                        if (frm.ShowDialog() == DialogResult.OK)
+                        {
+
+                            //price = frm._price;
+
+                            // set new price here
+                            dgvItems.Rows.Add
+                            (new object[]
+                                {
+                                    button.AccessibleDescription,
+                                    "",
+                                    button.Tag,
+                                    1,
+                                    frm._price,
+                                    button.Text,
+                                 }
+                            );
+                        }
+                    }
+                    else
+                    {
+                        dgvItems.Rows.Add(new object[]{
                             button.AccessibleDescription,
                             "",
                             button.Tag,
@@ -138,7 +165,9 @@ namespace POS.Forms
                             button.Tag,
                             button.Text,
                                 }
-                             );
+                      );
+                    }
+                    
                 }
                 else
                 {
@@ -166,6 +195,31 @@ namespace POS.Forms
                 fillCategories();
             }
             CalcCheck();
+        }
+
+        ////// check if button item has multi price
+        private bool loadTable(string query)
+        {
+            bool multiPrice = false;
+            DataTable dt = new DataTable();
+
+            if (adoClass.sqlcn.State != ConnectionState.Open)
+            {
+                adoClass.sqlcn.Open();
+            }
+            cmd = new SqlCommand(query, adoClass.sqlcn);
+            SqlDataAdapter da = new SqlDataAdapter(cmd);
+            da.Fill(dt);
+            adoClass.sqlcn.Close();
+
+            if (dt.Rows.Count > 0)
+            {
+                DataRow row = dt.Rows[0];
+                
+                bool.TryParse(row["multiPrice"].ToString(), out multiPrice);
+            }
+            return multiPrice;
+
         }
 
         private void fillItems(string CatId)
