@@ -137,8 +137,9 @@ namespace POS.Forms
                 }
                 else
                 {
-                    cmd = new SqlCommand("Update Categories set name = @name Where id = '" + id + "'", adoClass.sqlcn);
+                    cmd = new SqlCommand("Update Categories set name = @name,image = @image Where id = '" + id + "'", adoClass.sqlcn);
                     cmd.Parameters.AddWithValue("@name", txtName.Text);
+                    cmd.Parameters.Add("@Image", SqlDbType.VarBinary).Value = DBNull.Value;
                 }
 
 
@@ -231,6 +232,11 @@ namespace POS.Forms
             txtHidden.Text = dgvCategories.CurrentRow.Cells[2].Value.ToString();
             txtName.Text = dgvCategories.CurrentRow.Cells[1].Value.ToString();
             picBox.BackgroundImage = Helper.ByteToImage(dgvCategories.CurrentRow.Cells[0].Value);
+        }
+
+        private void btnRemoveImage_Click(object sender, EventArgs e)
+        {
+            picBox.BackgroundImage = null;
         }
     }
 }

@@ -31,9 +31,9 @@ namespace POS.Forms
         {
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormPOSResponsive));
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle10 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle11 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle12 = new System.Windows.Forms.DataGridViewCellStyle();
             this.pnlTitle = new System.Windows.Forms.Panel();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.lblTime = new System.Windows.Forms.Label();
@@ -53,6 +53,12 @@ namespace POS.Forms
             this.pnlItems = new System.Windows.Forms.FlowLayoutPanel();
             this.tableLayoutPanel3 = new System.Windows.Forms.TableLayoutPanel();
             this.dgvItems = new System.Windows.Forms.DataGridView();
+            this.ColId = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.notes = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ColTotal = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ColQuan = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ColPrice = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ColName = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.pnlData = new System.Windows.Forms.TableLayoutPanel();
             this.btnDone = new System.Windows.Forms.Button();
             this.tableLayoutPanel7 = new System.Windows.Forms.TableLayoutPanel();
@@ -87,12 +93,6 @@ namespace POS.Forms
             this.btnUpdateTable = new System.Windows.Forms.Button();
             this.btnClear = new System.Windows.Forms.Button();
             this.timer1 = new System.Windows.Forms.Timer(this.components);
-            this.ColId = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.notes = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ColTotal = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ColQuan = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ColPrice = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ColName = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.pnlTitle.SuspendLayout();
             this.tableLayoutPanel1.SuspendLayout();
             this.pnlContainer.SuspendLayout();
@@ -379,14 +379,14 @@ namespace POS.Forms
             this.dgvItems.AllowUserToDeleteRows = false;
             this.dgvItems.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dgvItems.BackgroundColor = System.Drawing.Color.White;
-            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgvItems.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle10.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle10.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle10.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle10.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle10.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle10.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle10.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvItems.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle10;
             this.dgvItems.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvItems.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.ColId,
@@ -398,21 +398,71 @@ namespace POS.Forms
             this.dgvItems.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dgvItems.Location = new System.Drawing.Point(6, 6);
             this.dgvItems.Name = "dgvItems";
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgvItems.RowHeadersDefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle11.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle11.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle11.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle11.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle11.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle11.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle11.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvItems.RowHeadersDefaultCellStyle = dataGridViewCellStyle11;
             this.dgvItems.RowHeadersWidth = 51;
-            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle3.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.dgvItems.RowsDefaultCellStyle = dataGridViewCellStyle3;
+            dataGridViewCellStyle12.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle12.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.dgvItems.RowsDefaultCellStyle = dataGridViewCellStyle12;
             this.dgvItems.RowTemplate.Height = 30;
             this.dgvItems.Size = new System.Drawing.Size(624, 335);
             this.dgvItems.TabIndex = 1;
+            // 
+            // ColId
+            // 
+            this.ColId.FillWeight = 1F;
+            this.ColId.HeaderText = "id";
+            this.ColId.MinimumWidth = 6;
+            this.ColId.Name = "ColId";
+            this.ColId.ReadOnly = true;
+            this.ColId.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            this.ColId.Visible = false;
+            // 
+            // notes
+            // 
+            this.notes.HeaderText = "ملاحظات";
+            this.notes.MinimumWidth = 6;
+            this.notes.Name = "notes";
+            this.notes.Visible = false;
+            // 
+            // ColTotal
+            // 
+            this.ColTotal.HeaderText = "الاجمالي";
+            this.ColTotal.MinimumWidth = 6;
+            this.ColTotal.Name = "ColTotal";
+            this.ColTotal.ReadOnly = true;
+            this.ColTotal.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            // 
+            // ColQuan
+            // 
+            this.ColQuan.HeaderText = "العدد";
+            this.ColQuan.MinimumWidth = 6;
+            this.ColQuan.Name = "ColQuan";
+            this.ColQuan.ReadOnly = true;
+            this.ColQuan.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            // 
+            // ColPrice
+            // 
+            this.ColPrice.HeaderText = "السعر";
+            this.ColPrice.MinimumWidth = 6;
+            this.ColPrice.Name = "ColPrice";
+            this.ColPrice.ReadOnly = true;
+            this.ColPrice.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            // 
+            // ColName
+            // 
+            this.ColName.FillWeight = 200F;
+            this.ColName.HeaderText = "العنصر";
+            this.ColName.MinimumWidth = 6;
+            this.ColName.Name = "ColName";
+            this.ColName.ReadOnly = true;
+            this.ColName.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
             // 
             // pnlData
             // 
@@ -482,7 +532,7 @@ namespace POS.Forms
             this.comboOrderType.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.comboOrderType.Font = new System.Drawing.Font("Microsoft Sans Serif", 16.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.comboOrderType.FormattingEnabled = true;
-            this.comboOrderType.Location = new System.Drawing.Point(3, 16);
+            this.comboOrderType.Location = new System.Drawing.Point(3, 17);
             this.comboOrderType.Name = "comboOrderType";
             this.comboOrderType.Size = new System.Drawing.Size(309, 39);
             this.comboOrderType.TabIndex = 12;
@@ -919,56 +969,6 @@ namespace POS.Forms
             // 
             this.timer1.Enabled = true;
             this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
-            // 
-            // ColId
-            // 
-            this.ColId.FillWeight = 1F;
-            this.ColId.HeaderText = "id";
-            this.ColId.MinimumWidth = 6;
-            this.ColId.Name = "ColId";
-            this.ColId.ReadOnly = true;
-            this.ColId.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
-            this.ColId.Visible = false;
-            // 
-            // notes
-            // 
-            this.notes.HeaderText = "ملاحظات";
-            this.notes.MinimumWidth = 6;
-            this.notes.Name = "notes";
-            this.notes.Visible = false;
-            // 
-            // ColTotal
-            // 
-            this.ColTotal.HeaderText = "الاجمالي";
-            this.ColTotal.MinimumWidth = 6;
-            this.ColTotal.Name = "ColTotal";
-            this.ColTotal.ReadOnly = true;
-            this.ColTotal.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
-            // 
-            // ColQuan
-            // 
-            this.ColQuan.HeaderText = "العدد";
-            this.ColQuan.MinimumWidth = 6;
-            this.ColQuan.Name = "ColQuan";
-            this.ColQuan.ReadOnly = true;
-            this.ColQuan.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
-            // 
-            // ColPrice
-            // 
-            this.ColPrice.HeaderText = "السعر";
-            this.ColPrice.MinimumWidth = 6;
-            this.ColPrice.Name = "ColPrice";
-            this.ColPrice.ReadOnly = true;
-            this.ColPrice.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
-            // 
-            // ColName
-            // 
-            this.ColName.FillWeight = 200F;
-            this.ColName.HeaderText = "العنصر";
-            this.ColName.MinimumWidth = 6;
-            this.ColName.Name = "ColName";
-            this.ColName.ReadOnly = true;
-            this.ColName.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
             // 
             // FormPOSResponsive
             // 

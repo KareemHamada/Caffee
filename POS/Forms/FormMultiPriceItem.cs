@@ -35,6 +35,11 @@ namespace POS.Forms
 
         private void btnPrice_Click(object sender, EventArgs e)
         {
+            if(txtMultiPrice.Text == "")
+            {
+                MessageBox.Show("ادخل السعر");
+                return;
+            }
             _price = txtMultiPrice.Text;
             this.DialogResult = DialogResult.OK;
             Close();

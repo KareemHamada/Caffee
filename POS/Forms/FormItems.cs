@@ -201,14 +201,14 @@ namespace POS.Forms
                 }
                 else
                 {
-                    cmd = new SqlCommand("Update Items set name = @name,price=@price,categoryId = @categoryId,multiPrice=@multiPrice Where id = '" + id + "'", adoClass.sqlcn);
+                    cmd = new SqlCommand("Update Items set name = @name,price=@price,categoryId = @categoryId,multiPrice=@multiPrice,image=@image Where id = '" + id + "'", adoClass.sqlcn);
 
                     cmd.Parameters.AddWithValue("@name", txtName.Text);
                     cmd.Parameters.AddWithValue("@price", txtPrice.Text);
                     cmd.Parameters.AddWithValue("@categoryId", comboCategory.SelectedValue);
                     cmd.Parameters.AddWithValue("@multiPrice", checkPrice.Checked.ToString());
+                    cmd.Parameters.Add("@Image", SqlDbType.VarBinary).Value = DBNull.Value;
 
-                    
                 }
 
                 
@@ -308,6 +308,11 @@ namespace POS.Forms
             txtPrice.Text = dgvItems.CurrentRow.Cells[3].Value.ToString();
             txtName.Text = dgvItems.CurrentRow.Cells[4].Value.ToString();
             txtHidden.Text = dgvItems.CurrentRow.Cells[5].Value.ToString();
+        }
+
+        private void btnRemoveImage_Click(object sender, EventArgs e)
+        {
+            picBox.BackgroundImage = null;
         }
     }
 }

@@ -128,13 +128,12 @@ namespace POS.Forms
                 }
                 else
                 {
-                    cmd = new SqlCommand("Update storeItems set name = @name Where id = '" + id + "'", adoClass.sqlcn);
+                    cmd = new SqlCommand("Update storeItems set name = @name,image=@image Where id = '" + id + "'", adoClass.sqlcn);
 
                     cmd.Parameters.AddWithValue("@name", txtName.Text);
+                    cmd.Parameters.Add("@Image", SqlDbType.VarBinary).Value = DBNull.Value;
                 }
 
-
-                
 
                 if (adoClass.sqlcn.State != ConnectionState.Open)
                 {
@@ -224,6 +223,11 @@ namespace POS.Forms
         private void btnClose_Click(object sender, EventArgs e)
         {
             Close();
+        }
+
+        private void btnRemoveImage_Click(object sender, EventArgs e)
+        {
+            picBox.BackgroundImage = null;
         }
     }
 }

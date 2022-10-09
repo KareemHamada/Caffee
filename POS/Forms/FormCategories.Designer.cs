@@ -53,6 +53,7 @@ namespace POS.Forms
             this.picBox = new System.Windows.Forms.PictureBox();
             this.btnChoose = new System.Windows.Forms.Button();
             this.txtImage = new System.Windows.Forms.TextBox();
+            this.btnRemoveImage = new System.Windows.Forms.Button();
             this.parient.SuspendLayout();
             this.tableLayoutPanel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvCategories)).BeginInit();
@@ -265,7 +266,8 @@ namespace POS.Forms
             this.tableLayoutPanel5.Controls.Add(this.label4, 1, 1);
             this.tableLayoutPanel5.Controls.Add(this.picBox, 0, 1);
             this.tableLayoutPanel5.Controls.Add(this.btnChoose, 1, 2);
-            this.tableLayoutPanel5.Controls.Add(this.txtImage, 0, 2);
+            this.tableLayoutPanel5.Controls.Add(this.txtImage, 0, 3);
+            this.tableLayoutPanel5.Controls.Add(this.btnRemoveImage, 0, 2);
             this.tableLayoutPanel5.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel5.Location = new System.Drawing.Point(0, 149);
             this.tableLayoutPanel5.Margin = new System.Windows.Forms.Padding(0);
@@ -274,8 +276,8 @@ namespace POS.Forms
             this.tableLayoutPanel5.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 10F));
             this.tableLayoutPanel5.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 35.02722F));
             this.tableLayoutPanel5.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 8.892922F));
-            this.tableLayoutPanel5.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 3.448276F));
-            this.tableLayoutPanel5.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 5.626134F));
+            this.tableLayoutPanel5.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 7.441016F));
+            this.tableLayoutPanel5.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 1.633394F));
             this.tableLayoutPanel5.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 2.359347F));
             this.tableLayoutPanel5.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 4.537205F));
             this.tableLayoutPanel5.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 10F));
@@ -345,12 +347,27 @@ namespace POS.Forms
             // txtImage
             // 
             this.txtImage.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-            this.txtImage.Location = new System.Drawing.Point(3, 261);
+            this.txtImage.Location = new System.Drawing.Point(3, 306);
             this.txtImage.Name = "txtImage";
             this.txtImage.ReadOnly = true;
             this.txtImage.Size = new System.Drawing.Size(288, 22);
             this.txtImage.TabIndex = 17;
             this.txtImage.Visible = false;
+            // 
+            // btnRemoveImage
+            // 
+            this.btnRemoveImage.Anchor = System.Windows.Forms.AnchorStyles.Right;
+            this.btnRemoveImage.BackColor = System.Drawing.Color.White;
+            this.btnRemoveImage.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btnRemoveImage.BackgroundImage")));
+            this.btnRemoveImage.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.btnRemoveImage.FlatAppearance.BorderSize = 0;
+            this.btnRemoveImage.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnRemoveImage.Location = new System.Drawing.Point(183, 255);
+            this.btnRemoveImage.Name = "btnRemoveImage";
+            this.btnRemoveImage.Size = new System.Drawing.Size(108, 34);
+            this.btnRemoveImage.TabIndex = 19;
+            this.btnRemoveImage.UseVisualStyleBackColor = false;
+            this.btnRemoveImage.Click += new System.EventHandler(this.btnRemoveImage_Click);
             // 
             // FormCategories
             // 
@@ -403,5 +420,6 @@ namespace POS.Forms
         private System.Windows.Forms.PictureBox picBox;
         private System.Windows.Forms.Button btnChoose;
         private System.Windows.Forms.TextBox txtImage;
+        private System.Windows.Forms.Button btnRemoveImage;
     }
 }

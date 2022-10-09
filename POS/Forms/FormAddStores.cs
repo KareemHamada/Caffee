@@ -58,6 +58,16 @@ namespace POS.Forms
                 catBtn.Name = "btnCat" + drs[i]["id"].ToString();
 
                 catBtn.Text = drs[i]["name"].ToString();
+                if (Helper.ByteToImage(drs[i]["image"]) == null)
+                {
+                    catBtn.BackColor = Color.Navy;
+                    catBtn.ForeColor = Color.White;
+                }
+                else
+                {
+                    catBtn.BackColor = Color.White;
+                }
+
                 catBtn.Image = Helper.ByteToImage(drs[i]["image"]);
                 catBtn.Font = new Font("Microsoft Sans Serif", 12, FontStyle.Regular);
                 catBtn.TextAlign = ContentAlignment.MiddleCenter;
@@ -65,7 +75,6 @@ namespace POS.Forms
                 catBtn.RightToLeft = RightToLeft.Yes;
                 catBtn.TextImageRelation = TextImageRelation.ImageAboveText;
                 catBtn.Size = new Size(150, 150);
-                catBtn.BackColor = Color.White;
                 catBtn.FlatStyle = FlatStyle.Flat;
                 catBtn.FlatAppearance.BorderSize = 0;
                 catBtn.Click += cBtn_Click;
