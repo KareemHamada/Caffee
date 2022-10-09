@@ -85,8 +85,7 @@ namespace POS.Forms
                     catBtn.Size = new Size(150, 150);
                     if(Helper.ByteToImage(drs[i]["image"]) == null)
                     {
-                        catBtn.BackColor = Color.Navy;
-                        catBtn.ForeColor = Color.White;
+                        catBtn.BackColor = Color.Cyan;
                     }
                     else
                     {
@@ -252,8 +251,7 @@ namespace POS.Forms
                 catBtn.Text = drs[i]["name"].ToString();
                 if (Helper.ByteToImage(drs[i]["image"]) == null)
                 {
-                    catBtn.BackColor = Color.Navy;
-                    catBtn.ForeColor = Color.White;
+                    catBtn.BackColor = Color.Cyan;
                 }
                 else
                 {
