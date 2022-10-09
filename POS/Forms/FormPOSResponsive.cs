@@ -124,12 +124,13 @@ namespace POS.Forms
             else if (button.AccessibleName == "IT")
             {
                 bool flagExist = false;
+                bool multiPrice = loadTable("select * from Items where id = '" + button.AccessibleDescription + "'");
                 int place = 0;
                 if(dgvItems.Rows.Count > 0)
                 {
                     for (int i = 0; i < dgvItems.Rows.Count; i++)
                     {
-                        if (button.AccessibleDescription == dgvItems[0, i].Value.ToString())
+                        if (button.AccessibleDescription == dgvItems[0, i].Value.ToString() && multiPrice == false)
                         {
                             flagExist = true;
                             place = i;
@@ -138,8 +139,6 @@ namespace POS.Forms
                 }
                 if (flagExist == false)
                 {
-                    bool multiPrice =  loadTable("select * from Items where id = '" + button.AccessibleDescription + "'");
-
                     if (multiPrice)
                     {
                         //string price;
@@ -156,7 +155,7 @@ namespace POS.Forms
                                 {
                                     button.AccessibleDescription,
                                     "",
-                                    button.Tag,
+                                    frm._price,
                                     1,
                                     frm._price,
                                     button.Text,

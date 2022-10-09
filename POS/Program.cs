@@ -112,6 +112,10 @@ namespace POS
                                             cmd.Parameters.AddWithValue("@userId", declarations.userid);
                                             cmd.Parameters.AddWithValue("@dateTimeStart", DateTime.Now);
                                             cmd.ExecuteNonQuery();
+
+
+                                            declarations.shiftId = 1;
+                                            Application.Run(new FormPOSResponsive());
                                         }
                                     }
                                     catch (Exception ex)
