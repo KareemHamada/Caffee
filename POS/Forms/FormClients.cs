@@ -36,23 +36,7 @@ namespace POS.Forms
             txtHidden.Visible = false;
         }
 
-        
-
-        //private DataTable loadTable()
-        //{
-        //    DataTable dt = new DataTable();
-
-        //    if (adoClass.sqlcn.State != ConnectionState.Open)
-        //    {
-        //        adoClass.sqlcn.Open();
-        //    }
-        //    cmd = new SqlCommand("Select Clients.address,Regions.name,Clients.phone,Clients.name,Clients.id from Clients LEFT JOIN Regions on Clients.regionId = Regions.id", adoClass.sqlcn);
-        //    SqlDataAdapter da = new SqlDataAdapter(cmd);
-        //    da.Fill(dt);
-        //    adoClass.sqlcn.Close();
-        //    return dt;
-        //}
-
+  
         private void loadTable(string query)
         {
             dgvClients.Rows.Clear();
@@ -92,7 +76,7 @@ namespace POS.Forms
         {
             if (txtName.Text == "")
             {
-                MessageBox.Show("ادخل اسم المنطقة");
+                MessageBox.Show("ادخل اسم العميل");
                 return;
             }
 
@@ -189,46 +173,51 @@ namespace POS.Forms
 
         private void btnDelete_Click(object sender, EventArgs e)
         {
-            if (MessageBox.Show("هل متاكد من الحذف", "?", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+
+            if (dgvClients.Rows.Count > 0)
             {
-                string id = txtHidden.Text;
-                if (id == "")
+                if (MessageBox.Show("هل تريد الحذف", "?", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
                 {
-                    MessageBox.Show("حدد المنطقة المراد حذفها");
-                    return;
-                }
-                try
-                {
-
-                    cmd = new SqlCommand("delete from Clients Where id = '" + id + "'", adoClass.sqlcn);
-
-                    if (adoClass.sqlcn.State != ConnectionState.Open)
+                    txtHidden.Text = dgvClients.CurrentRow.Cells[4].Value.ToString();
+                    if (txtHidden.Text == "")
                     {
-                        adoClass.sqlcn.Open();
+                        MessageBox.Show("حدد العميل المراد حذفه");
+                        return;
+                    }
+                    try
+                    {
+
+                        cmd = new SqlCommand("delete from Clients Where id = '" + id + "'", adoClass.sqlcn);
+
+                        if (adoClass.sqlcn.State != ConnectionState.Open)
+                        {
+                            adoClass.sqlcn.Open();
+                        }
+
+                        cmd.ExecuteNonQuery();
+
+                        MessageBox.Show("تم الحذف بنجاح");
+
+                    }
+                    catch
+                    {
+                        MessageBox.Show("خطا في الحذف");
+                    }
+                    finally
+                    {
+                        adoClass.sqlcn.Close();
                     }
 
-                    cmd.ExecuteNonQuery();
+                    loadTable("Select Clients.address,Regions.name as region,Clients.phone,Clients.name,Clients.id from Clients LEFT JOIN Regions on Clients.regionId = Regions.id");
 
-                    MessageBox.Show("تم الحذف بنجاح");
-
+                    txtName.Text = "";
+                    txtAddress.Text = "";
+                    txtPhone.Text = "";
+                    comboRegions.Text = "";
+                    txtHidden.Text = "";
                 }
-                catch
-                {
-                    MessageBox.Show("خطا في الحذف");
-                }
-                finally
-                {
-                    adoClass.sqlcn.Close();
-                }
-
-                loadTable("Select Clients.address,Regions.name as region,Clients.phone,Clients.name,Clients.id from Clients LEFT JOIN Regions on Clients.regionId = Regions.id");
-
-                txtName.Text = "";
-                txtAddress.Text = "";
-                txtPhone.Text = "";
-                comboRegions.Text = "";
-                txtHidden.Text = "";
             }
+
             
         }
 

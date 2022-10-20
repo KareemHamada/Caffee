@@ -22,38 +22,60 @@ namespace POS.Forms
         private SqlCommand cmd;
         private TextBox txtHidden;
 
-        private DataTable loadTable()
+        //private DataTable loadTable()
+        //{
+        //    DataTable dt = new DataTable();
+
+        //    if (adoClass.sqlcn.State != ConnectionState.Open)
+        //    {
+        //        adoClass.sqlcn.Open();
+        //    }
+        //    cmd = new SqlCommand("Select * from Categories", adoClass.sqlcn);
+        //    SqlDataAdapter da = new SqlDataAdapter(cmd);
+        //    da.Fill(dt);
+        //    adoClass.sqlcn.Close();
+        //    return dt;
+        //}
+
+
+        private void loadTable(string query)
         {
+            dgvCategories.Rows.Clear();
             DataTable dt = new DataTable();
 
             if (adoClass.sqlcn.State != ConnectionState.Open)
             {
                 adoClass.sqlcn.Open();
             }
-            cmd = new SqlCommand("Select * from Categories", adoClass.sqlcn);
+            cmd = new SqlCommand(query, adoClass.sqlcn);
             SqlDataAdapter da = new SqlDataAdapter(cmd);
             da.Fill(dt);
             adoClass.sqlcn.Close();
-            return dt;
-        }
+            if (dt.Rows.Count > 0)
+            {
+                foreach (DataRow row in dt.Rows)
+                {
 
-       
+                    dgvCategories.Rows.Add
+                        (new object[]
+                            {
+                            row["image"],
+                            row["name"],
+                            row["id"],
+                            }
+                        ); ;
+                }
+            }
+
+        }
 
 
         private void FormCategories_Load(object sender, EventArgs e)
         {
-            try
-            {
-                dgvCategories.DataSource = loadTable();
-                dgvCategories.Columns[0].HeaderText = "الصورة";
-                dgvCategories.Columns[1].HeaderText = "اسم الصنف";
-                dgvCategories.Columns[2].HeaderText = "#";
+           
 
-            }
-            catch
-            {
+            loadTable("Select * from Categories");
 
-            }
             // hidden text box
             txtHidden = new TextBox();
             txtHidden.Visible = false;
@@ -101,7 +123,7 @@ namespace POS.Forms
                 adoClass.sqlcn.Close();
             }
 
-            dgvCategories.DataSource = loadTable();
+            loadTable("Select * from Categories");
 
             txtName.Text = "";
             picBox.BackgroundImage = null;
@@ -164,7 +186,7 @@ namespace POS.Forms
                 adoClass.sqlcn.Close();
             }
 
-            dgvCategories.DataSource = loadTable();
+            loadTable("Select * from Categories");
 
             txtName.Text = "";
             picBox.BackgroundImage = null;
@@ -204,7 +226,7 @@ namespace POS.Forms
                 adoClass.sqlcn.Close();
             }
 
-            dgvCategories.DataSource = loadTable();
+            loadTable("Select * from Categories");
             txtName.Text = "";
             picBox.BackgroundImage = null;
             txtImage.Text = "";
@@ -237,6 +259,25 @@ namespace POS.Forms
         private void btnRemoveImage_Click(object sender, EventArgs e)
         {
             picBox.BackgroundImage = null;
+        }
+
+        private void txtSearch_TextChanged(object sender, EventArgs e)
+        {
+            search(txtSearch.Text);
+        }
+
+
+        void search(string text = null)
+        {
+            if (string.IsNullOrEmpty(text))
+            {
+                loadTable("Select * from Categories");
+            }
+            else
+            {
+                loadTable("Select * from Categories where name like '%" + text + "%'");
+
+            }
         }
     }
 }
