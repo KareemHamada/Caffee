@@ -9,6 +9,8 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Data.SqlClient;
+using POS.Tools;
+using Microsoft.Reporting.WinForms;
 
 namespace POS.Forms
 {
@@ -334,7 +336,50 @@ namespace POS.Forms
 
         private void btnPrint_Click(object sender, EventArgs e)
         {
+            if (dgvItems.Rows.Count > 0)
+            {
+                dsShowItems tbl = new dsShowItems();
+                for (int i = 0; i < dgvItems.Rows.Count; i++)
+                {
+                    DataRow dro = tbl.Tables["dtShowItems"].NewRow();
+                    dro["item"] = dgvItems[4, i].Value;
+                    dro["price"] = dgvItems[3, i].Value;
+                    dro["category"] = dgvItems[1, i].Value;
 
+                    tbl.Tables["dtShowItems"].Rows.Add(dro);
+                }
+
+                FormReports rptForm = new FormReports();
+                rptForm.mainReport.LocalReport.ReportEmbeddedResource = "POS.Reports.ReportShowItems.rdlc";
+                rptForm.mainReport.LocalReport.DataSources.Clear();
+                rptForm.mainReport.LocalReport.DataSources.Add(new ReportDataSource("DataSet1", tbl.Tables["dtShowItems"]));
+
+                //ReportParameter[] reportParameters = new ReportParameter[2];
+                //reportParameters[0] = new ReportParameter("From", dgvLoading[0, 0].Value.ToString());
+                //reportParameters[1] = new ReportParameter("To", dgvLoading[0, dgvLoading.Rows.Count - 1].Value.ToString());
+
+
+                if (bool.Parse(declarations.systemOptions["printToPrinter"].ToString()))
+                {
+                    LocalReport report = new LocalReport();
+                    string path = Application.StartupPath + @"\Reports\ReportShowItems.rdlc";
+                    report.ReportPath = path;
+                    report.DataSources.Clear();
+                    report.DataSources.Add(new ReportDataSource("DataSet1", tbl.Tables["dtShowItems"]));
+                    //report.SetParameters(reportParameters);
+                    PrintersClass.PrintToPrinter(report);
+                }
+                else
+                {
+                    //rptForm.mainReport.LocalReport.SetParameters(reportParameters);
+                    rptForm.ShowDialog();
+                }
+
+            }
+            else
+            {
+                MessageBox.Show("لا يوجد عناصر لعرضها");
+            }
         }
     }
 }

@@ -680,6 +680,11 @@
       <DependentUpon>dsShifts.xsd</DependentUpon>
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Compile>
+    <Compile Include="Tools\dsShowClients.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>dsShowClients.xsd</DependentUpon>
+    </Compile>
     <Compile Include="Tools\dsShowItems.cs">
       <DependentUpon>dsShowItems.xsd</DependentUpon>
     </Compile>
@@ -903,6 +908,7 @@
     <EmbeddedResource Include="Reports\ReportShifts.rdlc">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </EmbeddedResource>
+    <EmbeddedResource Include="Reports\ReportShowClients.rdlc" />
     <EmbeddedResource Include="Reports\ReportShowItems.rdlc" />
     <EmbeddedResource Include="Reports\ReportStoreOrders.rdlc">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
@@ -1125,6 +1131,17 @@
     <None Include="Tools\dsShifts.xss">
       <DependentUpon>dsShifts.xsd</DependentUpon>
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="Tools\dsShowClients.xsc">
+      <DependentUpon>dsShowClients.xsd</DependentUpon>
+    </None>
+    <None Include="Tools\dsShowClients.xsd">
+      <SubType>Designer</SubType>
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>dsShowClients.Designer.cs</LastGenOutput>
+    </None>
+    <None Include="Tools\dsShowClients.xss">
+      <DependentUpon>dsShowClients.xsd</DependentUpon>
     </None>
     <None Include="Tools\dsShowItems.xsc">
       <DependentUpon>dsShowItems.xsd</DependentUpon>

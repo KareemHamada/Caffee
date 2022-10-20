@@ -2,17 +2,20 @@
 <Report xmlns="http://schemas.microsoft.com/sqlserver/reporting/2008/01/reportdefinition" xmlns:rd="http://schemas.microsoft.com/SQLServer/reporting/reportdesigner">
   <Body>
     <ReportItems>
-      <Tablix Name="Tablix1">
+      <Tablix Name="Tablix2">
         <TablixBody>
           <TablixColumns>
             <TablixColumn>
-              <Width>0.87693in</Width>
+              <Width>0.64377in</Width>
             </TablixColumn>
             <TablixColumn>
-              <Width>0.87693in</Width>
+              <Width>0.64377in</Width>
             </TablixColumn>
             <TablixColumn>
-              <Width>0.87693in</Width>
+              <Width>0.64377in</Width>
+            </TablixColumn>
+            <TablixColumn>
+              <Width>0.64377in</Width>
             </TablixColumn>
           </TablixColumns>
           <TablixRows>
@@ -21,14 +24,14 @@
               <TablixCells>
                 <TablixCell>
                   <CellContents>
-                    <Textbox Name="Textbox1">
+                    <Textbox Name="Textbox9">
                       <CanGrow>true</CanGrow>
                       <KeepTogether>true</KeepTogether>
                       <Paragraphs>
                         <Paragraph>
                           <TextRuns>
                             <TextRun>
-                              <Value>الصنف</Value>
+                              <Value>العنوان</Value>
                               <Style>
                                 <FontFamily>Arabic Typesetting</FontFamily>
                                 <FontSize>12pt</FontSize>
@@ -41,7 +44,7 @@
                           </Style>
                         </Paragraph>
                       </Paragraphs>
-                      <rd:DefaultName>Textbox1</rd:DefaultName>
+                      <rd:DefaultName>Textbox9</rd:DefaultName>
                       <Style>
                         <Border>
                           <Style>Solid</Style>
@@ -52,14 +55,14 @@
                 </TablixCell>
                 <TablixCell>
                   <CellContents>
-                    <Textbox Name="Textbox3">
+                    <Textbox Name="Textbox11">
                       <CanGrow>true</CanGrow>
                       <KeepTogether>true</KeepTogether>
                       <Paragraphs>
                         <Paragraph>
                           <TextRuns>
                             <TextRun>
-                              <Value>السعر</Value>
+                              <Value>المنطقة</Value>
                               <Style>
                                 <FontFamily>Arabic Typesetting</FontFamily>
                                 <FontSize>12pt</FontSize>
@@ -71,21 +74,8 @@
                             <TextAlign>Center</TextAlign>
                           </Style>
                         </Paragraph>
-                        <Paragraph>
-                          <TextRuns>
-                            <TextRun>
-                              <Value />
-                              <Style>
-                                <FontFamily>Arabic Typesetting</FontFamily>
-                                <FontSize>12pt</FontSize>
-                                <FontWeight>Bold</FontWeight>
-                              </Style>
-                            </TextRun>
-                          </TextRuns>
-                          <Style />
-                        </Paragraph>
                       </Paragraphs>
-                      <rd:DefaultName>Textbox3</rd:DefaultName>
+                      <rd:DefaultName>Textbox11</rd:DefaultName>
                       <Style>
                         <Border>
                           <Style>Solid</Style>
@@ -96,14 +86,14 @@
                 </TablixCell>
                 <TablixCell>
                   <CellContents>
-                    <Textbox Name="Textbox5">
+                    <Textbox Name="Textbox13">
                       <CanGrow>true</CanGrow>
                       <KeepTogether>true</KeepTogether>
                       <Paragraphs>
                         <Paragraph>
                           <TextRuns>
                             <TextRun>
-                              <Value>العنصر</Value>
+                              <Value>التليفون</Value>
                               <Style>
                                 <FontFamily>Arabic Typesetting</FontFamily>
                                 <FontSize>12pt</FontSize>
@@ -116,7 +106,38 @@
                           </Style>
                         </Paragraph>
                       </Paragraphs>
-                      <rd:DefaultName>Textbox5</rd:DefaultName>
+                      <rd:DefaultName>Textbox13</rd:DefaultName>
+                      <Style>
+                        <Border>
+                          <Style>Solid</Style>
+                        </Border>
+                      </Style>
+                    </Textbox>
+                  </CellContents>
+                </TablixCell>
+                <TablixCell>
+                  <CellContents>
+                    <Textbox Name="Textbox15">
+                      <CanGrow>true</CanGrow>
+                      <KeepTogether>true</KeepTogether>
+                      <Paragraphs>
+                        <Paragraph>
+                          <TextRuns>
+                            <TextRun>
+                              <Value>العميل</Value>
+                              <Style>
+                                <FontFamily>Arabic Typesetting</FontFamily>
+                                <FontSize>12pt</FontSize>
+                                <FontWeight>Bold</FontWeight>
+                              </Style>
+                            </TextRun>
+                          </TextRuns>
+                          <Style>
+                            <TextAlign>Center</TextAlign>
+                          </Style>
+                        </Paragraph>
+                      </Paragraphs>
+                      <rd:DefaultName>Textbox15</rd:DefaultName>
                       <Style>
                         <Border>
                           <Style>Solid</Style>
@@ -132,14 +153,14 @@
               <TablixCells>
                 <TablixCell>
                   <CellContents>
-                    <Textbox Name="category">
+                    <Textbox Name="address">
                       <CanGrow>true</CanGrow>
                       <KeepTogether>true</KeepTogether>
                       <Paragraphs>
                         <Paragraph>
                           <TextRuns>
                             <TextRun>
-                              <Value>=Fields!category.Value</Value>
+                              <Value>=Fields!address.Value</Value>
                               <Style>
                                 <FontFamily>Arabic Typesetting</FontFamily>
                                 <FontSize>12pt</FontSize>
@@ -151,7 +172,7 @@
                           </Style>
                         </Paragraph>
                       </Paragraphs>
-                      <rd:DefaultName>category</rd:DefaultName>
+                      <rd:DefaultName>address</rd:DefaultName>
                       <Style>
                         <Border>
                           <Style>Solid</Style>
@@ -162,14 +183,14 @@
                 </TablixCell>
                 <TablixCell>
                   <CellContents>
-                    <Textbox Name="price">
+                    <Textbox Name="region">
                       <CanGrow>true</CanGrow>
                       <KeepTogether>true</KeepTogether>
                       <Paragraphs>
                         <Paragraph>
                           <TextRuns>
                             <TextRun>
-                              <Value>=Fields!price.Value</Value>
+                              <Value>=Fields!region.Value</Value>
                               <Style>
                                 <FontFamily>Arabic Typesetting</FontFamily>
                                 <FontSize>12pt</FontSize>
@@ -181,7 +202,7 @@
                           </Style>
                         </Paragraph>
                       </Paragraphs>
-                      <rd:DefaultName>price</rd:DefaultName>
+                      <rd:DefaultName>region</rd:DefaultName>
                       <Style>
                         <Border>
                           <Style>Solid</Style>
@@ -192,14 +213,14 @@
                 </TablixCell>
                 <TablixCell>
                   <CellContents>
-                    <Textbox Name="item">
+                    <Textbox Name="phone">
                       <CanGrow>true</CanGrow>
                       <KeepTogether>true</KeepTogether>
                       <Paragraphs>
                         <Paragraph>
                           <TextRuns>
                             <TextRun>
-                              <Value>=Fields!item.Value</Value>
+                              <Value>=Fields!phone.Value</Value>
                               <Style>
                                 <FontFamily>Arabic Typesetting</FontFamily>
                                 <FontSize>12pt</FontSize>
@@ -211,7 +232,37 @@
                           </Style>
                         </Paragraph>
                       </Paragraphs>
-                      <rd:DefaultName>item</rd:DefaultName>
+                      <rd:DefaultName>phone</rd:DefaultName>
+                      <Style>
+                        <Border>
+                          <Style>Solid</Style>
+                        </Border>
+                      </Style>
+                    </Textbox>
+                  </CellContents>
+                </TablixCell>
+                <TablixCell>
+                  <CellContents>
+                    <Textbox Name="client">
+                      <CanGrow>true</CanGrow>
+                      <KeepTogether>true</KeepTogether>
+                      <Paragraphs>
+                        <Paragraph>
+                          <TextRuns>
+                            <TextRun>
+                              <Value>=Fields!client.Value</Value>
+                              <Style>
+                                <FontFamily>Arabic Typesetting</FontFamily>
+                                <FontSize>12pt</FontSize>
+                              </Style>
+                            </TextRun>
+                          </TextRuns>
+                          <Style>
+                            <TextAlign>Center</TextAlign>
+                          </Style>
+                        </Paragraph>
+                      </Paragraphs>
+                      <rd:DefaultName>client</rd:DefaultName>
                       <Style>
                         <Border>
                           <Style>Solid</Style>
@@ -229,6 +280,7 @@
             <TablixMember />
             <TablixMember />
             <TablixMember />
+            <TablixMember />
           </TablixMembers>
         </TablixColumnHierarchy>
         <TablixRowHierarchy>
@@ -242,10 +294,10 @@
           </TablixMembers>
         </TablixRowHierarchy>
         <DataSetName>DataSet1</DataSetName>
-        <Top>0.1466in</Top>
-        <Left>0.17768in</Left>
+        <Top>0.09192in</Top>
+        <Left>0.12913in</Left>
         <Height>0.5in</Height>
-        <Width>2.6308in</Width>
+        <Width>2.57506in</Width>
         <Style>
           <Border>
             <Style>None</Style>
@@ -253,10 +305,10 @@
         </Style>
       </Tablix>
     </ReportItems>
-    <Height>0.73945in</Height>
+    <Height>0.72455in</Height>
     <Style />
   </Body>
-  <Width>2.98186in</Width>
+  <Width>2.8855in</Width>
   <Page>
     <LeftMargin>1in</LeftMargin>
     <RightMargin>1in</RightMargin>
@@ -266,38 +318,42 @@
   </Page>
   <AutoRefresh>0</AutoRefresh>
   <DataSources>
-    <DataSource Name="dsShowItems">
+    <DataSource Name="dsShowClients">
       <ConnectionProperties>
         <DataProvider>System.Data.DataSet</DataProvider>
         <ConnectString>/* Local Connection */</ConnectString>
       </ConnectionProperties>
-      <rd:DataSourceID>01003ec9-da7f-4666-91fa-9b8867641630</rd:DataSourceID>
+      <rd:DataSourceID>d25b1d0c-6439-4c81-ad25-8cc07e3fd546</rd:DataSourceID>
     </DataSource>
   </DataSources>
   <DataSets>
     <DataSet Name="DataSet1">
       <Query>
-        <DataSourceName>dsShowItems</DataSourceName>
+        <DataSourceName>dsShowClients</DataSourceName>
         <CommandText>/* Local Query */</CommandText>
       </Query>
       <Fields>
-        <Field Name="item">
-          <DataField>item</DataField>
+        <Field Name="client">
+          <DataField>client</DataField>
           <rd:TypeName>System.String</rd:TypeName>
         </Field>
-        <Field Name="price">
-          <DataField>price</DataField>
+        <Field Name="phone">
+          <DataField>phone</DataField>
           <rd:TypeName>System.String</rd:TypeName>
         </Field>
-        <Field Name="category">
-          <DataField>category</DataField>
+        <Field Name="region">
+          <DataField>region</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="address">
+          <DataField>address</DataField>
           <rd:TypeName>System.String</rd:TypeName>
         </Field>
       </Fields>
       <rd:DataSetInfo>
-        <rd:DataSetName>dsShowItems</rd:DataSetName>
-        <rd:SchemaPath>E:\Caffee POS\stable-10-9-2022\Caffee\POS\POS\Tools\dsShowItems.xsd</rd:SchemaPath>
-        <rd:TableName>dtShowItems</rd:TableName>
+        <rd:DataSetName>dsShowClients</rd:DataSetName>
+        <rd:SchemaPath>E:\Caffee POS\stable-10-9-2022\Caffee\POS\POS\Tools\dsShowClients.xsd</rd:SchemaPath>
+        <rd:TableName>dtShowClients</rd:TableName>
         <rd:TableAdapterFillMethod />
         <rd:TableAdapterGetDataMethod />
         <rd:TableAdapterName />
@@ -305,5 +361,5 @@
     </DataSet>
   </DataSets>
   <rd:ReportUnitType>Inch</rd:ReportUnitType>
-  <rd:ReportID>4d40732e-f3ef-4e02-b38b-efa529109e24</rd:ReportID>
+  <rd:ReportID>81df9d3f-77f5-44db-aa82-e90abfb8c568</rd:ReportID>
 </Report>

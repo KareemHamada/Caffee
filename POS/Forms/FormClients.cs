@@ -9,6 +9,8 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Data.SqlClient;
 using POS.Classes;
+using POS.Tools;
+using Microsoft.Reporting.WinForms;
 
 namespace POS.Forms
 {
@@ -24,20 +26,11 @@ namespace POS.Forms
         private void FormClients_Load(object sender, EventArgs e)
         {
             Helper.fillComboBox(comboRegions, "Select id,name from Regions", "name", "id");
-            try
-            {
-                dgvClients.DataSource = loadTable();
-                dgvClients.Columns[0].HeaderText = "العنوان";
-                dgvClients.Columns[1].HeaderText = "المنطقة";
-                dgvClients.Columns[2].HeaderText = "التليفون";
-                dgvClients.Columns[3].HeaderText = "العميل";
-                dgvClients.Columns[4].HeaderText = "#";
+            
+            loadTable("Select Clients.address,Regions.name as region,Clients.phone,Clients.name,Clients.id from Clients LEFT JOIN Regions on Clients.regionId = Regions.id");
 
-            }
-            catch
-            {
 
-            }
+
             // hidden text box
             txtHidden = new TextBox();
             txtHidden.Visible = false;
@@ -45,20 +38,55 @@ namespace POS.Forms
 
         
 
-        private DataTable loadTable()
+        //private DataTable loadTable()
+        //{
+        //    DataTable dt = new DataTable();
+
+        //    if (adoClass.sqlcn.State != ConnectionState.Open)
+        //    {
+        //        adoClass.sqlcn.Open();
+        //    }
+        //    cmd = new SqlCommand("Select Clients.address,Regions.name,Clients.phone,Clients.name,Clients.id from Clients LEFT JOIN Regions on Clients.regionId = Regions.id", adoClass.sqlcn);
+        //    SqlDataAdapter da = new SqlDataAdapter(cmd);
+        //    da.Fill(dt);
+        //    adoClass.sqlcn.Close();
+        //    return dt;
+        //}
+
+        private void loadTable(string query)
         {
+            dgvClients.Rows.Clear();
             DataTable dt = new DataTable();
 
             if (adoClass.sqlcn.State != ConnectionState.Open)
             {
                 adoClass.sqlcn.Open();
             }
-            cmd = new SqlCommand("Select Clients.address,Regions.name,Clients.phone,Clients.name,Clients.id from Clients LEFT JOIN Regions on Clients.regionId = Regions.id", adoClass.sqlcn);
+            cmd = new SqlCommand(query, adoClass.sqlcn);
             SqlDataAdapter da = new SqlDataAdapter(cmd);
             da.Fill(dt);
             adoClass.sqlcn.Close();
-            return dt;
+            if (dt.Rows.Count > 0)
+            {
+                foreach (DataRow row in dt.Rows)
+                {
+
+                    dgvClients.Rows.Add
+                        (new object[]
+                            {
+                            row["address"],
+                            row["region"],
+                            row["phone"],
+                            row["name"],
+                            row["id"],
+                            }
+                        ); ;
+                }
+            }
+
         }
+
+
 
         private void btnAdd_Click(object sender, EventArgs e)
         {
@@ -96,7 +124,7 @@ namespace POS.Forms
                 adoClass.sqlcn.Close();
             }
 
-            dgvClients.DataSource = loadTable();
+            loadTable("Select Clients.address,Regions.name as region,Clients.phone,Clients.name,Clients.id from Clients LEFT JOIN Regions on Clients.regionId = Regions.id");
 
             txtName.Text = "";
             txtAddress.Text = "";
@@ -150,7 +178,7 @@ namespace POS.Forms
                 adoClass.sqlcn.Close();
             }
 
-            dgvClients.DataSource = loadTable();
+            loadTable("Select Clients.address,Regions.name as region,Clients.phone,Clients.name,Clients.id from Clients LEFT JOIN Regions on Clients.regionId = Regions.id");
 
             txtName.Text = "";
             txtAddress.Text = "";
@@ -161,43 +189,47 @@ namespace POS.Forms
 
         private void btnDelete_Click(object sender, EventArgs e)
         {
-            string id = txtHidden.Text;
-            if (id == "")
+            if (MessageBox.Show("هل متاكد من الحذف", "?", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
             {
-                MessageBox.Show("حدد المنطقة المراد حذفها");
-                return;
-            }
-            try
-            {
-
-                cmd = new SqlCommand("delete from Clients Where id = '" + id + "'", adoClass.sqlcn);
-
-                if (adoClass.sqlcn.State != ConnectionState.Open)
+                string id = txtHidden.Text;
+                if (id == "")
                 {
-                    adoClass.sqlcn.Open();
+                    MessageBox.Show("حدد المنطقة المراد حذفها");
+                    return;
+                }
+                try
+                {
+
+                    cmd = new SqlCommand("delete from Clients Where id = '" + id + "'", adoClass.sqlcn);
+
+                    if (adoClass.sqlcn.State != ConnectionState.Open)
+                    {
+                        adoClass.sqlcn.Open();
+                    }
+
+                    cmd.ExecuteNonQuery();
+
+                    MessageBox.Show("تم الحذف بنجاح");
+
+                }
+                catch
+                {
+                    MessageBox.Show("خطا في الحذف");
+                }
+                finally
+                {
+                    adoClass.sqlcn.Close();
                 }
 
-                cmd.ExecuteNonQuery();
+                loadTable("Select Clients.address,Regions.name as region,Clients.phone,Clients.name,Clients.id from Clients LEFT JOIN Regions on Clients.regionId = Regions.id");
 
-                MessageBox.Show("تم الحذف بنجاح");
-
+                txtName.Text = "";
+                txtAddress.Text = "";
+                txtPhone.Text = "";
+                comboRegions.Text = "";
+                txtHidden.Text = "";
             }
-            catch
-            {
-                MessageBox.Show("خطا في الحذف");
-            }
-            finally
-            {
-                adoClass.sqlcn.Close();
-            }
-
-            dgvClients.DataSource = loadTable();
-
-            txtName.Text = "";
-            txtAddress.Text = "";
-            txtPhone.Text = "";
-            comboRegions.Text = "";
-            txtHidden.Text = "";
+            
         }
 
         private void btnClose_Click(object sender, EventArgs e)
@@ -224,6 +256,69 @@ namespace POS.Forms
             if (!Char.IsDigit(ch) && ch != 8)
             {
                 e.Handled = true;
+            }
+        }
+
+        private void txtSearch_TextChanged(object sender, EventArgs e)
+        {
+            search(txtSearch.Text);
+        }
+
+
+        void search(string text = null)
+        {
+            if (string.IsNullOrEmpty(text))
+            {
+                loadTable("Select Clients.address,Regions.name as region,Clients.phone,Clients.name,Clients.id from Clients LEFT JOIN Regions on Clients.regionId = Regions.id");
+            }
+            else
+            {
+                loadTable("Select Clients.address,Regions.name as region,Clients.phone,Clients.name,Clients.id from Clients LEFT JOIN Regions on Clients.regionId = Regions.id where Clients.name like '%" + text + "%' or Clients.phone like '%" + text + "%' " +
+                    "or Regions.name like '%" + text + "%' " +
+                    "or Clients.address like '%" + text + "%'");
+            }
+        }
+
+        private void btnPrint_Click(object sender, EventArgs e)
+        {
+            if (dgvClients.Rows.Count > 0)
+            {
+                dsShowClients tbl = new dsShowClients();
+                for (int i = 0; i < dgvClients.Rows.Count; i++)
+                {
+                    DataRow dro = tbl.Tables["dtShowClients"].NewRow();
+                    dro["address"] = dgvClients[0, i].Value;
+                    dro["region"] = dgvClients[1, i].Value;
+                    dro["phone"] = dgvClients[2, i].Value;
+                    dro["client"] = dgvClients[3, i].Value;
+
+                    tbl.Tables["dtShowClients"].Rows.Add(dro);
+                }
+
+                FormReports rptForm = new FormReports();
+                rptForm.mainReport.LocalReport.ReportEmbeddedResource = "POS.Reports.ReportShowClients.rdlc";
+                rptForm.mainReport.LocalReport.DataSources.Clear();
+                rptForm.mainReport.LocalReport.DataSources.Add(new ReportDataSource("DataSet1", tbl.Tables["dtShowClients"]));
+
+        
+                if (bool.Parse(declarations.systemOptions["printToPrinter"].ToString()))
+                {
+                    LocalReport report = new LocalReport();
+                    string path = Application.StartupPath + @"\Reports\ReportShowClients.rdlc";
+                    report.ReportPath = path;
+                    report.DataSources.Clear();
+                    report.DataSources.Add(new ReportDataSource("DataSet1", tbl.Tables["dtShowClients"]));
+                    PrintersClass.PrintToPrinter(report);
+                }
+                else
+                {
+                    rptForm.ShowDialog();
+                }
+
+            }
+            else
+            {
+                MessageBox.Show("لا يوجد عناصر لعرضها");
             }
         }
     }

@@ -1,0 +1,28 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<xs:schema id="dsShowClients" targetNamespace="http://tempuri.org/dsShowClients.xsd" xmlns:mstns="http://tempuri.org/dsShowClients.xsd" xmlns="http://tempuri.org/dsShowClients.xsd" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata" xmlns:msprop="urn:schemas-microsoft-com:xml-msprop" attributeFormDefault="qualified" elementFormDefault="qualified">
+  <xs:annotation>
+    <xs:appinfo source="urn:schemas-microsoft-com:xml-msdatasource">
+      <DataSource DefaultConnectionIndex="0" FunctionsComponentName="QueriesTableAdapter" Modifier="AutoLayout, AnsiClass, Class, Public" SchemaSerializationMode="IncludeSchema" xmlns="urn:schemas-microsoft-com:xml-msdatasource">
+        <Connections />
+        <Tables />
+        <Sources />
+      </DataSource>
+    </xs:appinfo>
+  </xs:annotation>
+  <xs:element name="dsShowClients" msdata:IsDataSet="true" msdata:UseCurrentLocale="true" msprop:EnableTableAdapterManager="true" msprop:Generator_DataSetName="dsShowClients" msprop:Generator_UserDSName="dsShowClients">
+    <xs:complexType>
+      <xs:choice minOccurs="0" maxOccurs="unbounded">
+        <xs:element name="dtShowClients" msprop:Generator_TableClassName="dtShowClientsDataTable" msprop:Generator_TableVarName="tabledtShowClients" msprop:Generator_TablePropName="dtShowClients" msprop:Generator_RowDeletingName="dtShowClientsRowDeleting" msprop:Generator_RowChangingName="dtShowClientsRowChanging" msprop:Generator_RowEvHandlerName="dtShowClientsRowChangeEventHandler" msprop:Generator_RowDeletedName="dtShowClientsRowDeleted" msprop:Generator_UserTableName="dtShowClients" msprop:Generator_RowChangedName="dtShowClientsRowChanged" msprop:Generator_RowEvArgName="dtShowClientsRowChangeEvent" msprop:Generator_RowClassName="dtShowClientsRow">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="client" msprop:Generator_ColumnVarNameInTable="columnclient" msprop:Generator_ColumnPropNameInRow="client" msprop:Generator_ColumnPropNameInTable="clientColumn" msprop:Generator_UserColumnName="client" type="xs:string" minOccurs="0" />
+              <xs:element name="phone" msprop:Generator_ColumnVarNameInTable="columnphone" msprop:Generator_ColumnPropNameInRow="phone" msprop:Generator_ColumnPropNameInTable="phoneColumn" msprop:Generator_UserColumnName="phone" type="xs:string" minOccurs="0" />
+              <xs:element name="region" msprop:Generator_ColumnVarNameInTable="columnregion" msprop:Generator_ColumnPropNameInRow="region" msprop:Generator_ColumnPropNameInTable="regionColumn" msprop:Generator_UserColumnName="region" type="xs:string" minOccurs="0" />
+              <xs:element name="address" msprop:Generator_ColumnVarNameInTable="columnaddress" msprop:Generator_ColumnPropNameInRow="address" msprop:Generator_ColumnPropNameInTable="addressColumn" msprop:Generator_UserColumnName="address" type="xs:string" minOccurs="0" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+      </xs:choice>
+    </xs:complexType>
+  </xs:element>
+</xs:schema>

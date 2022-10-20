@@ -60,6 +60,7 @@ namespace POS.Forms
             this.progressBar.Maximum = 20;
             this.progressBar.Name = "progressBar";
             this.progressBar.Size = new System.Drawing.Size(516, 36);
+            this.progressBar.Style = System.Windows.Forms.ProgressBarStyle.Continuous;
             this.progressBar.TabIndex = 1;
             // 
             // label1
