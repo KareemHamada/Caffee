@@ -314,5 +314,27 @@ namespace POS.Forms
         {
             picBox.BackgroundImage = null;
         }
+
+        private void txtSearch_TextChanged(object sender, EventArgs e)
+        {
+            search(txtSearch.Text);
+        }
+
+        void search(string text = null)
+        {
+            if (string.IsNullOrEmpty(text))
+            {
+                loadTable("Select Categories.name as cat,Items.image,Items.price,Items.name,Items.id,Items.multiPrice from Items LEFT JOIN Categories on Items.CategoryId = Categories.id");
+            }
+            else
+            {
+                loadTable("Select Categories.name as cat,Items.image,Items.price,Items.name,Items.id,Items.multiPrice from Items LEFT JOIN Categories on Items.CategoryId = Categories.id where Items.name like '%" + text + "%'");
+            }
+        }
+
+        private void btnPrint_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

@@ -680,6 +680,14 @@
       <DependentUpon>dsShifts.xsd</DependentUpon>
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Compile>
+    <Compile Include="Tools\dsShowItems.cs">
+      <DependentUpon>dsShowItems.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="Tools\dsShowItems.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>dsShowItems.xsd</DependentUpon>
+    </Compile>
     <Compile Include="Tools\dsStoreOrders.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -895,6 +903,7 @@
     <EmbeddedResource Include="Reports\ReportShifts.rdlc">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </EmbeddedResource>
+    <EmbeddedResource Include="Reports\ReportShowItems.rdlc" />
     <EmbeddedResource Include="Reports\ReportStoreOrders.rdlc">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </EmbeddedResource>
@@ -1117,6 +1126,17 @@
       <DependentUpon>dsShifts.xsd</DependentUpon>
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
+    <None Include="Tools\dsShowItems.xsc">
+      <DependentUpon>dsShowItems.xsd</DependentUpon>
+    </None>
+    <None Include="Tools\dsShowItems.xsd">
+      <SubType>Designer</SubType>
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>dsShowItems.Designer.cs</LastGenOutput>
+    </None>
+    <None Include="Tools\dsShowItems.xss">
+      <DependentUpon>dsShowItems.xsd</DependentUpon>
+    </None>
     <None Include="Tools\dsStoreOrders.xsc">
       <DependentUpon>dsStoreOrders.xsd</DependentUpon>
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
@@ -1190,6 +1210,8 @@
     <None Include="Resources\O.png" />
     <None Include="Resources\clear-red-32.png" />
     <None Include="Resources\delete.png" />
+    <None Include="Resources\search.png" />
+    <None Include="Resources\printer.png" />
     <Content Include="SqlServerTypes\readme.htm" />
     <Content Include="SqlServerTypes\x64\msvcr120.dll">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
