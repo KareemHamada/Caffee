@@ -711,6 +711,11 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>dsShowRegions.xsd</DependentUpon>
     </Compile>
+    <Compile Include="Tools\dsShowTayar.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>dsShowTayar.xsd</DependentUpon>
+    </Compile>
     <Compile Include="Tools\dsStoreOrders.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -931,6 +936,7 @@
     <EmbeddedResource Include="Reports\ReportShowClients.rdlc" />
     <EmbeddedResource Include="Reports\ReportShowItems.rdlc" />
     <EmbeddedResource Include="Reports\ReportShowRegions.rdlc" />
+    <EmbeddedResource Include="Reports\ReportShowTayar.rdlc" />
     <EmbeddedResource Include="Reports\ReportStoreOrders.rdlc">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </EmbeddedResource>
@@ -1207,6 +1213,17 @@
     </None>
     <None Include="Tools\dsShowRegions.xss">
       <DependentUpon>dsShowRegions.xsd</DependentUpon>
+    </None>
+    <None Include="Tools\dsShowTayar.xsc">
+      <DependentUpon>dsShowTayar.xsd</DependentUpon>
+    </None>
+    <None Include="Tools\dsShowTayar.xsd">
+      <SubType>Designer</SubType>
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>dsShowTayar.Designer.cs</LastGenOutput>
+    </None>
+    <None Include="Tools\dsShowTayar.xss">
+      <DependentUpon>dsShowTayar.xsd</DependentUpon>
     </None>
     <None Include="Tools\dsStoreOrders.xsc">
       <DependentUpon>dsStoreOrders.xsd</DependentUpon>

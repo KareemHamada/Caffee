@@ -36,6 +36,8 @@ namespace POS.Forms
             this.parient = new System.Windows.Forms.TableLayoutPanel();
             this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
             this.dgvRegions = new System.Windows.Forms.DataGridView();
+            this.name = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.id = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.toolStrip1 = new System.Windows.Forms.ToolStrip();
             this.btnAdd = new System.Windows.Forms.ToolStripButton();
             this.btnUpdate = new System.Windows.Forms.ToolStripButton();
@@ -53,8 +55,6 @@ namespace POS.Forms
             this.tableLayoutPanel5 = new System.Windows.Forms.TableLayoutPanel();
             this.label1 = new System.Windows.Forms.Label();
             this.txtName = new System.Windows.Forms.TextBox();
-            this.name = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.id = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.parient.SuspendLayout();
             this.tableLayoutPanel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvRegions)).BeginInit();
@@ -136,6 +136,22 @@ namespace POS.Forms
             this.dgvRegions.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgvRegions.Size = new System.Drawing.Size(1165, 587);
             this.dgvRegions.TabIndex = 11;
+            this.dgvRegions.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvRegions_CellDoubleClick);
+            // 
+            // name
+            // 
+            this.name.HeaderText = "المنطقة";
+            this.name.MinimumWidth = 6;
+            this.name.Name = "name";
+            this.name.ReadOnly = true;
+            // 
+            // id
+            // 
+            this.id.HeaderText = "#";
+            this.id.MinimumWidth = 6;
+            this.id.Name = "id";
+            this.id.ReadOnly = true;
+            this.id.Visible = false;
             // 
             // toolStrip1
             // 
@@ -365,21 +381,6 @@ namespace POS.Forms
             this.txtName.Size = new System.Drawing.Size(219, 41);
             this.txtName.TabIndex = 8;
             this.txtName.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            // 
-            // name
-            // 
-            this.name.HeaderText = "المنطقة";
-            this.name.MinimumWidth = 6;
-            this.name.Name = "name";
-            this.name.ReadOnly = true;
-            // 
-            // id
-            // 
-            this.id.HeaderText = "#";
-            this.id.MinimumWidth = 6;
-            this.id.Name = "id";
-            this.id.ReadOnly = true;
-            this.id.Visible = false;
             // 
             // FormRegions
             // 

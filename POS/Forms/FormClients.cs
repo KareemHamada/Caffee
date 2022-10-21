@@ -230,15 +230,7 @@ namespace POS.Forms
 
 
 
-        private void dgvClients_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
-        {
-            txtHidden.Text = dgvClients.CurrentRow.Cells[4].Value.ToString();
-            txtName.Text = dgvClients.CurrentRow.Cells[3].Value.ToString();
-            txtPhone.Text = dgvClients.CurrentRow.Cells[2].Value.ToString();
-            comboRegions.Text = dgvClients.CurrentRow.Cells[1].Value.ToString();
-            txtAddress.Text = dgvClients.CurrentRow.Cells[0].Value.ToString();
-        }
-
+     
         private void txtPhone_KeyPress(object sender, KeyPressEventArgs e)
         {
             char ch = e.KeyChar;
@@ -309,6 +301,15 @@ namespace POS.Forms
             {
                 MessageBox.Show("لا يوجد عناصر لعرضها");
             }
+        }
+
+        private void dgvClients_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
+        {
+            txtHidden.Text = dgvClients.CurrentRow.Cells[4].Value.ToString();
+            txtName.Text = dgvClients.CurrentRow.Cells[3].Value.ToString();
+            txtPhone.Text = dgvClients.CurrentRow.Cells[2].Value.ToString();
+            comboRegions.Text = dgvClients.CurrentRow.Cells[1].Value.ToString();
+            txtAddress.Text = dgvClients.CurrentRow.Cells[0].Value.ToString();
         }
     }
 }

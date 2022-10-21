@@ -299,18 +299,7 @@ namespace POS.Forms
             }
         }
 
-        private void dgvItems_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
-        {
-            bool multiPrice = false;
-            bool.TryParse(dgvItems.CurrentRow.Cells[0].Value.ToString(), out multiPrice);
-            checkPrice.Checked = multiPrice;
-
-            comboCategory.Text = dgvItems.CurrentRow.Cells[1].Value.ToString();
-            picBox.BackgroundImage = Helper.ByteToImage(dgvItems.CurrentRow.Cells[2].Value);
-            txtPrice.Text = dgvItems.CurrentRow.Cells[3].Value.ToString();
-            txtName.Text = dgvItems.CurrentRow.Cells[4].Value.ToString();
-            txtHidden.Text = dgvItems.CurrentRow.Cells[5].Value.ToString();
-        }
+      
 
         private void btnRemoveImage_Click(object sender, EventArgs e)
         {
@@ -380,6 +369,19 @@ namespace POS.Forms
             {
                 MessageBox.Show("لا يوجد عناصر لعرضها");
             }
+        }
+
+        private void dgvItems_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
+        {
+            bool multiPrice = false;
+            bool.TryParse(dgvItems.CurrentRow.Cells[0].Value.ToString(), out multiPrice);
+            checkPrice.Checked = multiPrice;
+
+            comboCategory.Text = dgvItems.CurrentRow.Cells[1].Value.ToString();
+            picBox.BackgroundImage = Helper.ByteToImage(dgvItems.CurrentRow.Cells[2].Value);
+            txtPrice.Text = dgvItems.CurrentRow.Cells[3].Value.ToString();
+            txtName.Text = dgvItems.CurrentRow.Cells[4].Value.ToString();
+            txtHidden.Text = dgvItems.CurrentRow.Cells[5].Value.ToString();
         }
     }
 }

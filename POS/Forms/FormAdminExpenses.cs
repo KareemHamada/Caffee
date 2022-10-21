@@ -249,12 +249,7 @@ namespace POS.Forms
             }
         }
 
-        private void dgvExpenses_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
-        {
-            txtHidden.Text = dgvExpenses.CurrentRow.Cells[5].Value.ToString();
-            txtName.Text = dgvExpenses.CurrentRow.Cells[4].Value.ToString();
-            txtPrice.Text = dgvExpenses.CurrentRow.Cells[3].Value.ToString();
-        }
+       
 
         private void txtSearch_TextChanged(object sender, EventArgs e)
         {
@@ -314,6 +309,13 @@ namespace POS.Forms
             {
                 MessageBox.Show("لا يوجد عناصر لعرضها");
             }
+        }
+
+        private void dgvExpenses_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
+        {
+            txtHidden.Text = dgvExpenses.CurrentRow.Cells[5].Value.ToString();
+            txtName.Text = dgvExpenses.CurrentRow.Cells[4].Value.ToString();
+            txtPrice.Text = dgvExpenses.CurrentRow.Cells[3].Value.ToString();
         }
     }
 }

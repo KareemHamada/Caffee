@@ -24,22 +24,7 @@ namespace POS.Forms
         private SqlCommand cmd;
         private TextBox txtHidden;
 
-        //private DataTable loadTable()
-        //{
-        //    DataTable dt = new DataTable();
-
-        //    if (adoClass.sqlcn.State != ConnectionState.Open)
-        //    {
-        //        adoClass.sqlcn.Open();
-        //    }
-        //    cmd = new SqlCommand("Select * from Categories", adoClass.sqlcn);
-        //    SqlDataAdapter da = new SqlDataAdapter(cmd);
-        //    da.Fill(dt);
-        //    adoClass.sqlcn.Close();
-        //    return dt;
-        //}
-
-
+ 
         private void loadTable(string query)
         {
             dgvCategories.Rows.Clear();
@@ -258,12 +243,7 @@ namespace POS.Forms
             }
         }
 
-        private void dgvCategories_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
-        {
-            txtHidden.Text = dgvCategories.CurrentRow.Cells[2].Value.ToString();
-            txtName.Text = dgvCategories.CurrentRow.Cells[1].Value.ToString();
-            picBox.BackgroundImage = Helper.ByteToImage(dgvCategories.CurrentRow.Cells[0].Value);
-        }
+       
 
         private void btnRemoveImage_Click(object sender, EventArgs e)
         {
@@ -326,6 +306,13 @@ namespace POS.Forms
             {
                 MessageBox.Show("لا يوجد عناصر لعرضها");
             }
+        }
+
+        private void dgvCategories_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
+        {
+            txtHidden.Text = dgvCategories.CurrentRow.Cells[2].Value.ToString();
+            txtName.Text = dgvCategories.CurrentRow.Cells[1].Value.ToString();
+            picBox.BackgroundImage = Helper.ByteToImage(dgvCategories.CurrentRow.Cells[0].Value);
         }
     }
 }

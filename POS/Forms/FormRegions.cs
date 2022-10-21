@@ -199,11 +199,7 @@ namespace POS.Forms
             Close();
         }
 
-        private void dgvRegions_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
-        {
-            txtHidden.Text = dgvRegions.CurrentRow.Cells[1].Value.ToString();
-            txtName.Text = dgvRegions.CurrentRow.Cells[0].Value.ToString();
-        }
+       
 
         private void txtSearch_TextChanged(object sender, EventArgs e)
         {
@@ -261,6 +257,12 @@ namespace POS.Forms
             {
                 MessageBox.Show("لا يوجد عناصر لعرضها");
             }
+        }
+
+        private void dgvRegions_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
+        {
+            txtHidden.Text = dgvRegions.CurrentRow.Cells[1].Value.ToString();
+            txtName.Text = dgvRegions.CurrentRow.Cells[0].Value.ToString();
         }
     }
 }

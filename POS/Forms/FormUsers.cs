@@ -22,19 +22,54 @@ namespace POS.Forms
         private SqlCommand cmd;
         private TextBox txtHidden;
 
-        private DataTable loadTable()
+        //private DataTable loadTable()
+        //{
+        //    DataTable dt = new DataTable();
+
+        //    if (adoClass.sqlcn.State != ConnectionState.Open)
+        //    {
+        //        adoClass.sqlcn.Open();
+        //    }
+        //    SqlCommand cmd = new SqlCommand("Select * from Users", adoClass.sqlcn);
+        //    SqlDataAdapter da = new SqlDataAdapter(cmd);
+        //    da.Fill(dt);
+        //    adoClass.sqlcn.Close();
+        //    return dt;
+        //}
+
+        private void loadTable(string query)
         {
+            dgvUsers.Rows.Clear();
             DataTable dt = new DataTable();
 
             if (adoClass.sqlcn.State != ConnectionState.Open)
             {
                 adoClass.sqlcn.Open();
             }
-            SqlCommand cmd = new SqlCommand("Select * from Users", adoClass.sqlcn);
+            cmd = new SqlCommand(query, adoClass.sqlcn);
             SqlDataAdapter da = new SqlDataAdapter(cmd);
             da.Fill(dt);
             adoClass.sqlcn.Close();
-            return dt;
+            if (dt.Rows.Count > 0)
+            {
+                foreach (DataRow row in dt.Rows)
+                {
+
+                    dgvUsers.Rows.Add
+                        (new object[]
+                            {
+                            row["privilege"],
+                            row["address"],
+                            row["phone"],
+                            row["fullName"],
+                            row["password"],
+                            row["userName"],
+                            row["id"],
+                            }
+                        ); ;
+                }
+            }
+
         }
 
         private void FormUsers_Load(object sender, EventArgs e)
@@ -53,23 +88,8 @@ namespace POS.Forms
             comboPrivilege.DisplayMember = "priviledge";
             comboPrivilege.ValueMember = "id";
 
-            // data grid view
-            try
-            {
-                dgvUsers.DataSource = loadTable();
-                dgvUsers.Columns[0].HeaderText = "الصلاحية";
-                dgvUsers.Columns[1].HeaderText = "العنوان";
-                dgvUsers.Columns[2].HeaderText = "التليفون";
-                dgvUsers.Columns[3].HeaderText = "الاسم بالكامل";
-                dgvUsers.Columns[4].HeaderText = "كلمة المرور";
-                dgvUsers.Columns[5].HeaderText = "الاسم";
-                dgvUsers.Columns[6].HeaderText = "#";
-            }
-            catch
-            {
-
-            }
-
+            
+            loadTable("Select * from Users");
             // hidden text box
             txtHidden = new TextBox();
             txtHidden.Visible = false;
@@ -123,7 +143,7 @@ namespace POS.Forms
                 adoClass.sqlcn.Close();
             }
 
-            dgvUsers.DataSource = loadTable();
+            loadTable("Select * from Users");
 
             txtUserName.Text = "";
             txtFullName.Text = "";
@@ -190,7 +210,7 @@ namespace POS.Forms
                 adoClass.sqlcn.Close();
             }
 
-            dgvUsers.DataSource = loadTable();
+            loadTable("Select * from Users");
 
             txtUserName.Text = "";
             txtFullName.Text = "";
@@ -203,45 +223,51 @@ namespace POS.Forms
 
         private void btnDelete_Click(object sender, EventArgs e)
         {
-            string id = txtHidden.Text;
-            if (id == "")
+            if (dgvUsers.Rows.Count > 0)
             {
-                MessageBox.Show("حدد الصف المراد حذفة");
-                return;
-            }
-            try
-            {
-
-                cmd = new SqlCommand("delete from Users Where id = '" + id + "'", adoClass.sqlcn);
-
-                if (adoClass.sqlcn.State != ConnectionState.Open)
+                if (MessageBox.Show("هل تريد الحذف", "?", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
                 {
-                    adoClass.sqlcn.Open();
+                    txtHidden.Text = dgvUsers.CurrentRow.Cells[6].Value.ToString();
+                    if (txtHidden.Text == "")
+                    {
+                        MessageBox.Show("حدد المستخدم المراد حذفه");
+                        return;
+                    }
+                    try
+                    {
+
+                        cmd = new SqlCommand("delete from Users Where id = '" + txtHidden.Text + "'", adoClass.sqlcn);
+
+                        if (adoClass.sqlcn.State != ConnectionState.Open)
+                        {
+                            adoClass.sqlcn.Open();
+                        }
+
+                        cmd.ExecuteNonQuery();
+
+                        MessageBox.Show("تم الحذف بنجاح");
+
+                    }
+                    catch
+                    {
+                        MessageBox.Show("خطا في الحذف");
+                    }
+                    finally
+                    {
+                        adoClass.sqlcn.Close();
+                    }
+
+                    loadTable("Select * from Users");
+
+                    txtUserName.Text = "";
+                    txtFullName.Text = "";
+                    txtPassword.Text = "";
+                    txtPhone.Text = "";
+                    txtAddress.Text = "";
+                    comboPrivilege.Text = "";
+                    txtHidden.Text = "";
                 }
-
-                cmd.ExecuteNonQuery();
-
-                MessageBox.Show("تم الحذف بنجاح");
-
             }
-            catch
-            {
-                MessageBox.Show("خطا في الحذف");
-            }
-            finally
-            {
-                adoClass.sqlcn.Close();
-            }
-
-            dgvUsers.DataSource = loadTable();
-
-            txtUserName.Text = "";
-            txtFullName.Text = "";
-            txtPassword.Text = "";
-            txtPhone.Text = "";
-            txtAddress.Text = "";
-            comboPrivilege.Text = "";
-            txtHidden.Text = "";
         }
 
         private void btnClose_Click(object sender, EventArgs e)

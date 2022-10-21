@@ -155,6 +155,7 @@ namespace POS.Forms
             this.dgvExpenses.RowTemplate.Height = 35;
             this.dgvExpenses.Size = new System.Drawing.Size(1067, 550);
             this.dgvExpenses.TabIndex = 12;
+            this.dgvExpenses.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvExpenses_CellDoubleClick);
             // 
             // shiftNumber
             // 

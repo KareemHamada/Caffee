@@ -9,6 +9,8 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Data.SqlClient;
 using POS.Classes;
+using POS.Tools;
+using Microsoft.Reporting.WinForms;
 
 namespace POS.Forms
 {
@@ -22,36 +24,45 @@ namespace POS.Forms
         private SqlCommand cmd;
         private TextBox txtHidden;
 
-        private DataTable loadTable()
+
+        private void loadTable(string query)
         {
+            dgvTayar.Rows.Clear();
             DataTable dt = new DataTable();
 
             if (adoClass.sqlcn.State != ConnectionState.Open)
             {
                 adoClass.sqlcn.Open();
             }
-            SqlCommand cmd = new SqlCommand("Select * from Tayar", adoClass.sqlcn);
+            cmd = new SqlCommand(query, adoClass.sqlcn);
             SqlDataAdapter da = new SqlDataAdapter(cmd);
             da.Fill(dt);
             adoClass.sqlcn.Close();
-            return dt;
+            if (dt.Rows.Count > 0)
+            {
+                foreach (DataRow row in dt.Rows)
+                {
+
+                    dgvTayar.Rows.Add
+                        (new object[]
+                            {
+                            row["address"],
+                            row["phone"],
+                            row["name"],
+                            row["id"],
+                            }
+                        ); ;
+                }
+            }
+
         }
+
 
         private void FormTayar_Load(object sender, EventArgs e)
         {
-            try
-            {
-                dgvTayar.DataSource = loadTable();
-                dgvTayar.Columns[0].HeaderText = "العنوان";
-                dgvTayar.Columns[1].HeaderText = "التليفون";
-                dgvTayar.Columns[2].HeaderText = "الاسم";
-                dgvTayar.Columns[3].HeaderText = "#";
+        
 
-            }
-            catch
-            {
-
-            }
+            loadTable("Select * from Tayar");
             // hidden text box
             txtHidden = new TextBox();
             txtHidden.Visible = false;
@@ -93,7 +104,7 @@ namespace POS.Forms
                 adoClass.sqlcn.Close();
             }
 
-            dgvTayar.DataSource = loadTable();
+            loadTable("Select * from Tayar");
 
             txtName.Text = "";
             txtPhone.Text = "";
@@ -145,7 +156,7 @@ namespace POS.Forms
                 adoClass.sqlcn.Close();
             }
 
-            dgvTayar.DataSource = loadTable();
+            loadTable("Select * from Tayar");
 
             txtName.Text = "";
             txtPhone.Text = "";
@@ -155,42 +166,49 @@ namespace POS.Forms
 
         private void btnDelete_Click(object sender, EventArgs e)
         {
-            string id = txtHidden.Text;
-            if (id == "")
+            if (dgvTayar.Rows.Count > 0)
             {
-                MessageBox.Show("حدد الطيار المراد حذفة");
-                return;
-            }
-            try
-            {
-
-                cmd = new SqlCommand("delete from Tayar Where id = '" + id + "'", adoClass.sqlcn);
-
-                if (adoClass.sqlcn.State != ConnectionState.Open)
+                if (MessageBox.Show("هل تريد الحذف", "?", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
                 {
-                    adoClass.sqlcn.Open();
+                    txtHidden.Text = dgvTayar.CurrentRow.Cells[3].Value.ToString();
+                    if (txtHidden.Text == "")
+                    {
+                        MessageBox.Show("حدد الطيار المراد حذفه");
+                        return;
+                    }
+                    try
+                    {
+
+                        cmd = new SqlCommand("delete from Tayar Where id = '" + txtHidden.Text + "'", adoClass.sqlcn);
+
+                        if (adoClass.sqlcn.State != ConnectionState.Open)
+                        {
+                            adoClass.sqlcn.Open();
+                        }
+
+                        cmd.ExecuteNonQuery();
+
+                        MessageBox.Show("تم الحذف بنجاح");
+
+                    }
+                    catch
+                    {
+                        MessageBox.Show("خطا في الحذف");
+                    }
+                    finally
+                    {
+                        adoClass.sqlcn.Close();
+                    }
+
+                    loadTable("Select * from Tayar");
+
+                    txtName.Text = "";
+                    txtPhone.Text = "";
+                    txtAddress.Text = "";
+                    txtHidden.Text = "";
                 }
-
-                cmd.ExecuteNonQuery();
-
-                MessageBox.Show("تم الحذف بنجاح");
-
             }
-            catch
-            {
-                MessageBox.Show("خطا في الحذف");
-            }
-            finally
-            {
-                adoClass.sqlcn.Close();
-            }
-
-            dgvTayar.DataSource = loadTable();
-
-            txtName.Text = "";
-            txtPhone.Text = "";
-            txtAddress.Text = "";
-            txtHidden.Text = "";
+            
         }
 
         private void btnClose_Click(object sender, EventArgs e)
@@ -198,13 +216,7 @@ namespace POS.Forms
             Close();
         }
 
-        private void dgvTayar_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
-        {
-            txtHidden.Text = dgvTayar.CurrentRow.Cells[3].Value.ToString();
-            txtName.Text = dgvTayar.CurrentRow.Cells[2].Value.ToString();
-            txtPhone.Text = dgvTayar.CurrentRow.Cells[1].Value.ToString();
-            txtAddress.Text = dgvTayar.CurrentRow.Cells[0].Value.ToString();
-        }
+        
 
         private void txtPhone_KeyPress(object sender, KeyPressEventArgs e)
         {
@@ -215,6 +227,74 @@ namespace POS.Forms
             }
         }
 
+        private void txtSearch_TextChanged(object sender, EventArgs e)
+        {
+            search(txtSearch.Text);
+        }
 
+        void search(string text = null)
+        {
+            if (string.IsNullOrEmpty(text))
+            {
+                loadTable("Select * from Tayar");
+            }
+            else
+            {
+                loadTable("Select * from Tayar where name like '%" + text + "%' or " +
+                    "phone like '%" + text + "%' " +
+                    "or address like '%" + text + "%' ");
+
+                
+
+            }
+        }
+
+        private void btnPrint_Click(object sender, EventArgs e)
+        {
+            if (dgvTayar.Rows.Count > 0)
+            {
+                dsShowTayar tbl = new dsShowTayar();
+                for (int i = 0; i < dgvTayar.Rows.Count; i++)
+                {
+                    DataRow dro = tbl.Tables["dtShowTayar"].NewRow();
+                    dro["address"] = dgvTayar[0, i].Value;
+                    dro["phone"] = dgvTayar[1, i].Value;
+                    dro["name"] = dgvTayar[2, i].Value;
+
+                    tbl.Tables["dtShowTayar"].Rows.Add(dro);
+                }
+
+                FormReports rptForm = new FormReports();
+                rptForm.mainReport.LocalReport.ReportEmbeddedResource = "POS.Reports.ReportShowTayar.rdlc";
+                rptForm.mainReport.LocalReport.DataSources.Clear();
+                rptForm.mainReport.LocalReport.DataSources.Add(new ReportDataSource("DataSet1", tbl.Tables["dtShowTayar"]));
+
+                if (bool.Parse(declarations.systemOptions["printToPrinter"].ToString()))
+                {
+                    LocalReport report = new LocalReport();
+                    string path = Application.StartupPath + @"\Reports\ReportShowTayar.rdlc";
+                    report.ReportPath = path;
+                    report.DataSources.Clear();
+                    report.DataSources.Add(new ReportDataSource("DataSet1", tbl.Tables["dtShowTayar"]));
+                    PrintersClass.PrintToPrinter(report);
+                }
+                else
+                {
+                    rptForm.ShowDialog();
+                }
+            }
+            else
+            {
+                MessageBox.Show("لا يوجد عناصر لعرضها");
+            }
+        }
+
+        private void dgvTayar_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
+        {
+            txtHidden.Text = dgvTayar.CurrentRow.Cells[3].Value.ToString();
+            txtName.Text = dgvTayar.CurrentRow.Cells[2].Value.ToString();
+            txtPhone.Text = dgvTayar.CurrentRow.Cells[1].Value.ToString();
+            txtAddress.Text = dgvTayar.CurrentRow.Cells[0].Value.ToString();
+        }
     }
 }

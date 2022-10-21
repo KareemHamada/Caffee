@@ -154,6 +154,7 @@ namespace POS.Forms
             this.dgvCategories.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgvCategories.Size = new System.Drawing.Size(1067, 550);
             this.dgvCategories.TabIndex = 11;
+            this.dgvCategories.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvCategories_CellDoubleClick);
             // 
             // image
             // 
