@@ -9,6 +9,8 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Data.SqlClient;
+using POS.Tools;
+using Microsoft.Reporting.WinForms;
 
 namespace POS.Forms
 {
@@ -196,41 +198,48 @@ namespace POS.Forms
 
         private void btnDelete_Click(object sender, EventArgs e)
         {
-            string id = txtHidden.Text;
-            if (id == "")
+            if (dgvCategories.Rows.Count > 0)
             {
-                MessageBox.Show("حدد الصنف المراد حذفة");
-                return;
-            }
-            try
-            {
-
-                cmd = new SqlCommand("delete from Categories Where id = '" + id + "'", adoClass.sqlcn);
-
-                if (adoClass.sqlcn.State != ConnectionState.Open)
+                if (MessageBox.Show("هل تريد الحذف", "?", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
                 {
-                    adoClass.sqlcn.Open();
+                    txtHidden.Text = dgvCategories.CurrentRow.Cells[2].Value.ToString();
+                    if (txtHidden.Text == "")
+                    {
+                        MessageBox.Show("حدد الصنف المراد حذفه");
+                        return;
+                    }
+                    try
+                    {
+
+                        cmd = new SqlCommand("delete from Categories Where id = '" + txtHidden.Text + "'", adoClass.sqlcn);
+
+                        if (adoClass.sqlcn.State != ConnectionState.Open)
+                        {
+                            adoClass.sqlcn.Open();
+                        }
+
+                        cmd.ExecuteNonQuery();
+
+                        MessageBox.Show("تم الحذف بنجاح");
+
+                    }
+                    catch
+                    {
+                        MessageBox.Show("خطا في الحذف");
+                    }
+                    finally
+                    {
+                        adoClass.sqlcn.Close();
+                    }
+
+                    loadTable("Select * from Categories");
+                    txtName.Text = "";
+                    picBox.BackgroundImage = null;
+                    txtImage.Text = "";
+                    txtHidden.Text = "";
                 }
-
-                cmd.ExecuteNonQuery();
-
-                MessageBox.Show("تم الحذف بنجاح");
-
             }
-            catch
-            {
-                MessageBox.Show("خطا في الحذف");
-            }
-            finally
-            {
-                adoClass.sqlcn.Close();
-            }
-
-            loadTable("Select * from Categories");
-            txtName.Text = "";
-            picBox.BackgroundImage = null;
-            txtImage.Text = "";
-            txtHidden.Text = "";
+ 
         }
 
         private void btnClose_Click(object sender, EventArgs e)
@@ -277,6 +286,45 @@ namespace POS.Forms
             {
                 loadTable("Select * from Categories where name like '%" + text + "%'");
 
+            }
+        }
+
+        private void btnPrint_Click(object sender, EventArgs e)
+        {
+            if (dgvCategories.Rows.Count > 0)
+            {
+                dsShowCategories tbl = new dsShowCategories();
+                for (int i = 0; i < dgvCategories.Rows.Count; i++)
+                {
+                    DataRow dro = tbl.Tables["dtShowCategories"].NewRow();
+                    dro["name"] = dgvCategories[1, i].Value;
+
+                    tbl.Tables["dtShowCategories"].Rows.Add(dro);
+                }
+
+                FormReports rptForm = new FormReports();
+                rptForm.mainReport.LocalReport.ReportEmbeddedResource = "POS.Reports.ReportShowCategories.rdlc";
+                rptForm.mainReport.LocalReport.DataSources.Clear();
+                rptForm.mainReport.LocalReport.DataSources.Add(new ReportDataSource("DataSet1", tbl.Tables["dtShowCategories"]));
+
+                if (bool.Parse(declarations.systemOptions["printToPrinter"].ToString()))
+                {
+                    LocalReport report = new LocalReport();
+                    string path = Application.StartupPath + @"\Reports\ReportShowCategories.rdlc";
+                    report.ReportPath = path;
+                    report.DataSources.Clear();
+                    report.DataSources.Add(new ReportDataSource("DataSet1", tbl.Tables["dtShowCategories"]));
+                    PrintersClass.PrintToPrinter(report);
+                }
+                else
+                {
+                    rptForm.ShowDialog();
+                }
+
+            }
+            else
+            {
+                MessageBox.Show("لا يوجد عناصر لعرضها");
             }
         }
     }

@@ -187,7 +187,7 @@ namespace POS.Forms
                     try
                     {
 
-                        cmd = new SqlCommand("delete from Clients Where id = '" + id + "'", adoClass.sqlcn);
+                        cmd = new SqlCommand("delete from Clients Where id = '" + txtHidden.Text + "'", adoClass.sqlcn);
 
                         if (adoClass.sqlcn.State != ConnectionState.Open)
                         {
