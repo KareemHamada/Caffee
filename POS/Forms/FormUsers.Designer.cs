@@ -323,6 +323,7 @@ namespace POS.Forms
             this.txtUserName.ForeColor = System.Drawing.Color.DimGray;
             this.txtUserName.Location = new System.Drawing.Point(3, 8);
             this.txtUserName.Name = "txtUserName";
+            this.txtUserName.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
             this.txtUserName.Size = new System.Drawing.Size(234, 41);
             this.txtUserName.TabIndex = 8;
             this.txtUserName.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
@@ -347,6 +348,7 @@ namespace POS.Forms
             this.txtPassword.ForeColor = System.Drawing.Color.DimGray;
             this.txtPassword.Location = new System.Drawing.Point(3, 66);
             this.txtPassword.Name = "txtPassword";
+            this.txtPassword.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
             this.txtPassword.Size = new System.Drawing.Size(234, 41);
             this.txtPassword.TabIndex = 10;
             this.txtPassword.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
@@ -371,6 +373,7 @@ namespace POS.Forms
             this.txtFullName.ForeColor = System.Drawing.Color.DimGray;
             this.txtFullName.Location = new System.Drawing.Point(3, 124);
             this.txtFullName.Name = "txtFullName";
+            this.txtFullName.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
             this.txtFullName.Size = new System.Drawing.Size(234, 41);
             this.txtFullName.TabIndex = 12;
             this.txtFullName.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
@@ -395,6 +398,7 @@ namespace POS.Forms
             this.txtPhone.ForeColor = System.Drawing.Color.DimGray;
             this.txtPhone.Location = new System.Drawing.Point(3, 182);
             this.txtPhone.Name = "txtPhone";
+            this.txtPhone.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
             this.txtPhone.Size = new System.Drawing.Size(234, 41);
             this.txtPhone.TabIndex = 14;
             this.txtPhone.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
@@ -420,6 +424,7 @@ namespace POS.Forms
             this.txtAddress.ForeColor = System.Drawing.Color.DimGray;
             this.txtAddress.Location = new System.Drawing.Point(3, 240);
             this.txtAddress.Name = "txtAddress";
+            this.txtAddress.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
             this.txtAddress.Size = new System.Drawing.Size(234, 41);
             this.txtAddress.TabIndex = 16;
             this.txtAddress.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
@@ -444,6 +449,7 @@ namespace POS.Forms
             this.comboPrivilege.FormattingEnabled = true;
             this.comboPrivilege.Location = new System.Drawing.Point(3, 297);
             this.comboPrivilege.Name = "comboPrivilege";
+            this.comboPrivilege.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
             this.comboPrivilege.Size = new System.Drawing.Size(234, 44);
             this.comboPrivilege.TabIndex = 18;
             // 

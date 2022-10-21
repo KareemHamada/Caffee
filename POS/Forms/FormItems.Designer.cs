@@ -442,6 +442,7 @@ namespace POS.Forms
             this.txtName.ForeColor = System.Drawing.Color.DimGray;
             this.txtName.Location = new System.Drawing.Point(3, 17);
             this.txtName.Name = "txtName";
+            this.txtName.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
             this.txtName.Size = new System.Drawing.Size(296, 41);
             this.txtName.TabIndex = 8;
             this.txtName.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
@@ -466,6 +467,7 @@ namespace POS.Forms
             this.txtPrice.ForeColor = System.Drawing.Color.DimGray;
             this.txtPrice.Location = new System.Drawing.Point(3, 92);
             this.txtPrice.Name = "txtPrice";
+            this.txtPrice.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
             this.txtPrice.Size = new System.Drawing.Size(296, 41);
             this.txtPrice.TabIndex = 20;
             this.txtPrice.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
@@ -491,6 +493,7 @@ namespace POS.Forms
             this.comboCategory.FormattingEnabled = true;
             this.comboCategory.Location = new System.Drawing.Point(3, 163);
             this.comboCategory.Name = "comboCategory";
+            this.comboCategory.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
             this.comboCategory.Size = new System.Drawing.Size(296, 44);
             this.comboCategory.TabIndex = 22;
             // 

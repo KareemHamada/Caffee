@@ -144,6 +144,7 @@ namespace POS.Forms
             this.txtPlace.ForeColor = System.Drawing.Color.DimGray;
             this.txtPlace.Location = new System.Drawing.Point(792, 84);
             this.txtPlace.Name = "txtPlace";
+            this.txtPlace.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
             this.txtPlace.Size = new System.Drawing.Size(315, 41);
             this.txtPlace.TabIndex = 23;
             this.txtPlace.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
@@ -168,6 +169,7 @@ namespace POS.Forms
             this.txtLine1.ForeColor = System.Drawing.Color.DimGray;
             this.txtLine1.Location = new System.Drawing.Point(32, 84);
             this.txtLine1.Name = "txtLine1";
+            this.txtLine1.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
             this.txtLine1.Size = new System.Drawing.Size(315, 41);
             this.txtLine1.TabIndex = 27;
             this.txtLine1.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
@@ -192,6 +194,7 @@ namespace POS.Forms
             this.txtPhone.ForeColor = System.Drawing.Color.DimGray;
             this.txtPhone.Location = new System.Drawing.Point(792, 154);
             this.txtPhone.Name = "txtPhone";
+            this.txtPhone.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
             this.txtPhone.Size = new System.Drawing.Size(315, 41);
             this.txtPhone.TabIndex = 29;
             this.txtPhone.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
@@ -216,6 +219,7 @@ namespace POS.Forms
             this.txtLine2.ForeColor = System.Drawing.Color.DimGray;
             this.txtLine2.Location = new System.Drawing.Point(32, 154);
             this.txtLine2.Name = "txtLine2";
+            this.txtLine2.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
             this.txtLine2.Size = new System.Drawing.Size(315, 41);
             this.txtLine2.TabIndex = 31;
             this.txtLine2.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
@@ -240,6 +244,7 @@ namespace POS.Forms
             this.txtAddress.ForeColor = System.Drawing.Color.DimGray;
             this.txtAddress.Location = new System.Drawing.Point(792, 224);
             this.txtAddress.Name = "txtAddress";
+            this.txtAddress.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
             this.txtAddress.Size = new System.Drawing.Size(315, 41);
             this.txtAddress.TabIndex = 33;
             this.txtAddress.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
@@ -276,6 +281,7 @@ namespace POS.Forms
             this.txtPass.ForeColor = System.Drawing.Color.DimGray;
             this.txtPass.Location = new System.Drawing.Point(855, 294);
             this.txtPass.Name = "txtPass";
+            this.txtPass.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
             this.txtPass.Size = new System.Drawing.Size(190, 41);
             this.txtPass.TabIndex = 37;
             this.txtPass.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;

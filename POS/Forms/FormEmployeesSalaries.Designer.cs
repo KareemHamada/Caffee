@@ -310,6 +310,7 @@ namespace POS.Forms
             this.comboEmployees.FormattingEnabled = true;
             this.comboEmployees.Location = new System.Drawing.Point(3, 145);
             this.comboEmployees.Name = "comboEmployees";
+            this.comboEmployees.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
             this.comboEmployees.Size = new System.Drawing.Size(274, 44);
             this.comboEmployees.TabIndex = 21;
             // 
@@ -321,6 +322,7 @@ namespace POS.Forms
             this.txtSalary.ForeColor = System.Drawing.Color.DimGray;
             this.txtSalary.Location = new System.Drawing.Point(3, 214);
             this.txtSalary.Name = "txtSalary";
+            this.txtSalary.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
             this.txtSalary.Size = new System.Drawing.Size(274, 41);
             this.txtSalary.TabIndex = 22;
             this.txtSalary.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;

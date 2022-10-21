@@ -306,6 +306,7 @@ namespace POS.Forms
             this.txtName.ForeColor = System.Drawing.Color.DimGray;
             this.txtName.Location = new System.Drawing.Point(3, 86);
             this.txtName.Name = "txtName";
+            this.txtName.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
             this.txtName.Size = new System.Drawing.Size(295, 41);
             this.txtName.TabIndex = 8;
             this.txtName.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;

@@ -9,6 +9,8 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Data.SqlClient;
 using POS.Classes;
+using POS.Tools;
+using Microsoft.Reporting.WinForms;
 
 namespace POS.Forms
 {
@@ -21,39 +23,63 @@ namespace POS.Forms
 
         private SqlCommand cmd;
         private TextBox txtHidden;
-        private DataTable loadTable()
+        //private DataTable loadTable()
+        //{
+        //    DataTable dt = new DataTable();
+
+        //    if (adoClass.sqlcn.State != ConnectionState.Open)
+        //    {
+        //        adoClass.sqlcn.Open();
+        //    }
+        //    cmd = new SqlCommand("Select Expenses.shiftId,Users.fullName,Expenses.dateTime,Expenses.price,Expenses.name,Expenses.id from Expenses LEFT JOIN Users on Expenses.userId = Users.id where shiftId IS NULL", adoClass.sqlcn);
+        //    SqlDataAdapter da = new SqlDataAdapter(cmd);
+        //    da.Fill(dt);
+        //    adoClass.sqlcn.Close();
+        //    return dt;
+        //}
+
+
+        private void loadTable(string query)
         {
+            dgvExpenses.Rows.Clear();
             DataTable dt = new DataTable();
 
             if (adoClass.sqlcn.State != ConnectionState.Open)
             {
                 adoClass.sqlcn.Open();
             }
-            cmd = new SqlCommand("Select Expenses.shiftId,Users.fullName,Expenses.dateTime,Expenses.price,Expenses.name,Expenses.id from Expenses LEFT JOIN Users on Expenses.userId = Users.id where shiftId IS NULL", adoClass.sqlcn);
+            cmd = new SqlCommand(query, adoClass.sqlcn);
             SqlDataAdapter da = new SqlDataAdapter(cmd);
             da.Fill(dt);
             adoClass.sqlcn.Close();
-            return dt;
+            if (dt.Rows.Count > 0)
+            {
+                foreach (DataRow row in dt.Rows)
+                {
+
+                    dgvExpenses.Rows.Add
+                        (new object[]
+                            {
+                            row["shiftId"],
+                            row["userName"],
+                            row["dateTime"],
+                            row["price"],
+                            row["name"],
+                            row["id"],
+                            }
+                        ); ;
+                }
+            }
+
         }
-        
-       
+
+
 
         private void FormAdminExpenses_Load(object sender, EventArgs e)
         {
-            try
-            {
-                dgvExpenses.DataSource = loadTable();
-                dgvExpenses.Columns[0].HeaderText = "رقم الشيفت";
-                dgvExpenses.Columns[1].HeaderText = "المستخدم";
-                dgvExpenses.Columns[2].HeaderText = "التاريخ";
-                dgvExpenses.Columns[3].HeaderText = "السعر";
-                dgvExpenses.Columns[4].HeaderText = "المصروف";
-                dgvExpenses.Columns[5].HeaderText = "#";
-            }
-            catch
-            {
 
-            }
+            loadTable("Select Expenses.shiftId,Users.fullName as userName,Expenses.dateTime,Expenses.price,Expenses.name,Expenses.id from Expenses LEFT JOIN Users on Expenses.userId = Users.id where shiftId IS NULL");
+
             // hidden text box
             txtHidden = new TextBox();
             txtHidden.Visible = false;
@@ -100,7 +126,7 @@ namespace POS.Forms
                 adoClass.sqlcn.Close();
             }
 
-            dgvExpenses.DataSource = loadTable();
+            loadTable("Select Expenses.shiftId,Users.fullName as userName,Expenses.dateTime,Expenses.price,Expenses.name,Expenses.id from Expenses LEFT JOIN Users on Expenses.userId = Users.id where shiftId IS NULL");
 
             txtName.Text = "";
             txtPrice.Text = "";
@@ -154,7 +180,7 @@ namespace POS.Forms
                 adoClass.sqlcn.Close();
             }
 
-            dgvExpenses.DataSource = loadTable();
+            loadTable("Select Expenses.shiftId,Users.fullName as userName,Expenses.dateTime,Expenses.price,Expenses.name,Expenses.id from Expenses LEFT JOIN Users on Expenses.userId = Users.id where shiftId IS NULL");
 
             txtName.Text = "";
             txtPrice.Text = "";
@@ -163,42 +189,47 @@ namespace POS.Forms
 
         private void btnDelete_Click(object sender, EventArgs e)
         {
-            string id = txtHidden.Text;
-            if (id == "")
+            if (dgvExpenses.Rows.Count > 0)
             {
-                MessageBox.Show("حدد المصروف المراد حذفة");
-                return;
-            }
-            try
-            {
-
-                cmd = new SqlCommand("delete from Expenses Where id = '" + id + "'", adoClass.sqlcn);
-
-                if (adoClass.sqlcn.State != ConnectionState.Open)
+                if (MessageBox.Show("هل تريد الحذف", "?", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
                 {
-                    adoClass.sqlcn.Open();
+                    txtHidden.Text = dgvExpenses.CurrentRow.Cells[5].Value.ToString();
+                    if (txtHidden.Text == "")
+                    {
+                        MessageBox.Show("حدد المصروف المراد حذفه");
+                        return;
+                    }
+                    try
+                    {
+
+                        cmd = new SqlCommand("delete from Expenses Where id = '" + txtHidden.Text + "'", adoClass.sqlcn);
+
+                        if (adoClass.sqlcn.State != ConnectionState.Open)
+                        {
+                            adoClass.sqlcn.Open();
+                        }
+
+                        cmd.ExecuteNonQuery();
+
+                        MessageBox.Show("تم الحذف بنجاح");
+
+                    }
+                    catch
+                    {
+                        MessageBox.Show("خطا في الحذف");
+                    }
+                    finally
+                    {
+                        adoClass.sqlcn.Close();
+                    }
+
+                    loadTable("Select Expenses.shiftId,Users.fullName as userName,Expenses.dateTime,Expenses.price,Expenses.name,Expenses.id from Expenses LEFT JOIN Users on Expenses.userId = Users.id where shiftId IS NULL");
+
+                    txtName.Text = "";
+                    txtPrice.Text = "";
+                    txtHidden.Text = "";
                 }
-
-                cmd.ExecuteNonQuery();
-
-                MessageBox.Show("تم الحذف بنجاح");
-
             }
-            catch
-            {
-                //MessageBox.Show(ex.Message);
-                MessageBox.Show("خطا في الحذف");
-            }
-            finally
-            {
-                adoClass.sqlcn.Close();
-            }
-
-            dgvExpenses.DataSource = loadTable();
-
-            txtName.Text = "";
-            txtPrice.Text = "";
-            txtHidden.Text = "";
         }
 
         private void btnClose_Click(object sender, EventArgs e)
@@ -225,5 +256,64 @@ namespace POS.Forms
             txtPrice.Text = dgvExpenses.CurrentRow.Cells[3].Value.ToString();
         }
 
+        private void txtSearch_TextChanged(object sender, EventArgs e)
+        {
+            search(txtSearch.Text);
+        }
+
+
+        void search(string text = null)
+        {
+            if (string.IsNullOrEmpty(text))
+            {
+                loadTable("Select Expenses.shiftId,Users.fullName as userName,Expenses.dateTime,Expenses.price,Expenses.name,Expenses.id from Expenses LEFT JOIN Users on Expenses.userId = Users.id where shiftId IS NULL");
+            }
+            else
+            {
+                loadTable("Select Expenses.shiftId,Users.fullName as userName,Expenses.dateTime,Expenses.price,Expenses.name,Expenses.id from Expenses LEFT JOIN Users on Expenses.userId = Users.id where shiftId IS NULL and( Expenses.name like '%" + text + "%' or Users.fullName like '%" + text + "%' )");
+            }
+        }
+
+        private void btnPrint_Click(object sender, EventArgs e)
+        {
+            if (dgvExpenses.Rows.Count > 0)
+            {
+                dsShowAdminExpenses tbl = new dsShowAdminExpenses();
+                for (int i = 0; i < dgvExpenses.Rows.Count; i++)
+                {
+                    DataRow dro = tbl.Tables["dtShowAdminExpenses"].NewRow();
+                    dro["user"] = dgvExpenses[1, i].Value;
+                    dro["dateTime"] = dgvExpenses[2, i].Value;
+                    dro["price"] = dgvExpenses[3, i].Value;
+                    dro["name"] = dgvExpenses[4, i].Value;
+
+                    tbl.Tables["dtShowAdminExpenses"].Rows.Add(dro);
+                }
+
+                FormReports rptForm = new FormReports();
+                rptForm.mainReport.LocalReport.ReportEmbeddedResource = "POS.Reports.ReportShowAdminExpenses.rdlc";
+                rptForm.mainReport.LocalReport.DataSources.Clear();
+                rptForm.mainReport.LocalReport.DataSources.Add(new ReportDataSource("DataSet1", tbl.Tables["dtShowAdminExpenses"]));
+
+                if (bool.Parse(declarations.systemOptions["printToPrinter"].ToString()))
+                {
+                    LocalReport report = new LocalReport();
+                    string path = Application.StartupPath + @"\Reports\ReportShowAdminExpenses.rdlc";
+                    report.ReportPath = path;
+                    report.DataSources.Clear();
+                    report.DataSources.Add(new ReportDataSource("DataSet1", tbl.Tables["dtShowAdminExpenses"]));
+                    PrintersClass.PrintToPrinter(report);
+                }
+                else
+                {
+                    rptForm.ShowDialog();
+                }
+
+            }
+            else
+            {
+                MessageBox.Show("لا يوجد عناصر لعرضها");
+            }
+        }
     }
 }

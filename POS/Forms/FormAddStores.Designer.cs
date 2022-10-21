@@ -345,6 +345,7 @@ namespace POS.Forms
             this.comboSuppliers.Location = new System.Drawing.Point(1, 71);
             this.comboSuppliers.Margin = new System.Windows.Forms.Padding(0);
             this.comboSuppliers.Name = "comboSuppliers";
+            this.comboSuppliers.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
             this.comboSuppliers.Size = new System.Drawing.Size(288, 39);
             this.comboSuppliers.TabIndex = 27;
             // 
@@ -355,6 +356,7 @@ namespace POS.Forms
             this.txtItem.Location = new System.Drawing.Point(11, 11);
             this.txtItem.Name = "txtItem";
             this.txtItem.ReadOnly = true;
+            this.txtItem.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
             this.txtItem.Size = new System.Drawing.Size(267, 38);
             this.txtItem.TabIndex = 26;
             this.txtItem.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
@@ -409,6 +411,7 @@ namespace POS.Forms
             this.txtQuantity.Font = new System.Drawing.Font("Microsoft Sans Serif", 16.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtQuantity.Location = new System.Drawing.Point(11, 131);
             this.txtQuantity.Name = "txtQuantity";
+            this.txtQuantity.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
             this.txtQuantity.Size = new System.Drawing.Size(267, 38);
             this.txtQuantity.TabIndex = 25;
             this.txtQuantity.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
@@ -433,6 +436,7 @@ namespace POS.Forms
             this.txtPrice.Font = new System.Drawing.Font("Microsoft Sans Serif", 16.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtPrice.Location = new System.Drawing.Point(11, 191);
             this.txtPrice.Name = "txtPrice";
+            this.txtPrice.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
             this.txtPrice.Size = new System.Drawing.Size(267, 38);
             this.txtPrice.TabIndex = 24;
             this.txtPrice.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;

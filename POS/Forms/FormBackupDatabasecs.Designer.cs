@@ -68,6 +68,7 @@ namespace POS.Forms
             this.txtBackup.Location = new System.Drawing.Point(79, 156);
             this.txtBackup.Name = "txtBackup";
             this.txtBackup.ReadOnly = true;
+            this.txtBackup.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
             this.txtBackup.Size = new System.Drawing.Size(318, 41);
             this.txtBackup.TabIndex = 24;
             // 

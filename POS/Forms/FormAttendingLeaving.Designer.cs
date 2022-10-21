@@ -81,6 +81,7 @@ namespace POS.Forms
             this.txtNotes.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtNotes.Location = new System.Drawing.Point(25, 227);
             this.txtNotes.Name = "txtNotes";
+            this.txtNotes.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
             this.txtNotes.Size = new System.Drawing.Size(220, 34);
             this.txtNotes.TabIndex = 26;
             // 
@@ -92,6 +93,7 @@ namespace POS.Forms
             this.comboName.FormattingEnabled = true;
             this.comboName.Location = new System.Drawing.Point(29, 151);
             this.comboName.Name = "comboName";
+            this.comboName.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
             this.comboName.Size = new System.Drawing.Size(220, 37);
             this.comboName.TabIndex = 24;
             // 

@@ -117,6 +117,7 @@ namespace POS.Forms
             this.comboName.FormattingEnabled = true;
             this.comboName.Location = new System.Drawing.Point(43, 160);
             this.comboName.Name = "comboName";
+            this.comboName.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
             this.comboName.Size = new System.Drawing.Size(220, 37);
             this.comboName.TabIndex = 18;
             // 
@@ -128,6 +129,7 @@ namespace POS.Forms
             this.comboType.FormattingEnabled = true;
             this.comboType.Location = new System.Drawing.Point(39, 221);
             this.comboType.Name = "comboType";
+            this.comboType.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
             this.comboType.Size = new System.Drawing.Size(220, 37);
             this.comboType.TabIndex = 19;
             // 
@@ -137,6 +139,7 @@ namespace POS.Forms
             this.txtMoney.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtMoney.Location = new System.Drawing.Point(39, 288);
             this.txtMoney.Name = "txtMoney";
+            this.txtMoney.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
             this.txtMoney.Size = new System.Drawing.Size(220, 34);
             this.txtMoney.TabIndex = 20;
             this.txtMoney.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtMoney_KeyPress);

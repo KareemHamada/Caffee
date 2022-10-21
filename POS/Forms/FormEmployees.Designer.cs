@@ -302,6 +302,7 @@ namespace POS.Forms
             this.txtName.ForeColor = System.Drawing.Color.DimGray;
             this.txtName.Location = new System.Drawing.Point(3, 66);
             this.txtName.Name = "txtName";
+            this.txtName.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
             this.txtName.Size = new System.Drawing.Size(293, 41);
             this.txtName.TabIndex = 8;
             this.txtName.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
@@ -314,6 +315,7 @@ namespace POS.Forms
             this.txtPhone.ForeColor = System.Drawing.Color.DimGray;
             this.txtPhone.Location = new System.Drawing.Point(3, 124);
             this.txtPhone.Name = "txtPhone";
+            this.txtPhone.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
             this.txtPhone.Size = new System.Drawing.Size(293, 41);
             this.txtPhone.TabIndex = 11;
             this.txtPhone.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
@@ -351,6 +353,7 @@ namespace POS.Forms
             this.txtAddress.ForeColor = System.Drawing.Color.DimGray;
             this.txtAddress.Location = new System.Drawing.Point(3, 182);
             this.txtAddress.Name = "txtAddress";
+            this.txtAddress.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
             this.txtAddress.Size = new System.Drawing.Size(293, 41);
             this.txtAddress.TabIndex = 13;
             this.txtAddress.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
