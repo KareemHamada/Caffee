@@ -9,6 +9,8 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Data.SqlClient;
+using POS.Tools;
+using Microsoft.Reporting.WinForms;
 
 namespace POS.Forms
 {
@@ -21,39 +23,42 @@ namespace POS.Forms
 
         private SqlCommand cmd;
         private TextBox txtHidden;
-        
-        private DataTable loadTable()
+
+        private void loadTable(string query)
         {
+            dgvEmployees.Rows.Clear();
             DataTable dt = new DataTable();
 
             if (adoClass.sqlcn.State != ConnectionState.Open)
             {
                 adoClass.sqlcn.Open();
             }
-            cmd = new SqlCommand("Select * from Employee", adoClass.sqlcn);
+            cmd = new SqlCommand(query, adoClass.sqlcn);
             SqlDataAdapter da = new SqlDataAdapter(cmd);
             da.Fill(dt);
             adoClass.sqlcn.Close();
-            return dt;
-        }
+            if (dt.Rows.Count > 0)
+            {
+                foreach (DataRow row in dt.Rows)
+                {
 
-        
+                    dgvEmployees.Rows.Add
+                        (new object[]
+                            {
+                            row["address"],
+                            row["phone"],
+                            row["name"],
+                            row["id"],
+                            }
+                        ); ;
+                }
+            }
+
+        }
 
         private void FormEmployees_Load(object sender, EventArgs e)
         {
-            try
-            {
-                dgvEmployees.DataSource = loadTable();
-                dgvEmployees.Columns[0].HeaderText = "العنوان";
-                dgvEmployees.Columns[1].HeaderText = "التليفون";
-                dgvEmployees.Columns[2].HeaderText = "الاسم";
-                dgvEmployees.Columns[3].HeaderText = "#";
-
-            }
-            catch
-            {
-
-            }
+            loadTable("Select * from Employee");
             // hidden text box
             txtHidden = new TextBox();
             txtHidden.Visible = false;
@@ -95,7 +100,7 @@ namespace POS.Forms
                 adoClass.sqlcn.Close();
             }
 
-            dgvEmployees.DataSource = loadTable();
+            loadTable("Select * from Employee");
 
             txtName.Text = "";
             txtPhone.Text = "";
@@ -146,7 +151,7 @@ namespace POS.Forms
                 adoClass.sqlcn.Close();
             }
 
-            dgvEmployees.DataSource = loadTable();
+            loadTable("Select * from Employee");
 
             txtName.Text = "";
             txtPhone.Text = "";
@@ -156,42 +161,49 @@ namespace POS.Forms
 
         private void btnDelete_Click(object sender, EventArgs e)
         {
-            string id = txtHidden.Text;
-            if (id == "")
-            {
-                MessageBox.Show("حدد الموظف المراد حذفة");
-                return;
-            }
-            try
-            {
 
-                cmd = new SqlCommand("delete from Employee Where id = '" + id + "'", adoClass.sqlcn);
-
-                if (adoClass.sqlcn.State != ConnectionState.Open)
+            if (dgvEmployees.Rows.Count > 0)
+            {
+                if (MessageBox.Show("هل تريد الحذف", "?", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
                 {
-                    adoClass.sqlcn.Open();
+                    txtHidden.Text = dgvEmployees.CurrentRow.Cells[3].Value.ToString();
+                    if (txtHidden.Text == "")
+                    {
+                        MessageBox.Show("حدد الموظف المراد حذفه");
+                        return;
+                    }
+                    try
+                    {
+
+                        cmd = new SqlCommand("delete from Employee Where id = '" + txtHidden.Text + "'", adoClass.sqlcn);
+
+                        if (adoClass.sqlcn.State != ConnectionState.Open)
+                        {
+                            adoClass.sqlcn.Open();
+                        }
+
+                        cmd.ExecuteNonQuery();
+
+                        MessageBox.Show("تم الحذف بنجاح");
+
+                    }
+                    catch
+                    {
+                        MessageBox.Show("خطا في الحذف");
+                    }
+                    finally
+                    {
+                        adoClass.sqlcn.Close();
+                    }
+
+                    loadTable("Select * from Employee");
+
+                    txtName.Text = "";
+                    txtPhone.Text = "";
+                    txtAddress.Text = "";
+                    txtHidden.Text = "";
                 }
-
-                cmd.ExecuteNonQuery();
-
-                MessageBox.Show("تم الحذف بنجاح");
-
             }
-            catch
-            {
-                MessageBox.Show("خطا في الحذف");
-            }
-            finally
-            {
-                adoClass.sqlcn.Close();
-            }
-
-            dgvEmployees.DataSource = loadTable();
-
-            txtName.Text = "";
-            txtPhone.Text = "";
-            txtAddress.Text = "";
-            txtHidden.Text = "";
         }
 
         private void btnClose_Click(object sender, EventArgs e)
@@ -208,12 +220,75 @@ namespace POS.Forms
             }
         }
 
+     
+
+        private void txtSearch_TextChanged(object sender, EventArgs e)
+        {
+            search(txtSearch.Text);
+        }
+
+        void search(string text = null)
+        {
+            if (string.IsNullOrEmpty(text))
+            {
+                loadTable("Select * from Employee");
+
+            }
+            else
+            {
+                loadTable("Select * from Employee where name like '%" + text + "%' or phone like '%" + text + "%' " +
+                    "or address like '%" + text + "%'");
+            }
+        }
+
         private void dgvEmployees_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
             txtHidden.Text = dgvEmployees.CurrentRow.Cells[3].Value.ToString();
             txtName.Text = dgvEmployees.CurrentRow.Cells[2].Value.ToString();
             txtPhone.Text = dgvEmployees.CurrentRow.Cells[1].Value.ToString();
             txtAddress.Text = dgvEmployees.CurrentRow.Cells[0].Value.ToString();
+        }
+
+        private void btnPrint_Click(object sender, EventArgs e)
+        {
+            if (dgvEmployees.Rows.Count > 0)
+            {
+                dsShowEmployee tbl = new dsShowEmployee();
+                for (int i = 0; i < dgvEmployees.Rows.Count; i++)
+                {
+                    DataRow dro = tbl.Tables["dtShowEmployee"].NewRow();
+                    dro["address"] = dgvEmployees[0, i].Value;
+                    dro["phone"] = dgvEmployees[1, i].Value;
+                    dro["name"] = dgvEmployees[2, i].Value;
+
+                    tbl.Tables["dtShowEmployee"].Rows.Add(dro);
+                }
+
+                FormReports rptForm = new FormReports();
+                rptForm.mainReport.LocalReport.ReportEmbeddedResource = "POS.Reports.ReportShowEmployee.rdlc";
+                rptForm.mainReport.LocalReport.DataSources.Clear();
+                rptForm.mainReport.LocalReport.DataSources.Add(new ReportDataSource("DataSet1", tbl.Tables["dtShowEmployee"]));
+
+
+                if (bool.Parse(declarations.systemOptions["printToPrinter"].ToString()))
+                {
+                    LocalReport report = new LocalReport();
+                    string path = Application.StartupPath + @"\Reports\ReportShowEmployee.rdlc";
+                    report.ReportPath = path;
+                    report.DataSources.Clear();
+                    report.DataSources.Add(new ReportDataSource("DataSet1", tbl.Tables["dtShowEmployee"]));
+                    PrintersClass.PrintToPrinter(report);
+                }
+                else
+                {
+                    rptForm.ShowDialog();
+                }
+
+            }
+            else
+            {
+                MessageBox.Show("لا يوجد عناصر لعرضها");
+            }
         }
     }
 }

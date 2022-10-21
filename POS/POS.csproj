@@ -695,6 +695,11 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>dsShowClients.xsd</DependentUpon>
     </Compile>
+    <Compile Include="Tools\dsShowEmployee.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>dsShowEmployee.xsd</DependentUpon>
+    </Compile>
     <Compile Include="Tools\dsShowItems.cs">
       <DependentUpon>dsShowItems.xsd</DependentUpon>
     </Compile>
@@ -936,6 +941,7 @@
     <EmbeddedResource Include="Reports\ReportShowClients.rdlc" />
     <EmbeddedResource Include="Reports\ReportShowItems.rdlc" />
     <EmbeddedResource Include="Reports\ReportShowRegions.rdlc" />
+    <EmbeddedResource Include="Reports\ReportShowEmployee.rdlc" />
     <EmbeddedResource Include="Reports\ReportShowTayar.rdlc" />
     <EmbeddedResource Include="Reports\ReportStoreOrders.rdlc">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
@@ -1191,6 +1197,17 @@
     </None>
     <None Include="Tools\dsShowClients.xss">
       <DependentUpon>dsShowClients.xsd</DependentUpon>
+    </None>
+    <None Include="Tools\dsShowEmployee.xsc">
+      <DependentUpon>dsShowEmployee.xsd</DependentUpon>
+    </None>
+    <None Include="Tools\dsShowEmployee.xsd">
+      <SubType>Designer</SubType>
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>dsShowEmployee.Designer.cs</LastGenOutput>
+    </None>
+    <None Include="Tools\dsShowEmployee.xss">
+      <DependentUpon>dsShowEmployee.xsd</DependentUpon>
     </None>
     <None Include="Tools\dsShowItems.xsc">
       <DependentUpon>dsShowItems.xsd</DependentUpon>

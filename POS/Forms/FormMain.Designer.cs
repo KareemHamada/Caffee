@@ -62,7 +62,7 @@ namespace POS.Forms
             this.pnlParient.RowCount = 2;
             this.pnlParient.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 15.39491F));
             this.pnlParient.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 84.60509F));
-            this.pnlParient.Size = new System.Drawing.Size(1928, 945);
+            this.pnlParient.Size = new System.Drawing.Size(1539, 747);
             this.pnlParient.TabIndex = 0;
             // 
             // tableLayoutPanel1
@@ -86,7 +86,7 @@ namespace POS.Forms
             this.tableLayoutPanel1.RowCount = 2;
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 57.40741F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 42.59259F));
-            this.tableLayoutPanel1.Size = new System.Drawing.Size(1922, 139);
+            this.tableLayoutPanel1.Size = new System.Drawing.Size(1533, 108);
             this.tableLayoutPanel1.TabIndex = 0;
             // 
             // btnClose
@@ -94,7 +94,7 @@ namespace POS.Forms
             this.btnClose.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.btnClose.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btnClose.BackgroundImage")));
             this.btnClose.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.btnClose.Location = new System.Drawing.Point(1837, 3);
+            this.btnClose.Location = new System.Drawing.Point(1448, 3);
             this.btnClose.Name = "btnClose";
             this.btnClose.Size = new System.Drawing.Size(82, 55);
             this.btnClose.TabIndex = 1;
@@ -107,7 +107,7 @@ namespace POS.Forms
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.ForeColor = System.Drawing.Color.Black;
-            this.label1.Location = new System.Drawing.Point(1016, 23);
+            this.label1.Location = new System.Drawing.Point(796, 14);
             this.label1.Margin = new System.Windows.Forms.Padding(0, 3, 3, 0);
             this.label1.Name = "label1";
             this.label1.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
@@ -121,7 +121,7 @@ namespace POS.Forms
             this.lblUserName.AutoSize = true;
             this.lblUserName.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblUserName.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
-            this.lblUserName.Location = new System.Drawing.Point(838, 23);
+            this.lblUserName.Location = new System.Drawing.Point(667, 14);
             this.lblUserName.Margin = new System.Windows.Forms.Padding(0, 3, 3, 0);
             this.lblUserName.Name = "lblUserName";
             this.lblUserName.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
@@ -147,11 +147,11 @@ namespace POS.Forms
             this.tableLayoutPanel2.Controls.Add(this.pnlMainForm, 0, 0);
             this.tableLayoutPanel2.Controls.Add(this.pnlMenu, 1, 0);
             this.tableLayoutPanel2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tableLayoutPanel2.Location = new System.Drawing.Point(3, 148);
+            this.tableLayoutPanel2.Location = new System.Drawing.Point(3, 117);
             this.tableLayoutPanel2.Name = "tableLayoutPanel2";
             this.tableLayoutPanel2.RowCount = 1;
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel2.Size = new System.Drawing.Size(1922, 794);
+            this.tableLayoutPanel2.Size = new System.Drawing.Size(1533, 627);
             this.tableLayoutPanel2.TabIndex = 1;
             // 
             // pnlMainForm
@@ -161,7 +161,7 @@ namespace POS.Forms
             this.pnlMainForm.Dock = System.Windows.Forms.DockStyle.Fill;
             this.pnlMainForm.Location = new System.Drawing.Point(3, 3);
             this.pnlMainForm.Name = "pnlMainForm";
-            this.pnlMainForm.Size = new System.Drawing.Size(1493, 788);
+            this.pnlMainForm.Size = new System.Drawing.Size(1189, 621);
             this.pnlMainForm.TabIndex = 2;
             // 
             // pnlMenu
@@ -174,9 +174,9 @@ namespace POS.Forms
             this.pnlMenu.Controls.Add(this.btnEmployee);
             this.pnlMenu.Controls.Add(this.btnMainInfo);
             this.pnlMenu.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.pnlMenu.Location = new System.Drawing.Point(1502, 3);
+            this.pnlMenu.Location = new System.Drawing.Point(1198, 3);
             this.pnlMenu.Name = "pnlMenu";
-            this.pnlMenu.Size = new System.Drawing.Size(417, 788);
+            this.pnlMenu.Size = new System.Drawing.Size(332, 621);
             this.pnlMenu.TabIndex = 1;
             // 
             // btnStore
@@ -190,9 +190,9 @@ namespace POS.Forms
             this.btnStore.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.btnStore.Location = new System.Drawing.Point(0, 320);
             this.btnStore.Name = "btnStore";
-            this.btnStore.Size = new System.Drawing.Size(413, 80);
+            this.btnStore.Size = new System.Drawing.Size(328, 80);
             this.btnStore.TabIndex = 4;
-            this.btnStore.Text = "المخازن";
+            this.btnStore.Text = "المخازن و الموردين";
             this.btnStore.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btnStore.UseVisualStyleBackColor = true;
             this.btnStore.Click += new System.EventHandler(this.btnStore_Click);
@@ -208,7 +208,7 @@ namespace POS.Forms
             this.btnOptions.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.btnOptions.Location = new System.Drawing.Point(0, 240);
             this.btnOptions.Name = "btnOptions";
-            this.btnOptions.Size = new System.Drawing.Size(413, 80);
+            this.btnOptions.Size = new System.Drawing.Size(328, 80);
             this.btnOptions.TabIndex = 3;
             this.btnOptions.Text = "الاعدادات العامة";
             this.btnOptions.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -226,7 +226,7 @@ namespace POS.Forms
             this.btnReports.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.btnReports.Location = new System.Drawing.Point(0, 160);
             this.btnReports.Name = "btnReports";
-            this.btnReports.Size = new System.Drawing.Size(413, 80);
+            this.btnReports.Size = new System.Drawing.Size(328, 80);
             this.btnReports.TabIndex = 2;
             this.btnReports.Text = "التقارير";
             this.btnReports.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -244,7 +244,7 @@ namespace POS.Forms
             this.btnEmployee.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.btnEmployee.Location = new System.Drawing.Point(0, 80);
             this.btnEmployee.Name = "btnEmployee";
-            this.btnEmployee.Size = new System.Drawing.Size(413, 80);
+            this.btnEmployee.Size = new System.Drawing.Size(328, 80);
             this.btnEmployee.TabIndex = 1;
             this.btnEmployee.Text = "الموظفين";
             this.btnEmployee.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -262,7 +262,7 @@ namespace POS.Forms
             this.btnMainInfo.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.btnMainInfo.Location = new System.Drawing.Point(0, 0);
             this.btnMainInfo.Name = "btnMainInfo";
-            this.btnMainInfo.Size = new System.Drawing.Size(413, 80);
+            this.btnMainInfo.Size = new System.Drawing.Size(328, 80);
             this.btnMainInfo.TabIndex = 0;
             this.btnMainInfo.Text = "البيانات الاساسية";
             this.btnMainInfo.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
