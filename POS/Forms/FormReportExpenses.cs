@@ -21,10 +21,7 @@ namespace POS.Forms
             InitializeComponent();
         }
         private SqlCommand cmd;
-        private void btnClose_Click(object sender, EventArgs e)
-        {
-            Close();
-        }
+       
 
         private void FormReportExpenses_Load(object sender, EventArgs e)
         {
@@ -72,10 +69,7 @@ namespace POS.Forms
             lblTotal.Text = FinalTotal.ToString();
         }
 
-        private void btnReload_Click(object sender, EventArgs e)
-        {
-            loadTable("select Expenses.id,Expenses.name,Expenses.price,Expenses.dateTime,Users.fullName,Expenses.shiftId from Expenses LEFT JOIN Users on Expenses.userId = Users.Id");
-        }
+       
 
 
         public void showShiftExpenses(string shiftId)
@@ -83,9 +77,12 @@ namespace POS.Forms
             loadTable("select Expenses.id,Expenses.name,Expenses.price,Expenses.dateTime,Users.fullName,Expenses.shiftId from Expenses LEFT JOIN Users on Expenses.userId = Users.Id where shiftId = '" + shiftId + "'");
         }
 
-        private void btnSearch_Click(object sender, EventArgs e)
+     
+      
+
+        private void btnReload_Click(object sender, EventArgs e)
         {
-            loadTable("select Expenses.id,Expenses.name,Expenses.price,Expenses.dateTime,Users.fullName,Expenses.shiftId from Expenses LEFT JOIN Users on Expenses.userId = Users.Id where dateTime between '" + dtpFrom.Value.ToString("yyyy-MM-dd") + "' and '" + dtpTo.Value.ToString("yyyy-MM-dd") + "'");
+            loadTable("select Expenses.id,Expenses.name,Expenses.price,Expenses.dateTime,Users.fullName,Expenses.shiftId from Expenses LEFT JOIN Users on Expenses.userId = Users.Id");
         }
 
         private void btnPrint_Click(object sender, EventArgs e)
@@ -136,6 +133,36 @@ namespace POS.Forms
             {
                 MessageBox.Show("لا يوجد عناصر لعرضها");
             }
+        }
+
+        private void btnSearch_Click(object sender, EventArgs e)
+        {
+            loadTable("select Expenses.id,Expenses.name,Expenses.price,Expenses.dateTime,Users.fullName,Expenses.shiftId from Expenses LEFT JOIN Users on Expenses.userId = Users.Id where dateTime between '" + dtpFrom.Value.ToString("yyyy-MM-dd") + "' and '" + dtpTo.Value.ToString("yyyy-MM-dd") + "'");
+        }
+
+        private void txtSearch_TextChanged(object sender, EventArgs e)
+        {
+            search(txtSearch.Text);
+        }
+
+        void search(string text = null)
+        {
+            if (string.IsNullOrEmpty(text))
+            {
+                loadTable("select Expenses.id,Expenses.name,Expenses.price,Expenses.dateTime,Users.fullName,Expenses.shiftId from Expenses LEFT JOIN Users on Expenses.userId = Users.Id");
+            }
+            else
+            {
+                loadTable("select Expenses.id,Expenses.name,Expenses.price,Expenses.dateTime,Users.fullName,Expenses.shiftId from Expenses LEFT JOIN Users on Expenses.userId = Users.Id where Expenses.name like '%" + text + "%' or Users.fullName like '%" + text + "%'");
+
+                
+
+            }
+        }
+
+        private void btnClose_Click(object sender, EventArgs e)
+        {
+            Close();
         }
     }
 }

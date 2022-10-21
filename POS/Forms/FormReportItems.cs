@@ -59,10 +59,7 @@ namespace POS.Forms
 
         }
 
-        private void btnClose_Click(object sender, EventArgs e)
-        {
-            Close();
-        }
+      
 
         public void showShiftItems(string shiftId)
         {
@@ -94,6 +91,12 @@ namespace POS.Forms
                         ); ;
                 }
             }
+        }
+
+    
+        private void btnClose_Click(object sender, EventArgs e)
+        {
+            Close();
         }
 
         private void btnPrint_Click(object sender, EventArgs e)
@@ -134,6 +137,29 @@ namespace POS.Forms
             else
             {
                 MessageBox.Show("لا يوجد عناصر لعرضها");
+            }
+        }
+
+        private void btnReload_Click(object sender, EventArgs e)
+        {
+            loadTable("select id,name,quantity from Items");
+        }
+
+        private void txtSearch_TextChanged(object sender, EventArgs e)
+        {
+            search(txtSearch.Text);
+        }
+
+
+        void search(string text = null)
+        {
+            if (string.IsNullOrEmpty(text))
+            {
+                loadTable("select id,name,quantity from Items");
+            }
+            else
+            {
+                loadTable("select id,name,quantity from Items where name like '%" + text + "%'");
             }
         }
     }
