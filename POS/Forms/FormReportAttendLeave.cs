@@ -62,19 +62,17 @@ namespace POS.Forms
 
         }
 
+       
+
+       
+
+       
+
+        
+
         private void btnClose_Click(object sender, EventArgs e)
         {
             Close();
-        }
-
-        private void btnSearch_Click(object sender, EventArgs e)
-        {
-            loadTable("select EmpAttendLeave.id,employee.name,EmpAttendLeave.dateTimeAttend,EmpAttendLeave.dateTimeLeave,EmpAttendLeave.notes from EmpAttendLeave LEFT JOIN Employee on EmpAttendLeave.EmpId = Employee.id where dateTimeAttend between '" + dtpFrom.Value.ToString("yyyy-MM-dd") + "' and '" + dtpTo.Value.ToString("yyyy-MM-dd") + "'");
-        }
-
-        private void btnReload_Click(object sender, EventArgs e)
-        {
-            loadTable("select EmpAttendLeave.id,employee.name,EmpAttendLeave.dateTimeAttend,EmpAttendLeave.dateTimeLeave,EmpAttendLeave.notes from EmpAttendLeave LEFT JOIN Employee on EmpAttendLeave.EmpId = Employee.id");
         }
 
         private void btnPrint_Click(object sender, EventArgs e)
@@ -123,6 +121,36 @@ namespace POS.Forms
             else
             {
                 MessageBox.Show("لا يوجد عناصر لعرضها");
+            }
+        }
+
+        private void btnReload_Click(object sender, EventArgs e)
+        {
+            loadTable("select EmpAttendLeave.id,employee.name,EmpAttendLeave.dateTimeAttend,EmpAttendLeave.dateTimeLeave,EmpAttendLeave.notes from EmpAttendLeave LEFT JOIN Employee on EmpAttendLeave.EmpId = Employee.id");
+        }
+
+        private void btnSearch_Click(object sender, EventArgs e)
+        {
+            loadTable("select EmpAttendLeave.id,employee.name,EmpAttendLeave.dateTimeAttend,EmpAttendLeave.dateTimeLeave,EmpAttendLeave.notes from EmpAttendLeave LEFT JOIN Employee on EmpAttendLeave.EmpId = Employee.id where dateTimeAttend between '" + dtpFrom.Value.ToString("yyyy-MM-dd") + "' and '" + dtpTo.Value.ToString("yyyy-MM-dd") + "'");
+        }
+
+        private void txtSearch_TextChanged(object sender, EventArgs e)
+        {
+            search(txtSearch.Text);
+        }
+
+
+        void search(string text = null)
+        {
+            if (string.IsNullOrEmpty(text))
+            {
+                loadTable("select EmpAttendLeave.id,employee.name,EmpAttendLeave.dateTimeAttend,EmpAttendLeave.dateTimeLeave,EmpAttendLeave.notes from EmpAttendLeave LEFT JOIN Employee on EmpAttendLeave.EmpId = Employee.id");
+            }
+            else
+            {
+                loadTable("select EmpAttendLeave.id,employee.name,EmpAttendLeave.dateTimeAttend,EmpAttendLeave.dateTimeLeave,EmpAttendLeave.notes from EmpAttendLeave LEFT JOIN Employee on EmpAttendLeave.EmpId = Employee.id where employee.name like '%" + text + "%' or EmpAttendLeave.notes like '%" + text + "%' ");
+
+                
             }
         }
     }

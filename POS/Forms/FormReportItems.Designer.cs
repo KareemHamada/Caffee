@@ -181,7 +181,6 @@ namespace POS.Forms
             this.ClientSize = new System.Drawing.Size(1395, 671);
             this.Controls.Add(this.dgvLoading);
             this.Controls.Add(this.panel2);
-            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "FormReportItems";
             this.Text = "FormReportItems";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;

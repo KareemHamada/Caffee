@@ -362,7 +362,6 @@ namespace POS.Forms
             this.ClientSize = new System.Drawing.Size(779, 488);
             this.Controls.Add(this.tableLayoutPanel1);
             this.Controls.Add(this.panel1);
-            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "FormReportOverAll";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "FormReportOverAll";

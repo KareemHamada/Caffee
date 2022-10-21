@@ -322,7 +322,6 @@ namespace POS.Forms
             this.Controls.Add(this.dgvLoading);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.panel2);
-            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "FormReportSalaries";
             this.Text = "FormReportSalaries";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
