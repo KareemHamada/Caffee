@@ -182,10 +182,10 @@ namespace POS.Forms
             this.panel2.BackColor = System.Drawing.Color.White;
             this.panel2.Controls.Add(this.label2);
             this.panel2.Controls.Add(this.btnClose);
-            this.panel2.Dock = System.Windows.Forms.DockStyle.Top;
+            this.panel2.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel2.Location = new System.Drawing.Point(3, 3);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(1443, 60);
+            this.panel2.Size = new System.Drawing.Size(1443, 68);
             this.panel2.TabIndex = 18;
             // 
             // label2
@@ -193,7 +193,7 @@ namespace POS.Forms
             this.label2.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(637, 14);
+            this.label2.Location = new System.Drawing.Point(637, 18);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(176, 36);
             this.label2.TabIndex = 14;
