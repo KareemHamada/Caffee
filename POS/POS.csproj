@@ -703,6 +703,14 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>dsShowItems.xsd</DependentUpon>
     </Compile>
+    <Compile Include="Tools\dsShowRegions.cs">
+      <DependentUpon>dsShowRegions.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="Tools\dsShowRegions.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>dsShowRegions.xsd</DependentUpon>
+    </Compile>
     <Compile Include="Tools\dsStoreOrders.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -922,6 +930,7 @@
     <EmbeddedResource Include="Reports\ReportShowCategories.rdlc" />
     <EmbeddedResource Include="Reports\ReportShowClients.rdlc" />
     <EmbeddedResource Include="Reports\ReportShowItems.rdlc" />
+    <EmbeddedResource Include="Reports\ReportShowRegions.rdlc" />
     <EmbeddedResource Include="Reports\ReportStoreOrders.rdlc">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </EmbeddedResource>
@@ -1187,6 +1196,17 @@
     </None>
     <None Include="Tools\dsShowItems.xss">
       <DependentUpon>dsShowItems.xsd</DependentUpon>
+    </None>
+    <None Include="Tools\dsShowRegions.xsc">
+      <DependentUpon>dsShowRegions.xsd</DependentUpon>
+    </None>
+    <None Include="Tools\dsShowRegions.xsd">
+      <SubType>Designer</SubType>
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>dsShowRegions.Designer.cs</LastGenOutput>
+    </None>
+    <None Include="Tools\dsShowRegions.xss">
+      <DependentUpon>dsShowRegions.xsd</DependentUpon>
     </None>
     <None Include="Tools\dsStoreOrders.xsc">
       <DependentUpon>dsStoreOrders.xsd</DependentUpon>
