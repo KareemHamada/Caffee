@@ -20,37 +20,47 @@ namespace POS.Forms
         }
         private SqlCommand cmd;
         private TextBox txtHidden;
-        private DataTable loadTable()
+
+
+        private void loadTable(string query)
         {
+            dgvEmployeesSalareis.Rows.Clear();
             DataTable dt = new DataTable();
 
             if (adoClass.sqlcn.State != ConnectionState.Open)
             {
                 adoClass.sqlcn.Open();
             }
-            cmd = new SqlCommand("Select EmployeesSalaries.dateTime,EmployeesSalaries.salary,Employee.name,EmployeesSalaries.id from EmployeesSalaries LEFT JOIN Employee on EmployeesSalaries.employeeId = Employee.id", adoClass.sqlcn);
+            cmd = new SqlCommand(query, adoClass.sqlcn);
             SqlDataAdapter da = new SqlDataAdapter(cmd);
             da.Fill(dt);
             adoClass.sqlcn.Close();
-            return dt;
+            if (dt.Rows.Count > 0)
+            {
+                foreach (DataRow row in dt.Rows)
+                {
+
+                    dgvEmployeesSalareis.Rows.Add
+                        (new object[]
+                            {
+                            row["dateTime"],
+                            row["salary"],
+                            row["name"],
+                            row["id"],
+                            }
+                        ); ;
+                }
+            }
+
         }
 
 
         private void FormEmployeesSalaries_Load(object sender, EventArgs e)
         {
             Helper.fillComboBox(comboEmployees, "Select id,name from Employee", "name", "id");
-            try
-            {
-                dgvEmployeesSalareis.DataSource = loadTable();
-                dgvEmployeesSalareis.Columns[0].HeaderText = "التاريخ";
-                dgvEmployeesSalareis.Columns[1].HeaderText = "المرتب";
-                dgvEmployeesSalareis.Columns[2].HeaderText = "الموظف";
-                dgvEmployeesSalareis.Columns[3].HeaderText = "#";
-            }
-            catch
-            {
+            
 
-            }
+            loadTable("Select EmployeesSalaries.dateTime,EmployeesSalaries.salary,Employee.name,EmployeesSalaries.id from EmployeesSalaries LEFT JOIN Employee on EmployeesSalaries.employeeId = Employee.id");
             // hidden text box
             txtHidden = new TextBox();
             txtHidden.Visible = false;
@@ -97,7 +107,7 @@ namespace POS.Forms
                 adoClass.sqlcn.Close();
             }
 
-            dgvEmployeesSalareis.DataSource = loadTable();
+            loadTable("Select EmployeesSalaries.dateTime,EmployeesSalaries.salary,Employee.name,EmployeesSalaries.id from EmployeesSalaries LEFT JOIN Employee on EmployeesSalaries.employeeId = Employee.id");
 
             comboEmployees.Text = "";
             txtSalary.Text = "";
@@ -151,7 +161,7 @@ namespace POS.Forms
                 adoClass.sqlcn.Close();
             }
 
-            dgvEmployeesSalareis.DataSource = loadTable();
+            loadTable("Select EmployeesSalaries.dateTime,EmployeesSalaries.salary,Employee.name,EmployeesSalaries.id from EmployeesSalaries LEFT JOIN Employee on EmployeesSalaries.employeeId = Employee.id");
 
             comboEmployees.Text = "";
             txtSalary.Text = "";
@@ -160,41 +170,47 @@ namespace POS.Forms
 
         private void btnDelete_Click(object sender, EventArgs e)
         {
-            string id = txtHidden.Text;
-            if (id == "")
+            if (dgvEmployeesSalareis.Rows.Count > 0)
             {
-                MessageBox.Show("حدد المرتب المراد حذفة");
-                return;
-            }
-            try
-            {
-
-                cmd = new SqlCommand("delete from EmployeesSalaries Where id = '" + id + "'", adoClass.sqlcn);
-
-                if (adoClass.sqlcn.State != ConnectionState.Open)
+                if (MessageBox.Show("هل تريد الحذف", "?", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
                 {
-                    adoClass.sqlcn.Open();
+                    txtHidden.Text = dgvEmployeesSalareis.CurrentRow.Cells[3].Value.ToString();
+                    if (txtHidden.Text == "")
+                    {
+                        MessageBox.Show("حدد المرتب المراد حذفه");
+                        return;
+                    }
+                    try
+                    {
+
+                        cmd = new SqlCommand("delete from EmployeesSalaries Where id = '" + txtHidden.Text + "'", adoClass.sqlcn);
+
+                        if (adoClass.sqlcn.State != ConnectionState.Open)
+                        {
+                            adoClass.sqlcn.Open();
+                        }
+
+                        cmd.ExecuteNonQuery();
+
+                        MessageBox.Show("تم الحذف بنجاح");
+
+                    }
+                    catch
+                    {
+                        MessageBox.Show("خطا في الحذف");
+                    }
+                    finally
+                    {
+                        adoClass.sqlcn.Close();
+                    }
+
+                    loadTable("Select EmployeesSalaries.dateTime,EmployeesSalaries.salary,Employee.name,EmployeesSalaries.id from EmployeesSalaries LEFT JOIN Employee on EmployeesSalaries.employeeId = Employee.id");
+
+                    comboEmployees.Text = "";
+                    txtSalary.Text = "";
+                    txtHidden.Text = "";
                 }
-
-                cmd.ExecuteNonQuery();
-
-                MessageBox.Show("تم الحذف بنجاح");
-
             }
-            catch
-            {
-                MessageBox.Show("خطا في الحذف");
-            }
-            finally
-            {
-                adoClass.sqlcn.Close();
-            }
-
-            dgvEmployeesSalareis.DataSource = loadTable();
-
-            comboEmployees.Text = "";
-            txtSalary.Text = "";
-            txtHidden.Text = "";
         }
 
      
@@ -209,6 +225,13 @@ namespace POS.Forms
             }
         }
 
+    
+
+        private void btnClose_Click(object sender, EventArgs e)
+        {
+            Close();
+        }
+
         private void dgvEmployeesSalareis_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
             txtHidden.Text = dgvEmployeesSalareis.CurrentRow.Cells[3].Value.ToString();
@@ -216,9 +239,27 @@ namespace POS.Forms
             txtSalary.Text = dgvEmployeesSalareis.CurrentRow.Cells[1].Value.ToString();
         }
 
-        private void btnClose_Click(object sender, EventArgs e)
+        private void btnPrint_Click(object sender, EventArgs e)
         {
-            Close();
+
+        }
+
+        private void txtSearch_TextChanged(object sender, EventArgs e)
+        {
+            search(txtSearch.Text);
+        }
+
+        void search(string text = null)
+        {
+            if (string.IsNullOrEmpty(text))
+            {
+                loadTable("Select EmployeesSalaries.dateTime,EmployeesSalaries.salary,Employee.name,EmployeesSalaries.id from EmployeesSalaries LEFT JOIN Employee on EmployeesSalaries.employeeId = Employee.id");
+
+            }
+            else
+            {
+                loadTable("Select EmployeesSalaries.dateTime,EmployeesSalaries.salary,Employee.name,EmployeesSalaries.id from EmployeesSalaries LEFT JOIN Employee on EmployeesSalaries.employeeId = Employee.id  where Employee.name like '%" + text + "%'");
+            }
         }
     }
 }
