@@ -38,7 +38,6 @@ namespace POS.Forms
             this.btnCategories = new System.Windows.Forms.Button();
             this.btnItems = new System.Windows.Forms.Button();
             this.btnExpenses = new System.Windows.Forms.Button();
-            this.btnClients = new System.Windows.Forms.Button();
             this.btnDeleteOrder = new System.Windows.Forms.Button();
             this.tableLayoutPanel1.SuspendLayout();
             this.SuspendLayout();
@@ -56,7 +55,6 @@ namespace POS.Forms
             this.tableLayoutPanel1.Controls.Add(this.btnCategories, 2, 1);
             this.tableLayoutPanel1.Controls.Add(this.btnItems, 1, 1);
             this.tableLayoutPanel1.Controls.Add(this.btnExpenses, 0, 1);
-            this.tableLayoutPanel1.Controls.Add(this.btnClients, 2, 2);
             this.tableLayoutPanel1.Controls.Add(this.btnDeleteOrder, 1, 2);
             this.tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel1.Location = new System.Drawing.Point(0, 0);
@@ -182,22 +180,6 @@ namespace POS.Forms
             this.btnExpenses.UseVisualStyleBackColor = false;
             this.btnExpenses.Click += new System.EventHandler(this.btnExpenses_Click);
             // 
-            // btnClients
-            // 
-            this.btnClients.BackColor = System.Drawing.Color.White;
-            this.btnClients.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.btnClients.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnClients.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
-            this.btnClients.Image = ((System.Drawing.Image)(resources.GetObject("btnClients.Image")));
-            this.btnClients.Location = new System.Drawing.Point(949, 535);
-            this.btnClients.Name = "btnClients";
-            this.btnClients.Size = new System.Drawing.Size(468, 262);
-            this.btnClients.TabIndex = 13;
-            this.btnClients.Text = "العملاء";
-            this.btnClients.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
-            this.btnClients.UseVisualStyleBackColor = false;
-            this.btnClients.Click += new System.EventHandler(this.btnClients_Click);
-            // 
             // btnDeleteOrder
             // 
             this.btnDeleteOrder.BackColor = System.Drawing.Color.White;
@@ -240,7 +222,6 @@ namespace POS.Forms
         private System.Windows.Forms.Button btnCategories;
         private System.Windows.Forms.Button btnItems;
         private System.Windows.Forms.Button btnExpenses;
-        private System.Windows.Forms.Button btnClients;
         private System.Windows.Forms.Button btnDeleteOrder;
     }
 }

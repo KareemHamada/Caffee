@@ -122,6 +122,10 @@ namespace POS.Forms
             frm.Show();
         }
 
+        private void btnClients_Click(object sender, EventArgs e)
+        {
+            OpenChildForm(new FormMainClients(), sender);
+        }
     }
 }
 
