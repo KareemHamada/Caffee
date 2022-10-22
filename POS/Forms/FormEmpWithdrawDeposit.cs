@@ -62,24 +62,17 @@ namespace POS.Forms
 
         }
 
+ 
+
+        
+
+
         private void btnSearch_Click(object sender, EventArgs e)
         {
             loadTable("select EmpWithdrawDeposit.id,employee.name,EmpWithdrawDeposit.OperationType,EmpWithdrawDeposit.money,EmpWithdrawDeposit.dateTime from EmpWithdrawDeposit LEFT JOIN Employee on EmpWithdrawDeposit.EmpId = Employee.id where dateTime between '" + dtpFrom.Value.ToString("yyyy-MM-dd") + "' and '" + dtpTo.Value.ToString("yyyy-MM-dd") + "'");
         }
 
-        private void btnReload_Click(object sender, EventArgs e)
-        {
-            loadTable("select EmpWithdrawDeposit.id,employee.name,EmpWithdrawDeposit.OperationType,EmpWithdrawDeposit.money,EmpWithdrawDeposit.dateTime from EmpWithdrawDeposit LEFT JOIN Employee on EmpWithdrawDeposit.EmpId = Employee.id");
-        }
-
-        private void btnClose_Click(object sender, EventArgs e)
-        {
-            Close();
-        }
-
-        
-
-        private void btnPrint_Click_1(object sender, EventArgs e)
+        private void btnPrint_Click(object sender, EventArgs e)
         {
             if (dgvLoading.Rows.Count > 0)
             {
@@ -127,6 +120,35 @@ namespace POS.Forms
             else
             {
                 MessageBox.Show("لا يوجد عناصر لعرضها");
+            }
+        }
+
+        private void btnClose_Click(object sender, EventArgs e)
+        {
+            Close();
+        }
+
+        private void btnReload_Click(object sender, EventArgs e)
+        {
+            loadTable("select EmpWithdrawDeposit.id,employee.name,EmpWithdrawDeposit.OperationType,EmpWithdrawDeposit.money,EmpWithdrawDeposit.dateTime from EmpWithdrawDeposit LEFT JOIN Employee on EmpWithdrawDeposit.EmpId = Employee.id");
+        }
+
+        private void txtSearch_TextChanged(object sender, EventArgs e)
+        {
+            search(txtSearch.Text);
+        }
+
+
+        void search(string text = null)
+        {
+            if (string.IsNullOrEmpty(text))
+            {
+                loadTable("select EmpWithdrawDeposit.id,employee.name,EmpWithdrawDeposit.OperationType,EmpWithdrawDeposit.money,EmpWithdrawDeposit.dateTime from EmpWithdrawDeposit LEFT JOIN Employee on EmpWithdrawDeposit.EmpId = Employee.id");
+            }
+            else
+            {
+                loadTable("select EmpWithdrawDeposit.id,employee.name,EmpWithdrawDeposit.OperationType,EmpWithdrawDeposit.money,EmpWithdrawDeposit.dateTime from EmpWithdrawDeposit LEFT JOIN Employee on EmpWithdrawDeposit.EmpId = Employee.id where employee.name like '%" + text + "%' " +
+                    "or EmpWithdrawDeposit.OperationType like '%" + text + "%'");               
             }
         }
     }

@@ -65,19 +65,14 @@ namespace POS.Forms
             lblTotal.Text = FinalTotal.ToString();
         }
 
+        
+
+     
+
+   
         private void btnClose_Click(object sender, EventArgs e)
         {
             Close();
-        }
-
-        private void btnReload_Click(object sender, EventArgs e)
-        {
-            loadTable("select EmployeesSalaries.id,Employee.name,EmployeesSalaries.salary,EmployeesSalaries.dateTime from EmployeesSalaries LEFT JOIN Employee on EmployeesSalaries.employeeId = Employee.id");
-        }
-
-        private void btnSearch_Click(object sender, EventArgs e)
-        {
-            loadTable("select EmployeesSalaries.id,Employee.name,EmployeesSalaries.salary,EmployeesSalaries.dateTime from EmployeesSalaries LEFT JOIN Employee on EmployeesSalaries.employeeId = Employee.id where dateTime between '" + dtpFrom.Value.ToString("yyyy-MM-dd") + "' and '" + dtpTo.Value.ToString("yyyy-MM-dd") + "'");
         }
 
         private void btnPrint_Click(object sender, EventArgs e)
@@ -125,6 +120,33 @@ namespace POS.Forms
             else
             {
                 MessageBox.Show("لا يوجد عناصر لعرضها");
+            }
+        }
+
+        private void btnSearch_Click(object sender, EventArgs e)
+        {
+            loadTable("select EmployeesSalaries.id,Employee.name,EmployeesSalaries.salary,EmployeesSalaries.dateTime from EmployeesSalaries LEFT JOIN Employee on EmployeesSalaries.employeeId = Employee.id where dateTime between '" + dtpFrom.Value.ToString("yyyy-MM-dd") + "' and '" + dtpTo.Value.ToString("yyyy-MM-dd") + "'");
+        }
+
+        private void btnReload_Click(object sender, EventArgs e)
+        {
+            loadTable("select EmployeesSalaries.id,Employee.name,EmployeesSalaries.salary,EmployeesSalaries.dateTime from EmployeesSalaries LEFT JOIN Employee on EmployeesSalaries.employeeId = Employee.id");
+        }
+
+        private void txtSearch_TextChanged(object sender, EventArgs e)
+        {
+            search(txtSearch.Text);
+        }
+
+        void search(string text = null)
+        {
+            if (string.IsNullOrEmpty(text))
+            {
+                loadTable("select EmployeesSalaries.id,Employee.name,EmployeesSalaries.salary,EmployeesSalaries.dateTime from EmployeesSalaries LEFT JOIN Employee on EmployeesSalaries.employeeId = Employee.id");
+            }
+            else
+            {
+                loadTable("select EmployeesSalaries.id,Employee.name,EmployeesSalaries.salary,EmployeesSalaries.dateTime from EmployeesSalaries LEFT JOIN Employee on EmployeesSalaries.employeeId = Employee.id where Employee.name like '%" + text + "%'");
             }
         }
     }

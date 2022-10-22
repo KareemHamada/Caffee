@@ -21,11 +21,7 @@ namespace POS.Forms
             InitializeComponent();
         }
         private SqlCommand cmd;
-        //public DateTime _from { get => dtpFrom.Value; }
-        //public DateTime _to { get => dtpTo.Value; }
-
-
-
+        
         private void FormReportShifts_Load(object sender, EventArgs e)
         {
             loadTable("select Shifts.total,Shifts.expenses,Shifts.wared,Shifts.dateTimeEnd,Shifts.dateTimeStart,Users.fullName,Shifts.id from Shifts LEFT JOIN Users on Shifts.userId = Users.id where Shifts.dateTimeEnd != ''");
@@ -33,7 +29,7 @@ namespace POS.Forms
             dtpFrom.Value = DateTime.Now;
         }
 
-        // "Select Categories.name,Items.image,Items.price,Items.name,Items.id from Items LEFT JOIN Categories on Items.CategoryId = Categories.id"
+        
 
         private void loadTable(string query)
         {
@@ -78,9 +74,59 @@ namespace POS.Forms
             lblTotal.Text = FinalTotal.ToString();
         }
 
+       
+
         private void btnSearch_Click(object sender, EventArgs e)
         {
             loadTable("select Shifts.total,Shifts.expenses,Shifts.wared,Shifts.dateTimeEnd,Shifts.dateTimeStart,Users.fullName,Shifts.id from Shifts LEFT JOIN Users on Shifts.userId = Users.id where dateTimeStart between '" + dtpFrom.Value.ToString("yyyy-MM-dd") + "' and '" + dtpTo.Value.ToString("yyyy-MM-dd") + "'");
+        }
+
+        private void dgvLoading_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if (dgvLoading.CurrentCell.ColumnIndex.Equals(2) && e.RowIndex != -1)
+            {
+                if (dgvLoading.CurrentCell != null && dgvLoading.CurrentCell.Value != null)
+                {
+                    string shiftId = dgvLoading.CurrentRow.Cells[9].Value.ToString();
+                    FormReportOrders frm = new FormReportOrders();
+                    frm.Show();
+                    frm.showShiftOrders(shiftId);
+
+                }
+            }
+
+
+            if (dgvLoading.CurrentCell.ColumnIndex.Equals(1) && e.RowIndex != -1)
+            {
+                if (dgvLoading.CurrentCell != null && dgvLoading.CurrentCell.Value != null)
+                {
+                    string shiftId = dgvLoading.CurrentRow.Cells[9].Value.ToString();
+                    FormReportExpenses frm = new FormReportExpenses();
+                    frm.Show();
+                    frm.showShiftExpenses(shiftId);
+                }
+            }
+
+            if (dgvLoading.CurrentCell.ColumnIndex.Equals(0) && e.RowIndex != -1)
+            {
+                if (dgvLoading.CurrentCell != null && dgvLoading.CurrentCell.Value != null)
+                {
+                    string shiftId = dgvLoading.CurrentRow.Cells[9].Value.ToString();
+                    FormReportItems frm = new FormReportItems();
+                    frm.Show();
+                    frm.showShiftItems(shiftId);
+                }
+            }
+        }
+
+        private void btnClose_Click(object sender, EventArgs e)
+        {
+            Close();
+        }
+
+        private void btnReload_Click(object sender, EventArgs e)
+        {
+            loadTable("select Shifts.total,Shifts.expenses,Shifts.wared,Shifts.dateTimeEnd,Shifts.dateTimeStart,Users.fullName,Shifts.id from Shifts LEFT JOIN Users on Shifts.userId = Users.id where Shifts.dateTimeEnd != ''");
         }
 
         private void btnPrint_Click(object sender, EventArgs e)
@@ -135,53 +181,21 @@ namespace POS.Forms
             }
         }
 
-        private void btnReload_Click(object sender, EventArgs e)
+        private void txtSearch_TextChanged(object sender, EventArgs e)
         {
-            loadTable("select Shifts.total,Shifts.expenses,Shifts.wared,Shifts.dateTimeEnd,Shifts.dateTimeStart,Users.fullName,Shifts.id from Shifts LEFT JOIN Users on Shifts.userId = Users.id where Shifts.dateTimeEnd != ''");
+            search(txtSearch.Text);
         }
 
-        private void btnClose_Click(object sender, EventArgs e)
+
+        void search(string text = null)
         {
-
-            Close();
-        }
-
-        private void dgvLoading_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
-        {
-            //string shiftId = "";
-            if (dgvLoading.CurrentCell.ColumnIndex.Equals(2) && e.RowIndex != -1)
+            if (string.IsNullOrEmpty(text))
             {
-                if (dgvLoading.CurrentCell != null && dgvLoading.CurrentCell.Value != null)
-                {
-                    string shiftId = dgvLoading.CurrentRow.Cells[9].Value.ToString();
-                    FormReportOrders frm = new FormReportOrders();
-                    frm.Show();
-                    frm.showShiftOrders(shiftId);
-
-                }
+                loadTable("select Shifts.total,Shifts.expenses,Shifts.wared,Shifts.dateTimeEnd,Shifts.dateTimeStart,Users.fullName,Shifts.id from Shifts LEFT JOIN Users on Shifts.userId = Users.id where Shifts.dateTimeEnd != ''");
             }
-
-
-            if (dgvLoading.CurrentCell.ColumnIndex.Equals(1) && e.RowIndex != -1)
+            else
             {
-                if (dgvLoading.CurrentCell != null && dgvLoading.CurrentCell.Value != null)
-                {
-                    string shiftId = dgvLoading.CurrentRow.Cells[9].Value.ToString();
-                    FormReportExpenses frm = new FormReportExpenses();
-                    frm.Show();
-                    frm.showShiftExpenses(shiftId);
-                }
-            }
-
-            if (dgvLoading.CurrentCell.ColumnIndex.Equals(0) && e.RowIndex != -1)
-            {
-                if (dgvLoading.CurrentCell != null && dgvLoading.CurrentCell.Value != null)
-                {
-                    string shiftId = dgvLoading.CurrentRow.Cells[9].Value.ToString();
-                    FormReportItems frm = new FormReportItems();
-                    frm.Show();
-                    frm.showShiftItems(shiftId);
-                }
+                loadTable("select Shifts.total,Shifts.expenses,Shifts.wared,Shifts.dateTimeEnd,Shifts.dateTimeStart,Users.fullName,Shifts.id from Shifts LEFT JOIN Users on Shifts.userId = Users.id where Shifts.dateTimeEnd != '' and Users.fullName like '%" + text + "%'");
             }
         }
     }

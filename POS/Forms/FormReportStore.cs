@@ -70,6 +70,8 @@ namespace POS.Forms
             lblTotal.Text = FinalTotal.ToString();
         }
 
+ 
+
         private void btnClose_Click(object sender, EventArgs e)
         {
             Close();
@@ -78,68 +80,6 @@ namespace POS.Forms
         private void btnReload_Click(object sender, EventArgs e)
         {
             loadTable("select Stores.id,Stores.dateTime,Stores.total,Suppliers.name,Users.fullName from Stores LEFT JOIN Users on Stores.userId = Users.id LEFT JOIN Suppliers on Stores.supplierId = Suppliers.id");
-        }
-
-        private void btnSearch_Click(object sender, EventArgs e)
-        {
-            loadTable("select Stores.id,Stores.dateTime,Stores.total,Suppliers.name,Users.fullName from Stores LEFT JOIN Users on Stores.userId = Users.id LEFT JOIN Suppliers on Stores.supplierId = Suppliers.id where Stores.dateTime between '" + dtpFrom.Value.ToString("yyyy-MM-dd") + "' and '" + dtpTo.Value.ToString("yyyy-MM-dd") + "'");
-        }
-
-        private void dgvLoading_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
-        {
-            if (dgvLoading.CurrentCell.ColumnIndex.Equals(0) && e.RowIndex != -1)
-            {
-                if (dgvLoading.CurrentCell != null && dgvLoading.CurrentCell.Value != null)
-                {
-                    string storeId = dgvLoading.CurrentRow.Cells[5].Value.ToString();
-                    FormReportStoreItems frm = new FormReportStoreItems();
-                    frm.Show();
-                    frm.showStoreItems(storeId);
-
-                }
-
-            }
-            else
-            {
-                
-                if (dgvLoading.CurrentCell.ColumnIndex.Equals(6) && e.RowIndex != -1)
-                {
-                    string storeId = dgvLoading.CurrentRow.Cells[5].Value.ToString();
-                    if (MessageBox.Show("هل تريد حذف الفاتورة", "?", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
-                    {
-                        try
-                        {
-                            if (adoClass.sqlcn.State != ConnectionState.Open)
-                            {
-                                adoClass.sqlcn.Open();
-                            }
-
-                            cmd = new SqlCommand("delete from storeOrderItems where storeId = '" + storeId + "'", adoClass.sqlcn);
-                            cmd.ExecuteNonQuery();
-
-                            cmd = new SqlCommand("delete from Stores where id = '" + storeId + "'", adoClass.sqlcn);
-                            cmd.ExecuteNonQuery();
-
-                            MessageBox.Show("تم الحذف بنجاح");
-
-                            loadTable("select Stores.id,Stores.dateTime,Stores.total,Suppliers.name,Users.fullName from Stores LEFT JOIN Users on Stores.userId = Users.id LEFT JOIN Suppliers on Stores.supplierId = Suppliers.id");
-
-                        }
-                        catch (Exception ex)
-                        {
-                            MessageBox.Show(ex.Message);
-                        }
-                        finally
-                        {
-                            adoClass.sqlcn.Close();
-                        }
-
-                    }
-
-
-                }
-
-            }
         }
 
         private void btnPrint_Click(object sender, EventArgs e)
@@ -190,6 +130,86 @@ namespace POS.Forms
                 MessageBox.Show("لا يوجد عناصر لعرضها");
             }
         }
+
+        private void dgvLoading_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if (dgvLoading.CurrentCell.ColumnIndex.Equals(0) && e.RowIndex != -1)
+            {
+                if (dgvLoading.CurrentCell != null && dgvLoading.CurrentCell.Value != null)
+                {
+                    string storeId = dgvLoading.CurrentRow.Cells[5].Value.ToString();
+                    FormReportStoreItems frm = new FormReportStoreItems();
+                    frm.Show();
+                    frm.showStoreItems(storeId);
+
+                }
+
+            }
+            else
+            {
+
+                if (dgvLoading.CurrentCell.ColumnIndex.Equals(6) && e.RowIndex != -1)
+                {
+                    string storeId = dgvLoading.CurrentRow.Cells[5].Value.ToString();
+                    if (MessageBox.Show("هل تريد حذف الفاتورة", "?", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+                    {
+                        try
+                        {
+                            if (adoClass.sqlcn.State != ConnectionState.Open)
+                            {
+                                adoClass.sqlcn.Open();
+                            }
+
+                            cmd = new SqlCommand("delete from storeOrderItems where storeId = '" + storeId + "'", adoClass.sqlcn);
+                            cmd.ExecuteNonQuery();
+
+                            cmd = new SqlCommand("delete from Stores where id = '" + storeId + "'", adoClass.sqlcn);
+                            cmd.ExecuteNonQuery();
+
+                            MessageBox.Show("تم الحذف بنجاح");
+
+                            loadTable("select Stores.id,Stores.dateTime,Stores.total,Suppliers.name,Users.fullName from Stores LEFT JOIN Users on Stores.userId = Users.id LEFT JOIN Suppliers on Stores.supplierId = Suppliers.id");
+
+                        }
+                        catch (Exception ex)
+                        {
+                            MessageBox.Show(ex.Message);
+                        }
+                        finally
+                        {
+                            adoClass.sqlcn.Close();
+                        }
+
+                    }
+
+
+                }
+
+            }
+        }
+
+        private void btnSearch_Click(object sender, EventArgs e)
+        {
+            loadTable("select Stores.id,Stores.dateTime,Stores.total,Suppliers.name,Users.fullName from Stores LEFT JOIN Users on Stores.userId = Users.id LEFT JOIN Suppliers on Stores.supplierId = Suppliers.id where Stores.dateTime between '" + dtpFrom.Value.ToString("yyyy-MM-dd") + "' and '" + dtpTo.Value.ToString("yyyy-MM-dd") + "'");
+        }
+
+        private void txtSearch_TextChanged(object sender, EventArgs e)
+        {
+            search(txtSearch.Text);
+        }
+
+        void search(string text = null)
+        {
+            if (string.IsNullOrEmpty(text))
+            {
+                loadTable("select Stores.id,Stores.dateTime,Stores.total,Suppliers.name,Users.fullName from Stores LEFT JOIN Users on Stores.userId = Users.id LEFT JOIN Suppliers on Stores.supplierId = Suppliers.id");
+            }
+            else
+            {
+                loadTable("select Stores.id,Stores.dateTime,Stores.total,Suppliers.name,Users.fullName from Stores LEFT JOIN Users on Stores.userId = Users.id LEFT JOIN Suppliers on Stores.supplierId = Suppliers.id where Suppliers.name like '%" + text + "%' or Users.fullName like '%" + text + "%'");
+            }
+        }
+
     }
 }
 

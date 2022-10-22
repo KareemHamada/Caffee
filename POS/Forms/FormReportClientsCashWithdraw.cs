@@ -133,5 +133,19 @@ namespace POS.Forms
                 loadTable("select ClientCashWithdraw.id,Clients.name,ClientCashWithdraw.operationType,ClientCashWithdraw.money,ClientCashWithdraw.dateTime from ClientCashWithdraw LEFT JOIN Clients on ClientCashWithdraw.ClientId = Clients.id where Clients.name like '%" + text + "%' or ClientCashWithdraw.operationType like '%" + text + "%'");
             }
         }
+
+        private void btnSearch_Click(object sender, EventArgs e)
+        {
+            loadTable("select ClientCashWithdraw.id,Clients.name,ClientCashWithdraw.operationType,ClientCashWithdraw.money,ClientCashWithdraw.dateTime from ClientCashWithdraw LEFT JOIN Clients on ClientCashWithdraw.ClientId = Clients.id where dateTime between '" + dtpFrom.Value.ToString("yyyy-MM-dd") + "' and '" + dtpTo.Value.ToString("yyyy-MM-dd") + "'");
+
+            
+        }
+
+        private void btnReload_Click(object sender, EventArgs e)
+        {
+            loadTable("select ClientCashWithdraw.id,Clients.name,ClientCashWithdraw.operationType,ClientCashWithdraw.money,ClientCashWithdraw.dateTime from ClientCashWithdraw LEFT JOIN Clients on ClientCashWithdraw.ClientId = Clients.id");
+        }
+
+        
     }
 }
