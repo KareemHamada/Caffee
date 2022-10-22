@@ -953,5 +953,29 @@ namespace POS.Forms
             CalcCheck();
         }
 
+        private void btnEnterQuantity_Click(object sender, EventArgs e)
+        {
+            if (dgvItems.Rows.Count > 0)
+            {
+                FormMultiPriceItem frm = new FormMultiPriceItem();
+                frm.isQuantity = true;
+                if (frm.ShowDialog() == DialogResult.OK)
+                {
+                    dgvItems.CurrentRow.Cells[3].Value = frm._price;
+                }
+
+                int y = 0;
+                int.TryParse(dgvItems.CurrentRow.Cells[3].Value.ToString(), out y);
+                
+
+                // price
+                double price = 0;
+                double.TryParse(dgvItems.CurrentRow.Cells[4].Value.ToString(), out price);
+                // total price
+                double totalValue = y * price;
+                dgvItems.CurrentRow.Cells[2].Value = totalValue;
+            }
+            CalcCheck();
+        }
     }
 }

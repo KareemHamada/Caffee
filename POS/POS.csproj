@@ -1363,6 +1363,7 @@
     <None Include="Resources\printer.png" />
     <None Include="Resources\man.png" />
     <None Include="Resources\money.png" />
+    <None Include="Resources\plus.png" />
     <Content Include="SqlServerTypes\readme.htm" />
     <Content Include="SqlServerTypes\x64\msvcr120.dll">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>

@@ -23,10 +23,7 @@ namespace POS.Forms
         private SqlCommand cmd;
 
 
-        private void btnClose_Click(object sender, EventArgs e)
-        {
-            Close();
-        }
+      
 
         private void FormReportStoreItems_Load(object sender, EventArgs e)
         {
@@ -73,6 +70,18 @@ namespace POS.Forms
             }
 
             lblTotal.Text = FinalTotal.ToString();
+        }
+
+        
+
+      
+
+
+
+
+        public void showStoreItems(string storeId)
+        {
+            loadTable("select storeOrderItems.id,storeOrderItems.price,storeOrderItems.quantity,storeId,storeItems.name,Stores.dateTime from storeOrderItems LEFT JOIN Stores on storeOrderItems.storeId = Stores.id LEFT JOIN storeItems on storeOrderItems.storeItemId = storeItems.id where storeId = '" + storeId + "'");
         }
 
         private void btnPrint_Click(object sender, EventArgs e)
@@ -124,23 +133,38 @@ namespace POS.Forms
             }
         }
 
-        private void btnReload_Click(object sender, EventArgs e)
-        {
-            loadTable("select storeOrderItems.id,storeOrderItems.price,storeOrderItems.quantity,storeId,storeItems.name,Stores.dateTime from storeOrderItems LEFT JOIN Stores on storeOrderItems.storeId = Stores.id LEFT JOIN storeItems on storeOrderItems.storeItemId = storeItems.id");
-        }
-
         private void btnSearch_Click(object sender, EventArgs e)
         {
             loadTable("select storeOrderItems.id,storeOrderItems.price,storeOrderItems.quantity,storeId,storeItems.name,Stores.dateTime from storeOrderItems LEFT JOIN Stores on storeOrderItems.storeId = Stores.id LEFT JOIN storeItems on storeOrderItems.storeItemId = storeItems.id where dateTime between '" + dtpFrom.Value.ToString("yyyy-MM-dd") + "' and '" + dtpTo.Value.ToString("yyyy-MM-dd") + "'");
         }
 
-
-
-
-
-        public void showStoreItems(string storeId)
+        private void btnReload_Click(object sender, EventArgs e)
         {
-            loadTable("select storeOrderItems.id,storeOrderItems.price,storeOrderItems.quantity,storeId,storeItems.name,Stores.dateTime from storeOrderItems LEFT JOIN Stores on storeOrderItems.storeId = Stores.id LEFT JOIN storeItems on storeOrderItems.storeItemId = storeItems.id where storeId = '" + storeId + "'");
+            loadTable("select storeOrderItems.id,storeOrderItems.price,storeOrderItems.quantity,storeId,storeItems.name,Stores.dateTime from storeOrderItems LEFT JOIN Stores on storeOrderItems.storeId = Stores.id LEFT JOIN storeItems on storeOrderItems.storeItemId = storeItems.id");
+        }
+
+        private void btnClose_Click(object sender, EventArgs e)
+        {
+            Close();
+        }
+
+        private void txtSearch_TextChanged(object sender, EventArgs e)
+        {
+            search(txtSearch.Text);
+        }
+
+        void search(string text = null)
+        {
+            if (string.IsNullOrEmpty(text))
+            {
+                loadTable("select storeOrderItems.id,storeOrderItems.price,storeOrderItems.quantity,storeId,storeItems.name,Stores.dateTime from storeOrderItems LEFT JOIN Stores on storeOrderItems.storeId = Stores.id LEFT JOIN storeItems on storeOrderItems.storeItemId = storeItems.id");
+            }
+            else
+            {
+                loadTable("select storeOrderItems.id,storeOrderItems.price,storeOrderItems.quantity,storeId,storeItems.name,Stores.dateTime from storeOrderItems LEFT JOIN Stores on storeOrderItems.storeId = Stores.id LEFT JOIN storeItems on storeOrderItems.storeItemId = storeItems.id where storeId like '%" + text + "%' " +
+                    "or storeItems.name like '%" + text + "%'");
+
+            }
         }
     }
 }

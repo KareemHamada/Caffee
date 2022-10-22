@@ -30,14 +30,13 @@ namespace POS.Forms
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormPOSResponsive));
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormPOSResponsive));
             this.pnlTitle = new System.Windows.Forms.Panel();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.lblTime = new System.Windows.Forms.Label();
-            this.btnExit = new System.Windows.Forms.Button();
             this.label6 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.lblShift = new System.Windows.Forms.Label();
@@ -47,9 +46,6 @@ namespace POS.Forms
             this.tableLayoutPanelContainer = new System.Windows.Forms.TableLayoutPanel();
             this.tableLayoutPanelRight = new System.Windows.Forms.TableLayoutPanel();
             this.tlpBtns = new System.Windows.Forms.TableLayoutPanel();
-            this.btnExpenses = new System.Windows.Forms.Button();
-            this.btnTayar = new System.Windows.Forms.Button();
-            this.btnEmployees = new System.Windows.Forms.Button();
             this.pnlItems = new System.Windows.Forms.FlowLayoutPanel();
             this.tableLayoutPanel3 = new System.Windows.Forms.TableLayoutPanel();
             this.dgvItems = new System.Windows.Forms.DataGridView();
@@ -60,7 +56,6 @@ namespace POS.Forms
             this.ColPrice = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ColName = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.pnlData = new System.Windows.Forms.TableLayoutPanel();
-            this.btnDone = new System.Windows.Forms.Button();
             this.tableLayoutPanel7 = new System.Windows.Forms.TableLayoutPanel();
             this.comboOrderType = new System.Windows.Forms.ComboBox();
             this.label9 = new System.Windows.Forms.Label();
@@ -73,9 +68,6 @@ namespace POS.Forms
             this.txtTotal = new System.Windows.Forms.TextBox();
             this.label5 = new System.Windows.Forms.Label();
             this.tableLayoutPanel5 = new System.Windows.Forms.TableLayoutPanel();
-            this.btnRemove = new System.Windows.Forms.Button();
-            this.btnPlus = new System.Windows.Forms.Button();
-            this.btnMinus = new System.Windows.Forms.Button();
             this.pnlDelivery = new System.Windows.Forms.TableLayoutPanel();
             this.comboTayar = new System.Windows.Forms.ComboBox();
             this.label11 = new System.Windows.Forms.Label();
@@ -90,9 +82,18 @@ namespace POS.Forms
             this.txtDelivery = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
             this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
+            this.timer1 = new System.Windows.Forms.Timer(this.components);
+            this.btnExpenses = new System.Windows.Forms.Button();
+            this.btnTayar = new System.Windows.Forms.Button();
+            this.btnEmployees = new System.Windows.Forms.Button();
+            this.btnDone = new System.Windows.Forms.Button();
+            this.btnEnterQuantity = new System.Windows.Forms.Button();
+            this.btnPlus = new System.Windows.Forms.Button();
+            this.btnMinus = new System.Windows.Forms.Button();
+            this.btnRemove = new System.Windows.Forms.Button();
             this.btnUpdateTable = new System.Windows.Forms.Button();
             this.btnClear = new System.Windows.Forms.Button();
-            this.timer1 = new System.Windows.Forms.Timer(this.components);
+            this.btnExit = new System.Windows.Forms.Button();
             this.pnlTitle.SuspendLayout();
             this.tableLayoutPanel1.SuspendLayout();
             this.pnlContainer.SuspendLayout();
@@ -154,22 +155,6 @@ namespace POS.Forms
             this.lblTime.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
             this.lblTime.Size = new System.Drawing.Size(0, 29);
             this.lblTime.TabIndex = 19;
-            // 
-            // btnExit
-            // 
-            this.btnExit.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnExit.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btnExit.BackgroundImage")));
-            this.btnExit.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.btnExit.FlatAppearance.BorderColor = System.Drawing.Color.White;
-            this.btnExit.FlatAppearance.BorderSize = 0;
-            this.btnExit.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnExit.ForeColor = System.Drawing.Color.Cornsilk;
-            this.btnExit.Location = new System.Drawing.Point(1885, 3);
-            this.btnExit.Name = "btnExit";
-            this.btnExit.Size = new System.Drawing.Size(94, 44);
-            this.btnExit.TabIndex = 7;
-            this.btnExit.UseVisualStyleBackColor = true;
-            this.btnExit.Click += new System.EventHandler(this.btnExit_Click);
             // 
             // label6
             // 
@@ -296,54 +281,6 @@ namespace POS.Forms
             this.tlpBtns.Size = new System.Drawing.Size(1334, 181);
             this.tlpBtns.TabIndex = 0;
             // 
-            // btnExpenses
-            // 
-            this.btnExpenses.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
-            this.btnExpenses.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.btnExpenses.Font = new System.Drawing.Font("Microsoft Sans Serif", 16.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnExpenses.ForeColor = System.Drawing.Color.White;
-            this.btnExpenses.Image = ((System.Drawing.Image)(resources.GetObject("btnExpenses.Image")));
-            this.btnExpenses.Location = new System.Drawing.Point(535, 3);
-            this.btnExpenses.Name = "btnExpenses";
-            this.btnExpenses.Size = new System.Drawing.Size(260, 175);
-            this.btnExpenses.TabIndex = 2;
-            this.btnExpenses.Text = "مصروفات";
-            this.btnExpenses.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
-            this.btnExpenses.UseVisualStyleBackColor = false;
-            this.btnExpenses.Click += new System.EventHandler(this.btnExpenses_Click);
-            // 
-            // btnTayar
-            // 
-            this.btnTayar.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
-            this.btnTayar.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.btnTayar.Font = new System.Drawing.Font("Microsoft Sans Serif", 16.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnTayar.ForeColor = System.Drawing.Color.White;
-            this.btnTayar.Image = ((System.Drawing.Image)(resources.GetObject("btnTayar.Image")));
-            this.btnTayar.Location = new System.Drawing.Point(269, 3);
-            this.btnTayar.Name = "btnTayar";
-            this.btnTayar.Size = new System.Drawing.Size(260, 175);
-            this.btnTayar.TabIndex = 3;
-            this.btnTayar.Text = "طيارين";
-            this.btnTayar.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
-            this.btnTayar.UseVisualStyleBackColor = false;
-            this.btnTayar.Click += new System.EventHandler(this.btnTayar_Click);
-            // 
-            // btnEmployees
-            // 
-            this.btnEmployees.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
-            this.btnEmployees.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.btnEmployees.Font = new System.Drawing.Font("Microsoft Sans Serif", 16.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnEmployees.ForeColor = System.Drawing.Color.White;
-            this.btnEmployees.Image = ((System.Drawing.Image)(resources.GetObject("btnEmployees.Image")));
-            this.btnEmployees.Location = new System.Drawing.Point(801, 3);
-            this.btnEmployees.Name = "btnEmployees";
-            this.btnEmployees.Size = new System.Drawing.Size(260, 175);
-            this.btnEmployees.TabIndex = 1;
-            this.btnEmployees.Text = "موظفين";
-            this.btnEmployees.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
-            this.btnEmployees.UseVisualStyleBackColor = false;
-            this.btnEmployees.Click += new System.EventHandler(this.btnEmployees_Click);
-            // 
             // pnlItems
             // 
             this.pnlItems.AutoScroll = true;
@@ -411,6 +348,7 @@ namespace POS.Forms
             dataGridViewCellStyle3.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.dgvItems.RowsDefaultCellStyle = dataGridViewCellStyle3;
             this.dgvItems.RowTemplate.Height = 30;
+            this.dgvItems.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgvItems.Size = new System.Drawing.Size(624, 288);
             this.dgvItems.TabIndex = 1;
             // 
@@ -467,7 +405,7 @@ namespace POS.Forms
             // pnlData
             // 
             this.pnlData.ColumnCount = 1;
-            this.pnlData.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 396F));
+            this.pnlData.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 630F));
             this.pnlData.Controls.Add(this.btnDone, 0, 6);
             this.pnlData.Controls.Add(this.tableLayoutPanel7, 0, 3);
             this.pnlData.Controls.Add(this.tableLayoutPanel6, 0, 2);
@@ -490,24 +428,6 @@ namespace POS.Forms
             this.pnlData.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
             this.pnlData.Size = new System.Drawing.Size(630, 630);
             this.pnlData.TabIndex = 2;
-            // 
-            // btnDone
-            // 
-            this.btnDone.BackColor = System.Drawing.Color.RoyalBlue;
-            this.btnDone.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btnDone.BackgroundImage")));
-            this.btnDone.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.btnDone.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.btnDone.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnDone.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnDone.ForeColor = System.Drawing.Color.White;
-            this.btnDone.Location = new System.Drawing.Point(3, 538);
-            this.btnDone.Name = "btnDone";
-            this.btnDone.Size = new System.Drawing.Size(624, 89);
-            this.btnDone.TabIndex = 14;
-            this.btnDone.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnDone.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.btnDone.UseVisualStyleBackColor = false;
-            this.btnDone.Click += new System.EventHandler(this.btnDone_Click);
             // 
             // tableLayoutPanel7
             // 
@@ -532,8 +452,9 @@ namespace POS.Forms
             this.comboOrderType.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.comboOrderType.Font = new System.Drawing.Font("Microsoft Sans Serif", 16.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.comboOrderType.FormattingEnabled = true;
-            this.comboOrderType.Location = new System.Drawing.Point(3, 12);
+            this.comboOrderType.Location = new System.Drawing.Point(3, 11);
             this.comboOrderType.Name = "comboOrderType";
+            this.comboOrderType.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
             this.comboOrderType.Size = new System.Drawing.Size(309, 39);
             this.comboOrderType.TabIndex = 12;
             this.comboOrderType.SelectedIndexChanged += new System.EventHandler(this.comboOrderType_SelectedIndexChanged);
@@ -575,6 +496,7 @@ namespace POS.Forms
             // txtTax
             // 
             this.txtTax.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+            this.txtTax.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txtTax.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtTax.Location = new System.Drawing.Point(6, 14);
             this.txtTax.Name = "txtTax";
@@ -600,6 +522,7 @@ namespace POS.Forms
             // txtDiscount
             // 
             this.txtDiscount.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+            this.txtDiscount.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txtDiscount.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtDiscount.Location = new System.Drawing.Point(318, 14);
             this.txtDiscount.Name = "txtDiscount";
@@ -668,15 +591,18 @@ namespace POS.Forms
             // 
             // tableLayoutPanel5
             // 
-            this.tableLayoutPanel5.ColumnCount = 5;
-            this.tableLayoutPanel5.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 20F));
-            this.tableLayoutPanel5.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 20F));
-            this.tableLayoutPanel5.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 20F));
-            this.tableLayoutPanel5.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 20F));
-            this.tableLayoutPanel5.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 20F));
-            this.tableLayoutPanel5.Controls.Add(this.btnRemove, 0, 0);
-            this.tableLayoutPanel5.Controls.Add(this.btnPlus, 4, 0);
-            this.tableLayoutPanel5.Controls.Add(this.btnMinus, 2, 0);
+            this.tableLayoutPanel5.ColumnCount = 7;
+            this.tableLayoutPanel5.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 14.28531F));
+            this.tableLayoutPanel5.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 14.28531F));
+            this.tableLayoutPanel5.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 14.28531F));
+            this.tableLayoutPanel5.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 14.28531F));
+            this.tableLayoutPanel5.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 14.28531F));
+            this.tableLayoutPanel5.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 14.28531F));
+            this.tableLayoutPanel5.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 14.28816F));
+            this.tableLayoutPanel5.Controls.Add(this.btnEnterQuantity, 0, 0);
+            this.tableLayoutPanel5.Controls.Add(this.btnPlus, 6, 0);
+            this.tableLayoutPanel5.Controls.Add(this.btnMinus, 4, 0);
+            this.tableLayoutPanel5.Controls.Add(this.btnRemove, 2, 0);
             this.tableLayoutPanel5.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel5.Location = new System.Drawing.Point(0, 63);
             this.tableLayoutPanel5.Margin = new System.Windows.Forms.Padding(0);
@@ -686,51 +612,6 @@ namespace POS.Forms
             this.tableLayoutPanel5.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.tableLayoutPanel5.Size = new System.Drawing.Size(630, 63);
             this.tableLayoutPanel5.TabIndex = 1;
-            // 
-            // btnRemove
-            // 
-            this.btnRemove.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.btnRemove.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btnRemove.BackgroundImage")));
-            this.btnRemove.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.btnRemove.FlatAppearance.BorderColor = System.Drawing.Color.White;
-            this.btnRemove.FlatAppearance.BorderSize = 0;
-            this.btnRemove.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnRemove.Location = new System.Drawing.Point(29, 9);
-            this.btnRemove.Name = "btnRemove";
-            this.btnRemove.Size = new System.Drawing.Size(72, 45);
-            this.btnRemove.TabIndex = 10;
-            this.btnRemove.UseVisualStyleBackColor = true;
-            this.btnRemove.Click += new System.EventHandler(this.btnRemove_Click);
-            // 
-            // btnPlus
-            // 
-            this.btnPlus.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.btnPlus.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btnPlus.BackgroundImage")));
-            this.btnPlus.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.btnPlus.FlatAppearance.BorderColor = System.Drawing.Color.White;
-            this.btnPlus.FlatAppearance.BorderSize = 0;
-            this.btnPlus.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnPlus.Location = new System.Drawing.Point(527, 9);
-            this.btnPlus.Name = "btnPlus";
-            this.btnPlus.Size = new System.Drawing.Size(72, 45);
-            this.btnPlus.TabIndex = 8;
-            this.btnPlus.UseVisualStyleBackColor = true;
-            this.btnPlus.Click += new System.EventHandler(this.btnPlus_Click);
-            // 
-            // btnMinus
-            // 
-            this.btnMinus.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.btnMinus.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btnMinus.BackgroundImage")));
-            this.btnMinus.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.btnMinus.FlatAppearance.BorderColor = System.Drawing.Color.White;
-            this.btnMinus.FlatAppearance.BorderSize = 0;
-            this.btnMinus.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnMinus.Location = new System.Drawing.Point(277, 9);
-            this.btnMinus.Name = "btnMinus";
-            this.btnMinus.Size = new System.Drawing.Size(72, 45);
-            this.btnMinus.TabIndex = 9;
-            this.btnMinus.UseVisualStyleBackColor = true;
-            this.btnMinus.Click += new System.EventHandler(this.btnMinus_Click);
             // 
             // pnlDelivery
             // 
@@ -791,6 +672,7 @@ namespace POS.Forms
             // txtPhone
             // 
             this.txtPhone.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+            this.txtPhone.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txtPhone.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtPhone.Location = new System.Drawing.Point(316, 14);
             this.txtPhone.Name = "txtPhone";
@@ -817,6 +699,7 @@ namespace POS.Forms
             // txtName
             // 
             this.txtName.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+            this.txtName.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txtName.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtName.Location = new System.Drawing.Point(3, 14);
             this.txtName.Name = "txtName";
@@ -867,6 +750,7 @@ namespace POS.Forms
             // txtAddress
             // 
             this.txtAddress.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+            this.txtAddress.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txtAddress.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtAddress.Location = new System.Drawing.Point(3, 77);
             this.txtAddress.Name = "txtAddress";
@@ -891,6 +775,7 @@ namespace POS.Forms
             // txtDelivery
             // 
             this.txtDelivery.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+            this.txtDelivery.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txtDelivery.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtDelivery.Location = new System.Drawing.Point(316, 140);
             this.txtDelivery.Name = "txtDelivery";
@@ -927,6 +812,137 @@ namespace POS.Forms
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.tableLayoutPanel2.Size = new System.Drawing.Size(624, 88);
             this.tableLayoutPanel2.TabIndex = 15;
+            // 
+            // timer1
+            // 
+            this.timer1.Enabled = true;
+            this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
+            // 
+            // btnExpenses
+            // 
+            this.btnExpenses.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
+            this.btnExpenses.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.btnExpenses.Font = new System.Drawing.Font("Microsoft Sans Serif", 16.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnExpenses.ForeColor = System.Drawing.Color.White;
+            this.btnExpenses.Image = ((System.Drawing.Image)(resources.GetObject("btnExpenses.Image")));
+            this.btnExpenses.Location = new System.Drawing.Point(535, 3);
+            this.btnExpenses.Name = "btnExpenses";
+            this.btnExpenses.Size = new System.Drawing.Size(260, 175);
+            this.btnExpenses.TabIndex = 2;
+            this.btnExpenses.Text = "مصروفات";
+            this.btnExpenses.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
+            this.btnExpenses.UseVisualStyleBackColor = false;
+            this.btnExpenses.Click += new System.EventHandler(this.btnExpenses_Click);
+            // 
+            // btnTayar
+            // 
+            this.btnTayar.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
+            this.btnTayar.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.btnTayar.Font = new System.Drawing.Font("Microsoft Sans Serif", 16.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnTayar.ForeColor = System.Drawing.Color.White;
+            this.btnTayar.Image = ((System.Drawing.Image)(resources.GetObject("btnTayar.Image")));
+            this.btnTayar.Location = new System.Drawing.Point(269, 3);
+            this.btnTayar.Name = "btnTayar";
+            this.btnTayar.Size = new System.Drawing.Size(260, 175);
+            this.btnTayar.TabIndex = 3;
+            this.btnTayar.Text = "طيارين";
+            this.btnTayar.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
+            this.btnTayar.UseVisualStyleBackColor = false;
+            this.btnTayar.Click += new System.EventHandler(this.btnTayar_Click);
+            // 
+            // btnEmployees
+            // 
+            this.btnEmployees.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
+            this.btnEmployees.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.btnEmployees.Font = new System.Drawing.Font("Microsoft Sans Serif", 16.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnEmployees.ForeColor = System.Drawing.Color.White;
+            this.btnEmployees.Image = ((System.Drawing.Image)(resources.GetObject("btnEmployees.Image")));
+            this.btnEmployees.Location = new System.Drawing.Point(801, 3);
+            this.btnEmployees.Name = "btnEmployees";
+            this.btnEmployees.Size = new System.Drawing.Size(260, 175);
+            this.btnEmployees.TabIndex = 1;
+            this.btnEmployees.Text = "موظفين";
+            this.btnEmployees.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
+            this.btnEmployees.UseVisualStyleBackColor = false;
+            this.btnEmployees.Click += new System.EventHandler(this.btnEmployees_Click);
+            // 
+            // btnDone
+            // 
+            this.btnDone.BackColor = System.Drawing.Color.RoyalBlue;
+            this.btnDone.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btnDone.BackgroundImage")));
+            this.btnDone.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.btnDone.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.btnDone.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnDone.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnDone.ForeColor = System.Drawing.Color.White;
+            this.btnDone.Location = new System.Drawing.Point(3, 538);
+            this.btnDone.Name = "btnDone";
+            this.btnDone.Size = new System.Drawing.Size(624, 89);
+            this.btnDone.TabIndex = 14;
+            this.btnDone.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnDone.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.btnDone.UseVisualStyleBackColor = false;
+            this.btnDone.Click += new System.EventHandler(this.btnDone_Click);
+            // 
+            // btnEnterQuantity
+            // 
+            this.btnEnterQuantity.BackgroundImage = global::POS.Properties.Resources.plus;
+            this.btnEnterQuantity.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.btnEnterQuantity.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.btnEnterQuantity.FlatAppearance.BorderColor = System.Drawing.Color.White;
+            this.btnEnterQuantity.FlatAppearance.BorderSize = 0;
+            this.btnEnterQuantity.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnEnterQuantity.Location = new System.Drawing.Point(6, 6);
+            this.btnEnterQuantity.Name = "btnEnterQuantity";
+            this.btnEnterQuantity.Size = new System.Drawing.Size(83, 51);
+            this.btnEnterQuantity.TabIndex = 11;
+            this.btnEnterQuantity.UseVisualStyleBackColor = true;
+            this.btnEnterQuantity.Click += new System.EventHandler(this.btnEnterQuantity_Click);
+            // 
+            // btnPlus
+            // 
+            this.btnPlus.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btnPlus.BackgroundImage")));
+            this.btnPlus.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.btnPlus.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.btnPlus.FlatAppearance.BorderColor = System.Drawing.Color.White;
+            this.btnPlus.FlatAppearance.BorderSize = 0;
+            this.btnPlus.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnPlus.Location = new System.Drawing.Point(540, 6);
+            this.btnPlus.Name = "btnPlus";
+            this.btnPlus.Size = new System.Drawing.Size(84, 51);
+            this.btnPlus.TabIndex = 8;
+            this.btnPlus.UseVisualStyleBackColor = true;
+            this.btnPlus.Click += new System.EventHandler(this.btnPlus_Click);
+            // 
+            // btnMinus
+            // 
+            this.btnMinus.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btnMinus.BackgroundImage")));
+            this.btnMinus.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.btnMinus.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.btnMinus.FlatAppearance.BorderColor = System.Drawing.Color.White;
+            this.btnMinus.FlatAppearance.BorderSize = 0;
+            this.btnMinus.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnMinus.Location = new System.Drawing.Point(362, 6);
+            this.btnMinus.Name = "btnMinus";
+            this.btnMinus.Size = new System.Drawing.Size(83, 51);
+            this.btnMinus.TabIndex = 9;
+            this.btnMinus.UseVisualStyleBackColor = true;
+            this.btnMinus.Click += new System.EventHandler(this.btnMinus_Click);
+            // 
+            // btnRemove
+            // 
+            this.btnRemove.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btnRemove.BackgroundImage")));
+            this.btnRemove.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.btnRemove.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.btnRemove.FlatAppearance.BorderColor = System.Drawing.Color.White;
+            this.btnRemove.FlatAppearance.BorderSize = 0;
+            this.btnRemove.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnRemove.Location = new System.Drawing.Point(184, 6);
+            this.btnRemove.Name = "btnRemove";
+            this.btnRemove.Size = new System.Drawing.Size(83, 51);
+            this.btnRemove.TabIndex = 10;
+            this.btnRemove.UseVisualStyleBackColor = true;
+            this.btnRemove.Click += new System.EventHandler(this.btnRemove_Click);
             // 
             // btnUpdateTable
             // 
@@ -970,10 +986,21 @@ namespace POS.Forms
             this.btnClear.UseVisualStyleBackColor = false;
             this.btnClear.Click += new System.EventHandler(this.btnClear_Click_1);
             // 
-            // timer1
+            // btnExit
             // 
-            this.timer1.Enabled = true;
-            this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
+            this.btnExit.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnExit.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btnExit.BackgroundImage")));
+            this.btnExit.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.btnExit.FlatAppearance.BorderColor = System.Drawing.Color.White;
+            this.btnExit.FlatAppearance.BorderSize = 0;
+            this.btnExit.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnExit.ForeColor = System.Drawing.Color.Cornsilk;
+            this.btnExit.Location = new System.Drawing.Point(1885, 3);
+            this.btnExit.Name = "btnExit";
+            this.btnExit.Size = new System.Drawing.Size(94, 44);
+            this.btnExit.TabIndex = 7;
+            this.btnExit.UseVisualStyleBackColor = true;
+            this.btnExit.Click += new System.EventHandler(this.btnExit_Click);
             // 
             // FormPOSResponsive
             // 
@@ -1074,5 +1101,6 @@ namespace POS.Forms
         private System.Windows.Forms.DataGridViewTextBoxColumn ColQuan;
         private System.Windows.Forms.DataGridViewTextBoxColumn ColPrice;
         private System.Windows.Forms.DataGridViewTextBoxColumn ColName;
+        private System.Windows.Forms.Button btnEnterQuantity;
     }
 }
