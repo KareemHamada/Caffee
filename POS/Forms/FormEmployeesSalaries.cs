@@ -9,6 +9,8 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Data.SqlClient;
+using POS.Tools;
+using Microsoft.Reporting.WinForms;
 
 namespace POS.Forms
 {
@@ -241,7 +243,44 @@ namespace POS.Forms
 
         private void btnPrint_Click(object sender, EventArgs e)
         {
+            if (dgvEmployeesSalareis.Rows.Count > 0)
+            {
+                dsShowEmployeeSalaries tbl = new dsShowEmployeeSalaries();
+                for (int i = 0; i < dgvEmployeesSalareis.Rows.Count; i++)
+                {
+                    DataRow dro = tbl.Tables["dtShowEmployeeSalaries"].NewRow();
+                    dro["dateTime"] = dgvEmployeesSalareis[0, i].Value;
+                    dro["salary"] = dgvEmployeesSalareis[1, i].Value;
+                    dro["name"] = dgvEmployeesSalareis[2, i].Value;
 
+                    tbl.Tables["dtShowEmployeeSalaries"].Rows.Add(dro);
+                }
+
+                FormReports rptForm = new FormReports();
+                rptForm.mainReport.LocalReport.ReportEmbeddedResource = "POS.Reports.ReportShowEmployeeSalaries.rdlc";
+                rptForm.mainReport.LocalReport.DataSources.Clear();
+                rptForm.mainReport.LocalReport.DataSources.Add(new ReportDataSource("DataSet1", tbl.Tables["dtShowEmployeeSalaries"]));
+
+
+                if (bool.Parse(declarations.systemOptions["printToPrinter"].ToString()))
+                {
+                    LocalReport report = new LocalReport();
+                    string path = Application.StartupPath + @"\Reports\ReportShowEmployeeSalaries.rdlc";
+                    report.ReportPath = path;
+                    report.DataSources.Clear();
+                    report.DataSources.Add(new ReportDataSource("DataSet1", tbl.Tables["dtShowEmployeeSalaries"]));
+                    PrintersClass.PrintToPrinter(report);
+                }
+                else
+                {
+                    rptForm.ShowDialog();
+                }
+
+            }
+            else
+            {
+                MessageBox.Show("لا يوجد عناصر لعرضها");
+            }
         }
 
         private void txtSearch_TextChanged(object sender, EventArgs e)
