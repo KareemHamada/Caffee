@@ -31,6 +31,7 @@ namespace POS.Forms
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormMainReports));
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
+            this.btnClientsCashWithdraw = new System.Windows.Forms.Button();
             this.btnShifts = new System.Windows.Forms.Button();
             this.btnOrders = new System.Windows.Forms.Button();
             this.btnExpensesReport = new System.Windows.Forms.Button();
@@ -52,6 +53,7 @@ namespace POS.Forms
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 25F));
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 25F));
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 25F));
+            this.tableLayoutPanel1.Controls.Add(this.btnClientsCashWithdraw, 0, 2);
             this.tableLayoutPanel1.Controls.Add(this.btnShifts, 3, 0);
             this.tableLayoutPanel1.Controls.Add(this.btnOrders, 2, 0);
             this.tableLayoutPanel1.Controls.Add(this.btnExpensesReport, 1, 0);
@@ -62,7 +64,7 @@ namespace POS.Forms
             this.tableLayoutPanel1.Controls.Add(this.btnStoreOrderItems, 0, 1);
             this.tableLayoutPanel1.Controls.Add(this.btnReportItems, 3, 2);
             this.tableLayoutPanel1.Controls.Add(this.btnSupplierCashWithdraw, 2, 2);
-            this.tableLayoutPanel1.Controls.Add(this.btnReportOverAll, 1, 2);
+            this.tableLayoutPanel1.Controls.Add(this.btnReportOverAll, 0, 2);
             this.tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel1.Location = new System.Drawing.Point(0, 0);
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
@@ -72,6 +74,22 @@ namespace POS.Forms
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 33.33333F));
             this.tableLayoutPanel1.Size = new System.Drawing.Size(1402, 753);
             this.tableLayoutPanel1.TabIndex = 1;
+            // 
+            // btnClientsCashWithdraw
+            // 
+            this.btnClientsCashWithdraw.BackColor = System.Drawing.Color.White;
+            this.btnClientsCashWithdraw.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.btnClientsCashWithdraw.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnClientsCashWithdraw.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
+            this.btnClientsCashWithdraw.Image = ((System.Drawing.Image)(resources.GetObject("btnClientsCashWithdraw.Image")));
+            this.btnClientsCashWithdraw.Location = new System.Drawing.Point(353, 505);
+            this.btnClientsCashWithdraw.Name = "btnClientsCashWithdraw";
+            this.btnClientsCashWithdraw.Size = new System.Drawing.Size(344, 245);
+            this.btnClientsCashWithdraw.TabIndex = 24;
+            this.btnClientsCashWithdraw.Text = "تقرير اجل و سداد عملاء";
+            this.btnClientsCashWithdraw.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
+            this.btnClientsCashWithdraw.UseVisualStyleBackColor = false;
+            this.btnClientsCashWithdraw.Click += new System.EventHandler(this.btnClientsCashWithdraw_Click);
             // 
             // btnShifts
             // 
@@ -240,7 +258,7 @@ namespace POS.Forms
             this.btnReportOverAll.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnReportOverAll.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
             this.btnReportOverAll.Image = ((System.Drawing.Image)(resources.GetObject("btnReportOverAll.Image")));
-            this.btnReportOverAll.Location = new System.Drawing.Point(353, 505);
+            this.btnReportOverAll.Location = new System.Drawing.Point(3, 505);
             this.btnReportOverAll.Name = "btnReportOverAll";
             this.btnReportOverAll.Size = new System.Drawing.Size(344, 245);
             this.btnReportOverAll.TabIndex = 23;
@@ -281,5 +299,6 @@ namespace POS.Forms
         private System.Windows.Forms.Button btnReportItems;
         private System.Windows.Forms.Button btnSupplierCashWithdraw;
         private System.Windows.Forms.Button btnReportOverAll;
+        private System.Windows.Forms.Button btnClientsCashWithdraw;
     }
 }

@@ -2,42 +2,42 @@
 <Report xmlns="http://schemas.microsoft.com/sqlserver/reporting/2016/01/reportdefinition" xmlns:rd="http://schemas.microsoft.com/SQLServer/reporting/reportdesigner">
   <AutoRefresh>0</AutoRefresh>
   <DataSources>
-    <DataSource Name="dsSupplierCashWithdraw">
+    <DataSource Name="dsClientsCashWithdraw">
       <ConnectionProperties>
         <DataProvider>System.Data.DataSet</DataProvider>
         <ConnectString>/* Local Connection */</ConnectString>
       </ConnectionProperties>
-      <rd:DataSourceID>1db5a105-be18-406e-8436-f9720ae0a1a9</rd:DataSourceID>
+      <rd:DataSourceID>9722a518-2830-4783-93f6-e94773b27b90</rd:DataSourceID>
     </DataSource>
   </DataSources>
   <DataSets>
     <DataSet Name="DataSet1">
       <Query>
-        <DataSourceName>dsSupplierCashWithdraw</DataSourceName>
+        <DataSourceName>dsClientsCashWithdraw</DataSourceName>
         <CommandText>/* Local Query */</CommandText>
       </Query>
       <Fields>
-        <Field Name="supplier">
-          <DataField>supplier</DataField>
+        <Field Name="client">
+          <DataField>client</DataField>
           <rd:TypeName>System.String</rd:TypeName>
-        </Field>
-        <Field Name="money">
-          <DataField>money</DataField>
-          <rd:TypeName>System.Double</rd:TypeName>
         </Field>
         <Field Name="operationType">
           <DataField>operationType</DataField>
           <rd:TypeName>System.String</rd:TypeName>
         </Field>
+        <Field Name="money">
+          <DataField>money</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
         <Field Name="dateTime">
           <DataField>dateTime</DataField>
-          <rd:TypeName>System.DateTime</rd:TypeName>
+          <rd:TypeName>System.String</rd:TypeName>
         </Field>
       </Fields>
       <rd:DataSetInfo>
-        <rd:DataSetName>dsSupplierCashWithdraw</rd:DataSetName>
-        <rd:SchemaPath>C:\Users\Kareem\source\repos\POS\POS\Tools\dsSupplierCashWithdraw.xsd</rd:SchemaPath>
-        <rd:TableName>dtSupplierCashWithdraw</rd:TableName>
+        <rd:DataSetName>dsClientsCashWithdraw</rd:DataSetName>
+        <rd:SchemaPath>E:\Caffee POS\stable-10-9-2022\Caffee\POS\POS\Tools\dsClientsCashWithdraw.xsd</rd:SchemaPath>
+        <rd:TableName>dtClientsCashWithdraw</rd:TableName>
         <rd:TableAdapterFillMethod />
         <rd:TableAdapterGetDataMethod />
         <rd:TableAdapterName />
@@ -48,167 +48,20 @@
     <ReportSection>
       <Body>
         <ReportItems>
-          <Textbox Name="Textbox1">
-            <CanGrow>true</CanGrow>
-            <KeepTogether>true</KeepTogether>
-            <Paragraphs>
-              <Paragraph>
-                <TextRuns>
-                  <TextRun>
-                    <Value>تقرير اجل و سداد موردين</Value>
-                    <Style />
-                  </TextRun>
-                </TextRuns>
-                <Style>
-                  <TextAlign>Center</TextAlign>
-                </Style>
-              </Paragraph>
-            </Paragraphs>
-            <rd:DefaultName>Textbox1</rd:DefaultName>
-            <Top>0.14744in</Top>
-            <Left>0.76084in</Left>
-            <Height>0.25in</Height>
-            <Width>1.39735in</Width>
-            <Style>
-              <Border>
-                <Style>None</Style>
-              </Border>
-            </Style>
-          </Textbox>
-          <Textbox Name="Textbox2">
-            <CanGrow>true</CanGrow>
-            <KeepTogether>true</KeepTogether>
-            <Paragraphs>
-              <Paragraph>
-                <TextRuns>
-                  <TextRun>
-                    <Value>: من</Value>
-                    <Style>
-                      <FontSize>8pt</FontSize>
-                    </Style>
-                  </TextRun>
-                </TextRuns>
-                <Style>
-                  <TextAlign>Center</TextAlign>
-                </Style>
-              </Paragraph>
-            </Paragraphs>
-            <rd:DefaultName>Textbox2</rd:DefaultName>
-            <Top>0.53728in</Top>
-            <Left>2.53339in</Left>
-            <Height>0.17544in</Height>
-            <Width>0.19507in</Width>
-            <ZIndex>1</ZIndex>
-            <Style>
-              <Border>
-                <Style>None</Style>
-              </Border>
-            </Style>
-          </Textbox>
-          <Textbox Name="Textbox3">
-            <CanGrow>true</CanGrow>
-            <KeepTogether>true</KeepTogether>
-            <Paragraphs>
-              <Paragraph>
-                <TextRuns>
-                  <TextRun>
-                    <Value>: الي</Value>
-                    <Style>
-                      <FontSize>8pt</FontSize>
-                    </Style>
-                  </TextRun>
-                </TextRuns>
-                <Style>
-                  <TextAlign>Center</TextAlign>
-                </Style>
-              </Paragraph>
-            </Paragraphs>
-            <rd:DefaultName>Textbox2</rd:DefaultName>
-            <Top>0.53728in</Top>
-            <Left>1.09563in</Left>
-            <Height>0.17544in</Height>
-            <Width>0.37281in</Width>
-            <ZIndex>2</ZIndex>
-            <Style>
-              <Border>
-                <Style>None</Style>
-              </Border>
-            </Style>
-          </Textbox>
-          <Textbox Name="From">
-            <CanGrow>true</CanGrow>
-            <KeepTogether>true</KeepTogether>
-            <Paragraphs>
-              <Paragraph>
-                <TextRuns>
-                  <TextRun>
-                    <Value>=Parameters!From.Value</Value>
-                    <Style>
-                      <FontSize>8pt</FontSize>
-                    </Style>
-                  </TextRun>
-                </TextRuns>
-                <Style>
-                  <TextAlign>Center</TextAlign>
-                </Style>
-              </Paragraph>
-            </Paragraphs>
-            <rd:DefaultName>From</rd:DefaultName>
-            <Top>0.54487in</Top>
-            <Left>1.50561in</Left>
-            <Height>0.16785in</Height>
-            <Width>1in</Width>
-            <ZIndex>3</ZIndex>
-            <Style>
-              <Border>
-                <Style>None</Style>
-              </Border>
-            </Style>
-          </Textbox>
-          <Textbox Name="To">
-            <CanGrow>true</CanGrow>
-            <KeepTogether>true</KeepTogether>
-            <Paragraphs>
-              <Paragraph>
-                <TextRuns>
-                  <TextRun>
-                    <Value>=Parameters!To.Value</Value>
-                    <Style>
-                      <FontSize>8pt</FontSize>
-                    </Style>
-                  </TextRun>
-                </TextRuns>
-                <Style>
-                  <TextAlign>Center</TextAlign>
-                </Style>
-              </Paragraph>
-            </Paragraphs>
-            <rd:DefaultName>To</rd:DefaultName>
-            <Top>0.54487in</Top>
-            <Left>0.125in</Left>
-            <Height>0.16785in</Height>
-            <Width>0.91508in</Width>
-            <ZIndex>4</ZIndex>
-            <Style>
-              <Border>
-                <Style>None</Style>
-              </Border>
-            </Style>
-          </Textbox>
           <Tablix Name="Tablix1">
             <TablixBody>
               <TablixColumns>
                 <TablixColumn>
-                  <Width>0.65086in</Width>
+                  <Width>0.67004in</Width>
                 </TablixColumn>
                 <TablixColumn>
-                  <Width>0.65086in</Width>
+                  <Width>0.67004in</Width>
                 </TablixColumn>
                 <TablixColumn>
-                  <Width>0.65086in</Width>
+                  <Width>0.67004in</Width>
                 </TablixColumn>
                 <TablixColumn>
-                  <Width>0.65086in</Width>
+                  <Width>0.67004in</Width>
                 </TablixColumn>
               </TablixColumns>
               <TablixRows>
@@ -217,7 +70,7 @@
                   <TablixCells>
                     <TablixCell>
                       <CellContents>
-                        <Textbox Name="Textbox6">
+                        <Textbox Name="Textbox1">
                           <CanGrow>true</CanGrow>
                           <KeepTogether>true</KeepTogether>
                           <Paragraphs>
@@ -226,7 +79,9 @@
                                 <TextRun>
                                   <Value>التاريخ</Value>
                                   <Style>
-                                    <FontSize>8pt</FontSize>
+                                    <FontFamily>arabic Typesetting</FontFamily>
+                                    <FontSize>12pt</FontSize>
+                                    <FontWeight>Bold</FontWeight>
                                   </Style>
                                 </TextRun>
                               </TextRuns>
@@ -235,7 +90,7 @@
                               </Style>
                             </Paragraph>
                           </Paragraphs>
-                          <rd:DefaultName>Textbox6</rd:DefaultName>
+                          <rd:DefaultName>Textbox1</rd:DefaultName>
                           <Style>
                             <Border>
                               <Style>Solid</Style>
@@ -255,7 +110,9 @@
                                 <TextRun>
                                   <Value>المبلغ</Value>
                                   <Style>
-                                    <FontSize>8pt</FontSize>
+                                    <FontFamily>arabic Typesetting</FontFamily>
+                                    <FontSize>12pt</FontSize>
+                                    <FontWeight>Bold</FontWeight>
                                   </Style>
                                 </TextRun>
                               </TextRuns>
@@ -284,7 +141,9 @@
                                 <TextRun>
                                   <Value>نوع العملية</Value>
                                   <Style>
-                                    <FontSize>8pt</FontSize>
+                                    <FontFamily>arabic Typesetting</FontFamily>
+                                    <FontSize>12pt</FontSize>
+                                    <FontWeight>Bold</FontWeight>
                                   </Style>
                                 </TextRun>
                               </TextRuns>
@@ -311,9 +170,11 @@
                             <Paragraph>
                               <TextRuns>
                                 <TextRun>
-                                  <Value>المورد</Value>
+                                  <Value>العميل</Value>
                                   <Style>
-                                    <FontSize>8pt</FontSize>
+                                    <FontFamily>arabic Typesetting</FontFamily>
+                                    <FontSize>12pt</FontSize>
+                                    <FontWeight>Bold</FontWeight>
                                   </Style>
                                 </TextRun>
                               </TextRuns>
@@ -347,7 +208,8 @@
                                 <TextRun>
                                   <Value>=Fields!dateTime.Value</Value>
                                   <Style>
-                                    <FontSize>8pt</FontSize>
+                                    <FontFamily>arabic Typesetting</FontFamily>
+                                    <FontSize>12pt</FontSize>
                                   </Style>
                                 </TextRun>
                               </TextRuns>
@@ -376,7 +238,8 @@
                                 <TextRun>
                                   <Value>=Fields!money.Value</Value>
                                   <Style>
-                                    <FontSize>8pt</FontSize>
+                                    <FontFamily>arabic Typesetting</FontFamily>
+                                    <FontSize>12pt</FontSize>
                                   </Style>
                                 </TextRun>
                               </TextRuns>
@@ -405,7 +268,8 @@
                                 <TextRun>
                                   <Value>=Fields!operationType.Value</Value>
                                   <Style>
-                                    <FontSize>8pt</FontSize>
+                                    <FontFamily>arabic Typesetting</FontFamily>
+                                    <FontSize>12pt</FontSize>
                                   </Style>
                                 </TextRun>
                               </TextRuns>
@@ -419,23 +283,23 @@
                             <Border>
                               <Style>Solid</Style>
                             </Border>
-                            <PaddingRight>2pt</PaddingRight>
                           </Style>
                         </Textbox>
                       </CellContents>
                     </TablixCell>
                     <TablixCell>
                       <CellContents>
-                        <Textbox Name="supplier">
+                        <Textbox Name="client">
                           <CanGrow>true</CanGrow>
                           <KeepTogether>true</KeepTogether>
                           <Paragraphs>
                             <Paragraph>
                               <TextRuns>
                                 <TextRun>
-                                  <Value>=Fields!supplier.Value</Value>
+                                  <Value>=Fields!client.Value</Value>
                                   <Style>
-                                    <FontSize>8pt</FontSize>
+                                    <FontFamily>arabic Typesetting</FontFamily>
+                                    <FontSize>12pt</FontSize>
                                   </Style>
                                 </TextRun>
                               </TextRuns>
@@ -444,7 +308,7 @@
                               </Style>
                             </Paragraph>
                           </Paragraphs>
-                          <rd:DefaultName>supplier</rd:DefaultName>
+                          <rd:DefaultName>client</rd:DefaultName>
                           <Style>
                             <Border>
                               <Style>Solid</Style>
@@ -476,25 +340,187 @@
               </TablixMembers>
             </TablixRowHierarchy>
             <DataSetName>DataSet1</DataSetName>
-            <Top>0.90946in</Top>
+            <Top>0.73459in</Top>
             <Left>0.125in</Left>
             <Height>0.5in</Height>
-            <Width>2.60344in</Width>
-            <ZIndex>5</ZIndex>
+            <Width>2.68015in</Width>
             <Style>
               <Border>
                 <Style>None</Style>
               </Border>
             </Style>
           </Tablix>
+          <Textbox Name="Textbox2">
+            <CanGrow>true</CanGrow>
+            <KeepTogether>true</KeepTogether>
+            <Paragraphs>
+              <Paragraph>
+                <TextRuns>
+                  <TextRun>
+                    <Value>: من</Value>
+                    <Style>
+                      <FontSize>8pt</FontSize>
+                    </Style>
+                  </TextRun>
+                </TextRuns>
+                <Style>
+                  <TextAlign>Center</TextAlign>
+                </Style>
+              </Paragraph>
+            </Paragraphs>
+            <rd:DefaultName>Textbox2</rd:DefaultName>
+            <Top>0.41898in</Top>
+            <Left>2.61008in</Left>
+            <Height>0.16155in</Height>
+            <Width>0.19507in</Width>
+            <ZIndex>1</ZIndex>
+            <Style>
+              <Border>
+                <Style>None</Style>
+              </Border>
+            </Style>
+          </Textbox>
+          <Textbox Name="Textbox3">
+            <CanGrow>true</CanGrow>
+            <KeepTogether>true</KeepTogether>
+            <Paragraphs>
+              <Paragraph>
+                <TextRuns>
+                  <TextRun>
+                    <Value>: الي</Value>
+                    <Style>
+                      <FontSize>8pt</FontSize>
+                    </Style>
+                  </TextRun>
+                </TextRuns>
+                <Style>
+                  <TextAlign>Center</TextAlign>
+                </Style>
+              </Paragraph>
+            </Paragraphs>
+            <rd:DefaultName>Textbox2</rd:DefaultName>
+            <Top>0.41898in</Top>
+            <Left>1.18021in</Left>
+            <Height>0.16155in</Height>
+            <Width>0.28487in</Width>
+            <ZIndex>2</ZIndex>
+            <Style>
+              <Border>
+                <Style>None</Style>
+              </Border>
+            </Style>
+          </Textbox>
+          <Textbox Name="Textbox4">
+            <CanGrow>true</CanGrow>
+            <KeepTogether>true</KeepTogether>
+            <Paragraphs>
+              <Paragraph>
+                <TextRuns>
+                  <TextRun>
+                    <Value>تقرير اجل و سداد عملاء</Value>
+                    <Style />
+                  </TextRun>
+                </TextRuns>
+                <Style>
+                  <TextAlign>Center</TextAlign>
+                </Style>
+              </Paragraph>
+              <Paragraph>
+                <TextRuns>
+                  <TextRun>
+                    <Value />
+                    <Style />
+                  </TextRun>
+                </TextRuns>
+                <Style>
+                  <TextAlign>Center</TextAlign>
+                </Style>
+              </Paragraph>
+            </Paragraphs>
+            <rd:DefaultName>Textbox1</rd:DefaultName>
+            <Top>0.11928in</Top>
+            <Left>0.73292in</Left>
+            <Height>0.18719in</Height>
+            <Width>1.39735in</Width>
+            <ZIndex>3</ZIndex>
+            <Style>
+              <Border>
+                <Style>None</Style>
+              </Border>
+            </Style>
+          </Textbox>
+          <Textbox Name="From">
+            <CanGrow>true</CanGrow>
+            <KeepTogether>true</KeepTogether>
+            <Paragraphs>
+              <Paragraph>
+                <TextRuns>
+                  <TextRun>
+                    <Value>=Parameters!From.Value</Value>
+                    <Style>
+                      <FontFamily>arabic Typesetting</FontFamily>
+                      <FontSize>12pt</FontSize>
+                    </Style>
+                  </TextRun>
+                </TextRuns>
+                <Style>
+                  <TextAlign>Center</TextAlign>
+                </Style>
+              </Paragraph>
+            </Paragraphs>
+            <rd:DefaultName>From</rd:DefaultName>
+            <Top>0.41514in</Top>
+            <Left>1.50674in</Left>
+            <Height>0.16539in</Height>
+            <Width>1in</Width>
+            <ZIndex>4</ZIndex>
+            <Style>
+              <Border>
+                <Style>None</Style>
+              </Border>
+            </Style>
+          </Textbox>
+          <Textbox Name="To">
+            <CanGrow>true</CanGrow>
+            <KeepTogether>true</KeepTogether>
+            <Paragraphs>
+              <Paragraph>
+                <TextRuns>
+                  <TextRun>
+                    <Value>=Parameters!To.Value</Value>
+                    <Style>
+                      <FontFamily>arabic Typesetting</FontFamily>
+                      <FontSize>12pt</FontSize>
+                    </Style>
+                  </TextRun>
+                </TextRuns>
+                <Style>
+                  <TextAlign>Center</TextAlign>
+                </Style>
+              </Paragraph>
+            </Paragraphs>
+            <rd:DefaultName>To</rd:DefaultName>
+            <Top>0.41514in</Top>
+            <Left>0.09045in</Left>
+            <Height>0.16539in</Height>
+            <Width>1in</Width>
+            <ZIndex>5</ZIndex>
+            <Style>
+              <Border>
+                <Style>None</Style>
+              </Border>
+            </Style>
+          </Textbox>
         </ReportItems>
-        <Height>1.64355in</Height>
+        <Height>1.35959in</Height>
         <Style />
       </Body>
-      <Width>2.91827in</Width>
+      <Width>2.87437in</Width>
       <Page>
-        <PageHeight>4.33071in</PageHeight>
-        <PageWidth>3.14961in</PageWidth>
+        <LeftMargin>1in</LeftMargin>
+        <RightMargin>1in</RightMargin>
+        <TopMargin>1in</TopMargin>
+        <BottomMargin>1in</BottomMargin>
         <Style />
       </Page>
     </ReportSection>
@@ -502,10 +528,14 @@
   <ReportParameters>
     <ReportParameter Name="From">
       <DataType>String</DataType>
+      <Nullable>true</Nullable>
+      <AllowBlank>true</AllowBlank>
       <Prompt>ReportParameter1</Prompt>
     </ReportParameter>
     <ReportParameter Name="To">
       <DataType>String</DataType>
+      <Nullable>true</Nullable>
+      <AllowBlank>true</AllowBlank>
       <Prompt>ReportParameter1</Prompt>
     </ReportParameter>
   </ReportParameters>
@@ -528,5 +558,5 @@
     </GridLayoutDefinition>
   </ReportParametersLayout>
   <rd:ReportUnitType>Inch</rd:ReportUnitType>
-  <rd:ReportID>bd29f749-83f1-454d-9d09-3ec13d4fd8d5</rd:ReportID>
+  <rd:ReportID>beae515a-7b5b-4ec4-930c-b855d0f71839</rd:ReportID>
 </Report>

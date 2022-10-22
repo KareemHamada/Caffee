@@ -1,32 +1,33 @@
-﻿using System;
+﻿using Microsoft.Reporting.WinForms;
+using POS.Classes;
+using POS.Tools;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Data.SqlClient;
 using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using System.Data.SqlClient;
-using POS.Classes;
-using POS.Tools;
-using Microsoft.Reporting.WinForms;
 
 namespace POS.Forms
 {
-    public partial class FormReportSupplierCashWithdraw : Form
+    public partial class FormReportClientsCashWithdraw : Form
     {
-        public FormReportSupplierCashWithdraw()
+        public FormReportClientsCashWithdraw()
         {
             InitializeComponent();
         }
         private SqlCommand cmd;
-        private void FormReportSupplierCashWithdraw_Load(object sender, EventArgs e)
+        private void FormReportClientsCashWithdraw_Load(object sender, EventArgs e)
         {
-            loadTable("select SupplierCashWithdraw.id,Suppliers.name,SupplierCashWithdraw.operationType,SupplierCashWithdraw.money,SupplierCashWithdraw.dateTime from SupplierCashWithdraw LEFT JOIN Suppliers on SupplierCashWithdraw.supplierId = Suppliers.id");
+            loadTable("select ClientCashWithdraw.id,Clients.name,ClientCashWithdraw.operationType,ClientCashWithdraw.money,ClientCashWithdraw.dateTime from ClientCashWithdraw LEFT JOIN Clients on ClientCashWithdraw.ClientId = Clients.id");
             dtpTo.Value = DateTime.Now;
             dtpFrom.Value = DateTime.Now;
         }
+
 
         private void loadTable(string query)
         {
@@ -62,9 +63,6 @@ namespace POS.Forms
 
         }
 
-      
-
-
         private void btnClose_Click(object sender, EventArgs e)
         {
             Close();
@@ -74,22 +72,22 @@ namespace POS.Forms
         {
             if (dgvLoading.Rows.Count > 0)
             {
-                dsSupplierCashWithdraw cw = new dsSupplierCashWithdraw();
+                dsClientsCashWithdraw cw = new dsClientsCashWithdraw();
                 for (int i = 0; i < dgvLoading.Rows.Count; i++)
                 {
-                    DataRow dro = cw.Tables["dtSupplierCashWithdraw"].NewRow();
-                    dro["supplier"] = dgvLoading[3, i].Value;
+                    DataRow dro = cw.Tables["dtClientsCashWithdraw"].NewRow();
+                    dro["client"] = dgvLoading[3, i].Value;
                     dro["operationType"] = dgvLoading[2, i].Value;
                     dro["money"] = dgvLoading[1, i].Value;
                     dro["dateTime"] = dgvLoading[0, i].Value;
 
-                    cw.Tables["dtSupplierCashWithdraw"].Rows.Add(dro);
+                    cw.Tables["dtClientsCashWithdraw"].Rows.Add(dro);
                 }
 
                 FormReports rptForm = new FormReports();
-                rptForm.mainReport.LocalReport.ReportEmbeddedResource = "POS.Reports.ReportSupplierCashWithdraw.rdlc";
+                rptForm.mainReport.LocalReport.ReportEmbeddedResource = "POS.Reports.ReportClientsCashWithdraw.rdlc";
                 rptForm.mainReport.LocalReport.DataSources.Clear();
-                rptForm.mainReport.LocalReport.DataSources.Add(new ReportDataSource("DataSet1", cw.Tables["dtSupplierCashWithdraw"]));
+                rptForm.mainReport.LocalReport.DataSources.Add(new ReportDataSource("DataSet1", cw.Tables["dtClientsCashWithdraw"]));
 
                 ReportParameter[] reportParameters = new ReportParameter[2];
                 reportParameters[0] = new ReportParameter("From", dgvLoading[0, 0].Value.ToString());
@@ -99,10 +97,10 @@ namespace POS.Forms
                 if (bool.Parse(declarations.systemOptions["printToPrinter"].ToString()))
                 {
                     LocalReport report = new LocalReport();
-                    string path = Application.StartupPath + @"\Reports\ReportSupplierCashWithdraw.rdlc";
+                    string path = Application.StartupPath + @"\Reports\ReportClientsCashWithdraw.rdlc";
                     report.ReportPath = path;
                     report.DataSources.Clear();
-                    report.DataSources.Add(new ReportDataSource("DataSet1", cw.Tables["dtSupplierCashWithdraw"]));
+                    report.DataSources.Add(new ReportDataSource("DataSet1", cw.Tables["dtClientsCashWithdraw"]));
                     report.SetParameters(reportParameters);
                     PrintersClass.PrintToPrinter(report);
                 }
@@ -119,16 +117,6 @@ namespace POS.Forms
             }
         }
 
-        private void btnSearch_Click(object sender, EventArgs e)
-        {
-            loadTable("select SupplierCashWithdraw.id,Suppliers.name,SupplierCashWithdraw.operationType,SupplierCashWithdraw.money,SupplierCashWithdraw.dateTime from SupplierCashWithdraw LEFT JOIN Suppliers on SupplierCashWithdraw.supplierId = Suppliers.id where dateTime between '" + dtpFrom.Value.ToString("yyyy-MM-dd") + "' and '" + dtpTo.Value.ToString("yyyy-MM-dd") + "'");
-        }
-
-        private void btnReload_Click(object sender, EventArgs e)
-        {
-            loadTable("select SupplierCashWithdraw.id,Suppliers.name,SupplierCashWithdraw.operationType,SupplierCashWithdraw.money,SupplierCashWithdraw.dateTime from SupplierCashWithdraw LEFT JOIN Suppliers on SupplierCashWithdraw.supplierId = Suppliers.id");
-        }
-
         private void txtSearch_TextChanged(object sender, EventArgs e)
         {
             search(txtSearch.Text);
@@ -138,11 +126,11 @@ namespace POS.Forms
         {
             if (string.IsNullOrEmpty(text))
             {
-                loadTable("select SupplierCashWithdraw.id,Suppliers.name,SupplierCashWithdraw.operationType,SupplierCashWithdraw.money,SupplierCashWithdraw.dateTime from SupplierCashWithdraw LEFT JOIN Suppliers on SupplierCashWithdraw.supplierId = Suppliers.id");
+                loadTable("select ClientCashWithdraw.id,Clients.name,ClientCashWithdraw.operationType,ClientCashWithdraw.money,ClientCashWithdraw.dateTime from ClientCashWithdraw LEFT JOIN Clients on ClientCashWithdraw.ClientId = Clients.id");
             }
             else
             {
-                loadTable("select SupplierCashWithdraw.id,Suppliers.name,SupplierCashWithdraw.operationType,SupplierCashWithdraw.money,SupplierCashWithdraw.dateTime from SupplierCashWithdraw LEFT JOIN Suppliers on SupplierCashWithdraw.supplierId = Suppliers.id where Suppliers.name like '%" + text + "%' or SupplierCashWithdraw.operationType like '%" + text + "%' ");
+                loadTable("select ClientCashWithdraw.id,Clients.name,ClientCashWithdraw.operationType,ClientCashWithdraw.money,ClientCashWithdraw.dateTime from ClientCashWithdraw LEFT JOIN Clients on ClientCashWithdraw.ClientId = Clients.id where Clients.name like '%" + text + "%' or ClientCashWithdraw.operationType like '%" + text + "%'");
             }
         }
     }

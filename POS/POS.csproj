@@ -461,6 +461,12 @@
     <Compile Include="Forms\FormReportAttendLeave.Designer.cs">
       <DependentUpon>FormReportAttendLeave.cs</DependentUpon>
     </Compile>
+    <Compile Include="Forms\FormReportClientsCashWithdraw.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\FormReportClientsCashWithdraw.Designer.cs">
+      <DependentUpon>FormReportClientsCashWithdraw.cs</DependentUpon>
+    </Compile>
     <Compile Include="Forms\FormReportExpenses.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -611,6 +617,11 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>dsChecks.xsd</DependentUpon>
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Compile>
+    <Compile Include="Tools\dsClientsCashWithdraw.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>dsClientsCashWithdraw.xsd</DependentUpon>
     </Compile>
     <Compile Include="Tools\dsDepositWithdrawEmployees.cs">
       <DependentUpon>dsDepositWithdrawEmployees.xsd</DependentUpon>
@@ -847,6 +858,9 @@
     <EmbeddedResource Include="Forms\FormReportAttendLeave.resx">
       <DependentUpon>FormReportAttendLeave.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Forms\FormReportClientsCashWithdraw.resx">
+      <DependentUpon>FormReportClientsCashWithdraw.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Forms\FormReportExpenses.resx">
       <DependentUpon>FormReportExpenses.cs</DependentUpon>
     </EmbeddedResource>
@@ -924,6 +938,7 @@
     <EmbeddedResource Include="Reports\ReportAttendLeave.rdlc">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </EmbeddedResource>
+    <EmbeddedResource Include="Reports\ReportClientsCashWithdraw.rdlc" />
     <EmbeddedResource Include="Reports\ReportDepositWithdrawEmployees.rdlc">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </EmbeddedResource>
@@ -1028,6 +1043,17 @@
     <None Include="Tools\dsChecks.xss">
       <DependentUpon>dsChecks.xsd</DependentUpon>
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="Tools\dsClientsCashWithdraw.xsc">
+      <DependentUpon>dsClientsCashWithdraw.xsd</DependentUpon>
+    </None>
+    <None Include="Tools\dsClientsCashWithdraw.xsd">
+      <SubType>Designer</SubType>
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>dsClientsCashWithdraw.Designer.cs</LastGenOutput>
+    </None>
+    <None Include="Tools\dsClientsCashWithdraw.xss">
+      <DependentUpon>dsClientsCashWithdraw.xsd</DependentUpon>
     </None>
     <None Include="Tools\dsDepositWithdrawEmployees.xsc">
       <DependentUpon>dsDepositWithdrawEmployees.xsd</DependentUpon>

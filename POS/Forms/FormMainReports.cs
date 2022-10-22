@@ -83,5 +83,10 @@ namespace POS.Forms
             frm.Show();
         }
 
+        private void btnClientsCashWithdraw_Click(object sender, EventArgs e)
+        {
+            FormReportClientsCashWithdraw frm = new FormReportClientsCashWithdraw();
+            frm.Show();
+        }
     }
 }
