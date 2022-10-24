@@ -50,9 +50,19 @@ namespace POS.Forms
                             picBox.BackgroundImage = Helper.ByteToImage(dataTable.Rows[i]["image"]);
                         }
 
-                        bool printToPrinter = false;
-                        bool.TryParse(dataTable.Rows[i]["printToPrinter"].ToString(), out printToPrinter);
-                        cBoxPrintToPrinter.Checked = printToPrinter;
+                        bool directPrintValue = false;
+                        bool.TryParse(dataTable.Rows[i]["directPrint"].ToString(), out directPrintValue);
+                        rdoDirectPrint.Checked = directPrintValue;
+
+
+                        bool showBeforePrintValue = false;
+                        bool.TryParse(dataTable.Rows[i]["showBeforePrint"].ToString(), out showBeforePrintValue);
+                        rdoShowBeforePrint.Checked = showBeforePrintValue;
+
+
+                        bool dontShowValue = false;
+                        bool.TryParse(dataTable.Rows[i]["dontShow"].ToString(), out dontShowValue);
+                        rdoDontShow.Checked = dontShowValue;
                     }
                 }
                 else
@@ -69,18 +79,7 @@ namespace POS.Forms
 
         private void saveData()
         {
-            //if (txtPlace.Text == "")
-            //{
-            //    MessageBox.Show("ادخل اسم المكان");
-            //    txtPlace.Focus();
-            //    return;
-            //}
-            //if (txtPhone.Text == "")
-            //{
-            //    MessageBox.Show("ادخل الرقم");
-            //    txtPhone.Focus();
-            //    return;
-            //}
+            
             if (txtPass.Text == "")
             {
                 MessageBox.Show("ادخل باسورد تقفيل الوردية");
@@ -126,7 +125,9 @@ namespace POS.Forms
             {
                 Row["image"] = Helper.ImageTOByte(picBox.BackgroundImage);
             }
-            Row["printToPrinter"] = cBoxPrintToPrinter.Checked.ToString();
+            Row["directPrint"] = rdoDirectPrint.Checked.ToString();
+            Row["showBeforePrint"] = rdoShowBeforePrint.Checked.ToString();
+            Row["dontShow"] = rdoDontShow.Checked.ToString();
 
         }
 
@@ -135,13 +136,11 @@ namespace POS.Forms
             if (MessageBox.Show("حفظ البيانات", "?", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
             {
                 saveData();
+                ClassLoading loading = new ClassLoading();
+                loading.loadSystemOptions();
             }
         }
 
-        private void btnClose_Click(object sender, EventArgs e)
-        {
-            Close();
-        }
 
         private void btnChoose_Click(object sender, EventArgs e)
         {

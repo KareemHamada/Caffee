@@ -297,7 +297,7 @@ namespace POS.Forms
             //reportParameters[6] = new ReportParameter("total", lblTotal.ToString());
 
 
-            if (bool.Parse(declarations.systemOptions["printToPrinter"].ToString()))
+            if (bool.Parse(declarations.systemOptions["directPrint"].ToString()))
             {
                 LocalReport report = new LocalReport();
                 string path = Application.StartupPath + @"\Reports\ReportOverAll.rdlc";
@@ -307,7 +307,7 @@ namespace POS.Forms
                 report.SetParameters(reportParameters);
                 PrintersClass.PrintToPrinter(report);
             }
-            else
+            else if (bool.Parse(declarations.systemOptions["showBeforePrint"].ToString()))
             {
                 rptForm.mainReport.LocalReport.SetParameters(reportParameters);
                 rptForm.ShowDialog();

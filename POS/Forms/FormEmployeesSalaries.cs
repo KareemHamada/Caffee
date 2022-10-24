@@ -262,7 +262,7 @@ namespace POS.Forms
                 rptForm.mainReport.LocalReport.DataSources.Add(new ReportDataSource("DataSet1", tbl.Tables["dtShowEmployeeSalaries"]));
 
 
-                if (bool.Parse(declarations.systemOptions["printToPrinter"].ToString()))
+                if (bool.Parse(declarations.systemOptions["directPrint"].ToString()))
                 {
                     LocalReport report = new LocalReport();
                     string path = Application.StartupPath + @"\Reports\ReportShowEmployeeSalaries.rdlc";
@@ -271,7 +271,7 @@ namespace POS.Forms
                     report.DataSources.Add(new ReportDataSource("DataSet1", tbl.Tables["dtShowEmployeeSalaries"]));
                     PrintersClass.PrintToPrinter(report);
                 }
-                else
+                else if (bool.Parse(declarations.systemOptions["showBeforePrint"].ToString()))
                 {
                     rptForm.ShowDialog();
                 }

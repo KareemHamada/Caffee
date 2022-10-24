@@ -119,7 +119,7 @@ namespace POS.Forms
                 rptForm.mainReport.LocalReport.DataSources.Add(new ReportDataSource("DataSet1", items.Tables["dtItems"]));
 
 
-                if (bool.Parse(declarations.systemOptions["printToPrinter"].ToString()))
+                if (bool.Parse(declarations.systemOptions["directPrint"].ToString()))
                 {
                     LocalReport report = new LocalReport();
                     string path = Application.StartupPath + @"\Reports\ReportItems.rdlc";
@@ -128,7 +128,7 @@ namespace POS.Forms
                     report.DataSources.Add(new ReportDataSource("DataSet1", items.Tables["dtItems"]));
                     PrintersClass.PrintToPrinter(report);
                 }
-                else
+                else if (bool.Parse(declarations.systemOptions["showBeforePrint"].ToString()))
                 {
                     rptForm.ShowDialog();
                 }

@@ -77,7 +77,7 @@ namespace POS.Classes
             reportParameters[3] = new ReportParameter("RestPhone", declarations.systemOptions["phone"].ToString());
             reportParameters[4] = new ReportParameter("RestAddress", declarations.systemOptions["address"].ToString());
 
-            if (bool.Parse(declarations.systemOptions["printToPrinter"].ToString()))
+            if (bool.Parse(declarations.systemOptions["directPrint"].ToString()))
             {
                 //
                 //String query = File.ReadAllText(Path.Combine(path, "files\\Test.txt"));
@@ -102,7 +102,7 @@ namespace POS.Classes
                 //report.SetParameters(reportParameters);
                 //PrintersClass.PrintToPrinter(report);
             }
-            else
+            else if (bool.Parse(declarations.systemOptions["showBeforePrint"].ToString()))
             {
                 rptForm.mainReport.LocalReport.SetParameters(reportParameters);
                 rptForm.ShowDialog();
@@ -186,7 +186,7 @@ namespace POS.Classes
             // here
             // ******************************************* // 
 
-            if (bool.Parse(declarations.systemOptions["printToPrinter"].ToString()))
+            if (bool.Parse(declarations.systemOptions["directPrint"].ToString()))
             {
 
                 LocalReport report = new LocalReport();
@@ -198,7 +198,7 @@ namespace POS.Classes
                 PrintersClass.PrintToPrinter(report);
 
             }
-            else
+            else if (bool.Parse(declarations.systemOptions["showBeforePrint"].ToString()))
             {
                 rptForm.mainReport.LocalReport.SetParameters(reportParameters);
                 rptForm.ShowDialog();
@@ -228,7 +228,7 @@ namespace POS.Classes
             rptForm.mainReport.LocalReport.DataSources.Clear();
             rptForm.mainReport.LocalReport.DataSources.Add(new ReportDataSource("DataSet1", reports.Tables["EndShiftItemsQuantity"]));
 
-            if (bool.Parse(declarations.systemOptions["printToPrinter"].ToString()))
+            if (bool.Parse(declarations.systemOptions["directPrint"].ToString()))
             {
 
                 LocalReport report = new LocalReport();
@@ -239,7 +239,7 @@ namespace POS.Classes
                 PrintersClass.PrintToPrinter(report);
 
             }
-            else
+            else if (bool.Parse(declarations.systemOptions["showBeforePrint"].ToString()))
             {
                 rptForm.ShowDialog();
             }
@@ -269,7 +269,7 @@ namespace POS.Classes
             rptForm.mainReport.LocalReport.DataSources.Clear();
             rptForm.mainReport.LocalReport.DataSources.Add(new ReportDataSource("DataSet1", reports.Tables["EndShiftExpenses"]));
 
-            if (bool.Parse(declarations.systemOptions["printToPrinter"].ToString()))
+            if (bool.Parse(declarations.systemOptions["directPrint"].ToString()))
             {
 
                 LocalReport report = new LocalReport();
@@ -280,7 +280,7 @@ namespace POS.Classes
                 PrintersClass.PrintToPrinter(report);
 
             }
-            else
+            else if (bool.Parse(declarations.systemOptions["showBeforePrint"].ToString()))
             {
                 rptForm.ShowDialog();
             }

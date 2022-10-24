@@ -112,7 +112,7 @@ namespace POS.Forms
                 reportParameters[1] = new ReportParameter("To", dgvLoading[2, dgvLoading.Rows.Count - 1].Value.ToString());
 
 
-                if (bool.Parse(declarations.systemOptions["printToPrinter"].ToString()))
+                if (bool.Parse(declarations.systemOptions["directPrint"].ToString()))
                 {
                     LocalReport report = new LocalReport();
                     string path = Application.StartupPath + @"\Reports\ReportExpenses.rdlc";
@@ -122,7 +122,7 @@ namespace POS.Forms
                     report.SetParameters(reportParameters);
                     PrintersClass.PrintToPrinter(report);
                 }
-                else
+                else if (bool.Parse(declarations.systemOptions["showBeforePrint"].ToString()))
                 {
                     rptForm.mainReport.LocalReport.SetParameters(reportParameters);
                     rptForm.ShowDialog();

@@ -42,6 +42,7 @@ namespace POS.Forms
             this.mainReport.Size = new System.Drawing.Size(738, 496);
             this.mainReport.TabIndex = 0;
             this.mainReport.WaitControlDisplayAfter = 0;
+            this.mainReport.ZoomMode = Microsoft.Reporting.WinForms.ZoomMode.FullPage;
             // 
             // FormReports
             // 
