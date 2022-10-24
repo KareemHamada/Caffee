@@ -27,21 +27,16 @@ namespace POS.Forms
             Close();
         }
 
-        private void FormLogin_Load(object sender, EventArgs e)
-        {
-
-        }
-
         private void btnOk_Click(object sender, EventArgs e)
         {
             if (txtUserName.Text == "")
             {
-                MessageBox.Show("Enter user name");
+                MessageBox.Show("ادخل اسم المستخدم");
                 return;
             }
             if (txtPassword.Text == "")
             {
-                MessageBox.Show("Enter password");
+                MessageBox.Show("ادخل كلمة المرور");
                 return;
             }
 
@@ -87,14 +82,6 @@ namespace POS.Forms
             finally
             {
                 adoClass.sqlcn.Close();
-            }
-        }
-
-        private void btnOk_KeyPress(object sender, KeyPressEventArgs e)
-        {
-            if (e.KeyChar == (char)13)
-            {
-                MessageBox.Show("ek");
             }
         }
     }

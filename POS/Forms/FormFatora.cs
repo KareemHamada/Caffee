@@ -22,32 +22,152 @@ namespace POS.Forms
         private string orderId;
         public bool tableOrder = false;
         private SqlCommand cmd;
-        private void btnClose_Click(object sender, EventArgs e)
-        {
-            if (tableOrder == true)
-            {
-                Close();
-                FormPOSResponsive.instance.dgvItems.Rows.Clear();
-                FormPOSResponsive.instance.txtTax.Text = "0";
-                FormPOSResponsive.instance.txtDiscount.Text = "0";
-                FormPOSResponsive.instance.txtDelivery.Text = "0";
-                FormPOSResponsive.instance.txtPhone.Text = "";
-                FormPOSResponsive.instance.txtName.Text = "";
-                FormPOSResponsive.instance.comboRegions.Text = "";
-                FormPOSResponsive.instance.txtAddress.Text = "";
-                FormPOSResponsive.instance.comboOrderType.Text = "تيك اوي";
-                FormPOSResponsive.instance.tableIdHidden.Text = "";
-                FormPOSResponsive.instance.btnUpdateTable.Visible = false;
-                FormPOSResponsive.instance.txtTotal.Text = "";
 
-                tableOrder = false;
+
+        private void FormFatora_Load(object sender, EventArgs e)
+        {
+            txtFatoraPaid.Focus();
+            
+        }
+        private void saveItems(string orderId)
+        {
+            try
+            {
+                if (adoClass.sqlcn.State != ConnectionState.Open)
+                {
+                    adoClass.sqlcn.Open();
+                }
+                SqlCommand cmd;
+                for (int i = 0; i < FormPOSResponsive.instance.dgvItems.Rows.Count; i++)
+                {
+
+                    cmd = new SqlCommand("Insert into OrderItems (orderId,itemId,quantity,price,totalItem,dateTime,notes) values (@orderId,@itemId,@quantity,@price,@totalItem,@dateTime,@notes)", adoClass.sqlcn);
+
+                    cmd.Parameters.AddWithValue("@orderId", orderId);
+                    cmd.Parameters.AddWithValue("@itemId", FormPOSResponsive.instance.dgvItems[0, i].Value);
+                    cmd.Parameters.AddWithValue("@quantity", FormPOSResponsive.instance.dgvItems[3, i].Value);
+                    cmd.Parameters.AddWithValue("@price", FormPOSResponsive.instance.dgvItems[4, i].Value);
+                    cmd.Parameters.AddWithValue("@totalItem", FormPOSResponsive.instance.dgvItems[2, i].Value);
+                    cmd.Parameters.AddWithValue("@dateTime", DateTime.Now);
+                    cmd.Parameters.AddWithValue("@notes", FormPOSResponsive.instance.dgvItems[1, i].Value);
+                    cmd.ExecuteNonQuery();
+                    cmd.Parameters.Clear();
+
+                    // update final report items at end shift
+                    itemsEndShift(int.Parse(FormPOSResponsive.instance.dgvItems[0, i].Value.ToString()),int.Parse(FormPOSResponsive.instance.dgvItems[3, i].Value.ToString()));
+
+                    // update total quantity of system
+                    DataTable dt = new DataTable();
+                    cmd = new SqlCommand("Select quantity from Items where id = '" + FormPOSResponsive.instance.dgvItems[0, i].Value + "'", adoClass.sqlcn);
+                    SqlDataAdapter da = new SqlDataAdapter(cmd);
+                    da.Fill(dt);
+
+                    if (dt.Rows.Count > 0)
+                    {
+                        DataRow row = dt.Rows[0];
+                        object quantity = row["quantity"];
+
+                        if (quantity != DBNull.Value)
+                        {
+                            double totalQuantity = 0;
+                            double oldQuan = 0;
+                            double.TryParse(quantity.ToString(), out oldQuan);
+                            double plusQuan = 0;
+                            double.TryParse(FormPOSResponsive.instance.dgvItems[3, i].Value.ToString(), out plusQuan);
+
+                            totalQuantity = oldQuan + plusQuan;
+
+                            cmd = new SqlCommand("update Items set quantity = '" + totalQuantity + "' where id = '" + FormPOSResponsive.instance.dgvItems[0, i].Value.ToString() + "'", adoClass.sqlcn);
+                            cmd.ExecuteNonQuery();
+                        }
+                        else
+                        {
+                            double totalQuantity = 0;
+                            double oldQuan = 0;
+                            double plusQuan = 0;
+                            double.TryParse(FormPOSResponsive.instance.dgvItems[3, i].Value.ToString(), out plusQuan);
+
+                            totalQuantity = oldQuan + plusQuan;
+
+                            cmd = new SqlCommand("update Items set quantity = '" + totalQuantity + "' where id = '" + FormPOSResponsive.instance.dgvItems[0, i].Value.ToString() + "'", adoClass.sqlcn);
+                            cmd.ExecuteNonQuery();
+                        }
+                    }
+                }
 
             }
-            else
+
+            catch (Exception ex)
             {
-                Close();
+                MessageBox.Show(ex.Message);
+            }
+            finally
+            {
+                adoClass.sqlcn.Close();
             }
         }
+
+
+       private void itemsEndShift(int itemId,int quantity)
+        {
+            try
+            {
+               
+                SqlCommand cmd;
+                DataTable dt = new DataTable();
+                cmd = new SqlCommand("Select quan from ItemQuantityEndShift where itemId = '" + itemId + "' and shiftId = '" + declarations.shiftId + "'", adoClass.sqlcn);
+                SqlDataAdapter da = new SqlDataAdapter(cmd);
+                da.Fill(dt);
+
+                if (dt.Rows.Count > 0)
+                {
+                    DataRow row = dt.Rows[0];
+                    object tableQuantity = row["quan"];
+
+                    if (tableQuantity != DBNull.Value)
+                    {
+                        int totalQuantity = 0;
+                        int oldQuan = 0;
+                        int.TryParse(tableQuantity.ToString(), out oldQuan);
+                        
+                        totalQuantity = oldQuan + quantity;
+
+                        cmd = new SqlCommand("update ItemQuantityEndShift set quan = '" + totalQuantity + "' where itemId = '" + itemId + "' and shiftId = '" + declarations.shiftId + "'", adoClass.sqlcn);
+                        cmd.ExecuteNonQuery();
+
+                        
+                    }
+                    
+                }
+
+                else
+                {
+                    int totalQuantity = 0;
+                    int oldQuan = 0;
+                    
+                    totalQuantity = oldQuan + quantity;
+
+                    cmd = new SqlCommand("insert into ItemQuantityEndShift (itemId,quan,shiftId) values(@itemId,@quan,@shiftId)", adoClass.sqlcn);
+
+                    cmd.Parameters.AddWithValue("@itemId", itemId);
+                    cmd.Parameters.AddWithValue("@quan", quantity);
+                    cmd.Parameters.AddWithValue("@shiftId", declarations.shiftId);
+
+                    cmd.ExecuteNonQuery();
+
+                }
+
+
+            }
+
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+            
+        }
+
+
 
         private void txtFatoraPaid_KeyPress(object sender, KeyPressEventArgs e)
         {
@@ -56,12 +176,6 @@ namespace POS.Forms
             {
                 e.Handled = true;
             }
-        }
-
-        private void FormFatora_Load(object sender, EventArgs e)
-        {
-            txtFatoraPaid.Focus();
-            
         }
 
         private void txtFatoraPaid_KeyUp(object sender, KeyEventArgs e)
@@ -83,7 +197,6 @@ namespace POS.Forms
 
         private void btnPrint_Click(object sender, EventArgs e)
         {
-            
             if (FormPOSResponsive.instance.dgvItems.Rows.Count > 0)
             {
                 try
@@ -296,148 +409,33 @@ namespace POS.Forms
                 MessageBox.Show("لا توجد عناصر");
                 this.Close();
             }
-            
-
-
         }
 
-        private void saveItems(string orderId)
+        private void FormFatora_FormClosing(object sender, FormClosingEventArgs e)
         {
-            try
+            if (tableOrder == true)
             {
-                if (adoClass.sqlcn.State != ConnectionState.Open)
-                {
-                    adoClass.sqlcn.Open();
-                }
-                SqlCommand cmd;
-                for (int i = 0; i < FormPOSResponsive.instance.dgvItems.Rows.Count; i++)
-                {
+                //Close();
+                FormPOSResponsive.instance.dgvItems.Rows.Clear();
+                FormPOSResponsive.instance.txtTax.Text = "0";
+                FormPOSResponsive.instance.txtDiscount.Text = "0";
+                FormPOSResponsive.instance.txtDelivery.Text = "0";
+                FormPOSResponsive.instance.txtPhone.Text = "";
+                FormPOSResponsive.instance.txtName.Text = "";
+                FormPOSResponsive.instance.comboRegions.Text = "";
+                FormPOSResponsive.instance.txtAddress.Text = "";
+                FormPOSResponsive.instance.comboOrderType.Text = "تيك اوي";
+                FormPOSResponsive.instance.tableIdHidden.Text = "";
+                FormPOSResponsive.instance.btnUpdateTable.Visible = false;
+                FormPOSResponsive.instance.txtTotal.Text = "";
 
-                    cmd = new SqlCommand("Insert into OrderItems (orderId,itemId,quantity,price,totalItem,dateTime,notes) values (@orderId,@itemId,@quantity,@price,@totalItem,@dateTime,@notes)", adoClass.sqlcn);
-
-                    cmd.Parameters.AddWithValue("@orderId", orderId);
-                    cmd.Parameters.AddWithValue("@itemId", FormPOSResponsive.instance.dgvItems[0, i].Value);
-                    cmd.Parameters.AddWithValue("@quantity", FormPOSResponsive.instance.dgvItems[3, i].Value);
-                    cmd.Parameters.AddWithValue("@price", FormPOSResponsive.instance.dgvItems[4, i].Value);
-                    cmd.Parameters.AddWithValue("@totalItem", FormPOSResponsive.instance.dgvItems[2, i].Value);
-                    cmd.Parameters.AddWithValue("@dateTime", DateTime.Now);
-                    cmd.Parameters.AddWithValue("@notes", FormPOSResponsive.instance.dgvItems[1, i].Value);
-                    cmd.ExecuteNonQuery();
-                    cmd.Parameters.Clear();
-
-                    // update final report items at end shift
-                    itemsEndShift(int.Parse(FormPOSResponsive.instance.dgvItems[0, i].Value.ToString()),int.Parse(FormPOSResponsive.instance.dgvItems[3, i].Value.ToString()));
-
-                    // update total quantity of system
-                    DataTable dt = new DataTable();
-                    cmd = new SqlCommand("Select quantity from Items where id = '" + FormPOSResponsive.instance.dgvItems[0, i].Value + "'", adoClass.sqlcn);
-                    SqlDataAdapter da = new SqlDataAdapter(cmd);
-                    da.Fill(dt);
-
-                    if (dt.Rows.Count > 0)
-                    {
-                        DataRow row = dt.Rows[0];
-                        object quantity = row["quantity"];
-
-                        if (quantity != DBNull.Value)
-                        {
-                            double totalQuantity = 0;
-                            double oldQuan = 0;
-                            double.TryParse(quantity.ToString(), out oldQuan);
-                            double plusQuan = 0;
-                            double.TryParse(FormPOSResponsive.instance.dgvItems[3, i].Value.ToString(), out plusQuan);
-
-                            totalQuantity = oldQuan + plusQuan;
-
-                            cmd = new SqlCommand("update Items set quantity = '" + totalQuantity + "' where id = '" + FormPOSResponsive.instance.dgvItems[0, i].Value.ToString() + "'", adoClass.sqlcn);
-                            cmd.ExecuteNonQuery();
-                        }
-                        else
-                        {
-                            double totalQuantity = 0;
-                            double oldQuan = 0;
-                            double plusQuan = 0;
-                            double.TryParse(FormPOSResponsive.instance.dgvItems[3, i].Value.ToString(), out plusQuan);
-
-                            totalQuantity = oldQuan + plusQuan;
-
-                            cmd = new SqlCommand("update Items set quantity = '" + totalQuantity + "' where id = '" + FormPOSResponsive.instance.dgvItems[0, i].Value.ToString() + "'", adoClass.sqlcn);
-                            cmd.ExecuteNonQuery();
-                        }
-                    }
-                }
+                tableOrder = false;
 
             }
-
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message);
-            }
-            finally
-            {
-                adoClass.sqlcn.Close();
-            }
+            //else
+            //{
+            //    Close();
+            //}
         }
-
-
-       private void itemsEndShift(int itemId,int quantity)
-        {
-            try
-            {
-               
-                SqlCommand cmd;
-                DataTable dt = new DataTable();
-                cmd = new SqlCommand("Select quan from ItemQuantityEndShift where itemId = '" + itemId + "' and shiftId = '" + declarations.shiftId + "'", adoClass.sqlcn);
-                SqlDataAdapter da = new SqlDataAdapter(cmd);
-                da.Fill(dt);
-
-                if (dt.Rows.Count > 0)
-                {
-                    DataRow row = dt.Rows[0];
-                    object tableQuantity = row["quan"];
-
-                    if (tableQuantity != DBNull.Value)
-                    {
-                        int totalQuantity = 0;
-                        int oldQuan = 0;
-                        int.TryParse(tableQuantity.ToString(), out oldQuan);
-                        
-                        totalQuantity = oldQuan + quantity;
-
-                        cmd = new SqlCommand("update ItemQuantityEndShift set quan = '" + totalQuantity + "' where itemId = '" + itemId + "' and shiftId = '" + declarations.shiftId + "'", adoClass.sqlcn);
-                        cmd.ExecuteNonQuery();
-
-                        
-                    }
-                    
-                }
-
-                else
-                {
-                    int totalQuantity = 0;
-                    int oldQuan = 0;
-                    
-                    totalQuantity = oldQuan + quantity;
-
-                    cmd = new SqlCommand("insert into ItemQuantityEndShift (itemId,quan,shiftId) values(@itemId,@quan,@shiftId)", adoClass.sqlcn);
-
-                    cmd.Parameters.AddWithValue("@itemId", itemId);
-                    cmd.Parameters.AddWithValue("@quan", quantity);
-                    cmd.Parameters.AddWithValue("@shiftId", declarations.shiftId);
-
-                    cmd.ExecuteNonQuery();
-
-                }
-
-
-            }
-
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message);
-            }
-            
-        }
-
     }
 }

@@ -21,16 +21,6 @@ namespace POS.Forms
             InitializeComponent();
         }
 
-        private void FormEnterSerialNumber_Load(object sender, EventArgs e)
-        {
-
-        }
-
-        private void btnClose_Click(object sender, EventArgs e)
-        {
-            Close();
-        }
-
         private void btnOk_Click(object sender, EventArgs e)
         {
             if (txtSerialNumber.Text == "")
@@ -77,7 +67,6 @@ namespace POS.Forms
                 MessageBox.Show("خطا في تشغيل البرنامج الرجاء الاتصال علي الشركة");
                 Application.Exit();
             }
-
         }
     }
 }

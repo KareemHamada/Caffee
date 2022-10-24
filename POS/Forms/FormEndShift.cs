@@ -120,10 +120,5 @@ namespace POS.Forms
                 adoClass.sqlcn.Close();
             }
         }
-
-        private void btnClose_Click(object sender, EventArgs e)
-        {
-            Close();
-        }
     }
 }

@@ -25,6 +25,10 @@ namespace POS.Forms
             txtName.Focus();
         }
 
+  
+
+  
+
         private void txtOk_Click(object sender, EventArgs e)
         {
             if (txtName.Text == "")
@@ -79,11 +83,6 @@ namespace POS.Forms
             {
                 e.Handled = true;
             }
-        }
-
-        private void btnClose_Click(object sender, EventArgs e)
-        {
-            Close();
         }
     }
 }
