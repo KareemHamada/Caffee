@@ -94,7 +94,9 @@ namespace POS.Forms
                 cmd.ExecuteNonQuery();
 
 
-                MessageBox.Show("تم اضافة العنصر بنجاح");
+                //MessageBox.Show("تم اضافة العنصر بنجاح");
+                Form_Alert frm = new Form_Alert();
+                frm.showAlert("Success Alert", Form_Alert.enmType.Success);
 
             }
             catch (Exception ex)

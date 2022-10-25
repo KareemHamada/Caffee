@@ -581,6 +581,12 @@
     <Compile Include="Forms\FormWithdrawDeposit.Designer.cs">
       <DependentUpon>FormWithdrawDeposit.cs</DependentUpon>
     </Compile>
+    <Compile Include="Forms\Form_Alert.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Form_Alert.Designer.cs">
+      <DependentUpon>Form_Alert.cs</DependentUpon>
+    </Compile>
     <Compile Include="Forms\HardDrive.cs" />
     <Compile Include="Forms\ManagementObjectSearcher.cs" />
     <Compile Include="Forms\TablesPOSForm.cs">
@@ -927,6 +933,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\FormWithdrawDeposit.resx">
       <DependentUpon>FormWithdrawDeposit.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Form_Alert.resx">
+      <DependentUpon>Form_Alert.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\TablesPOSForm.resx">
       <DependentUpon>TablesPOSForm.cs</DependentUpon>
@@ -1403,6 +1412,17 @@
     <None Include="Resources\money1.png" />
     <None Include="Resources\check-64.png" />
     <None Include="Resources\exam.png" />
+    <None Include="Resources\cancel.png" />
+    <None Include="Resources\cancel1.png" />
+    <None Include="Resources\error.png" />
+    <None Include="Resources\info.png" />
+    <None Include="Resources\success.png" />
+    <None Include="Resources\warning.png" />
+    <None Include="Resources\cancel2.png" />
+    <None Include="Resources\error1.png" />
+    <None Include="Resources\info1.png" />
+    <None Include="Resources\success1.png" />
+    <None Include="Resources\warning1.png" />
     <Content Include="SqlServerTypes\readme.htm" />
     <Content Include="SqlServerTypes\x64\msvcr120.dll">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
