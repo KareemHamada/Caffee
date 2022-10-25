@@ -9,6 +9,8 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Data.SqlClient;
 using POS.Classes;
+using POS.Tools;
+using Microsoft.Reporting.WinForms;
 
 namespace POS.Forms
 {
@@ -20,35 +22,44 @@ namespace POS.Forms
         }
         private SqlCommand cmd;
         private TextBox txtHidden;
-        
-        private DataTable loadTable()
+
+        private void loadTable(string query)
         {
+            dgvItems.Rows.Clear();
             DataTable dt = new DataTable();
 
             if (adoClass.sqlcn.State != ConnectionState.Open)
             {
                 adoClass.sqlcn.Open();
             }
-            cmd = new SqlCommand("Select * from storeItems", adoClass.sqlcn);
+            cmd = new SqlCommand(query, adoClass.sqlcn);
             SqlDataAdapter da = new SqlDataAdapter(cmd);
             da.Fill(dt);
             adoClass.sqlcn.Close();
-            return dt;
+            if (dt.Rows.Count > 0)
+            {
+                foreach (DataRow row in dt.Rows)
+                {
+
+                    dgvItems.Rows.Add
+                        (new object[]
+                            {
+                            row["image"],
+                            row["name"],
+                            row["id"],
+                            }
+                        ); ;
+                }
+            }
+
         }
+
         private void FormStoreItems_Load(object sender, EventArgs e)
         {
-            try
-            {
-                dgvItems.DataSource = loadTable();
-                dgvItems.Columns[0].HeaderText = "الصورة";
-                dgvItems.Columns[1].HeaderText = "العنصر";
-                dgvItems.Columns[2].HeaderText = "#";
 
-            }
-            catch
-            {
 
-            }
+            loadTable("Select * from storeItems");
+
             // hidden text box
             txtHidden = new TextBox();
             txtHidden.Visible = false;
@@ -95,7 +106,7 @@ namespace POS.Forms
                 adoClass.sqlcn.Close();
             }
 
-            dgvItems.DataSource = loadTable();
+            loadTable("Select * from storeItems");
 
             txtName.Text = "";
             picBox.BackgroundImage = null;
@@ -154,7 +165,7 @@ namespace POS.Forms
                 adoClass.sqlcn.Close();
             }
 
-            dgvItems.DataSource = loadTable();
+            loadTable("Select * from storeItems");
 
             txtName.Text = "";
             picBox.BackgroundImage = null;
@@ -164,40 +175,48 @@ namespace POS.Forms
 
         private void btnDelete_Click(object sender, EventArgs e)
         {
-            string id = txtHidden.Text;
-            if (id == "")
+            if (dgvItems.Rows.Count > 0)
             {
-                MessageBox.Show("حدد العنصر المراد حذفة");
-                return;
-            }
-            try
-            {
-
-                cmd = new SqlCommand("delete from storeItems Where id = '" + id + "'", adoClass.sqlcn);
-
-                if (adoClass.sqlcn.State != ConnectionState.Open)
+                if (MessageBox.Show("هل تريد الحذف", "?", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
                 {
-                    adoClass.sqlcn.Open();
+                    txtHidden.Text = dgvItems.CurrentRow.Cells[2].Value.ToString();
+                    MessageBox.Show(txtHidden.Text);
+                    if (txtHidden.Text == "")
+                    {
+                        MessageBox.Show("حدد العنصر المراد حذفه");
+                        return;
+                    }
+                    try
+                    {
+
+                        cmd = new SqlCommand("delete from storeItems Where id = '" + txtHidden.Text + "'", adoClass.sqlcn);
+
+                        if (adoClass.sqlcn.State != ConnectionState.Open)
+                        {
+                            adoClass.sqlcn.Open();
+                        }
+
+                        cmd.ExecuteNonQuery();
+
+                        MessageBox.Show("تم الحذف بنجاح");
+
+                    }
+                    catch
+                    {
+                        MessageBox.Show("خطا في الحذف");
+                    }
+                    finally
+                    {
+                        adoClass.sqlcn.Close();
+                    }
+
+                    loadTable("Select * from storeItems");
+                    txtName.Text = "";
+                    picBox.BackgroundImage = null;
+                    txtImage.Text = "";
+                    txtHidden.Text = "";
                 }
-
-                cmd.ExecuteNonQuery();
-
-                MessageBox.Show("تم الحذف بنجاح");
-
             }
-            catch
-            {
-                MessageBox.Show("خطا في الحذف");
-            }
-            finally
-            {
-                adoClass.sqlcn.Close();
-            }
-            dgvItems.DataSource = loadTable();
-            txtName.Text = "";
-            picBox.BackgroundImage = null;
-            txtImage.Text = "";
-            txtHidden.Text = "";
         }
 
        
@@ -228,6 +247,63 @@ namespace POS.Forms
         private void btnRemoveImage_Click(object sender, EventArgs e)
         {
             picBox.BackgroundImage = null;
+        }
+
+        private void btnPrint_Click(object sender, EventArgs e)
+        {
+            if (dgvItems.Rows.Count > 0)
+            {
+                dsShowStoreItems tbl = new dsShowStoreItems();
+                for (int i = 0; i < dgvItems.Rows.Count; i++)
+                {
+                    DataRow dro = tbl.Tables["dtShowStoreItems"].NewRow();
+                    dro["name"] = dgvItems[1, i].Value;
+                    tbl.Tables["dtShowStoreItems"].Rows.Add(dro);
+                }
+
+                FormReports rptForm = new FormReports();
+                rptForm.mainReport.LocalReport.ReportEmbeddedResource = "POS.Reports.ReportShowStoreItems.rdlc";
+                rptForm.mainReport.LocalReport.DataSources.Clear();
+                rptForm.mainReport.LocalReport.DataSources.Add(new ReportDataSource("DataSet1", tbl.Tables["dtShowStoreItems"]));
+
+
+                if (bool.Parse(declarations.systemOptions["directPrint"].ToString()))
+                {
+                    LocalReport report = new LocalReport();
+                    string path = Application.StartupPath + @"\Reports\ReportShowStoreItems.rdlc";
+                    report.ReportPath = path;
+                    report.DataSources.Clear();
+                    report.DataSources.Add(new ReportDataSource("DataSet1", tbl.Tables["dtShowStoreItems"]));
+                    PrintersClass.PrintToPrinter(report);
+                }
+                else if (bool.Parse(declarations.systemOptions["showBeforePrint"].ToString()))
+                {
+                    rptForm.ShowDialog();
+                }
+
+            }
+            else
+            {
+                MessageBox.Show("لا يوجد عناصر لعرضها");
+            }
+        }
+
+        private void txtSearch_TextChanged(object sender, EventArgs e)
+        {
+            search(txtSearch.Text);
+        }
+
+
+        void search(string text = null)
+        {
+            if (string.IsNullOrEmpty(text))
+            {
+                loadTable("Select * from storeItems");
+            }
+            else
+            {
+                loadTable("Select * from storeItems where name like '%" + text + "%'");
+            }
         }
     }
 }

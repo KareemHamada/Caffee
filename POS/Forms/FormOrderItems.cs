@@ -73,6 +73,10 @@ namespace POS.Forms
             loadTable("select OrderItems.id,OrderItems.quantity,OrderItems.totalItem,OrderItems.price,Items.name from OrderItems LEFT JOIN Items on OrderItems.itemId = Items.id where orderId = '" + orderId + "'");
         }
 
-        
+        private void btnPrint_Click(object sender, EventArgs e)
+        {
+            printChecks checks = new printChecks();
+            checks.runPrintCheck(int.Parse(lblOrderId.Text));
+        }
     }
 }

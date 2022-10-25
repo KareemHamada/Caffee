@@ -18,19 +18,14 @@ namespace POS.Forms
             InitializeComponent();
         }
 
-        private void btnClose_Click(object sender, EventArgs e)
-        {
-            Close();
-        }
-
         private void btnOk_Click(object sender, EventArgs e)
         {
-            if(txtPass.Text == "")
+            if (txtPass.Text == "")
             {
                 MessageBox.Show("ادخل كلمة المرور");
                 return;
             }
-            if(txtPass.Text == declarations.systemOptions["pass"].ToString())
+            if (txtPass.Text == declarations.systemOptions["pass"].ToString())
             {
                 FormEndShift frm = new FormEndShift();
                 frm.Show();

@@ -32,24 +32,24 @@ namespace POS.Forms
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormClientCashWithdraw));
             this.pnlParent = new System.Windows.Forms.TableLayoutPanel();
             this.tableLayoutPanel3 = new System.Windows.Forms.TableLayoutPanel();
+            this.btnSave = new System.Windows.Forms.Button();
             this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
             this.label1 = new System.Windows.Forms.Label();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
+            this.lblInfo = new System.Windows.Forms.Label();
+            this.txtMoney = new System.Windows.Forms.TextBox();
             this.btnInfo = new System.Windows.Forms.Button();
             this.label2 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.comboClient = new System.Windows.Forms.ComboBox();
             this.comboType = new System.Windows.Forms.ComboBox();
-            this.txtMoney = new System.Windows.Forms.TextBox();
-            this.btnSave = new System.Windows.Forms.Button();
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
-            this.lblInfo = new System.Windows.Forms.Label();
             this.pnlParent.SuspendLayout();
             this.tableLayoutPanel3.SuspendLayout();
             this.tableLayoutPanel2.SuspendLayout();
-            this.tableLayoutPanel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
+            this.tableLayoutPanel1.SuspendLayout();
             this.SuspendLayout();
             // 
             // pnlParent
@@ -84,6 +84,24 @@ namespace POS.Forms
             this.tableLayoutPanel3.Size = new System.Drawing.Size(525, 90);
             this.tableLayoutPanel3.TabIndex = 2;
             // 
+            // btnSave
+            // 
+            this.btnSave.BackColor = System.Drawing.Color.White;
+            this.btnSave.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.btnSave.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.btnSave.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnSave.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnSave.Image = global::POS.Properties.Resources.floppy_disk;
+            this.btnSave.Location = new System.Drawing.Point(265, 3);
+            this.btnSave.Name = "btnSave";
+            this.btnSave.Size = new System.Drawing.Size(257, 84);
+            this.btnSave.TabIndex = 28;
+            this.btnSave.Text = "حفظ";
+            this.btnSave.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.btnSave.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.btnSave.UseVisualStyleBackColor = false;
+            this.btnSave.Click += new System.EventHandler(this.btnSave_Click);
+            // 
             // tableLayoutPanel2
             // 
             this.tableLayoutPanel2.ColumnCount = 2;
@@ -112,6 +130,17 @@ namespace POS.Forms
             this.label1.TabIndex = 19;
             this.label1.Text = "اجل و سداد عملاء";
             // 
+            // pictureBox1
+            // 
+            this.pictureBox1.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("pictureBox1.BackgroundImage")));
+            this.pictureBox1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.pictureBox1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.pictureBox1.Location = new System.Drawing.Point(450, 3);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(72, 81);
+            this.pictureBox1.TabIndex = 20;
+            this.pictureBox1.TabStop = false;
+            // 
             // tableLayoutPanel1
             // 
             this.tableLayoutPanel1.ColumnCount = 2;
@@ -137,6 +166,29 @@ namespace POS.Forms
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
             this.tableLayoutPanel1.Size = new System.Drawing.Size(525, 226);
             this.tableLayoutPanel1.TabIndex = 1;
+            // 
+            // lblInfo
+            // 
+            this.lblInfo.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.lblInfo.AutoSize = true;
+            this.lblInfo.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblInfo.Location = new System.Drawing.Point(174, 10);
+            this.lblInfo.Name = "lblInfo";
+            this.lblInfo.Size = new System.Drawing.Size(33, 36);
+            this.lblInfo.TabIndex = 39;
+            this.lblInfo.Text = "0";
+            // 
+            // txtMoney
+            // 
+            this.txtMoney.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+            this.txtMoney.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.txtMoney.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtMoney.Location = new System.Drawing.Point(3, 176);
+            this.txtMoney.Name = "txtMoney";
+            this.txtMoney.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
+            this.txtMoney.Size = new System.Drawing.Size(376, 41);
+            this.txtMoney.TabIndex = 41;
+            this.txtMoney.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtMoney_KeyPress);
             // 
             // btnInfo
             // 
@@ -190,7 +242,7 @@ namespace POS.Forms
             this.comboClient.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.comboClient.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.comboClient.FormattingEnabled = true;
-            this.comboClient.Location = new System.Drawing.Point(3, 65);
+            this.comboClient.Location = new System.Drawing.Point(3, 62);
             this.comboClient.Name = "comboClient";
             this.comboClient.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
             this.comboClient.Size = new System.Drawing.Size(376, 44);
@@ -203,63 +255,11 @@ namespace POS.Forms
             this.comboType.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.comboType.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.comboType.FormattingEnabled = true;
-            this.comboType.Location = new System.Drawing.Point(3, 121);
+            this.comboType.Location = new System.Drawing.Point(3, 118);
             this.comboType.Name = "comboType";
             this.comboType.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
             this.comboType.Size = new System.Drawing.Size(376, 44);
             this.comboType.TabIndex = 40;
-            // 
-            // txtMoney
-            // 
-            this.txtMoney.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-            this.txtMoney.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.txtMoney.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtMoney.Location = new System.Drawing.Point(3, 176);
-            this.txtMoney.Name = "txtMoney";
-            this.txtMoney.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
-            this.txtMoney.Size = new System.Drawing.Size(376, 41);
-            this.txtMoney.TabIndex = 41;
-            this.txtMoney.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtMoney_KeyPress);
-            // 
-            // btnSave
-            // 
-            this.btnSave.BackColor = System.Drawing.Color.White;
-            this.btnSave.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.btnSave.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.btnSave.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnSave.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnSave.Image = global::POS.Properties.Resources.floppy_disk;
-            this.btnSave.Location = new System.Drawing.Point(265, 3);
-            this.btnSave.Name = "btnSave";
-            this.btnSave.Size = new System.Drawing.Size(257, 84);
-            this.btnSave.TabIndex = 28;
-            this.btnSave.Text = "حفظ";
-            this.btnSave.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.btnSave.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.btnSave.UseVisualStyleBackColor = false;
-            this.btnSave.Click += new System.EventHandler(this.btnSave_Click);
-            // 
-            // pictureBox1
-            // 
-            this.pictureBox1.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("pictureBox1.BackgroundImage")));
-            this.pictureBox1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.pictureBox1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.pictureBox1.Location = new System.Drawing.Point(450, 3);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(72, 81);
-            this.pictureBox1.TabIndex = 20;
-            this.pictureBox1.TabStop = false;
-            // 
-            // lblInfo
-            // 
-            this.lblInfo.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.lblInfo.AutoSize = true;
-            this.lblInfo.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblInfo.Location = new System.Drawing.Point(174, 10);
-            this.lblInfo.Name = "lblInfo";
-            this.lblInfo.Size = new System.Drawing.Size(33, 36);
-            this.lblInfo.TabIndex = 39;
-            this.lblInfo.Text = "0";
             // 
             // FormClientCashWithdraw
             // 
@@ -278,9 +278,9 @@ namespace POS.Forms
             this.tableLayoutPanel3.ResumeLayout(false);
             this.tableLayoutPanel2.ResumeLayout(false);
             this.tableLayoutPanel2.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.tableLayoutPanel1.ResumeLayout(false);
             this.tableLayoutPanel1.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
 
         }

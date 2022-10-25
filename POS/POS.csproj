@@ -744,6 +744,11 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>dsShowRegions.xsd</DependentUpon>
     </Compile>
+    <Compile Include="Tools\dsShowStoreItems.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>dsShowStoreItems.xsd</DependentUpon>
+    </Compile>
     <Compile Include="Tools\dsShowTayar.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -981,6 +986,7 @@
     <EmbeddedResource Include="Reports\ReportShowItems.rdlc" />
     <EmbeddedResource Include="Reports\ReportShowRegions.rdlc" />
     <EmbeddedResource Include="Reports\ReportShowEmployee.rdlc" />
+    <EmbeddedResource Include="Reports\ReportShowStoreItems.rdlc" />
     <EmbeddedResource Include="Reports\ReportShowTayar.rdlc" />
     <EmbeddedResource Include="Reports\ReportStoreOrders.rdlc">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
@@ -1292,6 +1298,17 @@
     <None Include="Tools\dsShowRegions.xss">
       <DependentUpon>dsShowRegions.xsd</DependentUpon>
     </None>
+    <None Include="Tools\dsShowStoreItems.xsc">
+      <DependentUpon>dsShowStoreItems.xsd</DependentUpon>
+    </None>
+    <None Include="Tools\dsShowStoreItems.xsd">
+      <SubType>Designer</SubType>
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>dsShowStoreItems.Designer.cs</LastGenOutput>
+    </None>
+    <None Include="Tools\dsShowStoreItems.xss">
+      <DependentUpon>dsShowStoreItems.xsd</DependentUpon>
+    </None>
     <None Include="Tools\dsShowTayar.xsc">
       <DependentUpon>dsShowTayar.xsd</DependentUpon>
     </None>
@@ -1385,6 +1402,7 @@
     <None Include="Resources\floppy-disk.png" />
     <None Include="Resources\money1.png" />
     <None Include="Resources\check-64.png" />
+    <None Include="Resources\exam.png" />
     <Content Include="SqlServerTypes\readme.htm" />
     <Content Include="SqlServerTypes\x64\msvcr120.dll">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
