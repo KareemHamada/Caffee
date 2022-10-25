@@ -9,6 +9,8 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Data.SqlClient;
 using POS.Classes;
+using POS.Tools;
+using Microsoft.Reporting.WinForms;
 
 namespace POS.Forms
 {
@@ -24,39 +26,44 @@ namespace POS.Forms
 
         private void FormSuppliers_Load(object sender, EventArgs e)
         {
-            try
-            {
-                dgvSuppliers.DataSource = loadTable();
-                dgvSuppliers.Columns[0].HeaderText = "التليفون";
-                dgvSuppliers.Columns[1].HeaderText = "المورد";
-                dgvSuppliers.Columns[2].HeaderText = "#";
-
-            }
-            catch
-            {
-
-            }
+            loadTable("Select * from Suppliers");
             // hidden text box
             txtHidden = new TextBox();
             txtHidden.Visible = false;
         }
 
-       
-
-        private DataTable loadTable()
+        private void loadTable(string query)
         {
+            dgvSuppliers.Rows.Clear();
             DataTable dt = new DataTable();
 
             if (adoClass.sqlcn.State != ConnectionState.Open)
             {
                 adoClass.sqlcn.Open();
             }
-            cmd = new SqlCommand("Select * from Suppliers", adoClass.sqlcn);
+            cmd = new SqlCommand(query, adoClass.sqlcn);
             SqlDataAdapter da = new SqlDataAdapter(cmd);
             da.Fill(dt);
             adoClass.sqlcn.Close();
-            return dt;
+            if (dt.Rows.Count > 0)
+            {
+                foreach (DataRow row in dt.Rows)
+                {
+
+                    dgvSuppliers.Rows.Add
+                        (new object[]
+                            {
+                            row["phone"],
+                            row["name"],
+                            row["id"],
+                            }
+                        ); ;
+                }
+            }
+
         }
+
+       
 
         private void btnAdd_Click(object sender, EventArgs e)
         {
@@ -93,7 +100,7 @@ namespace POS.Forms
                 adoClass.sqlcn.Close();
             }
 
-            dgvSuppliers.DataSource = loadTable();
+            loadTable("Select * from Suppliers");
 
             txtName.Text = "";
             txtPhone.Text = "";
@@ -142,7 +149,7 @@ namespace POS.Forms
                 adoClass.sqlcn.Close();
             }
 
-            dgvSuppliers.DataSource = loadTable();
+            loadTable("Select * from Suppliers");
 
             txtName.Text = "";
             txtPhone.Text = "";
@@ -151,41 +158,51 @@ namespace POS.Forms
 
         private void btnDelete_Click(object sender, EventArgs e)
         {
-            string id = txtHidden.Text;
-            if (id == "")
-            {
-                MessageBox.Show("حدد المورد المراد حذفه");
-                return;
-            }
-            try
-            {
 
-                cmd = new SqlCommand("delete from Suppliers Where id = '" + id + "'", adoClass.sqlcn);
-
-                if (adoClass.sqlcn.State != ConnectionState.Open)
+            if (dgvSuppliers.Rows.Count > 0)
+            {
+                if (MessageBox.Show("هل تريد الحذف", "?", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
                 {
-                    adoClass.sqlcn.Open();
+                    txtHidden.Text = dgvSuppliers.CurrentRow.Cells[2].Value.ToString();
+                    if (txtHidden.Text == "")
+                    {
+                        MessageBox.Show("حدد المورد المراد حذفه");
+                        return;
+                    }
+                    try
+                    {
+
+                        cmd = new SqlCommand("delete from Suppliers Where id = '" + txtHidden.Text + "'", adoClass.sqlcn);
+
+                        if (adoClass.sqlcn.State != ConnectionState.Open)
+                        {
+                            adoClass.sqlcn.Open();
+                        }
+
+                        cmd.ExecuteNonQuery();
+
+                        MessageBox.Show("تم الحذف بنجاح");
+
+                    }
+                    catch
+                    {
+                        MessageBox.Show("خطا في الحذف");
+                    }
+                    finally
+                    {
+                        adoClass.sqlcn.Close();
+                    }
+
+                    loadTable("Select * from Suppliers");
+
+                    txtName.Text = "";
+                    txtPhone.Text = "";
+                    txtHidden.Text = "";
                 }
-
-                cmd.ExecuteNonQuery();
-
-                MessageBox.Show("تم الحذف بنجاح");
-
-            }
-            catch
-            {
-                MessageBox.Show("خطا في الحذف");
-            }
-            finally
-            {
-                adoClass.sqlcn.Close();
             }
 
-            dgvSuppliers.DataSource = loadTable();
-
-            txtName.Text = "";
-            txtPhone.Text = "";
-            txtHidden.Text = "";
+           
+            
         }
 
         private void btnClose_Click(object sender, EventArgs e)
@@ -209,7 +226,66 @@ namespace POS.Forms
             txtPhone.Text = dgvSuppliers.CurrentRow.Cells[0].Value.ToString();
         }
 
+        private void txtSearch_TextChanged(object sender, EventArgs e)
+        {
+            search(txtSearch.Text);
+        }
 
-        
+        void search(string text = null)
+        {
+            if (string.IsNullOrEmpty(text))
+            {
+                loadTable("Select * from Suppliers");
+            }
+            else
+            {
+                loadTable("Select * from Suppliers where name like '%" + text + "%' or phone like '%" + text + "%'");
+
+
+           
+            }
+        }
+
+        private void btnPrint_Click(object sender, EventArgs e)
+        {
+            if (dgvSuppliers.Rows.Count > 0)
+            {
+                dsShowSuppliers tbl = new dsShowSuppliers();
+                for (int i = 0; i < dgvSuppliers.Rows.Count; i++)
+                {
+                    DataRow dro = tbl.Tables["dtShowSuppliers"].NewRow();
+                    dro["phone"] = dgvSuppliers[0, i].Value;
+                    dro["name"] = dgvSuppliers[1, i].Value;
+                   
+
+                    tbl.Tables["dtShowSuppliers"].Rows.Add(dro);
+                }
+
+                FormReports rptForm = new FormReports();
+                rptForm.mainReport.LocalReport.ReportEmbeddedResource = "POS.Reports.ReportShowSuppliers.rdlc";
+                rptForm.mainReport.LocalReport.DataSources.Clear();
+                rptForm.mainReport.LocalReport.DataSources.Add(new ReportDataSource("DataSet1", tbl.Tables["dtShowSuppliers"]));
+
+
+                if (bool.Parse(declarations.systemOptions["directPrint"].ToString()))
+                {
+                    LocalReport report = new LocalReport();
+                    string path = Application.StartupPath + @"\Reports\ReportShowSuppliers.rdlc";
+                    report.ReportPath = path;
+                    report.DataSources.Clear();
+                    report.DataSources.Add(new ReportDataSource("DataSet1", tbl.Tables["dtShowSuppliers"]));
+                    PrintersClass.PrintToPrinter(report);
+                }
+                else if (bool.Parse(declarations.systemOptions["showBeforePrint"].ToString()))
+                {
+                    rptForm.ShowDialog();
+                }
+
+            }
+            else
+            {
+                MessageBox.Show("لا يوجد عناصر لعرضها");
+            }
+        }
     }
 }

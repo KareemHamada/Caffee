@@ -98,6 +98,7 @@ namespace POS
                                                 declarations.shiftId = int.Parse(cmd.Parameters["@shiftId"].Value.ToString());
                                                 MessageBox.Show("لقد بدات وردية جديدة");
                                                 Application.Run(new FormPOSResponsive());
+                                                
 
                                             }
                                             else

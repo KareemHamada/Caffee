@@ -19,10 +19,7 @@ namespace POS.Forms
             InitializeComponent();
         }
         private SqlCommand cmd;
-        private void btnClose_Click(object sender, EventArgs e)
-        {
-            Close();
-        }
+
 
         private void FormSupplierCashWithdraw_Load(object sender, EventArgs e)
         {
@@ -41,6 +38,11 @@ namespace POS.Forms
             comboType.DisplayMember = "type";
             comboType.ValueMember = "id";
         }
+
+
+
+
+
 
         private void btnSave_Click(object sender, EventArgs e)
         {
@@ -96,15 +98,6 @@ namespace POS.Forms
             lblInfo.Text = "";
         }
 
-        private void txtMoney_KeyPress(object sender, KeyPressEventArgs e)
-        {
-            char ch = e.KeyChar;
-            if (!Char.IsDigit(ch) && ch != 8 && ch != 46)
-            {
-                e.Handled = true;
-            }
-        }
-
         private void btnInfo_Click(object sender, EventArgs e)
         {
             decimal Withdrawal = 0; // سحب
@@ -145,6 +138,15 @@ namespace POS.Forms
             lblInfo.Text = total.ToString();
 
             adoClass.sqlcn.Close();
+        }
+
+        private void txtMoney_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            char ch = e.KeyChar;
+            if (!Char.IsDigit(ch) && ch != 8 && ch != 46)
+            {
+                e.Handled = true;
+            }
         }
     }
 }

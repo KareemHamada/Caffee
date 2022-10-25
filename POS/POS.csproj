@@ -755,6 +755,11 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>dsShowStoreItems.xsd</DependentUpon>
     </Compile>
+    <Compile Include="Tools\dsShowSuppliers.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>dsShowSuppliers.xsd</DependentUpon>
+    </Compile>
     <Compile Include="Tools\dsShowTayar.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -996,6 +1001,7 @@
     <EmbeddedResource Include="Reports\ReportShowRegions.rdlc" />
     <EmbeddedResource Include="Reports\ReportShowEmployee.rdlc" />
     <EmbeddedResource Include="Reports\ReportShowStoreItems.rdlc" />
+    <EmbeddedResource Include="Reports\ReportShowSuppliers.rdlc" />
     <EmbeddedResource Include="Reports\ReportShowTayar.rdlc" />
     <EmbeddedResource Include="Reports\ReportStoreOrders.rdlc">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
@@ -1317,6 +1323,17 @@
     </None>
     <None Include="Tools\dsShowStoreItems.xss">
       <DependentUpon>dsShowStoreItems.xsd</DependentUpon>
+    </None>
+    <None Include="Tools\dsShowSuppliers.xsc">
+      <DependentUpon>dsShowSuppliers.xsd</DependentUpon>
+    </None>
+    <None Include="Tools\dsShowSuppliers.xsd">
+      <SubType>Designer</SubType>
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>dsShowSuppliers.Designer.cs</LastGenOutput>
+    </None>
+    <None Include="Tools\dsShowSuppliers.xss">
+      <DependentUpon>dsShowSuppliers.xsd</DependentUpon>
     </None>
     <None Include="Tools\dsShowTayar.xsc">
       <DependentUpon>dsShowTayar.xsd</DependentUpon>

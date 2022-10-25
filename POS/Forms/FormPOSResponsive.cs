@@ -29,8 +29,11 @@ namespace POS.Forms
         private SqlCommand cmd;
         public TextBox txtHiddenClientId;
         public TextBox tableIdHidden;
+
+        //public bool isNewShift = false;
         private void FormPOSResponsive_Load(object sender, EventArgs e)
         {
+            
             btnUpdateTable.Visible = false;
             lblShift.Text = declarations.shiftId.ToString();
             fillCategories();

@@ -20,11 +20,6 @@ namespace POS.Forms
         }
         private SqlCommand cmd;
 
-        private void btnClose_Click(object sender, EventArgs e)
-        {
-            Close();
-        }
-
         private void FormWithdrawDeposit_Load(object sender, EventArgs e)
         {
             Helper.fillComboBox(comboName, "Select id,name from Employee", "name", "id");
@@ -43,10 +38,11 @@ namespace POS.Forms
             comboType.ValueMember = "id";
         }
 
+   
         private void txtMoney_KeyPress(object sender, KeyPressEventArgs e)
         {
             char ch = e.KeyChar;
-            if(!Char.IsDigit(ch) && ch != 8 && ch!= 46)
+            if (!Char.IsDigit(ch) && ch != 8 && ch != 46)
             {
                 e.Handled = true;
             }
@@ -121,7 +117,7 @@ namespace POS.Forms
             decimal deposit = 0;
             decimal total; // االي عليه
             DataTable dt = new DataTable();
-            if(comboName.Text == "")
+            if (comboName.Text == "")
             {
                 MessageBox.Show("حدد الموظف");
                 return;
@@ -132,14 +128,14 @@ namespace POS.Forms
                 adoClass.sqlcn.Open();
             }
 
-            cmd = new SqlCommand("Select * from EmpWithdrawDeposit where EmpId = '" + comboName.SelectedValue + "'" , adoClass.sqlcn);
+            cmd = new SqlCommand("Select * from EmpWithdrawDeposit where EmpId = '" + comboName.SelectedValue + "'", adoClass.sqlcn);
             SqlDataAdapter da = new SqlDataAdapter(cmd);
             da.Fill(dt);
 
             foreach (DataRow row in dt.Rows)
             {
                 //TextBox1.Text = row["ImagePath"].ToString();
-                if(row["OperationType"].ToString() == "استلاف")
+                if (row["OperationType"].ToString() == "استلاف")
                 {
                     Withdrawal += decimal.Parse(row["money"].ToString());
                 }
