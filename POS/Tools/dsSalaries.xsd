@@ -12,11 +12,11 @@
   <xs:element name="dsSalaries" msdata:IsDataSet="true" msdata:UseCurrentLocale="true" msprop:EnableTableAdapterManager="true" msprop:Generator_DataSetName="dsSalaries" msprop:Generator_UserDSName="dsSalaries">
     <xs:complexType>
       <xs:choice minOccurs="0" maxOccurs="unbounded">
-        <xs:element name="dtSalaries" msprop:Generator_TableClassName="dtSalariesDataTable" msprop:Generator_TableVarName="tabledtSalaries" msprop:Generator_TablePropName="dtSalaries" msprop:Generator_RowDeletingName="dtSalariesRowDeleting" msprop:Generator_RowChangingName="dtSalariesRowChanging" msprop:Generator_RowEvHandlerName="dtSalariesRowChangeEventHandler" msprop:Generator_RowDeletedName="dtSalariesRowDeleted" msprop:Generator_UserTableName="dtSalaries" msprop:Generator_RowChangedName="dtSalariesRowChanged" msprop:Generator_RowEvArgName="dtSalariesRowChangeEvent" msprop:Generator_RowClassName="dtSalariesRow">
+        <xs:element name="dtSalaries" msprop:Generator_TableClassName="dtSalariesDataTable" msprop:Generator_TableVarName="tabledtSalaries" msprop:Generator_RowChangedName="dtSalariesRowChanged" msprop:Generator_TablePropName="dtSalaries" msprop:Generator_RowDeletingName="dtSalariesRowDeleting" msprop:Generator_RowChangingName="dtSalariesRowChanging" msprop:Generator_RowEvHandlerName="dtSalariesRowChangeEventHandler" msprop:Generator_RowDeletedName="dtSalariesRowDeleted" msprop:Generator_RowClassName="dtSalariesRow" msprop:Generator_UserTableName="dtSalaries" msprop:Generator_RowEvArgName="dtSalariesRowChangeEvent">
           <xs:complexType>
             <xs:sequence>
               <xs:element name="name" msprop:Generator_ColumnVarNameInTable="columnname" msprop:Generator_ColumnPropNameInRow="name" msprop:Generator_ColumnPropNameInTable="nameColumn" msprop:Generator_UserColumnName="name" type="xs:string" minOccurs="0" />
-              <xs:element name="salary" msprop:Generator_ColumnVarNameInTable="columnsalary" msprop:Generator_ColumnPropNameInRow="salary" msprop:Generator_ColumnPropNameInTable="salaryColumn" msprop:Generator_UserColumnName="salary" type="xs:long" minOccurs="0" />
+              <xs:element name="salary" msprop:Generator_ColumnVarNameInTable="columnsalary" msprop:Generator_ColumnPropNameInRow="salary" msprop:Generator_ColumnPropNameInTable="salaryColumn" msprop:Generator_UserColumnName="salary" type="xs:double" minOccurs="0" />
               <xs:element name="dateTime" msprop:Generator_ColumnVarNameInTable="columndateTime" msprop:Generator_ColumnPropNameInRow="dateTime" msprop:Generator_ColumnPropNameInTable="dateTimeColumn" msprop:Generator_UserColumnName="dateTime" type="xs:dateTime" minOccurs="0" />
             </xs:sequence>
           </xs:complexType>

@@ -267,12 +267,12 @@ namespace POS.Forms
             // 
             // pictureBox2
             // 
-            this.pictureBox2.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.pictureBox2.BackgroundImage = global::POS.Properties.Resources.search;
             this.pictureBox2.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.pictureBox2.Location = new System.Drawing.Point(885, 21);
+            this.pictureBox2.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.pictureBox2.Location = new System.Drawing.Point(826, 3);
             this.pictureBox2.Name = "pictureBox2";
-            this.pictureBox2.Size = new System.Drawing.Size(100, 48);
+            this.pictureBox2.Size = new System.Drawing.Size(218, 84);
             this.pictureBox2.TabIndex = 0;
             this.pictureBox2.TabStop = false;
             // 

@@ -114,7 +114,7 @@ namespace POS.Forms
             this.dgvLoading.BackgroundColor = System.Drawing.Color.White;
             dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
             dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 16.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
             dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
             dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
@@ -147,7 +147,7 @@ namespace POS.Forms
             dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
             this.dgvLoading.RowHeadersDefaultCellStyle = dataGridViewCellStyle2;
             this.dgvLoading.RowHeadersWidth = 51;
-            dataGridViewCellStyle3.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle3.Font = new System.Drawing.Font("Microsoft Sans Serif", 13F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.dgvLoading.RowsDefaultCellStyle = dataGridViewCellStyle3;
             this.dgvLoading.RowTemplate.DefaultCellStyle.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
             this.dgvLoading.RowTemplate.DefaultCellStyle.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -330,20 +330,21 @@ namespace POS.Forms
             this.tableLayoutPanel3.Name = "tableLayoutPanel3";
             this.tableLayoutPanel3.RowCount = 1;
             this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel3.Size = new System.Drawing.Size(1449, 59);
+            this.tableLayoutPanel3.Size = new System.Drawing.Size(1449, 58);
             this.tableLayoutPanel3.TabIndex = 0;
             // 
             // label1
             // 
-            this.label1.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.label1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 16.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(1299, 13);
+            this.label1.Location = new System.Drawing.Point(1208, 13);
             this.label1.Name = "label1";
             this.label1.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
-            this.label1.Size = new System.Drawing.Size(56, 32);
+            this.label1.Size = new System.Drawing.Size(238, 32);
             this.label1.TabIndex = 3;
             this.label1.Text = "من :";
+            this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // dtpFrom
             // 
@@ -359,29 +360,30 @@ namespace POS.Forms
             // 
             // btnPrint
             // 
-            this.btnPrint.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.btnPrint.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btnPrint.BackgroundImage")));
             this.btnPrint.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.btnPrint.Dock = System.Windows.Forms.DockStyle.Fill;
             this.btnPrint.FlatAppearance.BorderSize = 0;
             this.btnPrint.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnPrint.Location = new System.Drawing.Point(76, 6);
+            this.btnPrint.Location = new System.Drawing.Point(3, 3);
             this.btnPrint.Name = "btnPrint";
-            this.btnPrint.Size = new System.Drawing.Size(89, 47);
+            this.btnPrint.Size = new System.Drawing.Size(235, 52);
             this.btnPrint.TabIndex = 9;
             this.btnPrint.UseVisualStyleBackColor = true;
             this.btnPrint.Click += new System.EventHandler(this.btnPrint_Click);
             // 
             // label3
             // 
-            this.label3.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.label3.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 16.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.Location = new System.Drawing.Point(813, 13);
+            this.label3.Location = new System.Drawing.Point(726, 13);
             this.label3.Name = "label3";
             this.label3.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
-            this.label3.Size = new System.Drawing.Size(60, 32);
+            this.label3.Size = new System.Drawing.Size(235, 32);
             this.label3.TabIndex = 5;
             this.label3.Text = "الي :";
+            this.label3.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // dtpTo
             // 
@@ -397,14 +399,14 @@ namespace POS.Forms
             // 
             // btnSearch
             // 
-            this.btnSearch.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.btnSearch.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btnSearch.BackgroundImage")));
             this.btnSearch.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.btnSearch.Dock = System.Windows.Forms.DockStyle.Fill;
             this.btnSearch.FlatAppearance.BorderSize = 0;
             this.btnSearch.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnSearch.Location = new System.Drawing.Point(329, 6);
+            this.btnSearch.Location = new System.Drawing.Point(244, 3);
             this.btnSearch.Name = "btnSearch";
-            this.btnSearch.Size = new System.Drawing.Size(65, 47);
+            this.btnSearch.Size = new System.Drawing.Size(235, 52);
             this.btnSearch.TabIndex = 7;
             this.btnSearch.UseVisualStyleBackColor = true;
             this.btnSearch.Click += new System.EventHandler(this.btnSearch_Click);
@@ -425,7 +427,7 @@ namespace POS.Forms
             this.tableLayoutPanel1.Controls.Add(this.btnSala, 2, 0);
             this.tableLayoutPanel1.Controls.Add(this.btnReload, 5, 0);
             this.tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tableLayoutPanel1.Location = new System.Drawing.Point(0, 59);
+            this.tableLayoutPanel1.Location = new System.Drawing.Point(0, 58);
             this.tableLayoutPanel1.Margin = new System.Windows.Forms.Padding(0);
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
             this.tableLayoutPanel1.RowCount = 1;
@@ -446,20 +448,21 @@ namespace POS.Forms
             // 
             // label4
             // 
-            this.label4.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.label4.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
             this.label4.AutoSize = true;
             this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 16.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label4.Location = new System.Drawing.Point(277, 42);
+            this.label4.Location = new System.Drawing.Point(244, 42);
             this.label4.Name = "label4";
             this.label4.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
-            this.label4.Size = new System.Drawing.Size(168, 32);
+            this.label4.Size = new System.Drawing.Size(235, 32);
             this.label4.TabIndex = 11;
             this.label4.Text = "اجمالي الفواتير :";
+            this.label4.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // btnTeckaway
             // 
-            this.btnTeckaway.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.btnTeckaway.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.btnTeckaway.Dock = System.Windows.Forms.DockStyle.Fill;
             this.btnTeckaway.FlatAppearance.BorderColor = System.Drawing.Color.Black;
             this.btnTeckaway.FlatAppearance.BorderSize = 0;
             this.btnTeckaway.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(128)))));
@@ -468,9 +471,9 @@ namespace POS.Forms
             this.btnTeckaway.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnTeckaway.Image = ((System.Drawing.Image)(resources.GetObject("btnTeckaway.Image")));
             this.btnTeckaway.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.btnTeckaway.Location = new System.Drawing.Point(973, 22);
+            this.btnTeckaway.Location = new System.Drawing.Point(967, 3);
             this.btnTeckaway.Name = "btnTeckaway";
-            this.btnTeckaway.Size = new System.Drawing.Size(223, 72);
+            this.btnTeckaway.Size = new System.Drawing.Size(235, 110);
             this.btnTeckaway.TabIndex = 15;
             this.btnTeckaway.Text = "تيك اوي";
             this.btnTeckaway.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -480,8 +483,8 @@ namespace POS.Forms
             // 
             // btnDelivery
             // 
-            this.btnDelivery.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.btnDelivery.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.btnDelivery.Dock = System.Windows.Forms.DockStyle.Fill;
             this.btnDelivery.FlatAppearance.BorderColor = System.Drawing.Color.Black;
             this.btnDelivery.FlatAppearance.BorderSize = 0;
             this.btnDelivery.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(128)))));
@@ -490,9 +493,9 @@ namespace POS.Forms
             this.btnDelivery.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnDelivery.Image = ((System.Drawing.Image)(resources.GetObject("btnDelivery.Image")));
             this.btnDelivery.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.btnDelivery.Location = new System.Drawing.Point(738, 22);
+            this.btnDelivery.Location = new System.Drawing.Point(726, 3);
             this.btnDelivery.Name = "btnDelivery";
-            this.btnDelivery.Size = new System.Drawing.Size(211, 72);
+            this.btnDelivery.Size = new System.Drawing.Size(235, 110);
             this.btnDelivery.TabIndex = 21;
             this.btnDelivery.Text = "دليفري";
             this.btnDelivery.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -502,8 +505,8 @@ namespace POS.Forms
             // 
             // btnSala
             // 
-            this.btnSala.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.btnSala.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.btnSala.Dock = System.Windows.Forms.DockStyle.Fill;
             this.btnSala.FlatAppearance.BorderColor = System.Drawing.Color.Black;
             this.btnSala.FlatAppearance.BorderSize = 0;
             this.btnSala.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(128)))));
@@ -512,9 +515,9 @@ namespace POS.Forms
             this.btnSala.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnSala.Image = global::POS.Properties.Resources.O;
             this.btnSala.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.btnSala.Location = new System.Drawing.Point(497, 22);
+            this.btnSala.Location = new System.Drawing.Point(485, 3);
             this.btnSala.Name = "btnSala";
-            this.btnSala.Size = new System.Drawing.Size(211, 72);
+            this.btnSala.Size = new System.Drawing.Size(235, 110);
             this.btnSala.TabIndex = 22;
             this.btnSala.Text = "صالة";
             this.btnSala.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -524,8 +527,8 @@ namespace POS.Forms
             // 
             // btnReload
             // 
-            this.btnReload.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.btnReload.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.btnReload.Dock = System.Windows.Forms.DockStyle.Fill;
             this.btnReload.FlatAppearance.BorderColor = System.Drawing.Color.Black;
             this.btnReload.FlatAppearance.BorderSize = 0;
             this.btnReload.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(128)))));
@@ -534,9 +537,9 @@ namespace POS.Forms
             this.btnReload.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnReload.Image = ((System.Drawing.Image)(resources.GetObject("btnReload.Image")));
             this.btnReload.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.btnReload.Location = new System.Drawing.Point(1213, 22);
+            this.btnReload.Location = new System.Drawing.Point(1208, 3);
             this.btnReload.Name = "btnReload";
-            this.btnReload.Size = new System.Drawing.Size(227, 72);
+            this.btnReload.Size = new System.Drawing.Size(238, 110);
             this.btnReload.TabIndex = 23;
             this.btnReload.Text = "الكل";
             this.btnReload.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -552,13 +555,13 @@ namespace POS.Forms
             this.tableLayoutPanel4.Controls.Add(this.txtSearch, 0, 0);
             this.tableLayoutPanel4.Controls.Add(this.pictureBox2, 1, 0);
             this.tableLayoutPanel4.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tableLayoutPanel4.Location = new System.Drawing.Point(0, 175);
+            this.tableLayoutPanel4.Location = new System.Drawing.Point(0, 174);
             this.tableLayoutPanel4.Margin = new System.Windows.Forms.Padding(0);
             this.tableLayoutPanel4.Name = "tableLayoutPanel4";
             this.tableLayoutPanel4.RowCount = 1;
             this.tableLayoutPanel4.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel4.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 59F));
-            this.tableLayoutPanel4.Size = new System.Drawing.Size(1449, 53);
+            this.tableLayoutPanel4.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 53F));
+            this.tableLayoutPanel4.Size = new System.Drawing.Size(1449, 54);
             this.tableLayoutPanel4.TabIndex = 2;
             // 
             // txtSearch
@@ -575,12 +578,12 @@ namespace POS.Forms
             // 
             // pictureBox2
             // 
-            this.pictureBox2.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.pictureBox2.BackgroundImage = global::POS.Properties.Resources.search;
             this.pictureBox2.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.pictureBox2.Location = new System.Drawing.Point(1288, 3);
+            this.pictureBox2.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.pictureBox2.Location = new System.Drawing.Point(1231, 3);
             this.pictureBox2.Name = "pictureBox2";
-            this.pictureBox2.Size = new System.Drawing.Size(100, 47);
+            this.pictureBox2.Size = new System.Drawing.Size(215, 48);
             this.pictureBox2.TabIndex = 1;
             this.pictureBox2.TabStop = false;
             // 
@@ -592,7 +595,8 @@ namespace POS.Forms
             this.ClientSize = new System.Drawing.Size(1449, 901);
             this.Controls.Add(this.pnlParent);
             this.Name = "FormReportOrders";
-            this.Text = "FormReportOrders";
+            this.ShowIcon = false;
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.Load += new System.EventHandler(this.FormReportOrders_Load);
             this.pnlParent.ResumeLayout(false);

@@ -296,5 +296,10 @@ namespace POS.Forms
             txtPhone.Text = dgvTayar.CurrentRow.Cells[1].Value.ToString();
             txtAddress.Text = dgvTayar.CurrentRow.Cells[0].Value.ToString();
         }
+
+        private void dgvTayar_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
+        }
     }
 }

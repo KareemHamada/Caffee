@@ -39,12 +39,12 @@ namespace POS.Forms
             this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
             this.pnlMainForm = new System.Windows.Forms.Panel();
             this.pnlMenu = new System.Windows.Forms.Panel();
+            this.btnClients = new System.Windows.Forms.Button();
             this.btnStore = new System.Windows.Forms.Button();
             this.btnOptions = new System.Windows.Forms.Button();
             this.btnReports = new System.Windows.Forms.Button();
             this.btnEmployee = new System.Windows.Forms.Button();
             this.btnMainInfo = new System.Windows.Forms.Button();
-            this.btnClients = new System.Windows.Forms.Button();
             this.pnlParient.SuspendLayout();
             this.tableLayoutPanel1.SuspendLayout();
             this.tableLayoutPanel2.SuspendLayout();
@@ -181,6 +181,24 @@ namespace POS.Forms
             this.pnlMenu.Size = new System.Drawing.Size(332, 621);
             this.pnlMenu.TabIndex = 1;
             // 
+            // btnClients
+            // 
+            this.btnClients.Dock = System.Windows.Forms.DockStyle.Top;
+            this.btnClients.FlatAppearance.BorderColor = System.Drawing.Color.White;
+            this.btnClients.FlatAppearance.BorderSize = 0;
+            this.btnClients.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnClients.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnClients.Image = ((System.Drawing.Image)(resources.GetObject("btnClients.Image")));
+            this.btnClients.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.btnClients.Location = new System.Drawing.Point(0, 400);
+            this.btnClients.Name = "btnClients";
+            this.btnClients.Size = new System.Drawing.Size(328, 80);
+            this.btnClients.TabIndex = 5;
+            this.btnClients.Text = "العملاء";
+            this.btnClients.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnClients.UseVisualStyleBackColor = true;
+            this.btnClients.Click += new System.EventHandler(this.btnClients_Click);
+            // 
             // btnStore
             // 
             this.btnStore.Dock = System.Windows.Forms.DockStyle.Top;
@@ -271,24 +289,6 @@ namespace POS.Forms
             this.btnMainInfo.UseVisualStyleBackColor = true;
             this.btnMainInfo.Click += new System.EventHandler(this.btnMainInfo_Click);
             // 
-            // btnClients
-            // 
-            this.btnClients.Dock = System.Windows.Forms.DockStyle.Top;
-            this.btnClients.FlatAppearance.BorderColor = System.Drawing.Color.White;
-            this.btnClients.FlatAppearance.BorderSize = 0;
-            this.btnClients.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnClients.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnClients.Image = ((System.Drawing.Image)(resources.GetObject("btnClients.Image")));
-            this.btnClients.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.btnClients.Location = new System.Drawing.Point(0, 400);
-            this.btnClients.Name = "btnClients";
-            this.btnClients.Size = new System.Drawing.Size(328, 80);
-            this.btnClients.TabIndex = 5;
-            this.btnClients.Text = "العملاء";
-            this.btnClients.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnClients.UseVisualStyleBackColor = true;
-            this.btnClients.Click += new System.EventHandler(this.btnClients_Click);
-            // 
             // FormMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -297,8 +297,8 @@ namespace POS.Forms
             this.ClientSize = new System.Drawing.Size(1539, 747);
             this.Controls.Add(this.pnlParient);
             this.Name = "FormMain";
-            this.StartPosition = System.Windows.Forms.FormStartPosition.WindowsDefaultBounds;
-            this.Text = "FormMain";
+            this.ShowIcon = false;
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Load += new System.EventHandler(this.FormMain_Load);
             this.pnlParient.ResumeLayout(false);
             this.tableLayoutPanel1.ResumeLayout(false);

@@ -88,7 +88,8 @@ namespace POS.Forms
                     catBtn.Size = new Size(150, 150);
                     if(Helper.ByteToImage(drs[i]["image"]) == null)
                     {
-                        catBtn.BackColor = Color.Cyan;
+                        catBtn.BackColor = Color.IndianRed;
+                        catBtn.ForeColor = Color.White;
                     }
                     else
                     {
@@ -746,7 +747,7 @@ namespace POS.Forms
                     reportParameters[2] = new ReportParameter("dateTime", DateTime.Now.ToString());
 
 
-                    if (bool.Parse(declarations.systemOptions["directPrint"].ToString()))
+                    if (bool.Parse(declarations.systemOptions["directPrint"].ToString()) && bool.Parse(declarations.systemOptions["printTables"].ToString()))
                     {
                         LocalReport report = new LocalReport();
                         string path = Application.StartupPath + @"\Reports\ReportTable.rdlc";
@@ -756,7 +757,7 @@ namespace POS.Forms
                         report.SetParameters(reportParameters);
                         PrintersClass.PrintToPrinter(report);
                     }
-                    else if (bool.Parse(declarations.systemOptions["showBeforePrint"].ToString()))
+                    else if (bool.Parse(declarations.systemOptions["showBeforePrint"].ToString()) && bool.Parse(declarations.systemOptions["printTables"].ToString()))
                     {
                         rptForm.mainReport.LocalReport.SetParameters(reportParameters);
                         rptForm.ShowDialog();
@@ -882,7 +883,7 @@ namespace POS.Forms
                     }
 
 
-                  // print table order
+                    // print table order
                     dsTables tables = new dsTables();
                     for (int i = 0; i < dgvItems.Rows.Count; i++)
                     {
@@ -961,6 +962,8 @@ namespace POS.Forms
             if (dgvItems.Rows.Count > 0)
             {
                 FormMultiPriceItem frm = new FormMultiPriceItem();
+                frm.lblTitle.Text = "ادخل عدد";
+                frm.lblInfo.Text = "العدد";
                 frm.isQuantity = true;
                 if (frm.ShowDialog() == DialogResult.OK)
                 {

@@ -23,15 +23,12 @@ namespace POS.Forms
         private SqlCommand cmd;
         private TextBox txtHidden;
         private string storesId;
-        private void btnClose_Click(object sender, EventArgs e)
-        {
-            Close();
-        }
+
 
         private void FormAddStores_Load(object sender, EventArgs e)
         {
             Helper.fillComboBox(comboSuppliers, "Select id,name from Suppliers", "name", "id");
-            fillItems();
+            fillItems("Select * from storeItems");
 
             // hidden text box
             txtHidden = new TextBox();
@@ -40,11 +37,11 @@ namespace POS.Forms
 
 
 
-        private void fillItems()
+        private void fillItems(string query)
         {
             DataTable dt = new DataTable();
 
-            SqlDataAdapter da = new SqlDataAdapter("Select * from storeItems", adoClass.sqlcn);
+            SqlDataAdapter da = new SqlDataAdapter(query, adoClass.sqlcn);
 
             da.Fill(dt);
             DataRow[] drs = dt.Select();
@@ -90,38 +87,6 @@ namespace POS.Forms
             
         }
 
-        private void btnDown_Click(object sender, EventArgs e)
-        {
-            if(txtItem.Text == "")
-            {
-                MessageBox.Show("اختار العنصر");
-                return;
-            }
-            
-            if (txtPrice.Text == "")
-            {
-                MessageBox.Show("ادخل السعر");
-                return;
-            }
-            
-            dgvItems.Rows.Add(new object[]{
-                    txtHidden.Text,
-                    txtPrice.Text,
-                    txtQuantity.Text,
-                    txtItem.Text,
-                    Properties.Resources.delete,
-                }
-                );
-
-            txtHidden.Text = "";
-            txtPrice.Text = "";
-            txtQuantity.Text = "";
-            txtItem.Text = "";
-            
-
-            CalcCheck();
-        }
-
 
         private void CalcCheck()
         {
@@ -134,128 +99,6 @@ namespace POS.Forms
             }
 
             txtTotal.Text = result.ToString();
-        }
-
-        private void txtQuantity_KeyPress(object sender, KeyPressEventArgs e)
-        {
-            char ch = e.KeyChar;
-            if (!Char.IsDigit(ch) && ch != 8 && ch != 46)
-            {
-                e.Handled = true;
-            }
-        }
-
-        private void txtPrice_KeyPress(object sender, KeyPressEventArgs e)
-        {
-            char ch = e.KeyChar;
-            if (!Char.IsDigit(ch) && ch != 8 && ch != 46)
-            {
-                e.Handled = true;
-            }
-        }
-
-        private void dgvItems_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
-        {
-
-            if (dgvItems.Rows.Count > 0)
-            {
-                if (dgvItems.CurrentCell.ColumnIndex.Equals(4) && e.RowIndex != -1)
-                {
-                    if (MessageBox.Show("هل تريد حذف العنصر", "?", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
-                    {
-                        dgvItems.Rows.Remove(dgvItems.CurrentRow);
-                        CalcCheck();
-                    }
-                }
-            }   
-        }
-
-        private void btnDone_Click(object sender, EventArgs e)
-        {
-            
-            if(dgvItems.Rows.Count > 0)
-            {
-                if (MessageBox.Show("هل تريد طباعة فاتورة", "?", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
-                {
-                    try
-                    {
-                        addFunction();
-                        dsAddStore storeItems = new dsAddStore();
-                        for (int i = 0; i < dgvItems.Rows.Count; i++)
-                        {
-                            DataRow dro = storeItems.Tables["dtAddStore"].NewRow();
-                            dro["item"] = dgvItems[3, i].Value;
-                            dro["quantity"] = dgvItems[2, i].Value;
-                            dro["price"] = dgvItems[1, i].Value;
-
-                            storeItems.Tables["dtAddStore"].Rows.Add(dro);
-                        }
-
-                        FormReports rptForm = new FormReports();
-                        rptForm.mainReport.LocalReport.ReportEmbeddedResource = "POS.Reports.ReportAddStore.rdlc";
-                        rptForm.mainReport.LocalReport.DataSources.Clear();
-                        rptForm.mainReport.LocalReport.DataSources.Add(new ReportDataSource("DataSet1", storeItems.Tables["dtAddStore"]));
-
-                        ReportParameter[] reportParameters = new ReportParameter[2];
-                        reportParameters[0] = new ReportParameter("dateTime", DateTime.Now.ToString());
-                        reportParameters[1] = new ReportParameter("supplier", comboSuppliers.Text);
- 
-                        if (bool.Parse(declarations.systemOptions["directPrint"].ToString()))
-                        {
-                            LocalReport report = new LocalReport();
-                            string path = Application.StartupPath + @"\Reports\ReportAddStore.rdlc";
-                            report.ReportPath = path;
-                            report.DataSources.Clear();
-                            report.DataSources.Add(new ReportDataSource("DataSet1", storeItems.Tables["dtAddStore"]));
-                            report.SetParameters(reportParameters);
-                            PrintersClass.PrintToPrinter(report);
-                        }
-                        else if (bool.Parse(declarations.systemOptions["showBeforePrint"].ToString()))
-                        {
-                            rptForm.mainReport.LocalReport.SetParameters(reportParameters);
-                            rptForm.ShowDialog();
-                        }
-
-
-                        dgvItems.Rows.Clear();
-
-                    }
-
-                    catch (Exception ex)
-                    {
-                        MessageBox.Show(ex.Message);
-                    }
-                    finally
-                    {
-                        adoClass.sqlcn.Close();
-                    }
-
-                }
-                else
-                {
-                    try
-                    {
-                        addFunction();
-                        dgvItems.Rows.Clear();
-                    }
-
-                    catch (Exception ex)
-                    {
-                        MessageBox.Show(ex.Message);
-                    }
-                    finally
-                    {
-                        adoClass.sqlcn.Close();
-                    }
-                }
-
-                
-            }
-            else
-            {
-                MessageBox.Show("لا يوجد عناصر لاضافتها");
-            }
-            
         }
 
         private void addFunction()
@@ -318,6 +161,175 @@ namespace POS.Forms
                 cmd.ExecuteNonQuery();
                 cmd.Parameters.Clear();
                 
+            }
+        }
+
+        private void btnDown_Click(object sender, EventArgs e)
+        {
+            if (txtItem.Text == "")
+            {
+                MessageBox.Show("اختار العنصر");
+                return;
+            }
+
+            if (txtPrice.Text == "")
+            {
+                MessageBox.Show("ادخل السعر");
+                return;
+            }
+
+            dgvItems.Rows.Add(new object[]{
+                    txtHidden.Text,
+                    txtPrice.Text,
+                    txtQuantity.Text,
+                    txtItem.Text,
+                    Properties.Resources.delete,
+                }
+                );
+
+            txtHidden.Text = "";
+            txtPrice.Text = "";
+            txtQuantity.Text = "";
+            txtItem.Text = "";
+
+
+            CalcCheck();
+        }
+
+        private void txtQuantity_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            char ch = e.KeyChar;
+            if (!Char.IsDigit(ch) && ch != 8 && ch != 46)
+            {
+                e.Handled = true;
+            }
+        }
+
+        private void txtPrice_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            char ch = e.KeyChar;
+            if (!Char.IsDigit(ch) && ch != 8 && ch != 46)
+            {
+                e.Handled = true;
+            }
+        }
+
+        private void dgvItems_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if (dgvItems.Rows.Count > 0)
+            {
+                if (dgvItems.CurrentCell.ColumnIndex.Equals(4) && e.RowIndex != -1)
+                {
+                    if (MessageBox.Show("هل تريد حذف العنصر", "?", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+                    {
+                        dgvItems.Rows.Remove(dgvItems.CurrentRow);
+                        CalcCheck();
+                    }
+                }
+            }
+        }
+
+        private void btnDone_Click(object sender, EventArgs e)
+        {
+            if (dgvItems.Rows.Count > 0)
+            {
+                if (MessageBox.Show("هل تريد طباعة فاتورة", "?", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+                {
+                    try
+                    {
+                        addFunction();
+                        dsAddStore storeItems = new dsAddStore();
+                        for (int i = 0; i < dgvItems.Rows.Count; i++)
+                        {
+                            DataRow dro = storeItems.Tables["dtAddStore"].NewRow();
+                            dro["item"] = dgvItems[3, i].Value;
+                            dro["quantity"] = dgvItems[2, i].Value;
+                            dro["price"] = dgvItems[1, i].Value;
+
+                            storeItems.Tables["dtAddStore"].Rows.Add(dro);
+                        }
+
+                        FormReports rptForm = new FormReports();
+                        rptForm.mainReport.LocalReport.ReportEmbeddedResource = "POS.Reports.ReportAddStore.rdlc";
+                        rptForm.mainReport.LocalReport.DataSources.Clear();
+                        rptForm.mainReport.LocalReport.DataSources.Add(new ReportDataSource("DataSet1", storeItems.Tables["dtAddStore"]));
+
+                        ReportParameter[] reportParameters = new ReportParameter[2];
+                        reportParameters[0] = new ReportParameter("dateTime", DateTime.Now.ToString());
+                        reportParameters[1] = new ReportParameter("supplier", comboSuppliers.Text);
+
+                        if (bool.Parse(declarations.systemOptions["directPrint"].ToString()))
+                        {
+                            LocalReport report = new LocalReport();
+                            string path = Application.StartupPath + @"\Reports\ReportAddStore.rdlc";
+                            report.ReportPath = path;
+                            report.DataSources.Clear();
+                            report.DataSources.Add(new ReportDataSource("DataSet1", storeItems.Tables["dtAddStore"]));
+                            report.SetParameters(reportParameters);
+                            PrintersClass.PrintToPrinter(report);
+                        }
+                        else if (bool.Parse(declarations.systemOptions["showBeforePrint"].ToString()))
+                        {
+                            rptForm.mainReport.LocalReport.SetParameters(reportParameters);
+                            rptForm.ShowDialog();
+                        }
+
+
+                        dgvItems.Rows.Clear();
+
+                    }
+
+                    catch (Exception ex)
+                    {
+                        MessageBox.Show(ex.Message);
+                    }
+                    finally
+                    {
+                        adoClass.sqlcn.Close();
+                    }
+
+                }
+                else
+                {
+                    try
+                    {
+                        addFunction();
+                        dgvItems.Rows.Clear();
+                    }
+
+                    catch (Exception ex)
+                    {
+                        MessageBox.Show(ex.Message);
+                    }
+                    finally
+                    {
+                        adoClass.sqlcn.Close();
+                    }
+                }
+
+
+            }
+            else
+            {
+                MessageBox.Show("لا يوجد عناصر لاضافتها");
+            }
+        }
+
+        private void txtSearch_TextChanged(object sender, EventArgs e)
+        {
+            search(txtSearch.Text);
+        }
+
+        void search(string text = null)
+        {
+            if (string.IsNullOrEmpty(text))
+            {
+                fillItems("Select * from storeItems");
+            }
+            else
+            {
+                fillItems("Select * from storeItems where name like '%" + text + "%'");
+
             }
         }
     }

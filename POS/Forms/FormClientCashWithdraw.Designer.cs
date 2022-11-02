@@ -66,7 +66,7 @@ namespace POS.Forms
             this.pnlParent.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 21.62536F));
             this.pnlParent.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 56.08538F));
             this.pnlParent.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 22.28926F));
-            this.pnlParent.Size = new System.Drawing.Size(525, 403);
+            this.pnlParent.Size = new System.Drawing.Size(622, 403);
             this.pnlParent.TabIndex = 1;
             // 
             // tableLayoutPanel3
@@ -81,7 +81,7 @@ namespace POS.Forms
             this.tableLayoutPanel3.Name = "tableLayoutPanel3";
             this.tableLayoutPanel3.RowCount = 1;
             this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel3.Size = new System.Drawing.Size(525, 90);
+            this.tableLayoutPanel3.Size = new System.Drawing.Size(622, 90);
             this.tableLayoutPanel3.TabIndex = 2;
             // 
             // btnSave
@@ -92,9 +92,9 @@ namespace POS.Forms
             this.btnSave.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnSave.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnSave.Image = global::POS.Properties.Resources.floppy_disk;
-            this.btnSave.Location = new System.Drawing.Point(265, 3);
+            this.btnSave.Location = new System.Drawing.Point(314, 3);
             this.btnSave.Name = "btnSave";
-            this.btnSave.Size = new System.Drawing.Size(257, 84);
+            this.btnSave.Size = new System.Drawing.Size(305, 84);
             this.btnSave.TabIndex = 28;
             this.btnSave.Text = "حفظ";
             this.btnSave.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
@@ -116,7 +116,7 @@ namespace POS.Forms
             this.tableLayoutPanel2.Name = "tableLayoutPanel2";
             this.tableLayoutPanel2.RowCount = 1;
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel2.Size = new System.Drawing.Size(525, 87);
+            this.tableLayoutPanel2.Size = new System.Drawing.Size(622, 87);
             this.tableLayoutPanel2.TabIndex = 0;
             // 
             // label1
@@ -124,7 +124,7 @@ namespace POS.Forms
             this.label1.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(121, 25);
+            this.label1.Location = new System.Drawing.Point(163, 25);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(204, 36);
             this.label1.TabIndex = 19;
@@ -135,17 +135,17 @@ namespace POS.Forms
             this.pictureBox1.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("pictureBox1.BackgroundImage")));
             this.pictureBox1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
             this.pictureBox1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.pictureBox1.Location = new System.Drawing.Point(450, 3);
+            this.pictureBox1.Location = new System.Drawing.Point(533, 3);
             this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(72, 81);
+            this.pictureBox1.Size = new System.Drawing.Size(86, 81);
             this.pictureBox1.TabIndex = 20;
             this.pictureBox1.TabStop = false;
             // 
             // tableLayoutPanel1
             // 
             this.tableLayoutPanel1.ColumnCount = 2;
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 72.76423F));
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 27.23577F));
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 62.05788F));
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 37.94212F));
             this.tableLayoutPanel1.Controls.Add(this.lblInfo, 0, 0);
             this.tableLayoutPanel1.Controls.Add(this.txtMoney, 0, 3);
             this.tableLayoutPanel1.Controls.Add(this.btnInfo, 1, 0);
@@ -164,7 +164,7 @@ namespace POS.Forms
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 25F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 25F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this.tableLayoutPanel1.Size = new System.Drawing.Size(525, 226);
+            this.tableLayoutPanel1.Size = new System.Drawing.Size(622, 226);
             this.tableLayoutPanel1.TabIndex = 1;
             // 
             // lblInfo
@@ -172,7 +172,7 @@ namespace POS.Forms
             this.lblInfo.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.lblInfo.AutoSize = true;
             this.lblInfo.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblInfo.Location = new System.Drawing.Point(174, 10);
+            this.lblInfo.Location = new System.Drawing.Point(176, 10);
             this.lblInfo.Name = "lblInfo";
             this.lblInfo.Size = new System.Drawing.Size(33, 36);
             this.lblInfo.TabIndex = 39;
@@ -186,7 +186,7 @@ namespace POS.Forms
             this.txtMoney.Location = new System.Drawing.Point(3, 176);
             this.txtMoney.Name = "txtMoney";
             this.txtMoney.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
-            this.txtMoney.Size = new System.Drawing.Size(376, 41);
+            this.txtMoney.Size = new System.Drawing.Size(379, 41);
             this.txtMoney.TabIndex = 41;
             this.txtMoney.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtMoney_KeyPress);
             // 
@@ -194,7 +194,7 @@ namespace POS.Forms
             // 
             this.btnInfo.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.btnInfo.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnInfo.Location = new System.Drawing.Point(402, 6);
+            this.btnInfo.Location = new System.Drawing.Point(452, 6);
             this.btnInfo.Name = "btnInfo";
             this.btnInfo.Size = new System.Drawing.Size(102, 44);
             this.btnInfo.TabIndex = 35;
@@ -207,7 +207,7 @@ namespace POS.Forms
             this.label2.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(414, 66);
+            this.label2.Location = new System.Drawing.Point(464, 66);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(79, 36);
             this.label2.TabIndex = 36;
@@ -218,7 +218,7 @@ namespace POS.Forms
             this.label3.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.Location = new System.Drawing.Point(388, 122);
+            this.label3.Location = new System.Drawing.Point(438, 122);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(130, 36);
             this.label3.TabIndex = 37;
@@ -229,7 +229,7 @@ namespace POS.Forms
             this.label4.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.label4.AutoSize = true;
             this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label4.Location = new System.Drawing.Point(417, 179);
+            this.label4.Location = new System.Drawing.Point(467, 179);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(72, 36);
             this.label4.TabIndex = 38;
@@ -245,7 +245,7 @@ namespace POS.Forms
             this.comboClient.Location = new System.Drawing.Point(3, 62);
             this.comboClient.Name = "comboClient";
             this.comboClient.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
-            this.comboClient.Size = new System.Drawing.Size(376, 44);
+            this.comboClient.Size = new System.Drawing.Size(379, 44);
             this.comboClient.TabIndex = 39;
             // 
             // comboType
@@ -258,7 +258,7 @@ namespace POS.Forms
             this.comboType.Location = new System.Drawing.Point(3, 118);
             this.comboType.Name = "comboType";
             this.comboType.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
-            this.comboType.Size = new System.Drawing.Size(376, 44);
+            this.comboType.Size = new System.Drawing.Size(379, 44);
             this.comboType.TabIndex = 40;
             // 
             // FormClientCashWithdraw
@@ -266,7 +266,7 @@ namespace POS.Forms
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
-            this.ClientSize = new System.Drawing.Size(525, 403);
+            this.ClientSize = new System.Drawing.Size(622, 403);
             this.Controls.Add(this.pnlParent);
             this.MaximizeBox = false;
             this.MinimizeBox = false;

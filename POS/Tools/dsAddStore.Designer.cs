@@ -379,7 +379,7 @@ namespace POS.Tools {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public dtAddStoreRow AdddtAddStoreRow(string item, long quantity, double price) {
+            public dtAddStoreRow AdddtAddStoreRow(string item, string quantity, double price) {
                 dtAddStoreRow rowdtAddStoreRow = ((dtAddStoreRow)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
                         item,
@@ -417,7 +417,7 @@ namespace POS.Tools {
             private void InitClass() {
                 this.columnitem = new global::System.Data.DataColumn("item", typeof(string), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnitem);
-                this.columnquantity = new global::System.Data.DataColumn("quantity", typeof(long), null, global::System.Data.MappingType.Element);
+                this.columnquantity = new global::System.Data.DataColumn("quantity", typeof(string), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnquantity);
                 this.columnprice = new global::System.Data.DataColumn("price", typeof(double), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnprice);
@@ -579,10 +579,10 @@ namespace POS.Tools {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public long quantity {
+            public string quantity {
                 get {
                     try {
-                        return ((long)(this[this.tabledtAddStore.quantityColumn]));
+                        return ((string)(this[this.tabledtAddStore.quantityColumn]));
                     }
                     catch (global::System.InvalidCastException e) {
                         throw new global::System.Data.StrongTypingException("The value for column \'quantity\' in table \'dtAddStore\' is DBNull.", e);

@@ -63,6 +63,11 @@ namespace POS.Forms
                         bool dontShowValue = false;
                         bool.TryParse(dataTable.Rows[i]["dontShow"].ToString(), out dontShowValue);
                         rdoDontShow.Checked = dontShowValue;
+
+
+                        bool printTables = false;
+                        bool.TryParse(dataTable.Rows[i]["printTables"].ToString(), out printTables);
+                        chBoxTable.Checked = printTables;
                     }
                 }
                 else
@@ -128,6 +133,7 @@ namespace POS.Forms
             Row["directPrint"] = rdoDirectPrint.Checked.ToString();
             Row["showBeforePrint"] = rdoShowBeforePrint.Checked.ToString();
             Row["dontShow"] = rdoDontShow.Checked.ToString();
+            Row["printTables"] = chBoxTable.Checked.ToString();
 
         }
 
@@ -153,9 +159,6 @@ namespace POS.Forms
             }
         }
 
-
-       
-
-
+        
     }
 }

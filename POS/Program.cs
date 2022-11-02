@@ -114,7 +114,7 @@ namespace POS
                                             cmd.Parameters.AddWithValue("@dateTimeStart", DateTime.Now);
                                             cmd.ExecuteNonQuery();
 
-
+                                            MessageBox.Show("لقد بدات وردية جديدة");
                                             declarations.shiftId = 1;
                                             Application.Run(new FormPOSResponsive());
                                         }

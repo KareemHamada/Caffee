@@ -379,7 +379,7 @@ namespace POS.Tools {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public dtSalariesRow AdddtSalariesRow(string name, long salary, System.DateTime dateTime) {
+            public dtSalariesRow AdddtSalariesRow(string name, double salary, System.DateTime dateTime) {
                 dtSalariesRow rowdtSalariesRow = ((dtSalariesRow)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
                         name,
@@ -417,7 +417,7 @@ namespace POS.Tools {
             private void InitClass() {
                 this.columnname = new global::System.Data.DataColumn("name", typeof(string), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnname);
-                this.columnsalary = new global::System.Data.DataColumn("salary", typeof(long), null, global::System.Data.MappingType.Element);
+                this.columnsalary = new global::System.Data.DataColumn("salary", typeof(double), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnsalary);
                 this.columndateTime = new global::System.Data.DataColumn("dateTime", typeof(global::System.DateTime), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columndateTime);
@@ -579,10 +579,10 @@ namespace POS.Tools {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public long salary {
+            public double salary {
                 get {
                     try {
-                        return ((long)(this[this.tabledtSalaries.salaryColumn]));
+                        return ((double)(this[this.tabledtSalaries.salaryColumn]));
                     }
                     catch (global::System.InvalidCastException e) {
                         throw new global::System.Data.StrongTypingException("The value for column \'salary\' in table \'dtSalaries\' is DBNull.", e);

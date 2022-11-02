@@ -525,7 +525,7 @@ namespace POS.Tools {
                         double checkTotal, 
                         long itemId, 
                         string itemName, 
-                        long itemQuantity, 
+                        string itemQuantity, 
                         double itemPrice, 
                         double itemTotalPrice, 
                         string casherName, 
@@ -610,7 +610,7 @@ namespace POS.Tools {
                 base.Columns.Add(this.columnitemId);
                 this.columnitemName = new global::System.Data.DataColumn("itemName", typeof(string), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnitemName);
-                this.columnitemQuantity = new global::System.Data.DataColumn("itemQuantity", typeof(long), null, global::System.Data.MappingType.Element);
+                this.columnitemQuantity = new global::System.Data.DataColumn("itemQuantity", typeof(string), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnitemQuantity);
                 this.columnitemPrice = new global::System.Data.DataColumn("itemPrice", typeof(double), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnitemPrice);
@@ -856,10 +856,10 @@ namespace POS.Tools {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public long itemQuantity {
+            public string itemQuantity {
                 get {
                     try {
-                        return ((long)(this[this.tabledtCheck.itemQuantityColumn]));
+                        return ((string)(this[this.tabledtCheck.itemQuantityColumn]));
                     }
                     catch (global::System.InvalidCastException e) {
                         throw new global::System.Data.StrongTypingException("The value for column \'itemQuantity\' in table \'dtCheck\' is DBNull.", e);

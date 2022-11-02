@@ -638,9 +638,9 @@
             </Paragraphs>
             <rd:DefaultName>Textbox14</rd:DefaultName>
             <Top>0.62999in</Top>
-            <Left>2.28947in</Left>
+            <Left>2.3278in</Left>
             <Height>0.25in</Height>
-            <Width>0.46333in</Width>
+            <Width>0.4272in</Width>
             <ZIndex>3</ZIndex>
             <Style>
               <Border>
@@ -878,9 +878,9 @@
               </Paragraph>
             </Paragraphs>
             <rd:DefaultName>tax</rd:DefaultName>
-            <Top>1.05864cm</Top>
+            <Top>1.07902cm</Top>
             <Left>1.16556cm</Left>
-            <Height>0.54154cm</Height>
+            <Height>0.52116cm</Height>
             <Width>1.7907cm</Width>
             <ZIndex>10</ZIndex>
             <Style>
@@ -920,13 +920,13 @@
             </Style>
           </Textbox>
         </ReportItems>
-        <Height>1.44071in</Height>
+        <Height>3.6594cm</Height>
         <Style />
       </Body>
-      <Width>2.8898in</Width>
+      <Width>7.34009cm</Width>
       <Page>
         <PageHeader>
-          <Height>1.08387in</Height>
+          <Height>2.75303cm</Height>
           <PrintOnFirstPage>true</PrintOnFirstPage>
           <ReportItems>
             <Textbox Name="checkDate">
@@ -1252,7 +1252,7 @@
               <rd:DefaultName>casherName</rd:DefaultName>
               <Top>0.68801in</Top>
               <Left>1.45278in</Left>
-              <Height>0.19839in</Height>
+              <Height>0.1942in</Height>
               <Width>0.96499in</Width>
               <ZIndex>10</ZIndex>
               <Style>
@@ -1392,8 +1392,13 @@
             </Border>
           </Style>
         </PageHeader>
-        <PageHeight>4.33071in</PageHeight>
-        <PageWidth>3.14961in</PageWidth>
+        <PageHeight>11cm</PageHeight>
+        <PageWidth>8.00001cm</PageWidth>
+        <LeftMargin>0cm</LeftMargin>
+        <RightMargin>0cm</RightMargin>
+        <TopMargin>0cm</TopMargin>
+        <BottomMargin>0cm</BottomMargin>
+        <ColumnSpacing>1.27cm</ColumnSpacing>
         <Style />
       </Page>
     </ReportSection>
@@ -1470,6 +1475,6 @@ kARgNpvR6nXEpiVz/qtqXn31VV599VUAFixYwO7duwkODh4oZhCMhiBunJ9NWOiFeX1Fb28va9eupbjY
 +iy2McsEb18FMPTNyL8I/uVPhP4G/aI6F+MSabYAAAAASUVORK5CYII=</ImageData>
     </EmbeddedImage>
   </EmbeddedImages>
-  <rd:ReportUnitType>Inch</rd:ReportUnitType>
+  <rd:ReportUnitType>Cm</rd:ReportUnitType>
   <rd:ReportID>8f46c764-22d3-4e9b-8fb7-88a0fde82f1b</rd:ReportID>
 </Report>

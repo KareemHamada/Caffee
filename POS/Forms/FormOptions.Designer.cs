@@ -54,6 +54,7 @@ namespace POS.Forms
             this.rdoShowBeforePrint = new System.Windows.Forms.RadioButton();
             this.rdoDontShow = new System.Windows.Forms.RadioButton();
             this.label3 = new System.Windows.Forms.Label();
+            this.chBoxTable = new System.Windows.Forms.CheckBox();
             this.tableLayoutPanel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.picBox)).BeginInit();
@@ -61,6 +62,7 @@ namespace POS.Forms
             // 
             // tableLayoutPanel1
             // 
+            this.tableLayoutPanel1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
             this.tableLayoutPanel1.ColumnCount = 4;
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 25F));
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 25F));
@@ -89,7 +91,7 @@ namespace POS.Forms
             this.tableLayoutPanel1.Controls.Add(this.rdoShowBeforePrint, 1, 6);
             this.tableLayoutPanel1.Controls.Add(this.rdoDontShow, 0, 6);
             this.tableLayoutPanel1.Controls.Add(this.label3, 3, 6);
-            this.tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.tableLayoutPanel1.Controls.Add(this.chBoxTable, 3, 5);
             this.tableLayoutPanel1.Location = new System.Drawing.Point(0, 0);
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
             this.tableLayoutPanel1.RowCount = 8;
@@ -98,8 +100,8 @@ namespace POS.Forms
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 10.33973F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 24.51993F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 8.271788F));
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 5.90842F));
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 10.48744F));
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 7.428571F));
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 8.857142F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 19.79321F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
@@ -119,23 +121,24 @@ namespace POS.Forms
             // 
             // label2
             // 
-            this.label2.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.label2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 16.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(513, 20);
+            this.label2.Location = new System.Drawing.Point(383, 20);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(114, 32);
+            this.label2.Size = new System.Drawing.Size(374, 32);
             this.label2.TabIndex = 21;
             this.label2.Text = "الاعدادات";
+            this.label2.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // label1
             // 
+            this.label1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
             this.label1.AutoSize = true;
-            this.label1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(1143, 72);
+            this.label1.Location = new System.Drawing.Point(1143, 90);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(375, 72);
+            this.label1.Size = new System.Drawing.Size(375, 36);
             this.label1.TabIndex = 22;
             this.label1.Text = "اسم المكان";
             this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -155,12 +158,12 @@ namespace POS.Forms
             // 
             // label6
             // 
+            this.label6.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
             this.label6.AutoSize = true;
-            this.label6.Dock = System.Windows.Forms.DockStyle.Fill;
             this.label6.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label6.Location = new System.Drawing.Point(383, 72);
+            this.label6.Location = new System.Drawing.Point(383, 90);
             this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(374, 72);
+            this.label6.Size = new System.Drawing.Size(374, 36);
             this.label6.TabIndex = 26;
             this.label6.Text = "السطر الاول";
             this.label6.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -180,12 +183,12 @@ namespace POS.Forms
             // 
             // label4
             // 
-            this.label4.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.label4.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
             this.label4.AutoSize = true;
             this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label4.Location = new System.Drawing.Point(1214, 162);
+            this.label4.Location = new System.Drawing.Point(1143, 162);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(232, 36);
+            this.label4.Size = new System.Drawing.Size(375, 36);
             this.label4.TabIndex = 28;
             this.label4.Text = "اضافة اسفل اسم المكان";
             this.label4.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -205,12 +208,12 @@ namespace POS.Forms
             // 
             // label7
             // 
-            this.label7.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.label7.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
             this.label7.AutoSize = true;
             this.label7.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label7.Location = new System.Drawing.Point(503, 162);
+            this.label7.Location = new System.Drawing.Point(383, 162);
             this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(134, 36);
+            this.label7.Size = new System.Drawing.Size(374, 36);
             this.label7.TabIndex = 30;
             this.label7.Text = "السطر الثاني";
             this.label7.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -230,12 +233,12 @@ namespace POS.Forms
             // 
             // label5
             // 
-            this.label5.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.label5.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
             this.label5.AutoSize = true;
             this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label5.Location = new System.Drawing.Point(1290, 283);
+            this.label5.Location = new System.Drawing.Point(1143, 283);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(81, 36);
+            this.label5.Size = new System.Drawing.Size(375, 36);
             this.label5.TabIndex = 32;
             this.label5.Text = "العنوان";
             this.label5.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -255,12 +258,12 @@ namespace POS.Forms
             // 
             // label9
             // 
-            this.label9.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.label9.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
             this.label9.AutoSize = true;
             this.label9.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label9.Location = new System.Drawing.Point(1224, 397);
+            this.label9.Location = new System.Drawing.Point(1143, 397);
             this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(212, 36);
+            this.label9.Size = new System.Drawing.Size(375, 36);
             this.label9.TabIndex = 36;
             this.label9.Text = "باسورد تقفيل الوردية";
             this.label9.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -291,12 +294,12 @@ namespace POS.Forms
             // 
             // label8
             // 
-            this.label8.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.label8.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
             this.label8.AutoSize = true;
             this.label8.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label8.Location = new System.Drawing.Point(526, 283);
+            this.label8.Location = new System.Drawing.Point(383, 283);
             this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(88, 36);
+            this.label8.Size = new System.Drawing.Size(374, 36);
             this.label8.TabIndex = 39;
             this.label8.Text = "الصورة";
             this.label8.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -341,57 +344,70 @@ namespace POS.Forms
             // 
             // rdoDirectPrint
             // 
-            this.rdoDirectPrint.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.rdoDirectPrint.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
             this.rdoDirectPrint.AutoSize = true;
             this.rdoDirectPrint.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.rdoDirectPrint.Location = new System.Drawing.Point(866, 501);
+            this.rdoDirectPrint.Location = new System.Drawing.Point(763, 507);
             this.rdoDirectPrint.Name = "rdoDirectPrint";
-            this.rdoDirectPrint.Size = new System.Drawing.Size(167, 40);
+            this.rdoDirectPrint.Size = new System.Drawing.Size(374, 40);
             this.rdoDirectPrint.TabIndex = 44;
             this.rdoDirectPrint.TabStop = true;
             this.rdoDirectPrint.Text = "طباعة مباشرة";
-            this.rdoDirectPrint.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.rdoDirectPrint.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.rdoDirectPrint.UseVisualStyleBackColor = true;
             // 
             // rdoShowBeforePrint
             // 
-            this.rdoShowBeforePrint.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.rdoShowBeforePrint.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
             this.rdoShowBeforePrint.AutoSize = true;
             this.rdoShowBeforePrint.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.rdoShowBeforePrint.Location = new System.Drawing.Point(462, 501);
+            this.rdoShowBeforePrint.Location = new System.Drawing.Point(383, 507);
             this.rdoShowBeforePrint.Name = "rdoShowBeforePrint";
-            this.rdoShowBeforePrint.Size = new System.Drawing.Size(216, 40);
+            this.rdoShowBeforePrint.Size = new System.Drawing.Size(374, 40);
             this.rdoShowBeforePrint.TabIndex = 45;
             this.rdoShowBeforePrint.TabStop = true;
             this.rdoShowBeforePrint.Text = "عرض قبل الطباعة";
-            this.rdoShowBeforePrint.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.rdoShowBeforePrint.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.rdoShowBeforePrint.UseVisualStyleBackColor = true;
             // 
             // rdoDontShow
             // 
-            this.rdoDontShow.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.rdoDontShow.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
             this.rdoDontShow.AutoSize = true;
             this.rdoDontShow.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.rdoDontShow.Location = new System.Drawing.Point(115, 501);
+            this.rdoDontShow.Location = new System.Drawing.Point(3, 507);
             this.rdoDontShow.Name = "rdoDontShow";
-            this.rdoDontShow.Size = new System.Drawing.Size(150, 40);
+            this.rdoDontShow.Size = new System.Drawing.Size(374, 40);
             this.rdoDontShow.TabIndex = 46;
             this.rdoDontShow.TabStop = true;
             this.rdoDontShow.Text = "عدم الطباعة";
-            this.rdoDontShow.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.rdoDontShow.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.rdoDontShow.UseVisualStyleBackColor = true;
             // 
             // label3
             // 
-            this.label3.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.label3.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.Location = new System.Drawing.Point(1290, 503);
+            this.label3.Location = new System.Drawing.Point(1143, 509);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(81, 36);
+            this.label3.Size = new System.Drawing.Size(375, 36);
             this.label3.TabIndex = 47;
             this.label3.Text = "الطابعة";
             this.label3.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // chBoxTable
+            // 
+            this.chBoxTable.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+            this.chBoxTable.AutoSize = true;
+            this.chBoxTable.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.chBoxTable.Location = new System.Drawing.Point(1143, 450);
+            this.chBoxTable.Name = "chBoxTable";
+            this.chBoxTable.Size = new System.Drawing.Size(375, 40);
+            this.chBoxTable.TabIndex = 48;
+            this.chBoxTable.Text = "طباعة بعد الصالة";
+            this.chBoxTable.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.chBoxTable.UseVisualStyleBackColor = true;
             // 
             // FormOptions
             // 
@@ -404,7 +420,9 @@ namespace POS.Forms
             this.Controls.Add(this.tableLayoutPanel1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "FormOptions";
-            this.Text = "FormOptions";
+            this.ShowIcon = false;
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
+            this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.Load += new System.EventHandler(this.FormOptions_Load);
             this.tableLayoutPanel1.ResumeLayout(false);
             this.tableLayoutPanel1.PerformLayout();
@@ -440,5 +458,6 @@ namespace POS.Forms
         private System.Windows.Forms.RadioButton rdoShowBeforePrint;
         private System.Windows.Forms.RadioButton rdoDontShow;
         private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.CheckBox chBoxTable;
     }
 }
