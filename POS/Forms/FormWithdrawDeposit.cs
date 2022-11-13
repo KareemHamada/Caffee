@@ -50,7 +50,6 @@ namespace POS.Forms
 
         private void btnSave_Click(object sender, EventArgs e)
         {
-            // txtMoney.Text == 0
             if (comboName.Text == "")
             {
                 MessageBox.Show("اختار اسم الموظف");
@@ -71,7 +70,7 @@ namespace POS.Forms
 
             if (moneyDecimal <= 0)
             {
-                MessageBox.Show("ادخل المبلغ الصحيح");
+                MessageBox.Show("ادخل مبلغ اكبر من 0");
                 return;
             }
 

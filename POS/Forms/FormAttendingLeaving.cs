@@ -25,6 +25,7 @@ namespace POS.Forms
         private void FormAttendingLeaving_Load(object sender, EventArgs e)
         {
             Helper.fillComboBox(comboName, "Select id,name from Employee", "name", "id");
+
         }
 
 
@@ -66,7 +67,6 @@ namespace POS.Forms
                         cmd.ExecuteNonQuery();
 
                         MessageBox.Show("تمت تسجيل الانصراف بنجاح");
-                        adoClass.sqlcn.Close();
                     }
                     else
                     {
@@ -168,5 +168,7 @@ namespace POS.Forms
             comboName.Text = "";
             txtNotes.Text = "";
         }
+
+
     }
 }

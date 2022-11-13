@@ -108,6 +108,12 @@ namespace POS.Forms
                 MessageBox.Show("ادخل كلمة المرور");
                 return;
             }
+            
+            if (txtFullName.Text == "")
+            {
+                MessageBox.Show("ادخل الاسم بالكامل");
+                return;
+            }
             if (comboPrivilege.Text == "")
             {
                 MessageBox.Show("حدد الصلاحية");
@@ -171,6 +177,11 @@ namespace POS.Forms
             if (txtPassword.Text == "")
             {
                 MessageBox.Show("ادخل كلمة المرور");
+                return;
+            }
+            if (txtFullName.Text == "")
+            {
+                MessageBox.Show("ادخل الاسم بالكامل");
                 return;
             }
             if (comboPrivilege.Text == "")

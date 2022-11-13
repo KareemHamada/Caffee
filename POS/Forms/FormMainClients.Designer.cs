@@ -81,6 +81,7 @@ namespace POS.Forms
             this.btnClientsCashWithdraw.Text = "اجل و سداد عملاء";
             this.btnClientsCashWithdraw.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             this.btnClientsCashWithdraw.UseVisualStyleBackColor = false;
+            this.btnClientsCashWithdraw.Visible = false;
             this.btnClientsCashWithdraw.Click += new System.EventHandler(this.btnClientsCashWithdraw_Click);
             // 
             // FormMainClients

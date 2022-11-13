@@ -46,7 +46,7 @@ namespace POS.Forms
 
         private void btnSave_Click(object sender, EventArgs e)
         {
-            Decimal moneyDecimal = Decimal.Parse(txtMoney.Text);
+            
 
             if (comboSupplier.Text == "")
             {
@@ -58,9 +58,15 @@ namespace POS.Forms
                 MessageBox.Show("اختار نوع العملية");
                 return;
             }
-            if (txtMoney.Text == "" || moneyDecimal <= 0)
+            if (txtMoney.Text == "")
             {
                 MessageBox.Show("ادخل المبلغ");
+                return;
+            }
+            Decimal moneyDecimal = Decimal.Parse(txtMoney.Text);
+            if (moneyDecimal <= 0)
+            {
+                MessageBox.Show("ادخل مبلغ اكبر من 0");
                 return;
             }
 

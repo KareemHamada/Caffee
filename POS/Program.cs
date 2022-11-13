@@ -79,6 +79,7 @@ namespace POS
                                             DataRow row = dt.Rows[0];
                                             object dateTimeStart = row["dateTimeStart"];
                                             object dateTimeEnd = row["dateTimeEnd"];
+                                            object userIdLogin = row["userId"];
                                             if (dateTimeStart != DBNull.Value && dateTimeEnd != DBNull.Value)
                                             {
                                                 string query = "Insert into Shifts (userId,dateTimeStart) values (@userId,@dateTimeStart); ";
@@ -103,8 +104,29 @@ namespace POS
                                             }
                                             else
                                             {
-                                                declarations.shiftId = int.Parse(row["id"].ToString());
-                                                Application.Run(new FormPOSResponsive());
+                                                if (declarations.userid == (int)userIdLogin)
+                                                {
+                                                    declarations.shiftId = int.Parse(row["id"].ToString());
+                                                    Application.Run(new FormPOSResponsive());
+                                                }
+                                                else
+                                                {
+                                                    // check if user is the same user start shift or not
+                                                    DataTable ddtt = new DataTable();
+                                                    cmd = new SqlCommand("Select fullName from Users where id = '" + userIdLogin + "'", adoClass.sqlcn);
+                                                    SqlDataAdapter adapp = new SqlDataAdapter(cmd);
+                                                    adapp.Fill(ddtt);
+
+                                                    if (ddtt.Rows.Count > 0)
+                                                    {
+                                                        DataRow rowUser = ddtt.Rows[0];
+                                                        MessageBox.Show(" يجب انهاء ورديةالمستخدم " + rowUser["fullName"]);
+                                                        Application.Exit();
+                                                    }
+                                                    
+                                                    
+                                                }
+                                                
                                             }
                                         }
                                         else

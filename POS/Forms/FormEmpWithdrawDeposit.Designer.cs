@@ -35,11 +35,6 @@ namespace POS.Forms
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormEmpWithdrawDeposit));
             this.pnlParent = new System.Windows.Forms.TableLayoutPanel();
             this.dgvLoading = new System.Windows.Forms.DataGridView();
-            this.dateTime = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.money = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.operationType = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.employee = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.id = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.panel2 = new System.Windows.Forms.Panel();
             this.label2 = new System.Windows.Forms.Label();
             this.btnClose = new System.Windows.Forms.Button();
@@ -56,6 +51,12 @@ namespace POS.Forms
             this.tableLayoutPanel4 = new System.Windows.Forms.TableLayoutPanel();
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
             this.txtSearch = new System.Windows.Forms.TextBox();
+            this.dateTime = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.money = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.operationType = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.employee = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.id = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.del = new System.Windows.Forms.DataGridViewImageColumn();
             this.pnlParent.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvLoading)).BeginInit();
             this.panel2.SuspendLayout();
@@ -103,7 +104,8 @@ namespace POS.Forms
             this.money,
             this.operationType,
             this.employee,
-            this.id});
+            this.id,
+            this.del});
             this.dgvLoading.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dgvLoading.Location = new System.Drawing.Point(3, 274);
             this.dgvLoading.Name = "dgvLoading";
@@ -124,46 +126,7 @@ namespace POS.Forms
             this.dgvLoading.RowTemplate.Height = 35;
             this.dgvLoading.Size = new System.Drawing.Size(1389, 394);
             this.dgvLoading.TabIndex = 21;
-            // 
-            // dateTime
-            // 
-            this.dateTime.HeaderText = "التاريخ";
-            this.dateTime.MinimumWidth = 6;
-            this.dateTime.Name = "dateTime";
-            this.dateTime.ReadOnly = true;
-            this.dateTime.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
-            // 
-            // money
-            // 
-            this.money.HeaderText = "المبلغ";
-            this.money.MinimumWidth = 6;
-            this.money.Name = "money";
-            this.money.ReadOnly = true;
-            this.money.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
-            // 
-            // operationType
-            // 
-            this.operationType.HeaderText = "نوع العملية";
-            this.operationType.MinimumWidth = 6;
-            this.operationType.Name = "operationType";
-            this.operationType.ReadOnly = true;
-            this.operationType.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
-            // 
-            // employee
-            // 
-            this.employee.HeaderText = "الموظف";
-            this.employee.MinimumWidth = 6;
-            this.employee.Name = "employee";
-            this.employee.ReadOnly = true;
-            this.employee.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
-            // 
-            // id
-            // 
-            this.id.HeaderText = "#";
-            this.id.MinimumWidth = 6;
-            this.id.Name = "id";
-            this.id.ReadOnly = true;
-            this.id.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            this.dgvLoading.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvLoading_CellDoubleClick);
             // 
             // panel2
             // 
@@ -396,6 +359,54 @@ namespace POS.Forms
             this.txtSearch.TabIndex = 2;
             this.txtSearch.TextChanged += new System.EventHandler(this.txtSearch_TextChanged);
             // 
+            // dateTime
+            // 
+            this.dateTime.HeaderText = "التاريخ";
+            this.dateTime.MinimumWidth = 6;
+            this.dateTime.Name = "dateTime";
+            this.dateTime.ReadOnly = true;
+            this.dateTime.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            // 
+            // money
+            // 
+            this.money.HeaderText = "المبلغ";
+            this.money.MinimumWidth = 6;
+            this.money.Name = "money";
+            this.money.ReadOnly = true;
+            this.money.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            // 
+            // operationType
+            // 
+            this.operationType.HeaderText = "نوع العملية";
+            this.operationType.MinimumWidth = 6;
+            this.operationType.Name = "operationType";
+            this.operationType.ReadOnly = true;
+            this.operationType.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            // 
+            // employee
+            // 
+            this.employee.HeaderText = "الموظف";
+            this.employee.MinimumWidth = 6;
+            this.employee.Name = "employee";
+            this.employee.ReadOnly = true;
+            this.employee.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            // 
+            // id
+            // 
+            this.id.HeaderText = "#";
+            this.id.MinimumWidth = 6;
+            this.id.Name = "id";
+            this.id.ReadOnly = true;
+            this.id.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            // 
+            // del
+            // 
+            this.del.HeaderText = "حذف";
+            this.del.Image = global::POS.Properties.Resources.delete;
+            this.del.MinimumWidth = 6;
+            this.del.Name = "del";
+            this.del.ReadOnly = true;
+            // 
             // FormEmpWithdrawDeposit
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -447,5 +458,6 @@ namespace POS.Forms
         private System.Windows.Forms.DataGridViewTextBoxColumn operationType;
         private System.Windows.Forms.DataGridViewTextBoxColumn employee;
         private System.Windows.Forms.DataGridViewTextBoxColumn id;
+        private System.Windows.Forms.DataGridViewImageColumn del;
     }
 }

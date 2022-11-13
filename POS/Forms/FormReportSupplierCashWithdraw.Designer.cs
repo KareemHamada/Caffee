@@ -40,6 +40,7 @@ namespace POS.Forms
             this.operationType = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.supplier = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.id = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.del = new System.Windows.Forms.DataGridViewImageColumn();
             this.panel2 = new System.Windows.Forms.Panel();
             this.label2 = new System.Windows.Forms.Label();
             this.btnClose = new System.Windows.Forms.Button();
@@ -103,7 +104,8 @@ namespace POS.Forms
             this.money,
             this.operationType,
             this.supplier,
-            this.id});
+            this.id,
+            this.del});
             this.dgvLoading.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dgvLoading.Location = new System.Drawing.Point(3, 186);
             this.dgvLoading.Name = "dgvLoading";
@@ -124,6 +126,7 @@ namespace POS.Forms
             this.dgvLoading.RowTemplate.Height = 35;
             this.dgvLoading.Size = new System.Drawing.Size(1353, 388);
             this.dgvLoading.TabIndex = 24;
+            this.dgvLoading.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvLoading_CellDoubleClick);
             // 
             // dateTime
             // 
@@ -164,6 +167,14 @@ namespace POS.Forms
             this.id.Name = "id";
             this.id.ReadOnly = true;
             this.id.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            // 
+            // del
+            // 
+            this.del.HeaderText = "حذف";
+            this.del.Image = global::POS.Properties.Resources.delete;
+            this.del.MinimumWidth = 6;
+            this.del.Name = "del";
+            this.del.ReadOnly = true;
             // 
             // panel2
             // 
@@ -423,11 +434,6 @@ namespace POS.Forms
 
         private System.Windows.Forms.TableLayoutPanel pnlParent;
         private System.Windows.Forms.DataGridView dgvLoading;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dateTime;
-        private System.Windows.Forms.DataGridViewTextBoxColumn money;
-        private System.Windows.Forms.DataGridViewTextBoxColumn operationType;
-        private System.Windows.Forms.DataGridViewTextBoxColumn supplier;
-        private System.Windows.Forms.DataGridViewTextBoxColumn id;
         private System.Windows.Forms.Panel panel2;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Button btnClose;
@@ -444,5 +450,11 @@ namespace POS.Forms
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel4;
         private System.Windows.Forms.TextBox txtSearch;
         private System.Windows.Forms.PictureBox pictureBox2;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dateTime;
+        private System.Windows.Forms.DataGridViewTextBoxColumn money;
+        private System.Windows.Forms.DataGridViewTextBoxColumn operationType;
+        private System.Windows.Forms.DataGridViewTextBoxColumn supplier;
+        private System.Windows.Forms.DataGridViewTextBoxColumn id;
+        private System.Windows.Forms.DataGridViewImageColumn del;
     }
 }

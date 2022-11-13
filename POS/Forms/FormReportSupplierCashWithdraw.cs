@@ -54,7 +54,8 @@ namespace POS.Forms
                             row["money"],
                             row["OperationType"],
                             row["name"],
-                            row["id"]
+                            row["id"],
+                            Properties.Resources.delete
                             }
                         ); ;
                 }
@@ -143,6 +144,43 @@ namespace POS.Forms
             else
             {
                 loadTable("select SupplierCashWithdraw.id,Suppliers.name,SupplierCashWithdraw.operationType,SupplierCashWithdraw.money,SupplierCashWithdraw.dateTime from SupplierCashWithdraw LEFT JOIN Suppliers on SupplierCashWithdraw.supplierId = Suppliers.id where Suppliers.name like '%" + text + "%' or SupplierCashWithdraw.operationType like '%" + text + "%' ");
+            }
+        }
+
+        private void dgvLoading_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if (dgvLoading.CurrentCell.ColumnIndex.Equals(5) && e.RowIndex != -1)
+            {
+                string deletedId = dgvLoading.CurrentRow.Cells[4].Value.ToString();
+                if (MessageBox.Show("هل تريد الحذف", "?", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+                {
+                    try
+                    {
+                        if (adoClass.sqlcn.State != ConnectionState.Open)
+                        {
+                            adoClass.sqlcn.Open();
+                        }
+
+                        cmd = new SqlCommand("delete from SupplierCashWithdraw where id = '" + deletedId + "'", adoClass.sqlcn);
+                        cmd.ExecuteNonQuery();
+
+                        MessageBox.Show("تم الحذف بنجاح");
+
+                        loadTable("select SupplierCashWithdraw.id,Suppliers.name,SupplierCashWithdraw.operationType,SupplierCashWithdraw.money,SupplierCashWithdraw.dateTime from SupplierCashWithdraw LEFT JOIN Suppliers on SupplierCashWithdraw.supplierId = Suppliers.id");
+
+                    }
+                    catch (Exception ex)
+                    {
+                        MessageBox.Show(ex.Message);
+                    }
+                    finally
+                    {
+                        adoClass.sqlcn.Close();
+                    }
+
+                }
+
+
             }
         }
     }

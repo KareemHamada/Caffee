@@ -219,6 +219,7 @@ namespace POS.Forms
             this.comboName.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
             this.comboName.Size = new System.Drawing.Size(352, 44);
             this.comboName.TabIndex = 25;
+
             // 
             // FormAttendingLeaving
             // 
