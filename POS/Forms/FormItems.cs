@@ -319,7 +319,7 @@ namespace POS.Forms
             }
             else
             {
-                loadTable("Select Categories.name as cat,Items.image,Items.price,Items.name,Items.id,Items.multiPrice from Items LEFT JOIN Categories on Items.CategoryId = Categories.id where Items.name like '%" + text + "%'");
+                loadTable("Select Categories.name as cat,Items.image,Items.price,Items.name,Items.id,Items.multiPrice from Items LEFT JOIN Categories on Items.CategoryId = Categories.id where Items.name like '%" + text + "%' or Categories.name like '%" + text + "%'");
             }
         }
 

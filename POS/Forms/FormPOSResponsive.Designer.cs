@@ -31,9 +31,9 @@ namespace POS.Forms
         {
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormPOSResponsive));
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle10 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle11 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle12 = new System.Windows.Forms.DataGridViewCellStyle();
             this.pnlTitle = new System.Windows.Forms.Panel();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.lblTime = new System.Windows.Forms.Label();
@@ -46,10 +46,6 @@ namespace POS.Forms
             this.pnlContainer = new System.Windows.Forms.Panel();
             this.tableLayoutPanelContainer = new System.Windows.Forms.TableLayoutPanel();
             this.tableLayoutPanelRight = new System.Windows.Forms.TableLayoutPanel();
-            this.tlpBtns = new System.Windows.Forms.TableLayoutPanel();
-            this.btnExpenses = new System.Windows.Forms.Button();
-            this.btnTayar = new System.Windows.Forms.Button();
-            this.btnEmployees = new System.Windows.Forms.Button();
             this.pnlItems = new System.Windows.Forms.FlowLayoutPanel();
             this.tableLayoutPanel3 = new System.Windows.Forms.TableLayoutPanel();
             this.dgvItems = new System.Windows.Forms.DataGridView();
@@ -94,12 +90,19 @@ namespace POS.Forms
             this.btnUpdateTable = new System.Windows.Forms.Button();
             this.btnClear = new System.Windows.Forms.Button();
             this.timer1 = new System.Windows.Forms.Timer(this.components);
+            this.tableLayoutPanel8 = new System.Windows.Forms.TableLayoutPanel();
+            this.tlpBtns = new System.Windows.Forms.TableLayoutPanel();
+            this.btnExpenses = new System.Windows.Forms.Button();
+            this.btnTayar = new System.Windows.Forms.Button();
+            this.btnEmployees = new System.Windows.Forms.Button();
+            this.tableLayoutPanel9 = new System.Windows.Forms.TableLayoutPanel();
+            this.pictureBox2 = new System.Windows.Forms.PictureBox();
+            this.txtSearch = new System.Windows.Forms.TextBox();
             this.pnlTitle.SuspendLayout();
             this.tableLayoutPanel1.SuspendLayout();
             this.pnlContainer.SuspendLayout();
             this.tableLayoutPanelContainer.SuspendLayout();
             this.tableLayoutPanelRight.SuspendLayout();
-            this.tlpBtns.SuspendLayout();
             this.tableLayoutPanel3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvItems)).BeginInit();
             this.pnlData.SuspendLayout();
@@ -109,6 +112,10 @@ namespace POS.Forms
             this.tableLayoutPanel5.SuspendLayout();
             this.pnlDelivery.SuspendLayout();
             this.tableLayoutPanel2.SuspendLayout();
+            this.tableLayoutPanel8.SuspendLayout();
+            this.tlpBtns.SuspendLayout();
+            this.tableLayoutPanel9.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             this.SuspendLayout();
             // 
             // pnlTitle
@@ -267,83 +274,16 @@ namespace POS.Forms
             // 
             this.tableLayoutPanelRight.ColumnCount = 1;
             this.tableLayoutPanelRight.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanelRight.Controls.Add(this.tlpBtns, 0, 0);
             this.tableLayoutPanelRight.Controls.Add(this.pnlItems, 0, 1);
+            this.tableLayoutPanelRight.Controls.Add(this.tableLayoutPanel8, 0, 0);
             this.tableLayoutPanelRight.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tableLayoutPanelRight.Location = new System.Drawing.Point(886, 3);
+            this.tableLayoutPanelRight.Location = new System.Drawing.Point(887, 3);
             this.tableLayoutPanelRight.Name = "tableLayoutPanelRight";
             this.tableLayoutPanelRight.RowCount = 2;
             this.tableLayoutPanelRight.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 20.29703F));
             this.tableLayoutPanelRight.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 79.70297F));
-            this.tableLayoutPanelRight.Size = new System.Drawing.Size(1035, 924);
+            this.tableLayoutPanelRight.Size = new System.Drawing.Size(1034, 924);
             this.tableLayoutPanelRight.TabIndex = 0;
-            // 
-            // tlpBtns
-            // 
-            this.tlpBtns.ColumnCount = 5;
-            this.tlpBtns.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 20F));
-            this.tlpBtns.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 20F));
-            this.tlpBtns.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 20F));
-            this.tlpBtns.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 20F));
-            this.tlpBtns.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 20F));
-            this.tlpBtns.Controls.Add(this.btnExpenses, 2, 0);
-            this.tlpBtns.Controls.Add(this.btnTayar, 1, 0);
-            this.tlpBtns.Controls.Add(this.btnEmployees, 3, 0);
-            this.tlpBtns.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tlpBtns.Location = new System.Drawing.Point(3, 3);
-            this.tlpBtns.Name = "tlpBtns";
-            this.tlpBtns.RowCount = 1;
-            this.tlpBtns.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tlpBtns.Size = new System.Drawing.Size(1029, 181);
-            this.tlpBtns.TabIndex = 0;
-            // 
-            // btnExpenses
-            // 
-            this.btnExpenses.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
-            this.btnExpenses.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.btnExpenses.Font = new System.Drawing.Font("Microsoft Sans Serif", 16.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnExpenses.ForeColor = System.Drawing.Color.White;
-            this.btnExpenses.Image = ((System.Drawing.Image)(resources.GetObject("btnExpenses.Image")));
-            this.btnExpenses.Location = new System.Drawing.Point(413, 3);
-            this.btnExpenses.Name = "btnExpenses";
-            this.btnExpenses.Size = new System.Drawing.Size(199, 175);
-            this.btnExpenses.TabIndex = 2;
-            this.btnExpenses.Text = "مصروفات";
-            this.btnExpenses.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
-            this.btnExpenses.UseVisualStyleBackColor = false;
-            this.btnExpenses.Click += new System.EventHandler(this.btnExpenses_Click);
-            // 
-            // btnTayar
-            // 
-            this.btnTayar.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
-            this.btnTayar.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.btnTayar.Font = new System.Drawing.Font("Microsoft Sans Serif", 16.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnTayar.ForeColor = System.Drawing.Color.White;
-            this.btnTayar.Image = ((System.Drawing.Image)(resources.GetObject("btnTayar.Image")));
-            this.btnTayar.Location = new System.Drawing.Point(208, 3);
-            this.btnTayar.Name = "btnTayar";
-            this.btnTayar.Size = new System.Drawing.Size(199, 175);
-            this.btnTayar.TabIndex = 3;
-            this.btnTayar.Text = "طيارين";
-            this.btnTayar.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
-            this.btnTayar.UseVisualStyleBackColor = false;
-            this.btnTayar.Click += new System.EventHandler(this.btnTayar_Click);
-            // 
-            // btnEmployees
-            // 
-            this.btnEmployees.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
-            this.btnEmployees.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.btnEmployees.Font = new System.Drawing.Font("Microsoft Sans Serif", 16.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnEmployees.ForeColor = System.Drawing.Color.White;
-            this.btnEmployees.Image = ((System.Drawing.Image)(resources.GetObject("btnEmployees.Image")));
-            this.btnEmployees.Location = new System.Drawing.Point(618, 3);
-            this.btnEmployees.Name = "btnEmployees";
-            this.btnEmployees.Size = new System.Drawing.Size(199, 175);
-            this.btnEmployees.TabIndex = 1;
-            this.btnEmployees.Text = "موظفين";
-            this.btnEmployees.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
-            this.btnEmployees.UseVisualStyleBackColor = false;
-            this.btnEmployees.Click += new System.EventHandler(this.btnEmployees_Click);
             // 
             // pnlItems
             // 
@@ -354,7 +294,7 @@ namespace POS.Forms
             this.pnlItems.Margin = new System.Windows.Forms.Padding(0);
             this.pnlItems.Name = "pnlItems";
             this.pnlItems.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
-            this.pnlItems.Size = new System.Drawing.Size(1035, 737);
+            this.pnlItems.Size = new System.Drawing.Size(1034, 737);
             this.pnlItems.TabIndex = 1;
             // 
             // tableLayoutPanel3
@@ -372,7 +312,7 @@ namespace POS.Forms
             this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 31.87721F));
             this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 68.12279F));
             this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this.tableLayoutPanel3.Size = new System.Drawing.Size(883, 930);
+            this.tableLayoutPanel3.Size = new System.Drawing.Size(884, 930);
             this.tableLayoutPanel3.TabIndex = 1;
             // 
             // dgvItems
@@ -381,14 +321,14 @@ namespace POS.Forms
             this.dgvItems.AllowUserToDeleteRows = false;
             this.dgvItems.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dgvItems.BackgroundColor = System.Drawing.Color.White;
-            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgvItems.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle10.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle10.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle10.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle10.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle10.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle10.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle10.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvItems.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle10;
             this.dgvItems.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvItems.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.ColId,
@@ -400,21 +340,21 @@ namespace POS.Forms
             this.dgvItems.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dgvItems.Location = new System.Drawing.Point(6, 6);
             this.dgvItems.Name = "dgvItems";
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgvItems.RowHeadersDefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle11.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle11.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle11.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle11.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle11.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle11.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle11.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvItems.RowHeadersDefaultCellStyle = dataGridViewCellStyle11;
             this.dgvItems.RowHeadersWidth = 51;
-            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle3.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.dgvItems.RowsDefaultCellStyle = dataGridViewCellStyle3;
+            dataGridViewCellStyle12.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle12.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.dgvItems.RowsDefaultCellStyle = dataGridViewCellStyle12;
             this.dgvItems.RowTemplate.Height = 30;
             this.dgvItems.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvItems.Size = new System.Drawing.Size(871, 288);
+            this.dgvItems.Size = new System.Drawing.Size(872, 288);
             this.dgvItems.TabIndex = 1;
             // 
             // ColId
@@ -490,7 +430,7 @@ namespace POS.Forms
             this.pnlData.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 15F));
             this.pnlData.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 15F));
             this.pnlData.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this.pnlData.Size = new System.Drawing.Size(877, 630);
+            this.pnlData.Size = new System.Drawing.Size(878, 630);
             this.pnlData.TabIndex = 2;
             // 
             // btnDone
@@ -504,7 +444,7 @@ namespace POS.Forms
             this.btnDone.ForeColor = System.Drawing.Color.White;
             this.btnDone.Location = new System.Drawing.Point(3, 538);
             this.btnDone.Name = "btnDone";
-            this.btnDone.Size = new System.Drawing.Size(871, 89);
+            this.btnDone.Size = new System.Drawing.Size(872, 89);
             this.btnDone.TabIndex = 14;
             this.btnDone.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btnDone.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
@@ -524,7 +464,7 @@ namespace POS.Forms
             this.tableLayoutPanel7.Name = "tableLayoutPanel7";
             this.tableLayoutPanel7.RowCount = 1;
             this.tableLayoutPanel7.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel7.Size = new System.Drawing.Size(877, 63);
+            this.tableLayoutPanel7.Size = new System.Drawing.Size(878, 63);
             this.tableLayoutPanel7.TabIndex = 3;
             // 
             // comboOrderType
@@ -534,10 +474,10 @@ namespace POS.Forms
             this.comboOrderType.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.comboOrderType.Font = new System.Drawing.Font("Microsoft Sans Serif", 16.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.comboOrderType.FormattingEnabled = true;
-            this.comboOrderType.Location = new System.Drawing.Point(3, 11);
+            this.comboOrderType.Location = new System.Drawing.Point(3, 12);
             this.comboOrderType.Name = "comboOrderType";
             this.comboOrderType.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
-            this.comboOrderType.Size = new System.Drawing.Size(432, 39);
+            this.comboOrderType.Size = new System.Drawing.Size(433, 39);
             this.comboOrderType.TabIndex = 12;
             this.comboOrderType.SelectedIndexChanged += new System.EventHandler(this.comboOrderType_SelectedIndexChanged);
             // 
@@ -547,7 +487,7 @@ namespace POS.Forms
             this.label9.AutoSize = true;
             this.label9.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label9.ForeColor = System.Drawing.Color.Black;
-            this.label9.Location = new System.Drawing.Point(597, 17);
+            this.label9.Location = new System.Drawing.Point(598, 17);
             this.label9.Name = "label9";
             this.label9.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
             this.label9.Size = new System.Drawing.Size(120, 29);
@@ -572,7 +512,7 @@ namespace POS.Forms
             this.tableLayoutPanel6.Padding = new System.Windows.Forms.Padding(3);
             this.tableLayoutPanel6.RowCount = 1;
             this.tableLayoutPanel6.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel6.Size = new System.Drawing.Size(877, 63);
+            this.tableLayoutPanel6.Size = new System.Drawing.Size(878, 63);
             this.tableLayoutPanel6.TabIndex = 2;
             // 
             // txtTax
@@ -582,7 +522,7 @@ namespace POS.Forms
             this.txtTax.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtTax.Location = new System.Drawing.Point(6, 14);
             this.txtTax.Name = "txtTax";
-            this.txtTax.Size = new System.Drawing.Size(211, 34);
+            this.txtTax.Size = new System.Drawing.Size(212, 34);
             this.txtTax.TabIndex = 11;
             this.txtTax.Text = "0";
             this.txtTax.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
@@ -594,7 +534,7 @@ namespace POS.Forms
             this.label7.AutoSize = true;
             this.label7.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label7.ForeColor = System.Drawing.Color.Black;
-            this.label7.Location = new System.Drawing.Point(731, 17);
+            this.label7.Location = new System.Drawing.Point(733, 17);
             this.label7.Name = "label7";
             this.label7.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
             this.label7.Size = new System.Drawing.Size(66, 29);
@@ -606,9 +546,9 @@ namespace POS.Forms
             this.txtDiscount.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
             this.txtDiscount.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txtDiscount.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtDiscount.Location = new System.Drawing.Point(440, 14);
+            this.txtDiscount.Location = new System.Drawing.Point(442, 14);
             this.txtDiscount.Name = "txtDiscount";
-            this.txtDiscount.Size = new System.Drawing.Size(211, 34);
+            this.txtDiscount.Size = new System.Drawing.Size(212, 34);
             this.txtDiscount.TabIndex = 9;
             this.txtDiscount.Text = "0";
             this.txtDiscount.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
@@ -620,7 +560,7 @@ namespace POS.Forms
             this.label8.AutoSize = true;
             this.label8.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label8.ForeColor = System.Drawing.Color.Black;
-            this.label8.Location = new System.Drawing.Point(289, 17);
+            this.label8.Location = new System.Drawing.Point(291, 17);
             this.label8.Name = "label8";
             this.label8.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
             this.label8.Size = new System.Drawing.Size(78, 29);
@@ -641,7 +581,7 @@ namespace POS.Forms
             this.tableLayoutPanel4.Name = "tableLayoutPanel4";
             this.tableLayoutPanel4.RowCount = 1;
             this.tableLayoutPanel4.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel4.Size = new System.Drawing.Size(877, 63);
+            this.tableLayoutPanel4.Size = new System.Drawing.Size(878, 63);
             this.tableLayoutPanel4.TabIndex = 0;
             // 
             // txtTotal
@@ -664,7 +604,7 @@ namespace POS.Forms
             this.label5.AutoSize = true;
             this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label5.ForeColor = System.Drawing.Color.Black;
-            this.label5.Location = new System.Drawing.Point(612, 17);
+            this.label5.Location = new System.Drawing.Point(613, 17);
             this.label5.Name = "label5";
             this.label5.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
             this.label5.Size = new System.Drawing.Size(90, 29);
@@ -692,7 +632,7 @@ namespace POS.Forms
             this.tableLayoutPanel5.Padding = new System.Windows.Forms.Padding(3);
             this.tableLayoutPanel5.RowCount = 1;
             this.tableLayoutPanel5.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel5.Size = new System.Drawing.Size(877, 63);
+            this.tableLayoutPanel5.Size = new System.Drawing.Size(878, 63);
             this.tableLayoutPanel5.TabIndex = 1;
             // 
             // btnEnterQuantity
@@ -720,7 +660,7 @@ namespace POS.Forms
             this.btnPlus.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnPlus.Location = new System.Drawing.Point(750, 6);
             this.btnPlus.Name = "btnPlus";
-            this.btnPlus.Size = new System.Drawing.Size(121, 51);
+            this.btnPlus.Size = new System.Drawing.Size(122, 51);
             this.btnPlus.TabIndex = 8;
             this.btnPlus.UseVisualStyleBackColor = true;
             this.btnPlus.Click += new System.EventHandler(this.btnPlus_Click);
@@ -782,7 +722,7 @@ namespace POS.Forms
             this.pnlDelivery.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 33.33333F));
             this.pnlDelivery.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 33.33333F));
             this.pnlDelivery.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 33.33333F));
-            this.pnlDelivery.Size = new System.Drawing.Size(877, 189);
+            this.pnlDelivery.Size = new System.Drawing.Size(878, 189);
             this.pnlDelivery.TabIndex = 10;
             // 
             // comboTayar
@@ -795,7 +735,7 @@ namespace POS.Forms
             this.comboTayar.Location = new System.Drawing.Point(3, 139);
             this.comboTayar.Name = "comboTayar";
             this.comboTayar.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
-            this.comboTayar.Size = new System.Drawing.Size(244, 37);
+            this.comboTayar.Size = new System.Drawing.Size(245, 37);
             this.comboTayar.TabIndex = 20;
             // 
             // label11
@@ -804,7 +744,7 @@ namespace POS.Forms
             this.label11.AutoSize = true;
             this.label11.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label11.ForeColor = System.Drawing.Color.Black;
-            this.label11.Location = new System.Drawing.Point(737, 17);
+            this.label11.Location = new System.Drawing.Point(738, 17);
             this.label11.Name = "label11";
             this.label11.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
             this.label11.Size = new System.Drawing.Size(81, 29);
@@ -816,7 +756,7 @@ namespace POS.Forms
             this.txtPhone.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
             this.txtPhone.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txtPhone.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtPhone.Location = new System.Drawing.Point(439, 14);
+            this.txtPhone.Location = new System.Drawing.Point(440, 14);
             this.txtPhone.Name = "txtPhone";
             this.txtPhone.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
             this.txtPhone.Size = new System.Drawing.Size(236, 34);
@@ -831,7 +771,7 @@ namespace POS.Forms
             this.label10.AutoSize = true;
             this.label10.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label10.ForeColor = System.Drawing.Color.Black;
-            this.label10.Location = new System.Drawing.Point(311, 17);
+            this.label10.Location = new System.Drawing.Point(312, 17);
             this.label10.Name = "label10";
             this.label10.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
             this.label10.Size = new System.Drawing.Size(64, 29);
@@ -846,7 +786,7 @@ namespace POS.Forms
             this.txtName.Location = new System.Drawing.Point(3, 14);
             this.txtName.Name = "txtName";
             this.txtName.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
-            this.txtName.Size = new System.Drawing.Size(244, 34);
+            this.txtName.Size = new System.Drawing.Size(245, 34);
             this.txtName.TabIndex = 11;
             this.txtName.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
@@ -856,7 +796,7 @@ namespace POS.Forms
             this.label12.AutoSize = true;
             this.label12.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label12.ForeColor = System.Drawing.Color.Black;
-            this.label12.Location = new System.Drawing.Point(738, 80);
+            this.label12.Location = new System.Drawing.Point(739, 80);
             this.label12.Name = "label12";
             this.label12.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
             this.label12.Size = new System.Drawing.Size(79, 29);
@@ -870,7 +810,7 @@ namespace POS.Forms
             this.comboRegions.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.comboRegions.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.comboRegions.FormattingEnabled = true;
-            this.comboRegions.Location = new System.Drawing.Point(439, 76);
+            this.comboRegions.Location = new System.Drawing.Point(440, 76);
             this.comboRegions.Name = "comboRegions";
             this.comboRegions.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
             this.comboRegions.Size = new System.Drawing.Size(236, 37);
@@ -882,7 +822,7 @@ namespace POS.Forms
             this.label13.AutoSize = true;
             this.label13.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label13.ForeColor = System.Drawing.Color.Black;
-            this.label13.Location = new System.Drawing.Point(304, 80);
+            this.label13.Location = new System.Drawing.Point(305, 80);
             this.label13.Name = "label13";
             this.label13.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
             this.label13.Size = new System.Drawing.Size(78, 29);
@@ -897,7 +837,7 @@ namespace POS.Forms
             this.txtAddress.Location = new System.Drawing.Point(3, 77);
             this.txtAddress.Name = "txtAddress";
             this.txtAddress.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
-            this.txtAddress.Size = new System.Drawing.Size(244, 34);
+            this.txtAddress.Size = new System.Drawing.Size(245, 34);
             this.txtAddress.TabIndex = 16;
             this.txtAddress.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
@@ -907,7 +847,7 @@ namespace POS.Forms
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label2.ForeColor = System.Drawing.Color.Black;
-            this.label2.Location = new System.Drawing.Point(738, 143);
+            this.label2.Location = new System.Drawing.Point(739, 143);
             this.label2.Name = "label2";
             this.label2.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
             this.label2.Size = new System.Drawing.Size(79, 29);
@@ -919,7 +859,7 @@ namespace POS.Forms
             this.txtDelivery.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
             this.txtDelivery.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txtDelivery.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtDelivery.Location = new System.Drawing.Point(439, 140);
+            this.txtDelivery.Location = new System.Drawing.Point(440, 140);
             this.txtDelivery.Name = "txtDelivery";
             this.txtDelivery.Size = new System.Drawing.Size(236, 34);
             this.txtDelivery.TabIndex = 18;
@@ -933,7 +873,7 @@ namespace POS.Forms
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label3.ForeColor = System.Drawing.Color.Black;
-            this.label3.Location = new System.Drawing.Point(306, 143);
+            this.label3.Location = new System.Drawing.Point(307, 143);
             this.label3.Name = "label3";
             this.label3.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
             this.label3.Size = new System.Drawing.Size(73, 29);
@@ -952,7 +892,7 @@ namespace POS.Forms
             this.tableLayoutPanel2.Name = "tableLayoutPanel2";
             this.tableLayoutPanel2.RowCount = 1;
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel2.Size = new System.Drawing.Size(871, 88);
+            this.tableLayoutPanel2.Size = new System.Drawing.Size(872, 88);
             this.tableLayoutPanel2.TabIndex = 15;
             // 
             // btnUpdateTable
@@ -968,7 +908,7 @@ namespace POS.Forms
             this.btnUpdateTable.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.btnUpdateTable.Location = new System.Drawing.Point(3, 3);
             this.btnUpdateTable.Name = "btnUpdateTable";
-            this.btnUpdateTable.Size = new System.Drawing.Size(429, 82);
+            this.btnUpdateTable.Size = new System.Drawing.Size(430, 82);
             this.btnUpdateTable.TabIndex = 11;
             this.btnUpdateTable.Text = "تعديل";
             this.btnUpdateTable.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -987,7 +927,7 @@ namespace POS.Forms
             this.btnClear.ForeColor = System.Drawing.Color.White;
             this.btnClear.Image = ((System.Drawing.Image)(resources.GetObject("btnClear.Image")));
             this.btnClear.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.btnClear.Location = new System.Drawing.Point(438, 3);
+            this.btnClear.Location = new System.Drawing.Point(439, 3);
             this.btnClear.Name = "btnClear";
             this.btnClear.Size = new System.Drawing.Size(430, 82);
             this.btnClear.TabIndex = 10;
@@ -1001,6 +941,129 @@ namespace POS.Forms
             // 
             this.timer1.Enabled = true;
             this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
+            // 
+            // tableLayoutPanel8
+            // 
+            this.tableLayoutPanel8.ColumnCount = 1;
+            this.tableLayoutPanel8.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanel8.Controls.Add(this.tableLayoutPanel9, 0, 1);
+            this.tableLayoutPanel8.Controls.Add(this.tlpBtns, 0, 0);
+            this.tableLayoutPanel8.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.tableLayoutPanel8.Location = new System.Drawing.Point(0, 0);
+            this.tableLayoutPanel8.Margin = new System.Windows.Forms.Padding(0);
+            this.tableLayoutPanel8.Name = "tableLayoutPanel8";
+            this.tableLayoutPanel8.RowCount = 2;
+            this.tableLayoutPanel8.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 68.98396F));
+            this.tableLayoutPanel8.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 31.01604F));
+            this.tableLayoutPanel8.Size = new System.Drawing.Size(1034, 187);
+            this.tableLayoutPanel8.TabIndex = 2;
+            // 
+            // tlpBtns
+            // 
+            this.tlpBtns.ColumnCount = 5;
+            this.tlpBtns.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 20F));
+            this.tlpBtns.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 20F));
+            this.tlpBtns.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 20F));
+            this.tlpBtns.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 20F));
+            this.tlpBtns.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 20F));
+            this.tlpBtns.Controls.Add(this.btnExpenses, 2, 0);
+            this.tlpBtns.Controls.Add(this.btnTayar, 1, 0);
+            this.tlpBtns.Controls.Add(this.btnEmployees, 3, 0);
+            this.tlpBtns.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.tlpBtns.Location = new System.Drawing.Point(0, 0);
+            this.tlpBtns.Margin = new System.Windows.Forms.Padding(0);
+            this.tlpBtns.Name = "tlpBtns";
+            this.tlpBtns.RowCount = 1;
+            this.tlpBtns.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tlpBtns.Size = new System.Drawing.Size(1034, 128);
+            this.tlpBtns.TabIndex = 1;
+            // 
+            // btnExpenses
+            // 
+            this.btnExpenses.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
+            this.btnExpenses.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.btnExpenses.Font = new System.Drawing.Font("Microsoft Sans Serif", 16.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnExpenses.ForeColor = System.Drawing.Color.White;
+            this.btnExpenses.Image = ((System.Drawing.Image)(resources.GetObject("btnExpenses.Image")));
+            this.btnExpenses.Location = new System.Drawing.Point(415, 3);
+            this.btnExpenses.Name = "btnExpenses";
+            this.btnExpenses.Size = new System.Drawing.Size(200, 122);
+            this.btnExpenses.TabIndex = 2;
+            this.btnExpenses.Text = "مصروفات";
+            this.btnExpenses.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
+            this.btnExpenses.UseVisualStyleBackColor = false;
+            this.btnExpenses.Click += new System.EventHandler(this.btnExpenses_Click);
+            // 
+            // btnTayar
+            // 
+            this.btnTayar.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
+            this.btnTayar.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.btnTayar.Font = new System.Drawing.Font("Microsoft Sans Serif", 16.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnTayar.ForeColor = System.Drawing.Color.White;
+            this.btnTayar.Image = ((System.Drawing.Image)(resources.GetObject("btnTayar.Image")));
+            this.btnTayar.Location = new System.Drawing.Point(209, 3);
+            this.btnTayar.Name = "btnTayar";
+            this.btnTayar.Size = new System.Drawing.Size(200, 122);
+            this.btnTayar.TabIndex = 3;
+            this.btnTayar.Text = "طيارين";
+            this.btnTayar.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
+            this.btnTayar.UseVisualStyleBackColor = false;
+            this.btnTayar.Click += new System.EventHandler(this.btnTayar_Click);
+            // 
+            // btnEmployees
+            // 
+            this.btnEmployees.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
+            this.btnEmployees.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.btnEmployees.Font = new System.Drawing.Font("Microsoft Sans Serif", 16.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnEmployees.ForeColor = System.Drawing.Color.White;
+            this.btnEmployees.Image = ((System.Drawing.Image)(resources.GetObject("btnEmployees.Image")));
+            this.btnEmployees.Location = new System.Drawing.Point(621, 3);
+            this.btnEmployees.Name = "btnEmployees";
+            this.btnEmployees.Size = new System.Drawing.Size(200, 122);
+            this.btnEmployees.TabIndex = 1;
+            this.btnEmployees.Text = "موظفين";
+            this.btnEmployees.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
+            this.btnEmployees.UseVisualStyleBackColor = false;
+            this.btnEmployees.Click += new System.EventHandler(this.btnEmployees_Click);
+            // 
+            // tableLayoutPanel9
+            // 
+            this.tableLayoutPanel9.ColumnCount = 2;
+            this.tableLayoutPanel9.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 78.67924F));
+            this.tableLayoutPanel9.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 21.32076F));
+            this.tableLayoutPanel9.Controls.Add(this.pictureBox2, 1, 0);
+            this.tableLayoutPanel9.Controls.Add(this.txtSearch, 0, 0);
+            this.tableLayoutPanel9.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.tableLayoutPanel9.Location = new System.Drawing.Point(0, 128);
+            this.tableLayoutPanel9.Margin = new System.Windows.Forms.Padding(0);
+            this.tableLayoutPanel9.Name = "tableLayoutPanel9";
+            this.tableLayoutPanel9.RowCount = 1;
+            this.tableLayoutPanel9.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanel9.Size = new System.Drawing.Size(1034, 59);
+            this.tableLayoutPanel9.TabIndex = 5;
+            // 
+            // pictureBox2
+            // 
+            this.pictureBox2.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.pictureBox2.BackgroundImage = global::POS.Properties.Resources.search;
+            this.pictureBox2.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.pictureBox2.Location = new System.Drawing.Point(873, 5);
+            this.pictureBox2.Name = "pictureBox2";
+            this.pictureBox2.Size = new System.Drawing.Size(100, 48);
+            this.pictureBox2.TabIndex = 0;
+            this.pictureBox2.TabStop = false;
+            // 
+            // txtSearch
+            // 
+            this.txtSearch.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+            this.txtSearch.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.txtSearch.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtSearch.Location = new System.Drawing.Point(3, 9);
+            this.txtSearch.Name = "txtSearch";
+            this.txtSearch.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
+            this.txtSearch.Size = new System.Drawing.Size(807, 41);
+            this.txtSearch.TabIndex = 1;
+            this.txtSearch.TextChanged += new System.EventHandler(this.txtSearch_TextChanged);
             // 
             // FormPOSResponsive
             // 
@@ -1022,7 +1085,6 @@ namespace POS.Forms
             this.tableLayoutPanelContainer.ResumeLayout(false);
             this.tableLayoutPanelRight.ResumeLayout(false);
             this.tableLayoutPanelRight.PerformLayout();
-            this.tlpBtns.ResumeLayout(false);
             this.tableLayoutPanel3.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dgvItems)).EndInit();
             this.pnlData.ResumeLayout(false);
@@ -1036,6 +1098,11 @@ namespace POS.Forms
             this.pnlDelivery.ResumeLayout(false);
             this.pnlDelivery.PerformLayout();
             this.tableLayoutPanel2.ResumeLayout(false);
+            this.tableLayoutPanel8.ResumeLayout(false);
+            this.tlpBtns.ResumeLayout(false);
+            this.tableLayoutPanel9.ResumeLayout(false);
+            this.tableLayoutPanel9.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -1054,10 +1121,6 @@ namespace POS.Forms
         private System.Windows.Forms.Panel pnlContainer;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanelContainer;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanelRight;
-        private System.Windows.Forms.TableLayoutPanel tlpBtns;
-        private System.Windows.Forms.Button btnEmployees;
-        private System.Windows.Forms.Button btnExpenses;
-        private System.Windows.Forms.Button btnTayar;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel3;
         public System.Windows.Forms.DataGridView dgvItems;
         private System.Windows.Forms.FlowLayoutPanel pnlItems;
@@ -1102,5 +1165,13 @@ namespace POS.Forms
         private System.Windows.Forms.DataGridViewTextBoxColumn ColQuan;
         private System.Windows.Forms.DataGridViewTextBoxColumn ColPrice;
         private System.Windows.Forms.DataGridViewTextBoxColumn ColName;
+        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel8;
+        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel9;
+        private System.Windows.Forms.PictureBox pictureBox2;
+        private System.Windows.Forms.TextBox txtSearch;
+        private System.Windows.Forms.TableLayoutPanel tlpBtns;
+        private System.Windows.Forms.Button btnExpenses;
+        private System.Windows.Forms.Button btnTayar;
+        private System.Windows.Forms.Button btnEmployees;
     }
 }

@@ -658,23 +658,6 @@ namespace POS.Forms
             }
         }
 
-        private void btnExpenses_Click(object sender, EventArgs e)
-        {
-            FormExpenses frm = new FormExpenses();
-            frm.Show();
-        }
-
-        private void btnTayar_Click(object sender, EventArgs e)
-        {
-            FormShowTayarPOS frm = new FormShowTayarPOS();
-            frm.Show();
-        }
-
-        private void btnEmployees_Click(object sender, EventArgs e)
-        {
-            FormAttendingLeaving frm = new FormAttendingLeaving();
-            frm.Show();
-        }
 
 
         private void tableCalculations()
@@ -982,6 +965,97 @@ namespace POS.Forms
                 dgvItems.CurrentRow.Cells[2].Value = totalValue;
             }
             CalcCheck();
+        }
+
+        private void txtSearch_TextChanged(object sender, EventArgs e)
+        {
+            search(txtSearch.Text);
+        }
+
+        // fill items to search
+        private void fillItemsSearch(string q)
+        {
+            DataTable dt = new DataTable();
+
+            SqlDataAdapter da = new SqlDataAdapter(q, adoClass.sqlcn);
+
+            da.Fill(dt);
+            DataRow[] drs = dt.Select();
+            pnlItems.Controls.Clear();
+            Button catBtn;
+            for (int i = 0; i < drs.Length; i++)
+            {
+                catBtn = new Button();
+                catBtn.AccessibleName = "IT";
+                catBtn.AccessibleDescription = drs[i]["id"].ToString();
+                catBtn.Name = "btnCat" + drs[i]["id"].ToString();
+
+                catBtn.Text = drs[i]["name"].ToString();
+                if (Helper.ByteToImage(drs[i]["image"]) == null)
+                {
+                    catBtn.BackColor = Color.Cyan;
+                }
+                else
+                {
+                    catBtn.BackColor = Color.White;
+                }
+
+                catBtn.Image = Helper.ByteToImage(drs[i]["image"]);
+                catBtn.Tag = drs[i]["price"].ToString();
+                catBtn.Font = new Font("Microsoft Sans Serif", 12, FontStyle.Regular);
+                catBtn.TextAlign = ContentAlignment.MiddleCenter;
+                catBtn.ImageAlign = ContentAlignment.MiddleCenter;
+                catBtn.RightToLeft = RightToLeft.Yes;
+                catBtn.TextImageRelation = TextImageRelation.ImageAboveText;
+                catBtn.Size = new Size(150, 150);
+
+                catBtn.FlatStyle = FlatStyle.Flat;
+                catBtn.FlatAppearance.BorderSize = 0;
+                catBtn.Click += cBtn_Click;
+                pnlItems.Controls.Add(catBtn);
+
+            }
+
+            catBtn = new Button();
+            catBtn.AccessibleName = "C";
+            catBtn.Name = "btnEndCancel";
+            catBtn.Text = "Cancel";
+            catBtn.Size = new Size(150, 150);
+            catBtn.BackColor = Color.Red;
+            catBtn.ForeColor = Color.White;
+            catBtn.Font = new Font("Microsoft Sans Serif", 18, FontStyle.Regular);
+            catBtn.Click += cBtn_Click;
+            pnlItems.Controls.Add(catBtn);
+
+        }
+        void search(string text = null)
+        {
+            if (string.IsNullOrEmpty(text))
+            {
+                fillCategories();
+            }
+            else
+            {
+                fillItemsSearch("Select * from Items where name like '%" + text + "%'");
+            }
+        }
+
+        private void btnExpenses_Click(object sender, EventArgs e)
+        {
+            FormExpenses frm = new FormExpenses();
+            frm.Show();
+        }
+
+        private void btnTayar_Click(object sender, EventArgs e)
+        {
+            FormShowTayarPOS frm = new FormShowTayarPOS();
+            frm.Show();
+        }
+
+        private void btnEmployees_Click(object sender, EventArgs e)
+        {
+            FormAttendingLeaving frm = new FormAttendingLeaving();
+            frm.Show();
         }
     }
 }
