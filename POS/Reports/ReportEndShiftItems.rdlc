@@ -21,7 +21,8 @@
           </Paragraph>
         </Paragraphs>
         <rd:DefaultName>Textbox4</rd:DefaultName>
-        <Left>0.89865in</Left>
+        <Top>0.12325in</Top>
+        <Left>1.19248in</Left>
         <Height>0.21491in</Height>
         <Width>0.38508in</Width>
         <Style>
@@ -34,16 +35,49 @@
         <TablixBody>
           <TablixColumns>
             <TablixColumn>
-              <Width>0.67225in</Width>
+              <Width>0.65318in</Width>
             </TablixColumn>
             <TablixColumn>
-              <Width>0.67225in</Width>
+              <Width>0.68188in</Width>
+            </TablixColumn>
+            <TablixColumn>
+              <Width>0.68188in</Width>
             </TablixColumn>
           </TablixColumns>
           <TablixRows>
             <TablixRow>
               <Height>0.25in</Height>
               <TablixCells>
+                <TablixCell>
+                  <CellContents>
+                    <Textbox Name="Textbox10">
+                      <CanGrow>true</CanGrow>
+                      <KeepTogether>true</KeepTogether>
+                      <Paragraphs>
+                        <Paragraph>
+                          <TextRuns>
+                            <TextRun>
+                              <Value>الاجمالي</Value>
+                              <Style>
+                                <FontSize>8pt</FontSize>
+                                <FontWeight>Bold</FontWeight>
+                              </Style>
+                            </TextRun>
+                          </TextRuns>
+                          <Style>
+                            <TextAlign>Center</TextAlign>
+                          </Style>
+                        </Paragraph>
+                      </Paragraphs>
+                      <rd:DefaultName>Textbox10</rd:DefaultName>
+                      <Style>
+                        <Border>
+                          <Style>Solid</Style>
+                        </Border>
+                      </Style>
+                    </Textbox>
+                  </CellContents>
+                </TablixCell>
                 <TablixCell>
                   <CellContents>
                     <Textbox Name="Textbox5">
@@ -111,6 +145,35 @@
               <TablixCells>
                 <TablixCell>
                   <CellContents>
+                    <Textbox Name="total">
+                      <CanGrow>true</CanGrow>
+                      <KeepTogether>true</KeepTogether>
+                      <Paragraphs>
+                        <Paragraph>
+                          <TextRuns>
+                            <TextRun>
+                              <Value>=Fields!total.Value</Value>
+                              <Style>
+                                <FontSize>8pt</FontSize>
+                              </Style>
+                            </TextRun>
+                          </TextRuns>
+                          <Style>
+                            <TextAlign>Center</TextAlign>
+                          </Style>
+                        </Paragraph>
+                      </Paragraphs>
+                      <rd:DefaultName>total</rd:DefaultName>
+                      <Style>
+                        <Border>
+                          <Style>Solid</Style>
+                        </Border>
+                      </Style>
+                    </Textbox>
+                  </CellContents>
+                </TablixCell>
+                <TablixCell>
+                  <CellContents>
                     <Textbox Name="quan">
                       <CanGrow>true</CanGrow>
                       <KeepTogether>true</KeepTogether>
@@ -175,6 +238,7 @@
           <TablixMembers>
             <TablixMember />
             <TablixMember />
+            <TablixMember />
           </TablixMembers>
         </TablixColumnHierarchy>
         <TablixRowHierarchy>
@@ -188,10 +252,10 @@
           </TablixMembers>
         </TablixRowHierarchy>
         <DataSetName>DataSet1</DataSetName>
-        <Top>0.2826in</Top>
-        <Left>0.48416in</Left>
+        <Top>0.4076in</Top>
+        <Left>0.35916in</Left>
         <Height>0.5in</Height>
-        <Width>1.3445in</Width>
+        <Width>2.01695in</Width>
         <ZIndex>1</ZIndex>
         <Style>
           <Border>
@@ -200,13 +264,18 @@
         </Style>
       </Tablix>
     </ReportItems>
-    <Height>1.22547in</Height>
+    <Height>3.11269cm</Height>
     <Style />
   </Body>
-  <Width>2.17616in</Width>
+  <Width>6.89288cm</Width>
   <Page>
-    <PageHeight>4.33071in</PageHeight>
-    <PageWidth>3.14961in</PageWidth>
+    <PageHeight>11cm</PageHeight>
+    <PageWidth>8.00001cm</PageWidth>
+    <LeftMargin>0cm</LeftMargin>
+    <RightMargin>0cm</RightMargin>
+    <TopMargin>0cm</TopMargin>
+    <BottomMargin>0cm</BottomMargin>
+    <ColumnSpacing>1.27cm</ColumnSpacing>
     <Style />
   </Page>
   <AutoRefresh>0</AutoRefresh>
@@ -228,27 +297,31 @@
       <Fields>
         <Field Name="quan">
           <DataField>quan</DataField>
-          <rd:TypeName>System.Int32</rd:TypeName>
+          <rd:TypeName>System.String</rd:TypeName>
         </Field>
         <Field Name="price">
           <DataField>price</DataField>
-          <rd:TypeName>System.Decimal</rd:TypeName>
+          <rd:TypeName>System.String</rd:TypeName>
         </Field>
         <Field Name="name">
           <DataField>name</DataField>
           <rd:TypeName>System.String</rd:TypeName>
         </Field>
+        <Field Name="total">
+          <DataField>total</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
       </Fields>
       <rd:DataSetInfo>
         <rd:DataSetName>dsEndShiftItems</rd:DataSetName>
-        <rd:SchemaPath>C:\Users\Kareem\source\repos\POS\POS\Tools\dsEndShiftItems.xsd</rd:SchemaPath>
+        <rd:SchemaPath>E:\شغالين الحمد لله\Caffee\POS\POS\Tools\dsEndShiftItems.xsd</rd:SchemaPath>
         <rd:TableName>EndShiftItemsQuantity</rd:TableName>
-        <rd:TableAdapterFillMethod>Fill</rd:TableAdapterFillMethod>
-        <rd:TableAdapterGetDataMethod>GetData</rd:TableAdapterGetDataMethod>
-        <rd:TableAdapterName>EndShiftItemsQuantityTableAdapter</rd:TableAdapterName>
+        <rd:TableAdapterFillMethod />
+        <rd:TableAdapterGetDataMethod />
+        <rd:TableAdapterName />
       </rd:DataSetInfo>
     </DataSet>
   </DataSets>
-  <rd:ReportUnitType>Inch</rd:ReportUnitType>
+  <rd:ReportUnitType>Cm</rd:ReportUnitType>
   <rd:ReportID>155efb2f-a977-4095-b607-a0b11ba4dbd8</rd:ReportID>
 </Report>

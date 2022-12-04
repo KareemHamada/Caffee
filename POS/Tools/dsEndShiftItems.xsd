@@ -6,27 +6,7 @@
         <Connections>
           <Connection AppSettingsObjectName="Settings" AppSettingsPropertyName="Connection" ConnectionStringObject="" IsAppSettingsProperty="true" Modifier="Assembly" Name="Connection (Settings)" ParameterPrefix="@" PropertyReference="ApplicationSettings.POS.Properties.Settings.GlobalReference.Default.Connection" Provider="System.Data.SqlClient" />
         </Connections>
-        <Tables>
-          <TableAdapter BaseClass="System.ComponentModel.Component" DataAccessorModifier="AutoLayout, AnsiClass, Class, Public" DataAccessorName="EndShiftItemsQuantityTableAdapter" GeneratorDataComponentClassName="EndShiftItemsQuantityTableAdapter" Name="EndShiftItemsQuantity" UserDataComponentName="EndShiftItemsQuantityTableAdapter">
-            <MainSource>
-              <DbSource ConnectionRef="Connection (Settings)" DbObjectName="POS.dbo.EndShiftItemsQuantity" DbObjectType="View" FillMethodModifier="Public" FillMethodName="Fill" GenerateMethods="Both" GenerateShortCommands="false" GeneratorGetMethodName="GetData" GeneratorSourceName="Fill" GetMethodModifier="Public" GetMethodName="GetData" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetData" UserSourceName="Fill">
-                <SelectCommand>
-                  <DbCommand CommandType="Text" ModifiedByUser="true">
-                    <CommandText>SELECT quan, price, name
-FROM     EndShiftItemsQuantity</CommandText>
-                    <Parameters />
-                  </DbCommand>
-                </SelectCommand>
-              </DbSource>
-            </MainSource>
-            <Mappings>
-              <Mapping SourceColumn="quan" DataSetColumn="quan" />
-              <Mapping SourceColumn="price" DataSetColumn="price" />
-              <Mapping SourceColumn="name" DataSetColumn="name" />
-            </Mappings>
-            <Sources />
-          </TableAdapter>
-        </Tables>
+        <Tables />
         <Sources />
       </DataSource>
     </xs:appinfo>
@@ -37,15 +17,10 @@ FROM     EndShiftItemsQuantity</CommandText>
         <xs:element name="EndShiftItemsQuantity" msprop:Generator_TableClassName="EndShiftItemsQuantityDataTable" msprop:Generator_TableVarName="tableEndShiftItemsQuantity" msprop:Generator_TablePropName="EndShiftItemsQuantity" msprop:Generator_RowDeletingName="EndShiftItemsQuantityRowDeleting" msprop:Generator_RowChangingName="EndShiftItemsQuantityRowChanging" msprop:Generator_RowEvHandlerName="EndShiftItemsQuantityRowChangeEventHandler" msprop:Generator_RowDeletedName="EndShiftItemsQuantityRowDeleted" msprop:Generator_UserTableName="EndShiftItemsQuantity" msprop:Generator_RowChangedName="EndShiftItemsQuantityRowChanged" msprop:Generator_RowEvArgName="EndShiftItemsQuantityRowChangeEvent" msprop:Generator_RowClassName="EndShiftItemsQuantityRow">
           <xs:complexType>
             <xs:sequence>
-              <xs:element name="quan" msprop:Generator_ColumnVarNameInTable="columnquan" msprop:Generator_ColumnPropNameInRow="quan" msprop:Generator_ColumnPropNameInTable="quanColumn" msprop:Generator_UserColumnName="quan" type="xs:int" minOccurs="0" />
-              <xs:element name="price" msprop:Generator_ColumnVarNameInTable="columnprice" msprop:Generator_ColumnPropNameInRow="price" msprop:Generator_ColumnPropNameInTable="priceColumn" msprop:Generator_UserColumnName="price" type="xs:decimal" />
-              <xs:element name="name" msprop:Generator_ColumnVarNameInTable="columnname" msprop:Generator_ColumnPropNameInRow="name" msprop:Generator_ColumnPropNameInTable="nameColumn" msprop:Generator_UserColumnName="name">
-                <xs:simpleType>
-                  <xs:restriction base="xs:string">
-                    <xs:maxLength value="100" />
-                  </xs:restriction>
-                </xs:simpleType>
-              </xs:element>
+              <xs:element name="quan" msprop:Generator_ColumnVarNameInTable="columnquan" msprop:Generator_ColumnPropNameInRow="quan" msprop:Generator_ColumnPropNameInTable="quanColumn" msprop:Generator_UserColumnName="quan" type="xs:string" minOccurs="0" />
+              <xs:element name="price" msprop:Generator_ColumnVarNameInTable="columnprice" msprop:Generator_ColumnPropNameInRow="price" msprop:Generator_ColumnPropNameInTable="priceColumn" msprop:Generator_UserColumnName="price" type="xs:string" minOccurs="0" />
+              <xs:element name="name" msprop:Generator_ColumnVarNameInTable="columnname" msprop:Generator_ColumnPropNameInRow="name" msprop:Generator_ColumnPropNameInTable="nameColumn" msprop:Generator_UserColumnName="name" type="xs:string" minOccurs="0" />
+              <xs:element name="total" msprop:Generator_ColumnVarNameInTable="columntotal" msprop:Generator_ColumnPropNameInRow="total" msprop:Generator_ColumnPropNameInTable="totalColumn" msprop:Generator_UserColumnName="total" type="xs:string" minOccurs="0" />
             </xs:sequence>
           </xs:complexType>
         </xs:element>

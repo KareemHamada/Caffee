@@ -575,6 +575,9 @@
       <DependentUpon>dsEndShiftExpenses.xsd</DependentUpon>
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Compile>
+    <Compile Include="Tools\dsEndShiftItems.cs">
+      <DependentUpon>dsEndShiftItems.xsd</DependentUpon>
+    </Compile>
     <Compile Include="Tools\dsEndShiftItems.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>

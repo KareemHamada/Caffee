@@ -26,9 +26,7 @@ namespace POS
             if (File.Exists(Application.StartupPath + "\\Serial\\serial.txt") == false)
             {
                 Application.Run(new FormEnterSerialNumber());
-
             }
-
             else
             {
                 adoClass.setConnection();

@@ -54,7 +54,7 @@ namespace POS.Forms
                     cmd.Parameters.Clear();
 
                     // update final report items at end shift
-                    itemsEndShift(int.Parse(FormPOSResponsive.instance.dgvItems[0, i].Value.ToString()),int.Parse(FormPOSResponsive.instance.dgvItems[3, i].Value.ToString()));
+                    itemsEndShift(int.Parse(FormPOSResponsive.instance.dgvItems[0, i].Value.ToString()),int.Parse(FormPOSResponsive.instance.dgvItems[3, i].Value.ToString()),Convert.ToDecimal(FormPOSResponsive.instance.dgvItems[2, i].Value));
 
                     // update total quantity of system
                     DataTable dt = new DataTable();
@@ -108,14 +108,14 @@ namespace POS.Forms
         }
 
 
-       private void itemsEndShift(int itemId,int quantity)
+       private void itemsEndShift(int itemId,int quantity,decimal total)
         {
             try
             {
                
                 SqlCommand cmd;
                 DataTable dt = new DataTable();
-                cmd = new SqlCommand("Select quan from ItemQuantityEndShift where itemId = '" + itemId + "' and shiftId = '" + declarations.shiftId + "'", adoClass.sqlcn);
+                cmd = new SqlCommand("Select quan,total from ItemQuantityEndShift where itemId = '" + itemId + "' and shiftId = '" + declarations.shiftId + "'", adoClass.sqlcn);
                 SqlDataAdapter da = new SqlDataAdapter(cmd);
                 da.Fill(dt);
 
@@ -123,19 +123,24 @@ namespace POS.Forms
                 {
                     DataRow row = dt.Rows[0];
                     object tableQuantity = row["quan"];
+                    object tableTotal = row["total"];
 
                     if (tableQuantity != DBNull.Value)
                     {
+                        // get total quantity
                         int totalQuantity = 0;
                         int oldQuan = 0;
                         int.TryParse(tableQuantity.ToString(), out oldQuan);
-                        
                         totalQuantity = oldQuan + quantity;
 
-                        cmd = new SqlCommand("update ItemQuantityEndShift set quan = '" + totalQuantity + "' where itemId = '" + itemId + "' and shiftId = '" + declarations.shiftId + "'", adoClass.sqlcn);
-                        cmd.ExecuteNonQuery();
+                        // get total price
+                        decimal totalPrice = 0;
+                        decimal oldTotal = 0;
+                        decimal.TryParse(tableTotal.ToString(), out oldTotal);
+                        totalPrice = oldTotal + total;
 
-                        
+                        cmd = new SqlCommand("update ItemQuantityEndShift set quan = '" + totalQuantity + "',total='"+ totalPrice + "' where itemId = '" + itemId + "' and shiftId = '" + declarations.shiftId + "'", adoClass.sqlcn);
+                        cmd.ExecuteNonQuery();
                     }
                     
                 }
@@ -144,14 +149,19 @@ namespace POS.Forms
                 {
                     int totalQuantity = 0;
                     int oldQuan = 0;
-                    
                     totalQuantity = oldQuan + quantity;
 
-                    cmd = new SqlCommand("insert into ItemQuantityEndShift (itemId,quan,shiftId) values(@itemId,@quan,@shiftId)", adoClass.sqlcn);
+                    // get total price
+                    decimal totalPrice = 0;
+                    decimal oldTotal = 0;
+                    totalPrice = oldTotal + total;
+
+                    cmd = new SqlCommand("insert into ItemQuantityEndShift (itemId,quan,shiftId,total) values(@itemId,@quan,@shiftId,@total)", adoClass.sqlcn);
 
                     cmd.Parameters.AddWithValue("@itemId", itemId);
                     cmd.Parameters.AddWithValue("@quan", quantity);
                     cmd.Parameters.AddWithValue("@shiftId", declarations.shiftId);
+                    cmd.Parameters.AddWithValue("@total", totalPrice);
 
                     cmd.ExecuteNonQuery();
 
@@ -326,7 +336,7 @@ namespace POS.Forms
                         FormPOSResponsive.instance.comboOrderType.Text = "تيك اوي";
                         FormPOSResponsive.instance.txtTotal.Text = "";
 
-                        MessageBox.Show("تم");
+                        //MessageBox.Show("تم");
                         this.Close();
 
                         printChecks checks = new printChecks();
@@ -385,7 +395,7 @@ namespace POS.Forms
 
                         tableOrder = false;
 
-                        MessageBox.Show("تم");
+                        //MessageBox.Show("تم");
 
                         this.Close();
 
