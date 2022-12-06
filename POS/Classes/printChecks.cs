@@ -34,7 +34,7 @@ namespace POS.Classes
                 while (dr.Read())
                 {
                     DataRow dro = checks.Tables["dtCheck"].NewRow();
-                    dro["id"] = dr["id"];
+                    dro["id"] = dr["orderShiftId"];
                     dro["checkDate"] = dr["dateTime"];
                     dro["checkTotal"] = dr["total"];
                     dro["itemId"] = dr["itemId"];

@@ -575,41 +575,62 @@ namespace POS.Forms
                 e.Handled = true;
             }
         }
+        // return order shift id
+        private int returnOrderShiftID()
+        {
+            int orderShiftId;
+            DataTable tbl2 = new DataTable();
+            tbl2.Clear();
+            cmd = new SqlCommand("Select MAX(orderShiftId) from Orders where shiftId = " + declarations.shiftId + "", adoClass.sqlcn);
+            SqlDataAdapter adap = new SqlDataAdapter(cmd);
+            adap.Fill(tbl2);
+            //int nextOrderId = 0;
+            if (tbl2.Rows[0][0].ToString() == DBNull.Value.ToString())
+            {
+                orderShiftId = 1;
+            }
+            else
+            {
+                orderShiftId = Convert.ToInt32(tbl2.Rows[0][0]) + 1;
+            }
+
+            return orderShiftId;
+        }
 
         private void btnDone_Click(object sender, EventArgs e)
         {
             if (dgvItems.Rows.Count > 0 && tableIdHidden.Text == "")
             {
                 FormFatora frm = new FormFatora();
-                DataTable dt = new DataTable();
-                cmd = new SqlCommand("Select TOP 1 * from Orders order by id DESC", adoClass.sqlcn);
-                SqlDataAdapter da = new SqlDataAdapter(cmd);
-                da.Fill(dt);
-                double nextOrderId = 0;
-                if (dt.Rows.Count > 0)
-                {
-                    DataRow row = dt.Rows[0];
-                    object orderId = row["id"];
+                //DataTable dt = new DataTable();
+                //cmd = new SqlCommand("Select TOP 1 * from Orders order by id DESC", adoClass.sqlcn);
+                //SqlDataAdapter da = new SqlDataAdapter(cmd);
+                //da.Fill(dt);
+                //double nextOrderId = 0;
+                //if (dt.Rows.Count > 0)
+                //{
+                //    DataRow row = dt.Rows[0];
+                //    object orderId = row["id"];
 
-                    if (orderId != DBNull.Value)
-                    {
-                        double oldOrderId = 0;
-                        double.TryParse(orderId.ToString(), out oldOrderId);
-                        nextOrderId = oldOrderId + 1;
-                    }
-                    else
-                    {
-                        double oldOrderId = 0;
-                        nextOrderId = oldOrderId + 1;
-                    }
-                }
-                else
-                {
-                    nextOrderId = 1;
-                }
+                //    if (orderId != DBNull.Value)
+                //    {
+                //        double oldOrderId = 0;
+                //        double.TryParse(orderId.ToString(), out oldOrderId);
+                //        nextOrderId = oldOrderId + 1;
+                //    }
+                //    else
+                //    {
+                //        double oldOrderId = 0;
+                //        nextOrderId = oldOrderId + 1;
+                //    }
+                //}
+                //else
+                //{
+                //    nextOrderId = 1;
+                //}
                 
                 //////////////////////////////
-                frm.txtFatoraOrderId.Text = nextOrderId.ToString();
+                frm.txtFatoraOrderId.Text = returnOrderShiftID().ToString();
                 frm.txtFatoraClientName.Text = txtName.Text;
                 frm.txtFatoraTotal.Text = TotalCalculations().ToString();
                 frm.Show();
@@ -629,17 +650,17 @@ namespace POS.Forms
                     DataRow row = table.Rows[0];
                     string status = row["status"].ToString();
                     string orderId = row["O_Id"].ToString();
+                    string orderShiftId = row["orderShiftId"].ToString();
                     if (status == "O")
                     {
 
                         FormFatora frm = new FormFatora();
-                        frm.txtFatoraOrderId.Text = orderId;
+                        frm.txtFatoraOrderId.Text = orderShiftId;
                         //frm.txtFatoraClientName.Text = txtName.Text;
                         frm.txtFatoraTotal.Text = TotalCalculations().ToString();
                         frm.tableOrder = true;
+                        frm.TableOrderIDToPrint = orderId;
                         frm.Show();
-
-
                     }
                     else
                     {
@@ -668,8 +689,8 @@ namespace POS.Forms
                 {
                     adoClass.sqlcn.Open();
                 }
-
-                string query = "Insert into Orders (userId,dateTime,total,tax,discount,delivery,shiftId,orderType,tableId,status) values (@userId,@dateTime,@total,@tax,@discount,@delivery,@shiftId,@orderType,@tableId,@status); ";
+                int insertOrderShiftId = returnOrderShiftID();
+                string query = "Insert into Orders (userId,dateTime,total,tax,discount,delivery,shiftId,orderType,tableId,status,orderShiftId) values (@userId,@dateTime,@total,@tax,@discount,@delivery,@shiftId,@orderType,@tableId,@status,@orderShiftId); ";
                 query += "SELECT @orderId = SCOPE_IDENTITY(); ";
 
                 SqlCommand cmd = new SqlCommand(query, adoClass.sqlcn);
@@ -696,6 +717,7 @@ namespace POS.Forms
                 cmd.Parameters.AddWithValue("@orderType", comboOrderType.Text);
                 cmd.Parameters.AddWithValue("@tableId", tableIdHidden.Text);
                 cmd.Parameters.AddWithValue("@status", "O");
+                cmd.Parameters.AddWithValue("@orderShiftId", insertOrderShiftId);
 
                 //order id
                 cmd.Parameters["@orderId"].Direction = ParameterDirection.Output;
@@ -725,7 +747,7 @@ namespace POS.Forms
                     rptForm.mainReport.LocalReport.DataSources.Add(new ReportDataSource("DataSet1", tables.Tables["dtTables"]));
 
                     ReportParameter[] reportParameters = new ReportParameter[3];
-                    reportParameters[0] = new ReportParameter("orderId", tableOrderId);
+                    reportParameters[0] = new ReportParameter("orderId", insertOrderShiftId.ToString());
                     reportParameters[1] = new ReportParameter("TableId", tableIdHidden.Text);
                     reportParameters[2] = new ReportParameter("dateTime", DateTime.Now.ToString());
 
@@ -840,7 +862,7 @@ namespace POS.Forms
                 {
                     DataRow row = table.Rows[0];
                     string orderId = row["O_Id"].ToString();
-
+                    string orderShiftId = row["orderShiftId"].ToString();
                     // update order total-tax-discount
                     cmd = new SqlCommand("Update Orders set total = @total,tax=@tax,discount=@discount Where id = '" + orderId + "'", adoClass.sqlcn);
 
@@ -883,7 +905,7 @@ namespace POS.Forms
                     rptForm.mainReport.LocalReport.DataSources.Add(new ReportDataSource("DataSet1", tables.Tables["dtTables"]));
 
                     ReportParameter[] reportParameters = new ReportParameter[3];
-                    reportParameters[0] = new ReportParameter("orderId", orderId);
+                    reportParameters[0] = new ReportParameter("orderId", orderShiftId);
                     reportParameters[1] = new ReportParameter("TableId", tableIdHidden.Text);
                     reportParameters[2] = new ReportParameter("dateTime", DateTime.Now.ToString());
 
@@ -905,10 +927,7 @@ namespace POS.Forms
                     }
                     // end of print table order
                 }
-
-
             }
-
             catch (Exception ex)
             {
                 MessageBox.Show(ex.Message);

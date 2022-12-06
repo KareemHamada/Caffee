@@ -21,6 +21,7 @@ namespace POS.Forms
         }
         private string orderId;
         public bool tableOrder = false;
+        public string TableOrderIDToPrint = "";
         private SqlCommand cmd;
 
 
@@ -205,6 +206,122 @@ namespace POS.Forms
             txtFatoraRemain.Text = remain.ToString();
         }
 
+        private string returnClientID()
+        {
+            string clientNewId = "";
+
+            if (FormPOSResponsive.instance.txtHiddenClientId.Text == "" && (FormPOSResponsive.instance.txtName.Text != "" || FormPOSResponsive.instance.txtPhone.Text != ""))
+            {
+                string queryNewClient = "Insert into Clients (name,phone,regionId,address) values (@name,@phone,@regionId,@address); ";
+                queryNewClient += "SELECT @clientNewId = SCOPE_IDENTITY(); ";
+
+                SqlCommand command = new SqlCommand(queryNewClient, adoClass.sqlcn);
+                command.Parameters.Add("@clientNewId", SqlDbType.Int);
+
+
+                if (FormPOSResponsive.instance.txtName.Text != "")
+                {
+                    command.Parameters.AddWithValue("@name", FormPOSResponsive.instance.txtName.Text);
+                }
+                else
+                {
+                    command.Parameters.AddWithValue("@name", DBNull.Value);
+                }
+
+                if (FormPOSResponsive.instance.txtPhone.Text != "")
+                {
+                    command.Parameters.AddWithValue("@phone", FormPOSResponsive.instance.txtPhone.Text);
+                }
+                else
+                {
+                    command.Parameters.AddWithValue("@phone", DBNull.Value);
+                }
+
+                if (FormPOSResponsive.instance.comboRegions.Text != "")
+                {
+                    command.Parameters.AddWithValue("@regionId", FormPOSResponsive.instance.comboRegions.SelectedValue);
+                }
+                else
+                {
+                    command.Parameters.AddWithValue("@regionId", DBNull.Value);
+                }
+
+                if (FormPOSResponsive.instance.comboRegions.Text != "")
+                {
+                    command.Parameters.AddWithValue("@address", FormPOSResponsive.instance.txtAddress.Text);
+                }
+                else
+                {
+                    command.Parameters.AddWithValue("@address", DBNull.Value);
+                }
+
+                //client id
+                command.Parameters["@clientNewId"].Direction = ParameterDirection.Output;
+                command.ExecuteNonQuery();
+
+                clientNewId = command.Parameters["@clientNewId"].Value.ToString();
+
+            }
+
+            return clientNewId;
+        }
+
+        // order ID
+        private int returnOrderID()
+        {
+            DataTable tbl = new DataTable();
+            tbl.Clear();
+            cmd = new SqlCommand("Select TOP 1 * from Orders order by id DESC", adoClass.sqlcn);
+            SqlDataAdapter da = new SqlDataAdapter(cmd);
+            da.Fill(tbl);
+            int nextOrderId = 0;
+            if (tbl.Rows.Count > 0)
+            {
+                DataRow row = tbl.Rows[0];
+                object orderId = row["id"];
+
+                if (orderId != DBNull.Value)
+                {
+                    int oldOrderId = 0;
+                    int.TryParse(orderId.ToString(), out oldOrderId);
+                    nextOrderId = oldOrderId + 1;
+                }
+                else
+                {
+                    int oldOrderId = 0;
+                    nextOrderId = oldOrderId + 1;
+                }
+            }
+            else
+            {
+                nextOrderId = 1;
+            }
+
+            return nextOrderId;
+        }
+
+        // return order shift id
+        private int returnOrderShiftID()
+        {
+            int orderShiftId;
+            DataTable tbl2 = new DataTable();
+            tbl2.Clear();
+            cmd = new SqlCommand("Select MAX(orderShiftId) from Orders where shiftId = " + declarations.shiftId+"", adoClass.sqlcn);
+            SqlDataAdapter adap = new SqlDataAdapter(cmd);
+            adap.Fill(tbl2);
+            //int nextOrderId = 0;
+            if (tbl2.Rows[0][0].ToString() == DBNull.Value.ToString())
+            {
+                orderShiftId = 1;
+            }
+            else
+            {
+                orderShiftId = Convert.ToInt32(tbl2.Rows[0][0]) + 1;
+            }
+
+            return orderShiftId;
+        }
+
         private void btnPrint_Click(object sender, EventArgs e)
         {
             if (FormPOSResponsive.instance.dgvItems.Rows.Count > 0)
@@ -227,66 +344,11 @@ namespace POS.Forms
 
                     if (tableOrder == false)
                     {
-                        string clientNewId = "";
 
-                        if (FormPOSResponsive.instance.txtHiddenClientId.Text == "" && (FormPOSResponsive.instance.txtName.Text != "" || FormPOSResponsive.instance.txtPhone.Text != ""))
-                        {
-                            string queryNewClient = "Insert into Clients (name,phone,regionId,address) values (@name,@phone,@regionId,@address); ";
-                            queryNewClient += "SELECT @clientNewId = SCOPE_IDENTITY(); ";
+                        // return id of client if enterd
+                        string clientNewId = returnClientID();
 
-                            SqlCommand command = new SqlCommand(queryNewClient, adoClass.sqlcn);
-                            command.Parameters.Add("@clientNewId", SqlDbType.Int);
-
-
-                            if (FormPOSResponsive.instance.txtName.Text != "")
-                            {
-                                command.Parameters.AddWithValue("@name", FormPOSResponsive.instance.txtName.Text);
-                            }
-                            else
-                            {
-                                command.Parameters.AddWithValue("@name", DBNull.Value);
-                            }
-
-                            if (FormPOSResponsive.instance.txtPhone.Text != "")
-                            {
-                                command.Parameters.AddWithValue("@phone", FormPOSResponsive.instance.txtPhone.Text);
-                            }
-                            else
-                            {
-                                command.Parameters.AddWithValue("@phone", DBNull.Value);
-                            }
-
-                            if (FormPOSResponsive.instance.comboRegions.Text != "")
-                            {
-                                command.Parameters.AddWithValue("@regionId", FormPOSResponsive.instance.comboRegions.SelectedValue);
-                            }
-                            else
-                            {
-                                command.Parameters.AddWithValue("@regionId", DBNull.Value);
-                            }
-
-                            if (FormPOSResponsive.instance.comboRegions.Text != "")
-                            {
-                                command.Parameters.AddWithValue("@address", FormPOSResponsive.instance.txtAddress.Text);
-                            }
-                            else
-                            {
-                                command.Parameters.AddWithValue("@address", DBNull.Value);
-                            }
-
-                            //client id
-                            command.Parameters["@clientNewId"].Direction = ParameterDirection.Output;
-                            command.ExecuteNonQuery();
-
-                            clientNewId = command.Parameters["@clientNewId"].Value.ToString();
-
-                        }
-
-
-                        /////
-
-
-                        string query = "Insert into Orders (userId,clientId,dateTime,total,tax,discount,delivery,shiftId,orderType,tayarId) values (@userId,@clientId,@dateTime,@total,@tax,@discount,@delivery,@shiftId,@orderType,@tayarId); ";
+                        string query = "Insert into Orders (userId,clientId,dateTime,total,tax,discount,delivery,shiftId,orderType,tayarId,orderShiftId) values (@userId,@clientId,@dateTime,@total,@tax,@discount,@delivery,@shiftId,@orderType,@tayarId,@orderShiftId); ";
                         query += "SELECT @orderId = SCOPE_IDENTITY(); ";
 
                         SqlCommand cmd = new SqlCommand(query, adoClass.sqlcn);
@@ -316,6 +378,7 @@ namespace POS.Forms
                         cmd.Parameters.AddWithValue("@shiftId", declarations.shiftId);
                         cmd.Parameters.AddWithValue("@orderType", FormPOSResponsive.instance.comboOrderType.Text);
                         cmd.Parameters.AddWithValue("@tayarId", FormPOSResponsive.instance.comboTayar.SelectedValue);
+                        cmd.Parameters.AddWithValue("@orderShiftId", returnOrderShiftID());
 
                         //order id
                         cmd.Parameters["@orderId"].Direction = ParameterDirection.Output;
@@ -344,8 +407,7 @@ namespace POS.Forms
                     }
                     else
                     {
-                        // 
-                        orderId = txtFatoraOrderId.Text;
+                        orderId = TableOrderIDToPrint;
                         try
                         {
                             // Clients (name,phone,regionId,address)
