@@ -31,18 +31,24 @@ namespace POS.Classes
                 //    FormEnterSerialNumber frm = new FormEnterSerialNumber();
                 //    frm.Show();
                 //}
-                StreamReader sr = new StreamReader(Application.StartupPath + "\\Serial\\serial.txt");
-                string txt = sr.ReadLine();
-                string ds = sr.ReadLine();
 
-                sr.Close();
-                txt = Regex.Replace(txt, @"\s+", "");
-                ds = Regex.Replace(ds, @"\s+", "");
-                //MessageBox.Show(ds);
 
-                //string ds = "";
-                //DESKTOP-ADO823G
-                sqlcn = new SqlConnection("Data Source=" + ds + ";Initial Catalog=POS;Integrated Security=True");
+                ////////////////////////
+                //StreamReader sr = new StreamReader(Application.StartupPath + "\\Tools\\serial.txt");
+                //string txt = sr.ReadLine();
+                //string ds = sr.ReadLine();
+
+                //sr.Close();
+                //txt = Regex.Replace(txt, @"\s+", "");
+                //ds = Regex.Replace(ds, @"\s+", "");
+
+                //sqlcn = new SqlConnection("Data Source=" + ds + ";Initial Catalog=POS;Integrated Security=True");
+                ////////////////////////
+
+
+                sqlcn = new SqlConnection(@"Data Source=.\SQLEXPRESS;Initial Catalog=POS;Integrated Security=True");
+
+                //sqlcn = new SqlConnection(@"Data Source=DESKTOP-KE662S4;Initial Catalog=POS;Integrated Security=True");
 
             }
             catch (Exception ex)

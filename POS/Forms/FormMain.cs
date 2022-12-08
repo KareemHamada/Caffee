@@ -126,6 +126,11 @@ namespace POS.Forms
         {
             OpenChildForm(new FormMainClients(), sender);
         }
+
+        private void btnSaveRestoreDB_Click(object sender, EventArgs e)
+        {
+            OpenChildForm(new FormMainDB(), sender);
+        }
     }
 }
 

@@ -32,13 +32,14 @@ namespace POS.Forms
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormMain));
             this.pnlParient = new System.Windows.Forms.TableLayoutPanel();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
-            this.btnClose = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
             this.lblUserName = new System.Windows.Forms.Label();
-            this.btnBackup = new System.Windows.Forms.Button();
             this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
             this.pnlMainForm = new System.Windows.Forms.Panel();
             this.pnlMenu = new System.Windows.Forms.Panel();
+            this.btnClose = new System.Windows.Forms.Button();
+            this.btnBackup = new System.Windows.Forms.Button();
+            this.btnSaveRestoreDB = new System.Windows.Forms.Button();
             this.btnClients = new System.Windows.Forms.Button();
             this.btnStore = new System.Windows.Forms.Button();
             this.btnOptions = new System.Windows.Forms.Button();
@@ -90,18 +91,6 @@ namespace POS.Forms
             this.tableLayoutPanel1.Size = new System.Drawing.Size(1533, 108);
             this.tableLayoutPanel1.TabIndex = 0;
             // 
-            // btnClose
-            // 
-            this.btnClose.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnClose.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btnClose.BackgroundImage")));
-            this.btnClose.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.btnClose.Location = new System.Drawing.Point(1448, 3);
-            this.btnClose.Name = "btnClose";
-            this.btnClose.Size = new System.Drawing.Size(82, 55);
-            this.btnClose.TabIndex = 1;
-            this.btnClose.UseVisualStyleBackColor = true;
-            this.btnClose.Click += new System.EventHandler(this.btnClose_Click);
-            // 
             // label1
             // 
             this.label1.Anchor = System.Windows.Forms.AnchorStyles.None;
@@ -128,17 +117,6 @@ namespace POS.Forms
             this.lblUserName.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
             this.lblUserName.Size = new System.Drawing.Size(0, 36);
             this.lblUserName.TabIndex = 17;
-            // 
-            // btnBackup
-            // 
-            this.btnBackup.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btnBackup.BackgroundImage")));
-            this.btnBackup.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.btnBackup.Location = new System.Drawing.Point(3, 3);
-            this.btnBackup.Name = "btnBackup";
-            this.btnBackup.Size = new System.Drawing.Size(82, 55);
-            this.btnBackup.TabIndex = 18;
-            this.btnBackup.UseVisualStyleBackColor = true;
-            this.btnBackup.Click += new System.EventHandler(this.btnBackup_Click);
             // 
             // tableLayoutPanel2
             // 
@@ -169,6 +147,7 @@ namespace POS.Forms
             // 
             this.pnlMenu.BackColor = System.Drawing.Color.White;
             this.pnlMenu.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.pnlMenu.Controls.Add(this.btnSaveRestoreDB);
             this.pnlMenu.Controls.Add(this.btnClients);
             this.pnlMenu.Controls.Add(this.btnStore);
             this.pnlMenu.Controls.Add(this.btnOptions);
@@ -181,6 +160,48 @@ namespace POS.Forms
             this.pnlMenu.Size = new System.Drawing.Size(332, 621);
             this.pnlMenu.TabIndex = 1;
             // 
+            // btnClose
+            // 
+            this.btnClose.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnClose.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btnClose.BackgroundImage")));
+            this.btnClose.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.btnClose.Location = new System.Drawing.Point(1448, 3);
+            this.btnClose.Name = "btnClose";
+            this.btnClose.Size = new System.Drawing.Size(82, 55);
+            this.btnClose.TabIndex = 1;
+            this.btnClose.UseVisualStyleBackColor = true;
+            this.btnClose.Click += new System.EventHandler(this.btnClose_Click);
+            // 
+            // btnBackup
+            // 
+            this.btnBackup.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btnBackup.BackgroundImage")));
+            this.btnBackup.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.btnBackup.Location = new System.Drawing.Point(3, 3);
+            this.btnBackup.Name = "btnBackup";
+            this.btnBackup.Size = new System.Drawing.Size(82, 55);
+            this.btnBackup.TabIndex = 18;
+            this.btnBackup.UseVisualStyleBackColor = true;
+            this.btnBackup.Visible = false;
+            this.btnBackup.Click += new System.EventHandler(this.btnBackup_Click);
+            // 
+            // btnSaveRestoreDB
+            // 
+            this.btnSaveRestoreDB.Dock = System.Windows.Forms.DockStyle.Top;
+            this.btnSaveRestoreDB.FlatAppearance.BorderColor = System.Drawing.Color.White;
+            this.btnSaveRestoreDB.FlatAppearance.BorderSize = 0;
+            this.btnSaveRestoreDB.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnSaveRestoreDB.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnSaveRestoreDB.Image = global::POS.Properties.Resources.admin;
+            this.btnSaveRestoreDB.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.btnSaveRestoreDB.Location = new System.Drawing.Point(0, 480);
+            this.btnSaveRestoreDB.Name = "btnSaveRestoreDB";
+            this.btnSaveRestoreDB.Size = new System.Drawing.Size(328, 80);
+            this.btnSaveRestoreDB.TabIndex = 6;
+            this.btnSaveRestoreDB.Text = "النسخ الاحتياطي و الاسترجاع";
+            this.btnSaveRestoreDB.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnSaveRestoreDB.UseVisualStyleBackColor = true;
+            this.btnSaveRestoreDB.Click += new System.EventHandler(this.btnSaveRestoreDB_Click);
+            // 
             // btnClients
             // 
             this.btnClients.Dock = System.Windows.Forms.DockStyle.Top;
@@ -188,7 +209,7 @@ namespace POS.Forms
             this.btnClients.FlatAppearance.BorderSize = 0;
             this.btnClients.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnClients.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnClients.Image = ((System.Drawing.Image)(resources.GetObject("btnClients.Image")));
+            this.btnClients.Image = global::POS.Properties.Resources.man1;
             this.btnClients.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.btnClients.Location = new System.Drawing.Point(0, 400);
             this.btnClients.Name = "btnClients";
@@ -326,5 +347,6 @@ namespace POS.Forms
         private System.Windows.Forms.Button btnEmployee;
         private System.Windows.Forms.Button btnMainInfo;
         private System.Windows.Forms.Button btnClients;
+        private System.Windows.Forms.Button btnSaveRestoreDB;
     }
 }

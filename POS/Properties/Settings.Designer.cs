@@ -23,13 +23,27 @@ namespace POS.Properties {
             }
         }
         
-        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.SpecialSettingAttribute(global::System.Configuration.SpecialSetting.ConnectionString)]
-        [global::System.Configuration.DefaultSettingValueAttribute("Data Source=DESKTOP-ADO823G;Initial Catalog=POS;Integrated Security=True")]
-        public string Connection {
+        [global::System.Configuration.DefaultSettingValueAttribute("0")]
+        public int Trial {
             get {
-                return ((string)(this["Connection"]));
+                return ((int)(this["Trial"]));
+            }
+            set {
+                this["Trial"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("NO")]
+        public string Product_Key {
+            get {
+                return ((string)(this["Product_Key"]));
+            }
+            set {
+                this["Product_Key"] = value;
             }
         }
     }

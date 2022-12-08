@@ -23,28 +23,28 @@ namespace POS
         static void Main()
         {
 
-            if (File.Exists(Application.StartupPath + "\\Serial\\serial.txt") == false)
-            {
-                Application.Run(new FormEnterSerialNumber());
-            }
-            else
-            {
+            //if (File.Exists(Application.StartupPath + "\\Tools\\serial.txt") == false)
+            //{
+            //    Application.Run(new FormEnterSerialNumber());
+            //}
+            //else
+            //{
                 adoClass.setConnection();
                 Application.SetCompatibleTextRenderingDefault(false);
 
                 try
                 {
-                    ClassSerialNumber sn = new ClassSerialNumber();
-                    string serialNumber = Regex.Replace(sn.GetSerialNumber(@"C:"), @"\s+", "");
+                    //ClassSerialNumber sn = new ClassSerialNumber();
+                    //string serialNumber = Regex.Replace(sn.GetSerialNumber(@"C:"), @"\s+", "");
 
-                    StreamReader sr = new StreamReader(Application.StartupPath + "\\serial\\serial.txt");
-                    string txt = sr.ReadLine();
+                    //StreamReader sr = new StreamReader(Application.StartupPath + "\\Tools\\serial.txt");
+                    //string txt = sr.ReadLine();
 
-                    sr.Close();
-                    txt = Regex.Replace(txt, @"\s+", "");
+                    //sr.Close();
+                    //txt = Regex.Replace(txt, @"\s+", "");
 
-                    if (txt == serialNumber)
-                    {
+                    //if (txt == serialNumber)
+                    //{
 
                         FormStartUp frmStartUP = new FormStartUp();
                         if (frmStartUP.ShowDialog() == DialogResult.OK)
@@ -150,12 +150,12 @@ namespace POS
                                 }
                             }
                         }
-                    }
-                    else
-                    {
-                        MessageBox.Show("خطا في تشغيل البرنامج الرجاء الاتصال علي الشركة");
-                        Application.Exit();
-                    }
+                    //}
+                    //else
+                    //{
+                    //    MessageBox.Show("خطا في تشغيل البرنامج الرجاء الاتصال علي الشركة");
+                    //    Application.Exit();
+                    //}
 
 
 
@@ -167,7 +167,7 @@ namespace POS
                     //MessageBox.Show("خطا في تشغيل البرنامج الرجاء الاتصال علي الشركة");
                     Application.Exit();
                 }
-            }
+            //}
         }
 
 

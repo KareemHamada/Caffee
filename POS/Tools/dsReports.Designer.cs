@@ -966,7 +966,7 @@ namespace POS.Tools.dsReportsTableAdapters {
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
         private void InitConnection() {
             this._connection = new global::System.Data.SqlClient.SqlConnection();
-            this._connection.ConnectionString = global::POS.Properties.Settings.Default.Connection;
+            //this._connection.ConnectionString = global::POS.Properties.Settings.Default.Connection;
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]

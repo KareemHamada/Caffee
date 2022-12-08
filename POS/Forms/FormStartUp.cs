@@ -11,6 +11,9 @@ using System.Windows.Forms;
 using System.Management;
 using System.Text.RegularExpressions;
 using System.IO;
+using System.Data.SqlClient;
+using Microsoft.SqlServer.Management.Smo;
+using Microsoft.SqlServer.Management.Common;
 
 namespace POS.Forms
 {
@@ -64,6 +67,17 @@ namespace POS.Forms
             //        Application.Exit();
             //    }
             //}
+            if (progressBar.Value == 5)
+            {
+                try
+                {
+                    createDatabase();
+                }
+                catch (Exception)
+                {
+
+                }
+            }
 
             if (progressBar.Value == 10)
             {
@@ -82,7 +96,95 @@ namespace POS.Forms
                 progressBar.Refresh();
             }
         }
+        private bool checkDatabase()
+        {
+            SqlConnection conn = new SqlConnection(@"Data Source=.\SQLEXPRESS;Integrated Security=True");
 
+            //SqlConnection conn = new SqlConnection(@"Data Source=DESKTOP-KE662S4;Integrated Security=True");
+            SqlCommand cmd = new SqlCommand("", conn);
+            SqlDataReader rdr;
+            try
+            {
+                cmd.CommandText = "exec sys.sp_databases";
+                conn.Open();
+                rdr = cmd.ExecuteReader();
+                while (rdr.Read())
+                {
+                    if (rdr.GetString(0) == "POS")
+                    {
+                        return true;
+                        break;
+                    }
+
+                }
+            }
+            catch (Exception)
+            {
+                return false;
+            }
+
+            conn.Close();
+            rdr.Dispose();
+            cmd.Dispose();
+
+            return false;
+        }
+
+        private void createDatabase()
+        {
+            bool check = checkDatabase();
+            if (check == false)
+            {
+                try
+                {
+                    var fileContent = File.ReadAllText(Application.StartupPath + @"\sqlScript.sql");
+                    var sqlqueries = fileContent.Split(new[] { "GO" }, StringSplitOptions.RemoveEmptyEntries);
+
+                    var con = new SqlConnection(@"Data Source=.\SQLEXPRESS;Integrated Security=True");
+
+                    //var con = new SqlConnection(@"Data Source=DESKTOP-KE662S4;Integrated Security=True");
+
+                    var cmd = new SqlCommand("query", con);
+                    con.Open();
+
+                    foreach (var query in sqlqueries)
+                    {
+                        cmd.CommandText = query;
+                        cmd.ExecuteNonQuery();
+
+                        //Console.WriteLine(query + "GO");
+                    }
+
+                    con.Close();
+
+                }
+                catch (Exception e)
+                {
+                    Console.WriteLine("-------------------");
+                    Console.WriteLine(e.Message);
+                    Console.WriteLine("-------------------");
+                }
+
+                //try
+                //{
+                //    string conn = @"Data Source=.\SQLEXPRESS;Integrated Security=True";
+
+                //    string script = File.ReadAllText(Application.StartupPath + @"\sqlScript.sql");
+
+                //    SqlConnection co = new SqlConnection(conn);
+                //    Server server = new Server(new ServerConnection(co));
+
+                //    server.ConnectionContext.ExecuteNonQuery(script);
+                //}
+                //catch(Exception e)
+                //{
+                //    Console.WriteLine("-------------------");
+                //    Console.WriteLine(e.Message);
+                //    Console.WriteLine("-------------------");
+
+                //}
+            }
+        }
         private void FormStartUp_Load(object sender, EventArgs e)
         {
 

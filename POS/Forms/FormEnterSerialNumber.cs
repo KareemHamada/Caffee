@@ -25,13 +25,13 @@ namespace POS.Forms
         {
             if (txtSerialNumber.Text == "")
             {
-                MessageBox.Show("ادخل الرقم");
+                MessageBox.Show("Enter SN");
                 return;
             }
 
             if (txtDS.Text == "")
             {
-                MessageBox.Show("Enter Data source");
+                MessageBox.Show("Enter DS");
                 return;
             }
 
@@ -39,18 +39,8 @@ namespace POS.Forms
             {
                 ClassSerialNumber sn = new ClassSerialNumber();
                 string serialNumber = Regex.Replace(sn.GetSerialNumber(@"C:"), @"\s+", ""); // remove empty space
-                StreamWriter sw = new StreamWriter(Application.StartupPath + "\\Serial\\serial.txt");
-                sw.WriteLine(txtSerialNumber.Text);
-                sw.WriteLine(txtDS.Text);
-                sw.Close();
 
-                StreamReader sr = new StreamReader(Application.StartupPath + "\\Serial\\serial.txt");
-                string txt = sr.ReadLine();
-                //string ds = sr.ReadToEnd();
-                sr.Close();
-
-                txt = Regex.Replace(txt, @"\s+", "");
-                if (txt == serialNumber)
+                if (txtSerialNumber.Text == serialNumber)
                 {
                     MessageBox.Show("تم تفعيل البرنامج");
                     Application.Exit();
@@ -59,7 +49,21 @@ namespace POS.Forms
                 {
                     MessageBox.Show("خطا في تشغيل البرنامج الرجاء الاتصال علي الشركة");
                     Application.Exit();
+                    return;
                 }
+
+                StreamWriter sw = new StreamWriter(Application.StartupPath + "\\Tools\\serial.txt");
+                sw.WriteLine(txtSerialNumber.Text);
+                sw.WriteLine(txtDS.Text);
+                sw.Close();
+
+                //StreamReader sr = new StreamReader(Application.StartupPath + "\\Tools\\serial.txt");
+                //string txt = sr.ReadLine();
+                ////string ds = sr.ReadToEnd();
+                //sr.Close();
+
+                //txt = Regex.Replace(txt, @"\s+", "");
+                
             }
             catch (Exception ex)
             {

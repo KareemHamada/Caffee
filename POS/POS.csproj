@@ -35,6 +35,7 @@
     <CreateDesktopShortcut>true</CreateDesktopShortcut>
     <PublishWizardCompleted>true</PublishWizardCompleted>
     <BootstrapperEnabled>true</BootstrapperEnabled>
+    <BootstrapperComponentsLocation>Relative</BootstrapperComponentsLocation>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <PlatformTarget>AnyCPU</PlatformTarget>
@@ -125,6 +126,15 @@
     <Reference Include="Microsoft.ReportViewer.WebForms, Version=15.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL" />
     <Reference Include="Microsoft.ReportViewer.WinForms, Version=15.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL">
       <HintPath>..\packages\Microsoft.ReportingServices.ReportViewerControl.Winforms.150.1484.0\lib\net40\Microsoft.ReportViewer.WinForms.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.SqlServer.ConnectionInfo, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.SqlServer.Scripting.11.0.2100.61\lib\Microsoft.SqlServer.ConnectionInfo.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.SqlServer.Management.Sdk.Sfc, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.SqlServer.Scripting.11.0.2100.61\lib\Microsoft.SqlServer.Management.Sdk.Sfc.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.SqlServer.Smo, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.SqlServer.Scripting.11.0.2100.61\lib\Microsoft.SqlServer.Smo.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.SqlServer.Types, Version=14.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL">
       <HintPath>..\packages\Microsoft.SqlServer.Types.14.0.314.76\lib\net40\Microsoft.SqlServer.Types.dll</HintPath>
@@ -247,6 +257,12 @@
     <Compile Include="Forms\FormClients.Designer.cs">
       <DependentUpon>FormClients.cs</DependentUpon>
     </Compile>
+    <Compile Include="Forms\FormCreateNewCopy.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\FormCreateNewCopy.Designer.cs">
+      <DependentUpon>FormCreateNewCopy.cs</DependentUpon>
+    </Compile>
     <Compile Include="Forms\FormDeleteOrder.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -318,6 +334,12 @@
     </Compile>
     <Compile Include="Forms\FormMainClients.Designer.cs">
       <DependentUpon>FormMainClients.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\FormMainDB.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\FormMainDB.Designer.cs">
+      <DependentUpon>FormMainDB.cs</DependentUpon>
     </Compile>
     <Compile Include="Forms\FormMainEmployess.cs">
       <SubType>Form</SubType>
@@ -451,6 +473,12 @@
     <Compile Include="Forms\FormReportSupplierCashWithdraw.Designer.cs">
       <DependentUpon>FormReportSupplierCashWithdraw.cs</DependentUpon>
     </Compile>
+    <Compile Include="Forms\FormRestoreCopy.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\FormRestoreCopy.Designer.cs">
+      <DependentUpon>FormRestoreCopy.cs</DependentUpon>
+    </Compile>
     <Compile Include="Forms\FormShowTayarPOS.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -510,6 +538,12 @@
     </Compile>
     <Compile Include="Forms\Form_Alert.Designer.cs">
       <DependentUpon>Form_Alert.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Frm_Serial.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Frm_Serial.Designer.cs">
+      <DependentUpon>Frm_Serial.cs</DependentUpon>
     </Compile>
     <Compile Include="Forms\HardDrive.cs" />
     <Compile Include="Forms\ManagementObjectSearcher.cs" />
@@ -750,6 +784,9 @@
     <EmbeddedResource Include="Forms\FormClients.resx">
       <DependentUpon>FormClients.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Forms\FormCreateNewCopy.resx">
+      <DependentUpon>FormCreateNewCopy.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Forms\FormDeleteOrder.resx">
       <DependentUpon>FormDeleteOrder.cs</DependentUpon>
     </EmbeddedResource>
@@ -785,6 +822,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\FormMainClients.resx">
       <DependentUpon>FormMainClients.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\FormMainDB.resx">
+      <DependentUpon>FormMainDB.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\FormMainEmployess.resx">
       <DependentUpon>FormMainEmployess.cs</DependentUpon>
@@ -852,6 +892,9 @@
     <EmbeddedResource Include="Forms\FormReportSupplierCashWithdraw.resx">
       <DependentUpon>FormReportSupplierCashWithdraw.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Forms\FormRestoreCopy.resx">
+      <DependentUpon>FormRestoreCopy.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Forms\FormShowTayarPOS.resx">
       <DependentUpon>FormShowTayarPOS.cs</DependentUpon>
     </EmbeddedResource>
@@ -881,6 +924,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\Form_Alert.resx">
       <DependentUpon>Form_Alert.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Frm_Serial.resx">
+      <DependentUpon>Frm_Serial.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\TablesPOSForm.resx">
       <DependentUpon>TablesPOSForm.cs</DependentUpon>
@@ -1435,6 +1481,11 @@
     <None Include="Resources\info1.png" />
     <None Include="Resources\success1.png" />
     <None Include="Resources\warning1.png" />
+    <None Include="Resources\man1.png" />
+    <None Include="Resources\admin.png" />
+    <None Include="Resources\plus1.png" />
+    <None Include="Resources\backup.png" />
+    <None Include="Resources\undo %281%29.png" />
     <Content Include="SqlServerTypes\readme.htm" />
     <Content Include="SqlServerTypes\x64\msvcr120.dll">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>

@@ -14,7 +14,6 @@ namespace POS.Classes
         private SqlCommand cmd;
         private SqlDataReader dr;
 
-
         public void loadSystemOptions()
         {
             cmd = new SqlCommand("Select Top 1 * from Options", adoClass.sqlcn);
