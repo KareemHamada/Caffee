@@ -99,7 +99,7 @@ namespace POS.Forms
                 //report
                 printChecks checks = new printChecks();
                 checks.printEndShift(declarations.shiftId);
-                checks.endShiftItems();
+                checks.endShiftItems(declarations.shiftId);
                 checks.endShiftExpenses(declarations.shiftId);
 
 

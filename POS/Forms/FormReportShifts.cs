@@ -111,10 +111,12 @@ namespace POS.Forms
             {
                 if (dgvLoading.CurrentCell != null && dgvLoading.CurrentCell.Value != null)
                 {
-                    string shiftId = dgvLoading.CurrentRow.Cells[9].Value.ToString();
+                    int shiftId = Convert.ToInt32(dgvLoading.CurrentRow.Cells[9].Value);
                     FormReportItems frm = new FormReportItems();
                     frm.btnReload.Visible = false;
                     frm.txtSearch.Visible = false;
+                    frm.shiftItems = true;
+                    frm.shiftID = shiftId;
                     frm.Show();
                     frm.showShiftItems(shiftId);
                 }

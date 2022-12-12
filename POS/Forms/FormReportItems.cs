@@ -22,9 +22,18 @@ namespace POS.Forms
         }
         private SqlCommand cmd;
         private SqlDataReader dr;
-
+        public bool shiftItems = false;
+        public int shiftID;
         private void FormReportItems_Load(object sender, EventArgs e)
         {
+            if (shiftItems)
+            {
+                dgvLoading.Columns[0].Visible = true;
+            }
+            else
+            {
+                dgvLoading.Columns[0].Visible = false;
+            }
             loadTable("select id,name,quantity from Items");
         }
         private void loadTable(string query)
@@ -49,6 +58,7 @@ namespace POS.Forms
                     dgvLoading.Rows.Add
                         (new object[]
                             {
+                            "",
                             row["quantity"],
                             row["name"],
                             row["id"],
@@ -61,7 +71,7 @@ namespace POS.Forms
 
       
 
-        public void showShiftItems(string shiftId)
+        public void showShiftItems(int shiftId)
         {
             dgvLoading.Rows.Clear();
             DataTable dt = new DataTable();
@@ -70,7 +80,7 @@ namespace POS.Forms
             {
                 adoClass.sqlcn.Open();
             }
-            string query = "select ItemQuantityEndShift.itemId,ItemQuantityEndShift.quan,Items.name from ItemQuantityEndShift LEFT JOIN Items on ItemQuantityEndShift.itemId = Items.id where shiftId = '" + shiftId + "'";
+            string query = "select ItemQuantityEndShift.itemId,ItemQuantityEndShift.quan,Items.name,ItemQuantityEndShift.total from ItemQuantityEndShift LEFT JOIN Items on ItemQuantityEndShift.itemId = Items.id where shiftId = '" + shiftId + "'";
             cmd = new SqlCommand(query, adoClass.sqlcn);
             SqlDataAdapter da = new SqlDataAdapter(cmd);
             da.Fill(dt);
@@ -84,6 +94,7 @@ namespace POS.Forms
                     dgvLoading.Rows.Add
                         (new object[]
                             {
+                            row["total"],
                             row["quan"],
                             row["name"],
                             row["itemId"],
@@ -101,42 +112,50 @@ namespace POS.Forms
 
         private void btnPrint_Click(object sender, EventArgs e)
         {
-            if (dgvLoading.Rows.Count > 0)
+            if (shiftItems == false)
             {
-                dsItems items = new dsItems();
-                for (int i = 0; i < dgvLoading.Rows.Count; i++)
+                if (dgvLoading.Rows.Count > 0)
                 {
-                    DataRow dro = items.Tables["dtItems"].NewRow();
-                    dro["item"] = dgvLoading[1, i].Value;
-                    dro["count"] = dgvLoading[0, i].Value;
+                    dsItems items = new dsItems();
+                    for (int i = 0; i < dgvLoading.Rows.Count; i++)
+                    {
+                        DataRow dro = items.Tables["dtItems"].NewRow();
+                        dro["item"] = dgvLoading[2, i].Value;
+                        dro["count"] = dgvLoading[1, i].Value;
 
-                    items.Tables["dtItems"].Rows.Add(dro);
+                        items.Tables["dtItems"].Rows.Add(dro);
+                    }
+
+                    FormReports rptForm = new FormReports();
+                    rptForm.mainReport.LocalReport.ReportEmbeddedResource = "POS.Reports.ReportItems.rdlc";
+                    rptForm.mainReport.LocalReport.DataSources.Clear();
+                    rptForm.mainReport.LocalReport.DataSources.Add(new ReportDataSource("DataSet1", items.Tables["dtItems"]));
+
+
+                    if (bool.Parse(declarations.systemOptions["directPrint"].ToString()))
+                    {
+                        LocalReport report = new LocalReport();
+                        string path = Application.StartupPath + @"\Reports\ReportItems.rdlc";
+                        report.ReportPath = path;
+                        report.DataSources.Clear();
+                        report.DataSources.Add(new ReportDataSource("DataSet1", items.Tables["dtItems"]));
+                        PrintersClass.PrintToPrinter(report);
+                    }
+                    else if (bool.Parse(declarations.systemOptions["showBeforePrint"].ToString()))
+                    {
+                        rptForm.ShowDialog();
+                    }
+
                 }
-
-                FormReports rptForm = new FormReports();
-                rptForm.mainReport.LocalReport.ReportEmbeddedResource = "POS.Reports.ReportItems.rdlc";
-                rptForm.mainReport.LocalReport.DataSources.Clear();
-                rptForm.mainReport.LocalReport.DataSources.Add(new ReportDataSource("DataSet1", items.Tables["dtItems"]));
-
-
-                if (bool.Parse(declarations.systemOptions["directPrint"].ToString()))
+                else
                 {
-                    LocalReport report = new LocalReport();
-                    string path = Application.StartupPath + @"\Reports\ReportItems.rdlc";
-                    report.ReportPath = path;
-                    report.DataSources.Clear();
-                    report.DataSources.Add(new ReportDataSource("DataSet1", items.Tables["dtItems"]));
-                    PrintersClass.PrintToPrinter(report);
+                    MessageBox.Show("لا يوجد عناصر لعرضها");
                 }
-                else if (bool.Parse(declarations.systemOptions["showBeforePrint"].ToString()))
-                {
-                    rptForm.ShowDialog();
-                }
-
             }
             else
             {
-                MessageBox.Show("لا يوجد عناصر لعرضها");
+                printChecks checks = new printChecks();
+                checks.endShiftItems(shiftID);
             }
         }
 

@@ -206,9 +206,9 @@ namespace POS.Classes
         }
 
 
-        public void endShiftItems()
+        public void endShiftItems(int shiftID)
         {
-            string query = "SELECT * FROM EndShiftItemsQuantity where shiftId = '" + declarations.shiftId + "'";
+            string query = "SELECT * FROM EndShiftItemsQuantity where shiftId = '" + shiftID + "'";
             adaptor = new SqlDataAdapter(query, adoClass.sqlcn);
             dsEndShiftItems reports = new dsEndShiftItems();
 
