@@ -787,7 +787,7 @@ namespace POS.Forms
 
                 tableIdHidden.Text = "";
                 btnUpdateTable.Visible = false;
-                MessageBox.Show("تم");
+                //MessageBox.Show("تم");
 
 
 

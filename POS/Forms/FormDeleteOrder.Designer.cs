@@ -50,6 +50,7 @@ namespace POS.Forms
             this.user = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.shiftId = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.id = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.delete = new System.Windows.Forms.DataGridViewImageColumn();
             this.panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
@@ -133,6 +134,7 @@ namespace POS.Forms
             this.user,
             this.shiftId,
             this.id,
+            this.Column1,
             this.delete});
             this.dgvLoading.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dgvLoading.Location = new System.Drawing.Point(0, 110);
@@ -152,6 +154,7 @@ namespace POS.Forms
             this.dgvLoading.RowTemplate.DefaultCellStyle.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
             this.dgvLoading.RowTemplate.DefaultCellStyle.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.dgvLoading.RowTemplate.Height = 35;
+            this.dgvLoading.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgvLoading.Size = new System.Drawing.Size(1377, 514);
             this.dgvLoading.TabIndex = 20;
             this.dgvLoading.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvLoading_CellDoubleClick);
@@ -247,11 +250,19 @@ namespace POS.Forms
             // 
             // id
             // 
-            this.id.HeaderText = "#";
+            this.id.HeaderText = "رقم الاورد في كل الاوردرات";
             this.id.MinimumWidth = 6;
             this.id.Name = "id";
             this.id.ReadOnly = true;
             this.id.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            this.id.Visible = false;
+            // 
+            // Column1
+            // 
+            this.Column1.HeaderText = "رقم الفاتورة";
+            this.Column1.MinimumWidth = 6;
+            this.Column1.Name = "Column1";
+            this.Column1.ReadOnly = true;
             // 
             // delete
             // 
@@ -300,6 +311,7 @@ namespace POS.Forms
         private System.Windows.Forms.DataGridViewTextBoxColumn user;
         private System.Windows.Forms.DataGridViewTextBoxColumn shiftId;
         private System.Windows.Forms.DataGridViewTextBoxColumn id;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column1;
         private System.Windows.Forms.DataGridViewImageColumn delete;
     }
 }

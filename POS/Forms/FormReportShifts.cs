@@ -113,6 +113,8 @@ namespace POS.Forms
                 {
                     string shiftId = dgvLoading.CurrentRow.Cells[9].Value.ToString();
                     FormReportItems frm = new FormReportItems();
+                    frm.btnReload.Visible = false;
+                    frm.txtSearch.Visible = false;
                     frm.Show();
                     frm.showShiftItems(shiftId);
                 }

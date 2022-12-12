@@ -54,10 +54,12 @@ namespace POS.Forms
             this.pnlParent.Location = new System.Drawing.Point(0, 0);
             this.pnlParent.Name = "pnlParent";
             this.pnlParent.RowCount = 3;
-            this.pnlParent.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 25F));
-            this.pnlParent.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 35.77982F));
-            this.pnlParent.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 39.44954F));
-            this.pnlParent.Size = new System.Drawing.Size(716, 331);
+            this.pnlParent.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 24.94279F));
+            this.pnlParent.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 35.69794F));
+            this.pnlParent.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 39.35927F));
+            this.pnlParent.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
+            this.pnlParent.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
+            this.pnlParent.Size = new System.Drawing.Size(716, 295);
             this.pnlParent.TabIndex = 3;
             // 
             // btnBackup
@@ -66,7 +68,7 @@ namespace POS.Forms
             this.btnBackup.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnBackup.Image = global::POS.Properties.Resources.floppy_disk;
             this.btnBackup.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnBackup.Location = new System.Drawing.Point(166, 221);
+            this.btnBackup.Location = new System.Drawing.Point(166, 192);
             this.btnBackup.Name = "btnBackup";
             this.btnBackup.Size = new System.Drawing.Size(384, 88);
             this.btnBackup.TabIndex = 28;
@@ -89,7 +91,7 @@ namespace POS.Forms
             this.tableLayoutPanel2.Name = "tableLayoutPanel2";
             this.tableLayoutPanel2.RowCount = 1;
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel2.Size = new System.Drawing.Size(716, 82);
+            this.tableLayoutPanel2.Size = new System.Drawing.Size(716, 73);
             this.tableLayoutPanel2.TabIndex = 0;
             // 
             // label1
@@ -97,7 +99,7 @@ namespace POS.Forms
             this.label1.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(134, 23);
+            this.label1.Location = new System.Drawing.Point(134, 18);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(291, 36);
             this.label1.TabIndex = 19;
@@ -105,12 +107,12 @@ namespace POS.Forms
             // 
             // pictureBox1
             // 
-            this.pictureBox1.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.pictureBox1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.pictureBox1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.pictureBox1.Image = global::POS.Properties.Resources.plus;
-            this.pictureBox1.Location = new System.Drawing.Point(598, 6);
+            this.pictureBox1.Location = new System.Drawing.Point(563, 3);
             this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(79, 69);
+            this.pictureBox1.Size = new System.Drawing.Size(150, 67);
             this.pictureBox1.TabIndex = 20;
             this.pictureBox1.TabStop = false;
             // 
@@ -122,13 +124,13 @@ namespace POS.Forms
             this.tableLayoutPanel1.Controls.Add(this.btnBrowse, 1, 0);
             this.tableLayoutPanel1.Controls.Add(this.txtBackup, 0, 0);
             this.tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tableLayoutPanel1.Location = new System.Drawing.Point(0, 82);
+            this.tableLayoutPanel1.Location = new System.Drawing.Point(0, 73);
             this.tableLayoutPanel1.Margin = new System.Windows.Forms.Padding(0);
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
             this.tableLayoutPanel1.RowCount = 1;
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 118F));
-            this.tableLayoutPanel1.Size = new System.Drawing.Size(716, 118);
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 99F));
+            this.tableLayoutPanel1.Size = new System.Drawing.Size(716, 105);
             this.tableLayoutPanel1.TabIndex = 1;
             // 
             // btnBrowse
@@ -137,7 +139,7 @@ namespace POS.Forms
             this.btnBrowse.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnBrowse.Image = global::POS.Properties.Resources.undo__1_;
             this.btnBrowse.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnBrowse.Location = new System.Drawing.Point(507, 20);
+            this.btnBrowse.Location = new System.Drawing.Point(507, 13);
             this.btnBrowse.Name = "btnBrowse";
             this.btnBrowse.Size = new System.Drawing.Size(195, 78);
             this.btnBrowse.TabIndex = 26;
@@ -150,7 +152,7 @@ namespace POS.Forms
             // 
             this.txtBackup.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
             this.txtBackup.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtBackup.Location = new System.Drawing.Point(3, 38);
+            this.txtBackup.Location = new System.Drawing.Point(3, 32);
             this.txtBackup.Name = "txtBackup";
             this.txtBackup.ReadOnly = true;
             this.txtBackup.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
@@ -161,8 +163,10 @@ namespace POS.Forms
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(716, 331);
+            this.ClientSize = new System.Drawing.Size(716, 295);
             this.Controls.Add(this.pnlParent);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
+            this.MaximizeBox = false;
             this.Name = "FormCreateNewCopy";
             this.ShowIcon = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;

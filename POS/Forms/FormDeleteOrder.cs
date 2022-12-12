@@ -23,7 +23,7 @@ namespace POS.Forms
 
         private void FormDeleteOrder_Load(object sender, EventArgs e)
         {
-            loadTable("select Orders.id,Orders.dateTime,Orders.total,Orders.tax,Orders.discount,Orders.delivery,Orders.shiftId,Orders.orderType,Users.fullName,Clients.name,Tayar.name as tayar from Orders LEFT JOIN Users on Orders.userId = Users.id LEFT JOIN Clients on Orders.clientId = Clients.id LEFT JOIN Tayar on Orders.tayarId = Tayar.id");
+            loadTable("select Orders.id,Orders.dateTime,Orders.total,Orders.tax,Orders.discount,Orders.delivery,Orders.shiftId,Orders.orderType,Users.fullName,Clients.name,Tayar.name as tayar,Orders.orderShiftId from Orders LEFT JOIN Users on Orders.userId = Users.id LEFT JOIN Clients on Orders.clientId = Clients.id LEFT JOIN Tayar on Orders.tayarId = Tayar.id");
         }
         private void loadTable(string query)
         {
@@ -57,7 +57,8 @@ namespace POS.Forms
                             row["dateTime"],
                             row["fullName"],
                             row["shiftId"],
-                            row["id"]
+                            row["id"],
+                            row["orderShiftId"],
                             }
                         ); ;
                 }
@@ -88,7 +89,7 @@ namespace POS.Forms
                 }
 
             }
-            else if(dgvLoading.CurrentCell.ColumnIndex.Equals(12) && e.RowIndex != -1)
+            else if(dgvLoading.CurrentCell.ColumnIndex.Equals(13) && e.RowIndex != -1)
             {
                 
                 string orderId = dgvLoading.CurrentRow.Cells[11].Value.ToString();
@@ -193,7 +194,7 @@ namespace POS.Forms
 
                     }
 
-                loadTable("select Orders.id,Orders.dateTime,Orders.total,Orders.tax,Orders.discount,Orders.delivery,Orders.shiftId,Orders.orderType,Users.fullName,Clients.name,Tayar.name as tayar from Orders LEFT JOIN Users on Orders.userId = Users.id LEFT JOIN Clients on Orders.clientId = Clients.id LEFT JOIN Tayar on Orders.tayarId = Tayar.id");
+                loadTable("select Orders.id,Orders.dateTime,Orders.total,Orders.tax,Orders.discount,Orders.delivery,Orders.shiftId,Orders.orderType,Users.fullName,Clients.name,Tayar.name as tayar,Orders.orderShiftId from Orders LEFT JOIN Users on Orders.userId = Users.id LEFT JOIN Clients on Orders.clientId = Clients.id LEFT JOIN Tayar on Orders.tayarId = Tayar.id");
             }
         }
 
