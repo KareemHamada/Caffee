@@ -189,5 +189,44 @@ namespace POS.Forms
 
             }
         }
+
+        private void btnDeleteAll_Click(object sender, EventArgs e)
+        {
+            if (dgvLoading.Rows.Count > 0)
+            {
+                if (MessageBox.Show("هل متاكد من حذف الكل", "?", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+                {
+                    try
+                    {
+
+                        cmd = new SqlCommand("delete from EmpWithdrawDeposit DBCC CHECKIDENT (EmpWithdrawDeposit,RESEED,0)", adoClass.sqlcn);
+
+                        if (adoClass.sqlcn.State != ConnectionState.Open)
+                        {
+                            adoClass.sqlcn.Open();
+                        }
+
+                        cmd.ExecuteNonQuery();
+
+                        MessageBox.Show("تم الحذف بنجاح");
+
+                    }
+                    catch
+                    {
+                        MessageBox.Show("خطا في الحذف");
+                    }
+                    finally
+                    {
+                        adoClass.sqlcn.Close();
+                    }
+
+                }
+
+                loadTable("select EmpWithdrawDeposit.id,employee.name,EmpWithdrawDeposit.OperationType,EmpWithdrawDeposit.money,EmpWithdrawDeposit.dateTime from EmpWithdrawDeposit LEFT JOIN Employee on EmpWithdrawDeposit.EmpId = Employee.id");
+                dtpTo.Value = DateTime.Now;
+                dtpFrom.Value = DateTime.Now;
+
+            }
+        }
     }
 }

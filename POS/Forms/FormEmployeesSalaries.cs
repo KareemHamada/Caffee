@@ -300,5 +300,44 @@ namespace POS.Forms
                 loadTable("Select EmployeesSalaries.dateTime,EmployeesSalaries.salary,Employee.name,EmployeesSalaries.id from EmployeesSalaries LEFT JOIN Employee on EmployeesSalaries.employeeId = Employee.id  where Employee.name like '%" + text + "%'");
             }
         }
+
+        private void btnDeleteAll_Click(object sender, EventArgs e)
+        {
+            if (dgvEmployeesSalareis.Rows.Count > 0)
+            {
+                if (MessageBox.Show("هل متاكد من حذف الكل", "?", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+                {
+                    try
+                    {
+
+                        cmd = new SqlCommand("delete from EmployeesSalaries DBCC CHECKIDENT (EmployeesSalaries,RESEED,0)", adoClass.sqlcn);
+
+                        if (adoClass.sqlcn.State != ConnectionState.Open)
+                        {
+                            adoClass.sqlcn.Open();
+                        }
+
+                        cmd.ExecuteNonQuery();
+
+                        MessageBox.Show("تم الحذف بنجاح");
+
+                    }
+                    catch
+                    {
+                        MessageBox.Show("خطا في الحذف");
+                    }
+                    finally
+                    {
+                        adoClass.sqlcn.Close();
+                    }
+
+                    loadTable("Select EmployeesSalaries.dateTime,EmployeesSalaries.salary,Employee.name,EmployeesSalaries.id from EmployeesSalaries LEFT JOIN Employee on EmployeesSalaries.employeeId = Employee.id");
+
+                    comboEmployees.Text = "";
+                    txtSalary.Text = "";
+                    txtHidden.Text = "";
+                }
+            }
+        }
     }
 }

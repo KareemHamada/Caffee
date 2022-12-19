@@ -1486,6 +1486,8 @@
     <None Include="Resources\plus1.png" />
     <None Include="Resources\backup.png" />
     <None Include="Resources\undo %281%29.png" />
+    <None Include="Resources\delete1.png" />
+    <None Include="Resources\delete2.png" />
     <Content Include="SqlServerTypes\readme.htm" />
     <Content Include="SqlServerTypes\x64\msvcr120.dll">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
