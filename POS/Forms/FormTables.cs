@@ -220,5 +220,44 @@ namespace POS.Forms
             txtHidden.Text = dgvTable.CurrentRow.Cells[1].Value.ToString();
             txtName.Text = dgvTable.CurrentRow.Cells[0].Value.ToString();
         }
+
+        private void btnDeleteAll_Click(object sender, EventArgs e)
+        {
+            if (dgvTable.Rows.Count > 0)
+            {
+                if (MessageBox.Show("هل متاكد من حذف الكل", "?", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+                {
+
+                    try
+                    {
+
+                        cmd = new SqlCommand("delete from TablesNames DBCC CHECKIDENT (TablesNames,RESEED,0)", adoClass.sqlcn);
+
+                        if (adoClass.sqlcn.State != ConnectionState.Open)
+                        {
+                            adoClass.sqlcn.Open();
+                        }
+
+                        cmd.ExecuteNonQuery();
+
+                        MessageBox.Show("تم الحذف بنجاح");
+
+                    }
+                    catch
+                    {
+                        MessageBox.Show("خطا في الحذف");
+                    }
+                    finally
+                    {
+                        adoClass.sqlcn.Close();
+                    }
+
+                    loadTable("Select * from TablesNames");
+
+                    txtName.Text = "";
+                    txtHidden.Text = "";
+                }
+            }
+        }
     }
 }

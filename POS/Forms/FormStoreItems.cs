@@ -307,5 +307,45 @@ namespace POS.Forms
                 loadTable("Select * from storeItems where name like '%" + text + "%'");
             }
         }
+
+        private void btnDeleteAll_Click(object sender, EventArgs e)
+        {
+            if (dgvItems.Rows.Count > 0)
+            {
+                if (MessageBox.Show("هل متاكد من حذف الكل", "?", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+                {
+
+                    try
+                    {
+
+                        cmd = new SqlCommand("delete from storeItems DBCC CHECKIDENT (storeItems,RESEED,0)", adoClass.sqlcn);
+
+                        if (adoClass.sqlcn.State != ConnectionState.Open)
+                        {
+                            adoClass.sqlcn.Open();
+                        }
+
+                        cmd.ExecuteNonQuery();
+
+                        MessageBox.Show("تم الحذف بنجاح");
+
+                    }
+                    catch
+                    {
+                        MessageBox.Show("خطا في الحذف");
+                    }
+                    finally
+                    {
+                        adoClass.sqlcn.Close();
+                    }
+
+                    loadTable("Select * from storeItems");
+                    txtName.Text = "";
+                    picBox.BackgroundImage = null;
+                    txtImage.Text = "";
+                    txtHidden.Text = "";
+                }
+            }
+        }
     }
 }

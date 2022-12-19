@@ -264,5 +264,44 @@ namespace POS.Forms
             txtHidden.Text = dgvRegions.CurrentRow.Cells[1].Value.ToString();
             txtName.Text = dgvRegions.CurrentRow.Cells[0].Value.ToString();
         }
+
+        private void btnDeleteAll_Click(object sender, EventArgs e)
+        {
+            if (dgvRegions.Rows.Count > 0)
+            {
+                if (MessageBox.Show("هل متاكد من حذف الكل", "?", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+                {
+
+                    try
+                    {
+
+                        cmd = new SqlCommand("delete from Regions DBCC CHECKIDENT (Regions,RESEED,0)", adoClass.sqlcn);
+
+                        if (adoClass.sqlcn.State != ConnectionState.Open)
+                        {
+                            adoClass.sqlcn.Open();
+                        }
+
+                        cmd.ExecuteNonQuery();
+
+                        MessageBox.Show("تم الحذف بنجاح");
+
+                    }
+                    catch
+                    {
+                        MessageBox.Show("خطا في الحذف");
+                    }
+                    finally
+                    {
+                        adoClass.sqlcn.Close();
+                    }
+
+                    loadTable("Select * from Regions");
+                    dgvRegions.Text = "";
+
+                    txtHidden.Text = "";
+                }
+            }
+        }
     }
 }

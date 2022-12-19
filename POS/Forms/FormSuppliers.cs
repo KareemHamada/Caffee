@@ -287,5 +287,45 @@ namespace POS.Forms
                 MessageBox.Show("لا يوجد عناصر لعرضها");
             }
         }
+
+        private void btnDeleteAll_Click(object sender, EventArgs e)
+        {
+            if (dgvSuppliers.Rows.Count > 0)
+            {
+                if (MessageBox.Show("هل متاكد من حذف الكل", "?", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+                {
+
+                    try
+                    {
+
+                        cmd = new SqlCommand("delete from Suppliers DBCC CHECKIDENT (Suppliers,RESEED,0)", adoClass.sqlcn);
+
+                        if (adoClass.sqlcn.State != ConnectionState.Open)
+                        {
+                            adoClass.sqlcn.Open();
+                        }
+
+                        cmd.ExecuteNonQuery();
+
+                        MessageBox.Show("تم الحذف بنجاح");
+
+                    }
+                    catch
+                    {
+                        MessageBox.Show("خطا في الحذف");
+                    }
+                    finally
+                    {
+                        adoClass.sqlcn.Close();
+                    }
+
+                    loadTable("Select * from Suppliers");
+
+                    txtName.Text = "";
+                    txtPhone.Text = "";
+                    txtHidden.Text = "";
+                }
+            }
+        }
     }
 }

@@ -311,5 +311,48 @@ namespace POS.Forms
             comboRegions.Text = dgvClients.CurrentRow.Cells[1].Value.ToString();
             txtAddress.Text = dgvClients.CurrentRow.Cells[0].Value.ToString();
         }
+
+        private void btnDeleteAll_Click(object sender, EventArgs e)
+        {
+            if (dgvClients.Rows.Count > 0)
+            {
+                if (MessageBox.Show("هل متاكد من حذف الكل", "?", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+                {
+
+                    try
+                    {
+
+                        cmd = new SqlCommand("delete from Clients DBCC CHECKIDENT (Clients,RESEED,0)", adoClass.sqlcn);
+
+                        if (adoClass.sqlcn.State != ConnectionState.Open)
+                        {
+                            adoClass.sqlcn.Open();
+                        }
+
+                        cmd.ExecuteNonQuery();
+
+                        MessageBox.Show("تم الحذف بنجاح");
+
+                    }
+                    catch
+                    {
+                        MessageBox.Show("خطا في الحذف");
+                    }
+                    finally
+                    {
+                        adoClass.sqlcn.Close();
+                    }
+
+                    loadTable("Select Clients.address,Regions.name as region,Clients.phone,Clients.name,Clients.id from Clients LEFT JOIN Regions on Clients.regionId = Regions.id");
+
+
+                    txtName.Text = "";
+                    txtAddress.Text = "";
+                    txtPhone.Text = "";
+                    comboRegions.Text = "";
+                    txtHidden.Text = "";
+                }
+            }
+        }
     }
 }

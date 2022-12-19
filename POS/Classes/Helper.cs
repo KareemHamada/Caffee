@@ -15,6 +15,10 @@ namespace POS.Classes
 {
     public class Helper
     {
+        static private SqlCommand cmd;
+        static private SqlDataAdapter da;
+        static DataTable dt = new DataTable();
+
         public static Bitmap ResizeImage(Image image, int width, int height)
         {
             var destRect = new Rectangle(0, 0, width, height);
@@ -93,5 +97,96 @@ namespace POS.Classes
             name.ValueMember = valueMember;
 
         }
+    
+        
+        public static void updateShiftValues(string shiftId,int expenses)
+        {
+            if(expenses == 0)
+            {
+                double totalWared = 0; // total wared 
+                double totalExpenses = 0; // total expenses
+                double total = 0; // total
+
+                // calculate wared
+                dt = new DataTable();
+                cmd = new SqlCommand("Select total from Orders where shiftId = '" + shiftId + "'", adoClass.sqlcn);
+                da = new SqlDataAdapter(cmd);
+                da.Fill(dt);
+
+                if (dt.Rows.Count > 0)
+                {
+                    foreach (DataRow row in dt.Rows)
+                    {
+                        totalWared += double.Parse(row["total"].ToString());
+                    }
+                }
+
+                //// calculate Expenses
+
+                //dt = new DataTable();
+                //cmd = new SqlCommand("Select price from Expenses where shiftId = '" + shiftId + "'", adoClass.sqlcn);
+                //da = new SqlDataAdapter(cmd);
+                //da.Fill(dt);
+
+                //if (dt.Rows.Count > 0)
+                //{
+                //    foreach (DataRow row in dt.Rows)
+                //    {
+                //        totalExpenses += double.Parse(row["price"].ToString());
+                //    }
+                //}
+
+                total = totalWared - totalExpenses;
+                cmd = new SqlCommand("Update Shifts set expenses = @expenses,wared = @wared,total=@total Where id = '" + shiftId + "'", adoClass.sqlcn);
+                cmd.Parameters.AddWithValue("@expenses", totalExpenses);
+                cmd.Parameters.AddWithValue("@wared", totalWared);
+                cmd.Parameters.AddWithValue("@total", total);
+                cmd.ExecuteNonQuery();
+            }
+            else
+            {
+                double totalWared = 0; // total wared 
+                double totalExpenses = 0; // total expenses
+                double total = 0; // total
+
+                // calculate wared
+                dt = new DataTable();
+                cmd = new SqlCommand("Select total from Orders where shiftId = '" + shiftId + "'", adoClass.sqlcn);
+                da = new SqlDataAdapter(cmd);
+                da.Fill(dt);
+
+                if (dt.Rows.Count > 0)
+                {
+                    foreach (DataRow row in dt.Rows)
+                    {
+                        totalWared += double.Parse(row["total"].ToString());
+                    }
+                }
+
+                // calculate Expenses
+
+                dt = new DataTable();
+                cmd = new SqlCommand("Select price from Expenses where shiftId = '" + shiftId + "'", adoClass.sqlcn);
+                da = new SqlDataAdapter(cmd);
+                da.Fill(dt);
+
+                if (dt.Rows.Count > 0)
+                {
+                    foreach (DataRow row in dt.Rows)
+                    {
+                        totalExpenses += double.Parse(row["price"].ToString());
+                    }
+                }
+
+                total = totalWared - totalExpenses;
+                cmd = new SqlCommand("Update Shifts set expenses = @expenses,wared = @wared,total=@total Where id = '" + shiftId + "'", adoClass.sqlcn);
+                cmd.Parameters.AddWithValue("@expenses", totalExpenses);
+                cmd.Parameters.AddWithValue("@wared", totalWared);
+                cmd.Parameters.AddWithValue("@total", total);
+                cmd.ExecuteNonQuery();
+            }
+            
+        }
+    
     }
 }

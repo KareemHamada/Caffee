@@ -149,5 +149,43 @@ namespace POS.Forms
                 loadTable("select EmployeesSalaries.id,Employee.name,EmployeesSalaries.salary,EmployeesSalaries.dateTime from EmployeesSalaries LEFT JOIN Employee on EmployeesSalaries.employeeId = Employee.id where Employee.name like '%" + text + "%'");
             }
         }
+
+        private void btnDeleteAll_Click(object sender, EventArgs e)
+        {
+            if (dgvLoading.Rows.Count > 0)
+            {
+                if (MessageBox.Show("هل متاكد من حذف الكل", "?", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+                {
+                    try
+                    {
+
+                        cmd = new SqlCommand("delete from EmployeesSalaries DBCC CHECKIDENT (EmployeesSalaries,RESEED,0)", adoClass.sqlcn);
+
+                        if (adoClass.sqlcn.State != ConnectionState.Open)
+                        {
+                            adoClass.sqlcn.Open();
+                        }
+
+                        cmd.ExecuteNonQuery();
+
+                        MessageBox.Show("تم الحذف بنجاح");
+
+                    }
+                    catch
+                    {
+                        MessageBox.Show("خطا في الحذف");
+                    }
+                    finally
+                    {
+                        adoClass.sqlcn.Close();
+                    }
+
+                }
+
+                loadTable("select EmployeesSalaries.id,Employee.name,EmployeesSalaries.salary,EmployeesSalaries.dateTime from EmployeesSalaries LEFT JOIN Employee on EmployeesSalaries.employeeId = Employee.id");
+                dtpTo.Value = DateTime.Now;
+                dtpFrom.Value = DateTime.Now;
+            }
+        }
     }
 }

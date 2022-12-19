@@ -314,5 +314,77 @@ namespace POS.Forms
             txtName.Text = dgvCategories.CurrentRow.Cells[1].Value.ToString();
             picBox.BackgroundImage = Helper.ByteToImage(dgvCategories.CurrentRow.Cells[0].Value);
         }
+
+        private void btnDeleteAll_Click(object sender, EventArgs e)
+        {
+            if (dgvCategories.Rows.Count > 0)
+            {
+                if (MessageBox.Show("هل متاكد من حذف الكل سيترتب علي ذلك حذف جميع العناصر و الورديات و مصروفات الورديات و الاوردرات ان وجدت ", "?", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+                {
+
+                    try
+                    {
+                        if (adoClass.sqlcn.State != ConnectionState.Open)
+                        {
+                            adoClass.sqlcn.Open();
+                        }
+
+
+                        cmd = new SqlCommand("delete from OrderItems DBCC CHECKIDENT (OrderItems,RESEED,0)", adoClass.sqlcn);
+                        cmd.ExecuteNonQuery();
+
+                        cmd = new SqlCommand("delete from Orders DBCC CHECKIDENT (Orders,RESEED,0)", adoClass.sqlcn);
+                        cmd.ExecuteNonQuery();
+
+                        cmd = new SqlCommand("delete from ItemQuantityEndShift DBCC CHECKIDENT (ItemQuantityEndShift,RESEED,0)", adoClass.sqlcn);
+                        cmd.ExecuteNonQuery();
+
+                        // delete expenses under shifts
+                        cmd = new SqlCommand("select * from Expenses where shiftId IS NOT NULL", adoClass.sqlcn);
+
+                        DataTable dtt = new DataTable();
+                        SqlDataAdapter da = new SqlDataAdapter(cmd);
+                        da.Fill(dtt);
+                        if(dtt.Rows.Count > 0)
+                        {
+                           for(int i = 0; i < dtt.Rows.Count; i++)
+                            {
+                                cmd = new SqlCommand("delete from  Expenses where shiftId ="+ dtt.Rows[i][0]+ "", adoClass.sqlcn);
+                                cmd.ExecuteNonQuery();
+
+                            }
+                        }
+                        cmd = new SqlCommand("delete from Shifts DBCC CHECKIDENT (Shifts,RESEED,0)", adoClass.sqlcn);
+                        cmd.ExecuteNonQuery();
+
+                        cmd = new SqlCommand("delete from Items DBCC CHECKIDENT (Items,RESEED,0)", adoClass.sqlcn);
+                        cmd.ExecuteNonQuery();
+
+                        cmd = new SqlCommand("delete from Categories DBCC CHECKIDENT (Categories,RESEED,0)", adoClass.sqlcn);
+                        cmd.ExecuteNonQuery();
+
+
+                        MessageBox.Show("تم الحذف بنجاح");
+
+                    }
+                    catch(Exception ex)
+                    {
+                        MessageBox.Show(ex.Message);
+                        MessageBox.Show("خطا في الحذف");
+                    }
+                    finally
+                    {
+                        adoClass.sqlcn.Close();
+                    }
+
+                    loadTable("Select * from Categories");
+
+                    txtName.Text = "";
+                    picBox.BackgroundImage = null;
+                    txtImage.Text = "";
+                    txtHidden.Text = "";
+                }
+            }
+        }
     }
 }

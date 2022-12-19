@@ -29,9 +29,9 @@ namespace POS.Forms
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormReportExpenses));
             this.pnlParent = new System.Windows.Forms.TableLayoutPanel();
             this.dgvLoading = new System.Windows.Forms.DataGridView();
@@ -59,6 +59,7 @@ namespace POS.Forms
             this.tableLayoutPanel4 = new System.Windows.Forms.TableLayoutPanel();
             this.txtSearch = new System.Windows.Forms.TextBox();
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
+            this.btnDeleteAll = new System.Windows.Forms.Button();
             this.pnlParent.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvLoading)).BeginInit();
             this.panel2.SuspendLayout();
@@ -92,14 +93,14 @@ namespace POS.Forms
             this.dgvLoading.AllowUserToDeleteRows = false;
             this.dgvLoading.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dgvLoading.BackgroundColor = System.Drawing.Color.White;
-            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgvLoading.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle4.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle4.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle4.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle4.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvLoading.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle4;
             this.dgvLoading.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvLoading.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.shiftId,
@@ -112,20 +113,21 @@ namespace POS.Forms
             this.dgvLoading.Location = new System.Drawing.Point(3, 260);
             this.dgvLoading.Name = "dgvLoading";
             this.dgvLoading.ReadOnly = true;
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgvLoading.RowHeadersDefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle5.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle5.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle5.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle5.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle5.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle5.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvLoading.RowHeadersDefaultCellStyle = dataGridViewCellStyle5;
             this.dgvLoading.RowHeadersWidth = 51;
-            dataGridViewCellStyle3.Font = new System.Drawing.Font("Microsoft Sans Serif", 13F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.dgvLoading.RowsDefaultCellStyle = dataGridViewCellStyle3;
+            dataGridViewCellStyle6.Font = new System.Drawing.Font("Microsoft Sans Serif", 13F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.dgvLoading.RowsDefaultCellStyle = dataGridViewCellStyle6;
             this.dgvLoading.RowTemplate.DefaultCellStyle.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
             this.dgvLoading.RowTemplate.DefaultCellStyle.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.dgvLoading.RowTemplate.Height = 35;
+            this.dgvLoading.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgvLoading.Size = new System.Drawing.Size(1443, 549);
             this.dgvLoading.TabIndex = 20;
             // 
@@ -235,6 +237,7 @@ namespace POS.Forms
             // 
             // tableLayoutPanel3
             // 
+            this.tableLayoutPanel3.CellBorderStyle = System.Windows.Forms.TableLayoutPanelCellBorderStyle.Single;
             this.tableLayoutPanel3.ColumnCount = 5;
             this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 20F));
             this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 20F));
@@ -262,9 +265,9 @@ namespace POS.Forms
             this.btnSearch.Dock = System.Windows.Forms.DockStyle.Fill;
             this.btnSearch.FlatAppearance.BorderSize = 0;
             this.btnSearch.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnSearch.Location = new System.Drawing.Point(3, 3);
+            this.btnSearch.Location = new System.Drawing.Point(4, 4);
             this.btnSearch.Name = "btnSearch";
-            this.btnSearch.Size = new System.Drawing.Size(283, 55);
+            this.btnSearch.Size = new System.Drawing.Size(282, 53);
             this.btnSearch.TabIndex = 7;
             this.btnSearch.UseVisualStyleBackColor = true;
             this.btnSearch.Click += new System.EventHandler(this.btnSearch_Click);
@@ -274,10 +277,10 @@ namespace POS.Forms
             this.label1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 16.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(1159, 14);
+            this.label1.Location = new System.Drawing.Point(1160, 14);
             this.label1.Name = "label1";
             this.label1.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
-            this.label1.Size = new System.Drawing.Size(287, 32);
+            this.label1.Size = new System.Drawing.Size(285, 32);
             this.label1.TabIndex = 3;
             this.label1.Text = "من :";
             this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -287,11 +290,11 @@ namespace POS.Forms
             this.dtpFrom.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
             this.dtpFrom.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.dtpFrom.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.dtpFrom.Location = new System.Drawing.Point(870, 13);
+            this.dtpFrom.Location = new System.Drawing.Point(871, 13);
             this.dtpFrom.Name = "dtpFrom";
             this.dtpFrom.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
             this.dtpFrom.RightToLeftLayout = true;
-            this.dtpFrom.Size = new System.Drawing.Size(283, 34);
+            this.dtpFrom.Size = new System.Drawing.Size(282, 34);
             this.dtpFrom.TabIndex = 4;
             // 
             // label3
@@ -299,10 +302,10 @@ namespace POS.Forms
             this.label3.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 16.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.Location = new System.Drawing.Point(581, 14);
+            this.label3.Location = new System.Drawing.Point(582, 14);
             this.label3.Name = "label3";
             this.label3.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
-            this.label3.Size = new System.Drawing.Size(283, 32);
+            this.label3.Size = new System.Drawing.Size(282, 32);
             this.label3.TabIndex = 5;
             this.label3.Text = "الي :";
             this.label3.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -312,25 +315,27 @@ namespace POS.Forms
             this.dtpTo.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
             this.dtpTo.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.dtpTo.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.dtpTo.Location = new System.Drawing.Point(292, 13);
+            this.dtpTo.Location = new System.Drawing.Point(293, 13);
             this.dtpTo.Name = "dtpTo";
             this.dtpTo.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
             this.dtpTo.RightToLeftLayout = true;
-            this.dtpTo.Size = new System.Drawing.Size(283, 34);
+            this.dtpTo.Size = new System.Drawing.Size(282, 34);
             this.dtpTo.TabIndex = 6;
             // 
             // tableLayoutPanel1
             // 
+            this.tableLayoutPanel1.CellBorderStyle = System.Windows.Forms.TableLayoutPanelCellBorderStyle.Single;
             this.tableLayoutPanel1.ColumnCount = 5;
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 20F));
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 20F));
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 20F));
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 20F));
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 20F));
-            this.tableLayoutPanel1.Controls.Add(this.lblTotal, 0, 0);
             this.tableLayoutPanel1.Controls.Add(this.btnPrint, 3, 0);
             this.tableLayoutPanel1.Controls.Add(this.btnReload, 2, 0);
             this.tableLayoutPanel1.Controls.Add(this.label4, 1, 0);
+            this.tableLayoutPanel1.Controls.Add(this.lblTotal, 1, 0);
+            this.tableLayoutPanel1.Controls.Add(this.btnDeleteAll, 0, 0);
             this.tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel1.Location = new System.Drawing.Point(0, 61);
             this.tableLayoutPanel1.Margin = new System.Windows.Forms.Padding(0);
@@ -345,7 +350,7 @@ namespace POS.Forms
             this.lblTotal.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.lblTotal.AutoSize = true;
             this.lblTotal.Font = new System.Drawing.Font("Microsoft Sans Serif", 16.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblTotal.Location = new System.Drawing.Point(144, 14);
+            this.lblTotal.Location = new System.Drawing.Point(434, 14);
             this.lblTotal.Name = "lblTotal";
             this.lblTotal.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
             this.lblTotal.Size = new System.Drawing.Size(0, 32);
@@ -358,9 +363,9 @@ namespace POS.Forms
             this.btnPrint.Dock = System.Windows.Forms.DockStyle.Fill;
             this.btnPrint.FlatAppearance.BorderSize = 0;
             this.btnPrint.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnPrint.Location = new System.Drawing.Point(870, 3);
+            this.btnPrint.Location = new System.Drawing.Point(1160, 4);
             this.btnPrint.Name = "btnPrint";
-            this.btnPrint.Size = new System.Drawing.Size(283, 55);
+            this.btnPrint.Size = new System.Drawing.Size(285, 53);
             this.btnPrint.TabIndex = 9;
             this.btnPrint.UseVisualStyleBackColor = true;
             this.btnPrint.Click += new System.EventHandler(this.btnPrint_Click);
@@ -372,9 +377,9 @@ namespace POS.Forms
             this.btnReload.Dock = System.Windows.Forms.DockStyle.Fill;
             this.btnReload.FlatAppearance.BorderSize = 0;
             this.btnReload.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnReload.Location = new System.Drawing.Point(581, 3);
+            this.btnReload.Location = new System.Drawing.Point(871, 4);
             this.btnReload.Name = "btnReload";
-            this.btnReload.Size = new System.Drawing.Size(283, 55);
+            this.btnReload.Size = new System.Drawing.Size(282, 53);
             this.btnReload.TabIndex = 10;
             this.btnReload.UseVisualStyleBackColor = true;
             this.btnReload.Click += new System.EventHandler(this.btnReload_Click);
@@ -384,10 +389,10 @@ namespace POS.Forms
             this.label4.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
             this.label4.AutoSize = true;
             this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 16.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label4.Location = new System.Drawing.Point(292, 14);
+            this.label4.Location = new System.Drawing.Point(582, 14);
             this.label4.Name = "label4";
             this.label4.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
-            this.label4.Size = new System.Drawing.Size(283, 32);
+            this.label4.Size = new System.Drawing.Size(282, 32);
             this.label4.TabIndex = 11;
             this.label4.Text = "اجمالي المصروفات ";
             this.label4.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -431,6 +436,23 @@ namespace POS.Forms
             this.pictureBox2.Size = new System.Drawing.Size(215, 55);
             this.pictureBox2.TabIndex = 1;
             this.pictureBox2.TabStop = false;
+            // 
+            // btnDeleteAll
+            // 
+            this.btnDeleteAll.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.btnDeleteAll.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.btnDeleteAll.Font = new System.Drawing.Font("Microsoft Sans Serif", 17F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnDeleteAll.ForeColor = System.Drawing.Color.Red;
+            this.btnDeleteAll.Image = global::POS.Properties.Resources.delete2;
+            this.btnDeleteAll.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnDeleteAll.Location = new System.Drawing.Point(50, 5);
+            this.btnDeleteAll.Name = "btnDeleteAll";
+            this.btnDeleteAll.Size = new System.Drawing.Size(190, 50);
+            this.btnDeleteAll.TabIndex = 18;
+            this.btnDeleteAll.Text = "حذف الكل";
+            this.btnDeleteAll.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.btnDeleteAll.UseVisualStyleBackColor = true;
+            this.btnDeleteAll.Click += new System.EventHandler(this.btnDeleteAll_Click);
             // 
             // FormReportExpenses
             // 
@@ -488,5 +510,6 @@ namespace POS.Forms
         private System.Windows.Forms.DataGridViewTextBoxColumn name;
         private System.Windows.Forms.DataGridViewTextBoxColumn id;
         private System.Windows.Forms.Label label2;
+        public System.Windows.Forms.Button btnDeleteAll;
     }
 }

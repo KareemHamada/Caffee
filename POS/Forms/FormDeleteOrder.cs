@@ -134,50 +134,10 @@ namespace POS.Forms
                         cmd = new SqlCommand("delete from Orders Where id = '" + orderId + "'", adoClass.sqlcn);
                         cmd.ExecuteNonQuery();
 
-                            
 
 
-
-                        double totalWared = 0; // total wared 
-                        double totalExpenses = 0; // total expenses
-                        double total = 0; // total
-
-                        // calculate wared
-                        dt.Rows.Clear();
-                        dt = new DataTable();
-                        cmd = new SqlCommand("Select total from Orders where shiftId = '" + shiftId + "'", adoClass.sqlcn);
-                        da = new SqlDataAdapter(cmd);
-                        da.Fill(dt);
-
-                        if (dt.Rows.Count > 0)
-                        {
-                            foreach (DataRow row in dt.Rows)
-                            {
-                                totalWared += double.Parse(row["total"].ToString());
-                            }
-                        }
-
-                        // calculate Expenses
-
-                        dt = new DataTable();
-                        cmd = new SqlCommand("Select price from Expenses where shiftId = '" + shiftId + "'", adoClass.sqlcn);
-                        da = new SqlDataAdapter(cmd);
-                        da.Fill(dt);
-
-                        if (dt.Rows.Count > 0)
-                        {
-                            foreach (DataRow row in dt.Rows)
-                            {
-                                totalExpenses += double.Parse(row["price"].ToString());
-                            }
-                        }
-
-                        total = totalWared - totalExpenses;
-                        cmd = new SqlCommand("Update Shifts set expenses = @expenses,wared = @wared,total=@total Where id = '" + shiftId + "'", adoClass.sqlcn);
-                        cmd.Parameters.AddWithValue("@expenses", totalExpenses);
-                        cmd.Parameters.AddWithValue("@wared", totalWared);
-                        cmd.Parameters.AddWithValue("@total", total);
-                        cmd.ExecuteNonQuery();
+                        // update shift values
+                        Helper.updateShiftValues(shiftId,1);
 
                         MessageBox.Show("تم الحذف بنجاح");
 
@@ -267,6 +227,70 @@ namespace POS.Forms
 
         }
 
+        private void btnDeleteAll_Click(object sender, EventArgs e)
+        {
+            if (dgvLoading.Rows.Count > 0)
+            {
+                if (MessageBox.Show("هل متاكد من حذف الكل سيترتب علي ذلك حذف جميع الورديات و مصروفات الورديات ان وجدت ", "?", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+                {
 
+                    try
+                    {
+                        if (adoClass.sqlcn.State != ConnectionState.Open)
+                        {
+                            adoClass.sqlcn.Open();
+                        }
+
+
+                        cmd = new SqlCommand("delete from OrderItems DBCC CHECKIDENT (OrderItems,RESEED,0)", adoClass.sqlcn);
+                        cmd.ExecuteNonQuery();
+
+                        cmd = new SqlCommand("delete from Orders DBCC CHECKIDENT (Orders,RESEED,0)", adoClass.sqlcn);
+                        cmd.ExecuteNonQuery();
+
+                        cmd = new SqlCommand("delete from ItemQuantityEndShift DBCC CHECKIDENT (ItemQuantityEndShift,RESEED,0)", adoClass.sqlcn);
+                        cmd.ExecuteNonQuery();
+
+                        // delete expenses under shifts
+                        cmd = new SqlCommand("select * from Expenses where shiftId IS NOT NULL", adoClass.sqlcn);
+
+                        DataTable dtt = new DataTable();
+                        SqlDataAdapter da = new SqlDataAdapter(cmd);
+                        da.Fill(dtt);
+                        if (dtt.Rows.Count > 0)
+                        {
+                            for (int i = 0; i < dtt.Rows.Count; i++)
+                            {
+                                cmd = new SqlCommand("delete from  Expenses where shiftId =" + dtt.Rows[i][0] + "", adoClass.sqlcn);
+                                cmd.ExecuteNonQuery();
+
+                            }
+                        }
+                        cmd = new SqlCommand("delete from Shifts DBCC CHECKIDENT (Shifts,RESEED,0)", adoClass.sqlcn);
+                        cmd.ExecuteNonQuery();
+
+
+                        cmd = new SqlCommand("update Items set quantity = 0", adoClass.sqlcn);
+                        cmd.ExecuteNonQuery();
+
+                        
+
+                        MessageBox.Show("تم الحذف بنجاح");
+
+                    }
+                    catch (Exception ex)
+                    {
+                        MessageBox.Show(ex.Message);
+                        MessageBox.Show("خطا في الحذف");
+                    }
+                    finally
+                    {
+                        adoClass.sqlcn.Close();
+                    }
+
+                    loadTable("select Orders.id,Orders.dateTime,Orders.total,Orders.tax,Orders.discount,Orders.delivery,Orders.shiftId,Orders.orderType,Users.fullName,Clients.name,Tayar.name as tayar,Orders.orderShiftId from Orders LEFT JOIN Users on Orders.userId = Users.id LEFT JOIN Clients on Orders.clientId = Clients.id LEFT JOIN Tayar on Orders.tayarId = Tayar.id");
+                }
+            }
+        }
     }
 }

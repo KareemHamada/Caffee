@@ -164,5 +164,57 @@ namespace POS.Forms
         {
             Close();
         }
+
+        private void btnDeleteAll_Click(object sender, EventArgs e)
+        {
+            if (dgvLoading.Rows.Count > 0)
+            {
+                if (MessageBox.Show("هل متاكد من حذف الكل", "?", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+                {
+
+                    try
+                    {
+                        if (adoClass.sqlcn.State != ConnectionState.Open)
+                        {
+                            adoClass.sqlcn.Open();
+                        }
+
+
+                        // delete expenses under shifts and minus shift price as soon as expenses in
+                        cmd = new SqlCommand("select * from Expenses where shiftId IS NOT NULL", adoClass.sqlcn);
+                        DataTable dtt = new DataTable();
+                        SqlDataAdapter da = new SqlDataAdapter(cmd);
+                        da.Fill(dtt);
+                        if (dtt.Rows.Count > 0)
+                        {
+                            for (int i = 0; i < dtt.Rows.Count; i++)
+                            {
+                                // update shift values
+                                Helper.updateShiftValues(dtt.Rows[i][0].ToString(),0);
+                            }
+                        }
+
+
+                        cmd = new SqlCommand("delete from Expenses DBCC CHECKIDENT (Expenses,RESEED,0)", adoClass.sqlcn);
+                        cmd.ExecuteNonQuery();
+
+                        MessageBox.Show("تم الحذف بنجاح");
+
+                    }
+                    catch
+                    {
+                        MessageBox.Show("خطا في الحذف");
+                    }
+                    finally
+                    {
+                        adoClass.sqlcn.Close();
+                    }
+
+                    loadTable("select Expenses.id,Expenses.name,Expenses.price,Expenses.dateTime,Users.fullName,Expenses.shiftId from Expenses LEFT JOIN Users on Expenses.userId = Users.Id");
+                    dtpTo.Value = DateTime.Now;
+                    dtpFrom.Value = DateTime.Now;
+                }
+            }
+        }
     }
 }

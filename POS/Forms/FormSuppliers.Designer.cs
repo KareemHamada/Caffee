@@ -58,6 +58,7 @@ namespace POS.Forms
             this.label3 = new System.Windows.Forms.Label();
             this.txtName = new System.Windows.Forms.TextBox();
             this.txtPhone = new System.Windows.Forms.TextBox();
+            this.btnDeleteAll = new System.Windows.Forms.ToolStripButton();
             this.parient.SuspendLayout();
             this.tableLayoutPanel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvSuppliers)).BeginInit();
@@ -173,7 +174,8 @@ namespace POS.Forms
             this.btnDelete,
             this.toolStripSeparator1,
             this.btnClose,
-            this.btnPrint});
+            this.btnPrint,
+            this.btnDeleteAll});
             this.toolStrip1.Location = new System.Drawing.Point(0, 0);
             this.toolStrip1.Name = "toolStrip1";
             this.toolStrip1.Size = new System.Drawing.Size(1047, 90);
@@ -420,6 +422,19 @@ namespace POS.Forms
             this.txtPhone.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.txtPhone.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtPhone_KeyPress);
             // 
+            // btnDeleteAll
+            // 
+            this.btnDeleteAll.Alignment = System.Windows.Forms.ToolStripItemAlignment.Right;
+            this.btnDeleteAll.Font = new System.Drawing.Font("Segoe UI", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnDeleteAll.ForeColor = System.Drawing.Color.Red;
+            this.btnDeleteAll.Image = ((System.Drawing.Image)(resources.GetObject("btnDeleteAll.Image")));
+            this.btnDeleteAll.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.btnDeleteAll.Name = "btnDeleteAll";
+            this.btnDeleteAll.Size = new System.Drawing.Size(118, 87);
+            this.btnDeleteAll.Text = "حذف الكل";
+            this.btnDeleteAll.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
+            this.btnDeleteAll.Click += new System.EventHandler(this.btnDeleteAll_Click);
+            // 
             // FormSuppliers
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -478,5 +493,6 @@ namespace POS.Forms
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
         private System.Windows.Forms.PictureBox pictureBox2;
         private System.Windows.Forms.TextBox txtSearch;
+        private System.Windows.Forms.ToolStripButton btnDeleteAll;
     }
 }

@@ -89,6 +89,16 @@ namespace POS.Forms
                 {
                     string shiftId = dgvLoading.CurrentRow.Cells[9].Value.ToString();
                     FormReportOrders frm = new FormReportOrders();
+                    frm.btnReload.Visible = false;
+                    frm.btnDelivery.Visible = false;
+                    frm.btnSala.Visible = false;
+                    frm.btnTeckaway.Visible = false;
+                    frm.lblFrom.Visible = false;
+                    frm.lblTo.Visible = false;
+                    frm.btnDeleteAll.Visible = false;
+                    frm.btnSearch.Visible = false;
+                    frm.dtpFrom.Visible = false;
+                    frm.dtpTo.Visible = false;
                     frm.Show();
                     frm.showShiftOrders(shiftId);
 
@@ -200,6 +210,69 @@ namespace POS.Forms
             else
             {
                 loadTable("select Shifts.total,Shifts.expenses,Shifts.wared,Shifts.dateTimeEnd,Shifts.dateTimeStart,Users.fullName,Shifts.id from Shifts LEFT JOIN Users on Shifts.userId = Users.id where Shifts.dateTimeEnd != '' and Users.fullName like '%" + text + "%'");
+            }
+        }
+
+        private void btnDeleteAll_Click(object sender, EventArgs e)
+        {
+            if (dgvLoading.Rows.Count > 0)
+            {
+                if (MessageBox.Show("هل متاكد من حذف الكل سيترتب علي ذلك حذف جميع الورديات و جميع الاوردرات و مصروفات الورديات ان وجدت ", "?", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+                {
+
+                    try
+                    {
+                        if (adoClass.sqlcn.State != ConnectionState.Open)
+                        {
+                            adoClass.sqlcn.Open();
+                        }
+
+
+                        cmd = new SqlCommand("delete from OrderItems DBCC CHECKIDENT (OrderItems,RESEED,0)", adoClass.sqlcn);
+                        cmd.ExecuteNonQuery();
+
+                        cmd = new SqlCommand("delete from Orders DBCC CHECKIDENT (Orders,RESEED,0)", adoClass.sqlcn);
+                        cmd.ExecuteNonQuery();
+
+                        cmd = new SqlCommand("delete from ItemQuantityEndShift DBCC CHECKIDENT (ItemQuantityEndShift,RESEED,0)", adoClass.sqlcn);
+                        cmd.ExecuteNonQuery();
+
+                        // delete expenses under shifts
+                        cmd = new SqlCommand("select * from Expenses where shiftId IS NOT NULL", adoClass.sqlcn);
+
+                        DataTable dtt = new DataTable();
+                        SqlDataAdapter da = new SqlDataAdapter(cmd);
+                        da.Fill(dtt);
+                        if (dtt.Rows.Count > 0)
+                        {
+                            for (int i = 0; i < dtt.Rows.Count; i++)
+                            {
+                                cmd = new SqlCommand("delete from  Expenses where shiftId =" + dtt.Rows[i][0] + "", adoClass.sqlcn);
+                                cmd.ExecuteNonQuery();
+
+                            }
+                        }
+                        cmd = new SqlCommand("delete from Shifts DBCC CHECKIDENT (Shifts,RESEED,0)", adoClass.sqlcn);
+                        cmd.ExecuteNonQuery();
+
+                        cmd = new SqlCommand("update Items set quantity = 0", adoClass.sqlcn);
+                        cmd.ExecuteNonQuery();
+
+                        MessageBox.Show("تم الحذف بنجاح");
+
+                    }
+                    catch (Exception ex)
+                    {
+                        MessageBox.Show(ex.Message);
+                        MessageBox.Show("خطا في الحذف");
+                    }
+                    finally
+                    {
+                        adoClass.sqlcn.Close();
+                    }
+
+                    loadTable("select Shifts.total,Shifts.expenses,Shifts.wared,Shifts.dateTimeEnd,Shifts.dateTimeStart,Users.fullName,Shifts.id from Shifts LEFT JOIN Users on Shifts.userId = Users.id where Shifts.dateTimeEnd != ''");
+                }
             }
         }
     }

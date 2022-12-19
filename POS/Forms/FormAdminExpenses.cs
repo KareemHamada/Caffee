@@ -317,5 +317,45 @@ namespace POS.Forms
             txtName.Text = dgvExpenses.CurrentRow.Cells[4].Value.ToString();
             txtPrice.Text = dgvExpenses.CurrentRow.Cells[3].Value.ToString();
         }
+
+        private void btnDeleteAll_Click(object sender, EventArgs e)
+        {
+            if (dgvExpenses.Rows.Count > 0)
+            {
+                if (MessageBox.Show("هل متاكد من حذف الكل", "?", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+                {
+
+                    try
+                    {
+
+                        cmd = new SqlCommand("delete from Expenses where shiftId IS NULL DBCC CHECKIDENT (Expenses,RESEED,0)", adoClass.sqlcn);
+
+                        if (adoClass.sqlcn.State != ConnectionState.Open)
+                        {
+                            adoClass.sqlcn.Open();
+                        }
+
+                        cmd.ExecuteNonQuery();
+
+                        MessageBox.Show("تم الحذف بنجاح");
+
+                    }
+                    catch
+                    {
+                        MessageBox.Show("خطا في الحذف");
+                    }
+                    finally
+                    {
+                        adoClass.sqlcn.Close();
+                    }
+
+                    loadTable("Select Expenses.shiftId,Users.fullName as userName,Expenses.dateTime,Expenses.price,Expenses.name,Expenses.id from Expenses LEFT JOIN Users on Expenses.userId = Users.id where shiftId IS NULL");
+
+                    txtName.Text = "";
+                    txtPrice.Text = "";
+                    txtHidden.Text = "";
+                }
+            }
+        }
     }
 }

@@ -220,5 +220,74 @@ namespace POS.Forms
                     "or Tayar.name like '%" + text + "%' ");
             }
         }
+
+        private void btnDeleteAll_Click(object sender, EventArgs e)
+        {
+
+            if (dgvLoading.Rows.Count > 0)
+            {
+                if (MessageBox.Show("هل متاكد من حذف الكل سيترتب علي ذلك حذف جميع الورديات و مصروفات الورديات ان وجدت ", "?", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+                {
+
+                    try
+                    {
+                        if (adoClass.sqlcn.State != ConnectionState.Open)
+                        {
+                            adoClass.sqlcn.Open();
+                        }
+
+
+                        cmd = new SqlCommand("delete from OrderItems DBCC CHECKIDENT (OrderItems,RESEED,0)", adoClass.sqlcn);
+                        cmd.ExecuteNonQuery();
+
+                        cmd = new SqlCommand("delete from Orders DBCC CHECKIDENT (Orders,RESEED,0)", adoClass.sqlcn);
+                        cmd.ExecuteNonQuery();
+
+                        cmd = new SqlCommand("delete from ItemQuantityEndShift DBCC CHECKIDENT (ItemQuantityEndShift,RESEED,0)", adoClass.sqlcn);
+                        cmd.ExecuteNonQuery();
+
+                        // delete expenses under shifts
+                        cmd = new SqlCommand("select * from Expenses where shiftId IS NOT NULL", adoClass.sqlcn);
+
+                        DataTable dtt = new DataTable();
+                        SqlDataAdapter da = new SqlDataAdapter(cmd);
+                        da.Fill(dtt);
+                        if (dtt.Rows.Count > 0)
+                        {
+                            for (int i = 0; i < dtt.Rows.Count; i++)
+                            {
+                                cmd = new SqlCommand("delete from  Expenses where shiftId =" + dtt.Rows[i][0] + "", adoClass.sqlcn);
+                                cmd.ExecuteNonQuery();
+
+                            }
+                        }
+                        cmd = new SqlCommand("delete from Shifts DBCC CHECKIDENT (Shifts,RESEED,0)", adoClass.sqlcn);
+                        cmd.ExecuteNonQuery();
+
+
+                        cmd = new SqlCommand("update Items set quantity = 0", adoClass.sqlcn);
+                        cmd.ExecuteNonQuery();
+
+
+
+                        MessageBox.Show("تم الحذف بنجاح");
+
+                    }
+                    catch (Exception ex)
+                    {
+                        MessageBox.Show(ex.Message);
+                        MessageBox.Show("خطا في الحذف");
+                    }
+                    finally
+                    {
+                        adoClass.sqlcn.Close();
+                    }
+
+                    loadTable("select Orders.id,Orders.dateTime,Orders.total,Orders.tax,Orders.discount,Orders.delivery,Orders.shiftId,Orders.orderType,Users.fullName,Clients.name,Tayar.name as tayar,Orders.orderShiftId from Orders LEFT JOIN Users on Orders.userId = Users.id LEFT JOIN Clients on Orders.clientId = Clients.id LEFT JOIN Tayar on Orders.tayarId = Tayar.id");
+                    dtpTo.Value = DateTime.Now;
+                    dtpFrom.Value = DateTime.Now;
+                }
+            }
+        }
     }
 }

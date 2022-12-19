@@ -57,6 +57,7 @@ namespace POS.Forms
             this.tableLayoutPanel4 = new System.Windows.Forms.TableLayoutPanel();
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
             this.txtSearch = new System.Windows.Forms.TextBox();
+            this.btnDeleteAll = new System.Windows.Forms.Button();
             this.pnlParent.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvLoading)).BeginInit();
             this.panel2.SuspendLayout();
@@ -308,6 +309,7 @@ namespace POS.Forms
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 20F));
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 20F));
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 20F));
+            this.tableLayoutPanel1.Controls.Add(this.btnDeleteAll, 0, 0);
             this.tableLayoutPanel1.Controls.Add(this.label4, 0, 0);
             this.tableLayoutPanel1.Controls.Add(this.lblTotal, 0, 0);
             this.tableLayoutPanel1.Controls.Add(this.btnPrint, 3, 0);
@@ -354,7 +356,7 @@ namespace POS.Forms
             this.btnPrint.Dock = System.Windows.Forms.DockStyle.Fill;
             this.btnPrint.FlatAppearance.BorderSize = 0;
             this.btnPrint.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnPrint.Location = new System.Drawing.Point(862, 4);
+            this.btnPrint.Location = new System.Drawing.Point(1148, 4);
             this.btnPrint.Name = "btnPrint";
             this.btnPrint.Size = new System.Drawing.Size(279, 69);
             this.btnPrint.TabIndex = 9;
@@ -368,7 +370,7 @@ namespace POS.Forms
             this.btnReload.Dock = System.Windows.Forms.DockStyle.Fill;
             this.btnReload.FlatAppearance.BorderSize = 0;
             this.btnReload.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnReload.Location = new System.Drawing.Point(576, 4);
+            this.btnReload.Location = new System.Drawing.Point(862, 4);
             this.btnReload.Name = "btnReload";
             this.btnReload.Size = new System.Drawing.Size(279, 69);
             this.btnReload.TabIndex = 10;
@@ -415,6 +417,24 @@ namespace POS.Forms
             this.txtSearch.Size = new System.Drawing.Size(1204, 49);
             this.txtSearch.TabIndex = 2;
             this.txtSearch.TextChanged += new System.EventHandler(this.txtSearch_TextChanged);
+            // 
+            // btnDeleteAll
+            // 
+            this.btnDeleteAll.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.btnDeleteAll.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.btnDeleteAll.FlatAppearance.BorderSize = 0;
+            this.btnDeleteAll.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnDeleteAll.Font = new System.Drawing.Font("Microsoft Sans Serif", 17F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnDeleteAll.ForeColor = System.Drawing.Color.Red;
+            this.btnDeleteAll.Image = global::POS.Properties.Resources.delete2;
+            this.btnDeleteAll.Location = new System.Drawing.Point(576, 4);
+            this.btnDeleteAll.Name = "btnDeleteAll";
+            this.btnDeleteAll.Size = new System.Drawing.Size(279, 69);
+            this.btnDeleteAll.TabIndex = 14;
+            this.btnDeleteAll.Text = "حذف الكل";
+            this.btnDeleteAll.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.btnDeleteAll.UseVisualStyleBackColor = true;
+            this.btnDeleteAll.Click += new System.EventHandler(this.btnDeleteAll_Click);
             // 
             // FormReportSalaries
             // 
@@ -468,5 +488,6 @@ namespace POS.Forms
         private System.Windows.Forms.PictureBox pictureBox2;
         private System.Windows.Forms.TextBox txtSearch;
         private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.Button btnDeleteAll;
     }
 }
