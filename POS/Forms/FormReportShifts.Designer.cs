@@ -29,25 +29,15 @@ namespace POS.Forms
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormReportShifts));
             this.dataGridViewImageColumn1 = new System.Windows.Forms.DataGridViewImageColumn();
             this.dataGridViewImageColumn2 = new System.Windows.Forms.DataGridViewImageColumn();
             this.dataGridViewImageColumn3 = new System.Windows.Forms.DataGridViewImageColumn();
             this.pnlParent = new System.Windows.Forms.TableLayoutPanel();
             this.dgvLoading = new System.Windows.Forms.DataGridView();
-            this.itemstable = new System.Windows.Forms.DataGridViewImageColumn();
-            this.expensesItems = new System.Windows.Forms.DataGridViewImageColumn();
-            this.shiftOrders = new System.Windows.Forms.DataGridViewImageColumn();
-            this.total = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.expenses = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.wared = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dateTimeEnd = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dateTimeStart = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.user = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.id = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.panel2 = new System.Windows.Forms.Panel();
             this.label2 = new System.Windows.Forms.Label();
             this.btnClose = new System.Windows.Forms.Button();
@@ -59,14 +49,25 @@ namespace POS.Forms
             this.label3 = new System.Windows.Forms.Label();
             this.dtpTo = new System.Windows.Forms.DateTimePicker();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
-            this.lblTotal = new System.Windows.Forms.Label();
             this.btnPrint = new System.Windows.Forms.Button();
             this.btnReload = new System.Windows.Forms.Button();
+            this.lblTotal = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
+            this.btnDeleteAll = new System.Windows.Forms.Button();
             this.tableLayoutPanel4 = new System.Windows.Forms.TableLayoutPanel();
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
             this.txtSearch = new System.Windows.Forms.TextBox();
-            this.btnDeleteAll = new System.Windows.Forms.Button();
+            this.itemstable = new System.Windows.Forms.DataGridViewImageColumn();
+            this.expensesItems = new System.Windows.Forms.DataGridViewImageColumn();
+            this.shiftOrders = new System.Windows.Forms.DataGridViewImageColumn();
+            this.total = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.expenses = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.wared = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dateTimeEnd = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dateTimeStart = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.user = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.id = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column1 = new System.Windows.Forms.DataGridViewImageColumn();
             this.pnlParent.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvLoading)).BeginInit();
             this.panel2.SuspendLayout();
@@ -133,14 +134,14 @@ namespace POS.Forms
             this.dgvLoading.AllowUserToDeleteRows = false;
             this.dgvLoading.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dgvLoading.BackgroundColor = System.Drawing.Color.White;
-            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle4.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle4.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle4.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle4.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgvLoading.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle4;
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvLoading.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             this.dgvLoading.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvLoading.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.itemstable,
@@ -152,22 +153,23 @@ namespace POS.Forms
             this.dateTimeEnd,
             this.dateTimeStart,
             this.user,
-            this.id});
+            this.id,
+            this.Column1});
             this.dgvLoading.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dgvLoading.Location = new System.Drawing.Point(3, 351);
             this.dgvLoading.Name = "dgvLoading";
             this.dgvLoading.ReadOnly = true;
-            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle5.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle5.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle5.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle5.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle5.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle5.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgvLoading.RowHeadersDefaultCellStyle = dataGridViewCellStyle5;
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvLoading.RowHeadersDefaultCellStyle = dataGridViewCellStyle2;
             this.dgvLoading.RowHeadersWidth = 51;
-            dataGridViewCellStyle6.Font = new System.Drawing.Font("Microsoft Sans Serif", 13F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.dgvLoading.RowsDefaultCellStyle = dataGridViewCellStyle6;
+            dataGridViewCellStyle3.Font = new System.Drawing.Font("Microsoft Sans Serif", 13F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.dgvLoading.RowsDefaultCellStyle = dataGridViewCellStyle3;
             this.dgvLoading.RowTemplate.DefaultCellStyle.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
             this.dgvLoading.RowTemplate.DefaultCellStyle.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.dgvLoading.RowTemplate.Height = 35;
@@ -175,92 +177,6 @@ namespace POS.Forms
             this.dgvLoading.Size = new System.Drawing.Size(1461, 505);
             this.dgvLoading.TabIndex = 20;
             this.dgvLoading.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvLoading_CellDoubleClick);
-            // 
-            // itemstable
-            // 
-            this.itemstable.HeaderText = "العناصر المباعة";
-            this.itemstable.Image = global::POS.Properties.Resources.dgv;
-            this.itemstable.MinimumWidth = 6;
-            this.itemstable.Name = "itemstable";
-            this.itemstable.ReadOnly = true;
-            // 
-            // expensesItems
-            // 
-            this.expensesItems.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
-            this.expensesItems.HeaderText = "عناصر المصروفات";
-            this.expensesItems.Image = global::POS.Properties.Resources.expenses;
-            this.expensesItems.MinimumWidth = 6;
-            this.expensesItems.Name = "expensesItems";
-            this.expensesItems.ReadOnly = true;
-            this.expensesItems.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.expensesItems.Width = 204;
-            // 
-            // shiftOrders
-            // 
-            this.shiftOrders.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
-            this.shiftOrders.HeaderText = "فواتير الوردية";
-            this.shiftOrders.Image = global::POS.Properties.Resources.dgv;
-            this.shiftOrders.MinimumWidth = 6;
-            this.shiftOrders.Name = "shiftOrders";
-            this.shiftOrders.ReadOnly = true;
-            this.shiftOrders.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.shiftOrders.Width = 150;
-            // 
-            // total
-            // 
-            this.total.HeaderText = "الاجمالي";
-            this.total.MinimumWidth = 6;
-            this.total.Name = "total";
-            this.total.ReadOnly = true;
-            this.total.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
-            // 
-            // expenses
-            // 
-            this.expenses.HeaderText = "مصروفات";
-            this.expenses.MinimumWidth = 6;
-            this.expenses.Name = "expenses";
-            this.expenses.ReadOnly = true;
-            this.expenses.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
-            // 
-            // wared
-            // 
-            this.wared.HeaderText = "الوارد";
-            this.wared.MinimumWidth = 6;
-            this.wared.Name = "wared";
-            this.wared.ReadOnly = true;
-            this.wared.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
-            // 
-            // dateTimeEnd
-            // 
-            this.dateTimeEnd.HeaderText = "تاريخ النهاية";
-            this.dateTimeEnd.MinimumWidth = 6;
-            this.dateTimeEnd.Name = "dateTimeEnd";
-            this.dateTimeEnd.ReadOnly = true;
-            this.dateTimeEnd.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
-            // 
-            // dateTimeStart
-            // 
-            this.dateTimeStart.HeaderText = "تاريخ البداية";
-            this.dateTimeStart.MinimumWidth = 6;
-            this.dateTimeStart.Name = "dateTimeStart";
-            this.dateTimeStart.ReadOnly = true;
-            this.dateTimeStart.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
-            // 
-            // user
-            // 
-            this.user.HeaderText = "المستخدم";
-            this.user.MinimumWidth = 6;
-            this.user.Name = "user";
-            this.user.ReadOnly = true;
-            this.user.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
-            // 
-            // id
-            // 
-            this.id.HeaderText = "#";
-            this.id.MinimumWidth = 6;
-            this.id.Name = "id";
-            this.id.ReadOnly = true;
-            this.id.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
             // 
             // panel2
             // 
@@ -427,19 +343,6 @@ namespace POS.Forms
             this.tableLayoutPanel1.Size = new System.Drawing.Size(1467, 87);
             this.tableLayoutPanel1.TabIndex = 1;
             // 
-            // lblTotal
-            // 
-            this.lblTotal.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-            this.lblTotal.AutoSize = true;
-            this.lblTotal.Font = new System.Drawing.Font("Microsoft Sans Serif", 16.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblTotal.Location = new System.Drawing.Point(297, 27);
-            this.lblTotal.Name = "lblTotal";
-            this.lblTotal.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
-            this.lblTotal.Size = new System.Drawing.Size(286, 32);
-            this.lblTotal.TabIndex = 12;
-            this.lblTotal.Text = "0";
-            this.lblTotal.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
             // btnPrint
             // 
             this.btnPrint.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btnPrint.BackgroundImage")));
@@ -468,6 +371,19 @@ namespace POS.Forms
             this.btnReload.UseVisualStyleBackColor = true;
             this.btnReload.Click += new System.EventHandler(this.btnReload_Click);
             // 
+            // lblTotal
+            // 
+            this.lblTotal.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+            this.lblTotal.AutoSize = true;
+            this.lblTotal.Font = new System.Drawing.Font("Microsoft Sans Serif", 16.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblTotal.Location = new System.Drawing.Point(297, 27);
+            this.lblTotal.Name = "lblTotal";
+            this.lblTotal.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
+            this.lblTotal.Size = new System.Drawing.Size(286, 32);
+            this.lblTotal.TabIndex = 12;
+            this.lblTotal.Text = "0";
+            this.lblTotal.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
             // label4
             // 
             this.label4.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
@@ -480,6 +396,23 @@ namespace POS.Forms
             this.label4.TabIndex = 11;
             this.label4.Text = "اجمالي الورديات :";
             this.label4.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // btnDeleteAll
+            // 
+            this.btnDeleteAll.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.btnDeleteAll.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.btnDeleteAll.Font = new System.Drawing.Font("Microsoft Sans Serif", 17F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnDeleteAll.ForeColor = System.Drawing.Color.Red;
+            this.btnDeleteAll.Image = global::POS.Properties.Resources.delete2;
+            this.btnDeleteAll.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnDeleteAll.Location = new System.Drawing.Point(52, 6);
+            this.btnDeleteAll.Name = "btnDeleteAll";
+            this.btnDeleteAll.Size = new System.Drawing.Size(190, 75);
+            this.btnDeleteAll.TabIndex = 16;
+            this.btnDeleteAll.Text = "حذف الكل";
+            this.btnDeleteAll.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.btnDeleteAll.UseVisualStyleBackColor = true;
+            this.btnDeleteAll.Click += new System.EventHandler(this.btnDeleteAll_Click);
             // 
             // tableLayoutPanel4
             // 
@@ -522,22 +455,105 @@ namespace POS.Forms
             this.txtSearch.TabIndex = 2;
             this.txtSearch.TextChanged += new System.EventHandler(this.txtSearch_TextChanged);
             // 
-            // btnDeleteAll
+            // itemstable
             // 
-            this.btnDeleteAll.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.btnDeleteAll.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.btnDeleteAll.Font = new System.Drawing.Font("Microsoft Sans Serif", 17F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnDeleteAll.ForeColor = System.Drawing.Color.Red;
-            this.btnDeleteAll.Image = global::POS.Properties.Resources.delete2;
-            this.btnDeleteAll.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnDeleteAll.Location = new System.Drawing.Point(52, 6);
-            this.btnDeleteAll.Name = "btnDeleteAll";
-            this.btnDeleteAll.Size = new System.Drawing.Size(190, 75);
-            this.btnDeleteAll.TabIndex = 16;
-            this.btnDeleteAll.Text = "حذف الكل";
-            this.btnDeleteAll.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.btnDeleteAll.UseVisualStyleBackColor = true;
-            this.btnDeleteAll.Click += new System.EventHandler(this.btnDeleteAll_Click);
+            this.itemstable.FillWeight = 50F;
+            this.itemstable.HeaderText = "العناصر المباعة";
+            this.itemstable.Image = global::POS.Properties.Resources.dgv;
+            this.itemstable.MinimumWidth = 6;
+            this.itemstable.Name = "itemstable";
+            this.itemstable.ReadOnly = true;
+            // 
+            // expensesItems
+            // 
+            this.expensesItems.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.expensesItems.FillWeight = 50F;
+            this.expensesItems.HeaderText = "عناصر المصروفات";
+            this.expensesItems.Image = global::POS.Properties.Resources.expenses;
+            this.expensesItems.MinimumWidth = 6;
+            this.expensesItems.Name = "expensesItems";
+            this.expensesItems.ReadOnly = true;
+            this.expensesItems.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.expensesItems.Width = 204;
+            // 
+            // shiftOrders
+            // 
+            this.shiftOrders.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.shiftOrders.FillWeight = 50F;
+            this.shiftOrders.HeaderText = "فواتير الوردية";
+            this.shiftOrders.Image = global::POS.Properties.Resources.dgv;
+            this.shiftOrders.MinimumWidth = 6;
+            this.shiftOrders.Name = "shiftOrders";
+            this.shiftOrders.ReadOnly = true;
+            this.shiftOrders.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.shiftOrders.Width = 150;
+            // 
+            // total
+            // 
+            this.total.HeaderText = "الاجمالي";
+            this.total.MinimumWidth = 6;
+            this.total.Name = "total";
+            this.total.ReadOnly = true;
+            this.total.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            // 
+            // expenses
+            // 
+            this.expenses.HeaderText = "مصروفات";
+            this.expenses.MinimumWidth = 6;
+            this.expenses.Name = "expenses";
+            this.expenses.ReadOnly = true;
+            this.expenses.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            // 
+            // wared
+            // 
+            this.wared.HeaderText = "الوارد";
+            this.wared.MinimumWidth = 6;
+            this.wared.Name = "wared";
+            this.wared.ReadOnly = true;
+            this.wared.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            // 
+            // dateTimeEnd
+            // 
+            this.dateTimeEnd.HeaderText = "تاريخ النهاية";
+            this.dateTimeEnd.MinimumWidth = 6;
+            this.dateTimeEnd.Name = "dateTimeEnd";
+            this.dateTimeEnd.ReadOnly = true;
+            this.dateTimeEnd.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            // 
+            // dateTimeStart
+            // 
+            this.dateTimeStart.HeaderText = "تاريخ البداية";
+            this.dateTimeStart.MinimumWidth = 6;
+            this.dateTimeStart.Name = "dateTimeStart";
+            this.dateTimeStart.ReadOnly = true;
+            this.dateTimeStart.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            // 
+            // user
+            // 
+            this.user.HeaderText = "المستخدم";
+            this.user.MinimumWidth = 6;
+            this.user.Name = "user";
+            this.user.ReadOnly = true;
+            this.user.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            // 
+            // id
+            // 
+            this.id.HeaderText = "رقم الوردية";
+            this.id.MinimumWidth = 6;
+            this.id.Name = "id";
+            this.id.ReadOnly = true;
+            this.id.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            // 
+            // Column1
+            // 
+            this.Column1.FillWeight = 50F;
+            this.Column1.HeaderText = "حذف وردية";
+            this.Column1.Image = global::POS.Properties.Resources.delete;
+            this.Column1.MinimumWidth = 6;
+            this.Column1.Name = "Column1";
+            this.Column1.ReadOnly = true;
+            this.Column1.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.Column1.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
             // 
             // FormReportShifts
             // 
@@ -590,6 +606,7 @@ namespace POS.Forms
         private System.Windows.Forms.Label lblTotal;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.DataGridView dgvLoading;
+        private System.Windows.Forms.Button btnDeleteAll;
         private System.Windows.Forms.DataGridViewImageColumn itemstable;
         private System.Windows.Forms.DataGridViewImageColumn expensesItems;
         private System.Windows.Forms.DataGridViewImageColumn shiftOrders;
@@ -600,6 +617,6 @@ namespace POS.Forms
         private System.Windows.Forms.DataGridViewTextBoxColumn dateTimeStart;
         private System.Windows.Forms.DataGridViewTextBoxColumn user;
         private System.Windows.Forms.DataGridViewTextBoxColumn id;
-        private System.Windows.Forms.Button btnDeleteAll;
+        private System.Windows.Forms.DataGridViewImageColumn Column1;
     }
 }

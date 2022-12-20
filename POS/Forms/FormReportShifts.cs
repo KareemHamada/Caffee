@@ -83,7 +83,83 @@ namespace POS.Forms
 
         private void dgvLoading_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
-            if (dgvLoading.CurrentCell.ColumnIndex.Equals(2) && e.RowIndex != -1)
+
+            if (dgvLoading.CurrentCell.ColumnIndex.Equals(10) && e.RowIndex != -1)
+            {
+                if (dgvLoading.CurrentCell != null && dgvLoading.CurrentCell.Value != null)
+                {
+                    string shiftId = dgvLoading.CurrentRow.Cells[9].Value.ToString();
+
+                    
+                    if (MessageBox.Show("هل متاكد من الحذف سيترتب علي ذلك حذف اوردارات و مصروفات الوردية ان وجدت ", "?", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+                    {
+
+                        try
+                        {
+                            if (adoClass.sqlcn.State != ConnectionState.Open)
+                            {
+                                adoClass.sqlcn.Open();
+                            }
+
+                            cmd = new SqlCommand("select * from Orders where shiftId = '"+shiftId+"'", adoClass.sqlcn);
+                            SqlDataAdapter adap = new SqlDataAdapter(cmd);
+                            DataTable tOrders = new DataTable();
+                            adap.Fill(tOrders);
+                            if(tOrders.Rows.Count > 0)
+                            {
+                                for(int i = 0; i < tOrders.Rows.Count; i++)
+                                {
+                                    string orderId = tOrders.Rows[i][0].ToString();
+                                    Helper.DeleteOrders(orderId,shiftId,false);
+                                }
+                            }
+
+
+                            // delete expenses under shifts
+                            cmd = new SqlCommand("select * from Expenses where shiftId = '"+shiftId+"'", adoClass.sqlcn);
+
+                            DataTable dtt = new DataTable();
+                            SqlDataAdapter da = new SqlDataAdapter(cmd);
+                            da.Fill(dtt);
+                            if (dtt.Rows.Count > 0)
+                            {
+                                for (int i = 0; i < dtt.Rows.Count; i++)
+                                {
+                                    cmd = new SqlCommand("delete from Expenses where shiftId =" + dtt.Rows[i][0] + "", adoClass.sqlcn);
+                                    cmd.ExecuteNonQuery();
+
+                                }
+                            }
+
+
+                            cmd = new SqlCommand("delete from ItemQuantityEndShift where shiftId ='"+shiftId+"'", adoClass.sqlcn);
+                            cmd.ExecuteNonQuery();
+
+
+                            cmd = new SqlCommand("delete from Shifts where id ='"+shiftId+"'", adoClass.sqlcn);
+                            cmd.ExecuteNonQuery();
+
+                            MessageBox.Show("تم الحذف بنجاح");
+
+                        }
+                        catch (Exception ex)
+                        {
+                            MessageBox.Show("خطا في الحذف");
+                        }
+                        finally
+                        {
+                            adoClass.sqlcn.Close();
+                        }
+
+                        loadTable("select Shifts.total,Shifts.expenses,Shifts.wared,Shifts.dateTimeEnd,Shifts.dateTimeStart,Users.fullName,Shifts.id from Shifts LEFT JOIN Users on Shifts.userId = Users.id where Shifts.dateTimeEnd != ''");
+                    }
+                    
+
+                }
+            }
+
+
+            else if (dgvLoading.CurrentCell.ColumnIndex.Equals(2) && e.RowIndex != -1)
             {
                 if (dgvLoading.CurrentCell != null && dgvLoading.CurrentCell.Value != null)
                 {
@@ -99,6 +175,9 @@ namespace POS.Forms
                     frm.btnSearch.Visible = false;
                     frm.dtpFrom.Visible = false;
                     frm.dtpTo.Visible = false;
+
+                    frm.picSearch.Visible = false;
+                    frm.txtSearch.Visible = false;
                     frm.Show();
                     frm.showShiftOrders(shiftId);
 
@@ -106,18 +185,29 @@ namespace POS.Forms
             }
 
 
-            if (dgvLoading.CurrentCell.ColumnIndex.Equals(1) && e.RowIndex != -1)
+            else if (dgvLoading.CurrentCell.ColumnIndex.Equals(1) && e.RowIndex != -1)
             {
                 if (dgvLoading.CurrentCell != null && dgvLoading.CurrentCell.Value != null)
                 {
                     string shiftId = dgvLoading.CurrentRow.Cells[9].Value.ToString();
                     FormReportExpenses frm = new FormReportExpenses();
+                    frm.btnReload.Visible = false;
+                    frm.lblFrom.Visible = false;
+                    frm.lblTo.Visible = false;
+                    frm.btnDeleteAll.Visible = false;
+                    frm.btnSearch.Visible = false;
+                    frm.dtpFrom.Visible = false;
+                    frm.dtpTo.Visible = false;
+
+                    frm.picSearch.Visible = false;
+                    frm.txtSearch.Visible = false;
+
                     frm.Show();
                     frm.showShiftExpenses(shiftId);
                 }
             }
 
-            if (dgvLoading.CurrentCell.ColumnIndex.Equals(0) && e.RowIndex != -1)
+            else if (dgvLoading.CurrentCell.ColumnIndex.Equals(0) && e.RowIndex != -1)
             {
                 if (dgvLoading.CurrentCell != null && dgvLoading.CurrentCell.Value != null)
                 {

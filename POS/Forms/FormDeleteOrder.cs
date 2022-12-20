@@ -96,48 +96,10 @@ namespace POS.Forms
                 string shiftId = dgvLoading.CurrentRow.Cells[10].Value.ToString();
                 if (MessageBox.Show("هل تريد حذف الاوردر", "?", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
                 {
+
                     try
                     {
-                        if (adoClass.sqlcn.State != ConnectionState.Open)
-                        {
-                            adoClass.sqlcn.Open();
-                        }
-
-                        DataTable dt = new DataTable();
-                        cmd = new SqlCommand("Select quantity,itemId from OrderItems where orderId = '" + orderId + "'", adoClass.sqlcn);
-                        SqlDataAdapter da = new SqlDataAdapter(cmd);
-                        da.Fill(dt);
-
-                        //int oldQuantity = int.Parse(dt.Rows[0][0].ToString());
-                        //int itemId = int.Parse(dt.Rows[0][1].ToString());
-
-                        if (dt.Rows.Count > 0)
-                        {
-                            for (int i = 0; i < dt.Rows.Count; i++)
-                            {
-                                int oldQuantity = int.Parse(dt.Rows[i][0].ToString());
-                                int itemId = int.Parse(dt.Rows[i][1].ToString());
-
-                                deleteItems(itemId, oldQuantity);
-                                DeleteditemsEndShift(itemId, oldQuantity, shiftId);
-                            }
-
-                        }
-
-                        //deleteItems(itemId, oldQuantity);
-
-
-                        cmd = new SqlCommand("delete from OrderItems Where orderId = '" + orderId + "'", adoClass.sqlcn);
-                        cmd.ExecuteNonQuery();
-
-
-                        cmd = new SqlCommand("delete from Orders Where id = '" + orderId + "'", adoClass.sqlcn);
-                        cmd.ExecuteNonQuery();
-
-
-
-                        // update shift values
-                        Helper.updateShiftValues(shiftId,1);
+                        Helper.DeleteOrders(orderId, shiftId,true);
 
                         MessageBox.Show("تم الحذف بنجاح");
 
@@ -152,80 +114,14 @@ namespace POS.Forms
                         adoClass.sqlcn.Close();
                     }
 
-                    }
+                }
 
                 loadTable("select Orders.id,Orders.dateTime,Orders.total,Orders.tax,Orders.discount,Orders.delivery,Orders.shiftId,Orders.orderType,Users.fullName,Clients.name,Tayar.name as tayar,Orders.orderShiftId from Orders LEFT JOIN Users on Orders.userId = Users.id LEFT JOIN Clients on Orders.clientId = Clients.id LEFT JOIN Tayar on Orders.tayarId = Tayar.id");
             }
         }
 
 
-        private void deleteItems(int itemId,int deletedQuantity)
-        {
-            try
-            {
-                DataTable dt = new DataTable();
-                cmd = new SqlCommand("Select quantity from Items where id = '" + itemId + "'", adoClass.sqlcn);
-                SqlDataAdapter da = new SqlDataAdapter(cmd);
-                da.Fill(dt);
-
-                int oldQuantity = int.Parse(dt.Rows[0][0].ToString());
-
-                int totalQuantity = oldQuantity - deletedQuantity;
-
-                cmd = new SqlCommand("update Items set quantity = '" + totalQuantity + "' where id = '" + itemId + "'", adoClass.sqlcn);
-                cmd.ExecuteNonQuery();
-
-            }
-
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message);
-            }
-            
-        }
-
-
-
-
-        private void DeleteditemsEndShift(int itemId, int quantity, string shftId)
-        {
-            try
-            {
-
-                SqlCommand cmd;
-                DataTable dt = new DataTable();
-                cmd = new SqlCommand("Select quan from ItemQuantityEndShift where itemId = '" + itemId + "' and shiftId = '" + shftId + "'", adoClass.sqlcn);
-                SqlDataAdapter da = new SqlDataAdapter(cmd);
-                da.Fill(dt);
-
-                if (dt.Rows.Count > 0)
-                {
-                    DataRow row = dt.Rows[0];
-                    object tableQuantity = row["quan"];
-
-                    if (tableQuantity != DBNull.Value)
-                    {
-                        int totalQuantity = 0;
-                        int oldQuan = 0;
-                        int.TryParse(tableQuantity.ToString(), out oldQuan);
-
-                        totalQuantity = oldQuan - quantity;
-
-                        cmd = new SqlCommand("update ItemQuantityEndShift set quan = '" + totalQuantity + "' where itemId = '" + itemId + "' and shiftId = '" + shftId + "'", adoClass.sqlcn);
-                        cmd.ExecuteNonQuery();
-
-
-                    }
-
-                }
-            }
-
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message);
-            }
-
-        }
+        
 
         private void btnDeleteAll_Click(object sender, EventArgs e)
         {
@@ -280,7 +176,6 @@ namespace POS.Forms
                     }
                     catch (Exception ex)
                     {
-                        MessageBox.Show(ex.Message);
                         MessageBox.Show("خطا في الحذف");
                     }
                     finally

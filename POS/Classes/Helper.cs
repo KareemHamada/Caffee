@@ -137,11 +137,15 @@ namespace POS.Classes
                 //}
 
                 total = totalWared - totalExpenses;
+                
+                
                 cmd = new SqlCommand("Update Shifts set expenses = @expenses,wared = @wared,total=@total Where id = '" + shiftId + "'", adoClass.sqlcn);
                 cmd.Parameters.AddWithValue("@expenses", totalExpenses);
                 cmd.Parameters.AddWithValue("@wared", totalWared);
                 cmd.Parameters.AddWithValue("@total", total);
                 cmd.ExecuteNonQuery();
+                
+                
             }
             else
             {
@@ -179,14 +183,160 @@ namespace POS.Classes
                 }
 
                 total = totalWared - totalExpenses;
-                cmd = new SqlCommand("Update Shifts set expenses = @expenses,wared = @wared,total=@total Where id = '" + shiftId + "'", adoClass.sqlcn);
-                cmd.Parameters.AddWithValue("@expenses", totalExpenses);
-                cmd.Parameters.AddWithValue("@wared", totalWared);
-                cmd.Parameters.AddWithValue("@total", total);
-                cmd.ExecuteNonQuery();
+
+                if (total == 0 || totalWared == 0)
+                {
+                    // delete expenses under shifts
+                    cmd = new SqlCommand("select * from Expenses where shiftId = '" + shiftId + "'", adoClass.sqlcn);
+
+                    DataTable dtt = new DataTable();
+                    SqlDataAdapter da = new SqlDataAdapter(cmd);
+                    da.Fill(dtt);
+                    if (dtt.Rows.Count > 0)
+                    {
+                        for (int i = 0; i < dtt.Rows.Count; i++)
+                        {
+                            cmd = new SqlCommand("delete from Expenses where shiftId =" + dtt.Rows[i][0] + "", adoClass.sqlcn);
+                            cmd.ExecuteNonQuery();
+
+                        }
+                    }
+
+
+                    cmd = new SqlCommand("delete from ItemQuantityEndShift where shiftId ='" + shiftId + "'", adoClass.sqlcn);
+                    cmd.ExecuteNonQuery();
+
+
+                    cmd = new SqlCommand("delete from Shifts where id ='" + shiftId + "'", adoClass.sqlcn);
+                    cmd.ExecuteNonQuery();
+                }
+                else
+                {
+                    cmd = new SqlCommand("Update Shifts set expenses = @expenses,wared = @wared,total=@total Where id = '" + shiftId + "'", adoClass.sqlcn);
+                    cmd.Parameters.AddWithValue("@expenses", totalExpenses);
+                    cmd.Parameters.AddWithValue("@wared", totalWared);
+                    cmd.Parameters.AddWithValue("@total", total);
+                    cmd.ExecuteNonQuery();
+                }
+                
             }
             
         }
-    
+
+
+        public static void DeleteOrders(string orderId,string shiftId,bool oneOrder)
+        {
+            if (adoClass.sqlcn.State != ConnectionState.Open)
+            {
+                adoClass.sqlcn.Open();
+            }
+
+            DataTable dt = new DataTable();
+            cmd = new SqlCommand("Select quantity,itemId from OrderItems where orderId = '" + orderId + "'", adoClass.sqlcn);
+            SqlDataAdapter da = new SqlDataAdapter(cmd);
+            da.Fill(dt);
+
+            //int oldQuantity = int.Parse(dt.Rows[0][0].ToString());
+            //int itemId = int.Parse(dt.Rows[0][1].ToString());
+
+            if (dt.Rows.Count > 0)
+            {
+                for (int i = 0; i < dt.Rows.Count; i++)
+                {
+                    int oldQuantity = int.Parse(dt.Rows[i][0].ToString());
+                    int itemId = int.Parse(dt.Rows[i][1].ToString());
+
+                    deleteItems(itemId, oldQuantity);
+                    DeleteditemsEndShift(itemId, oldQuantity, shiftId);
+                }
+
+            }
+
+            //deleteItems(itemId, oldQuantity);
+
+
+            cmd = new SqlCommand("delete from OrderItems Where orderId = '" + orderId + "'", adoClass.sqlcn);
+            cmd.ExecuteNonQuery();
+
+
+            cmd = new SqlCommand("delete from Orders Where id = '" + orderId + "'", adoClass.sqlcn);
+            cmd.ExecuteNonQuery();
+
+
+            if (oneOrder)
+            {
+                // update shift values
+                updateShiftValues(shiftId, 1);
+            }
+            
+        }
+        public static void deleteItems(int itemId, int deletedQuantity)
+        {
+            try
+            {
+                DataTable dt = new DataTable();
+                cmd = new SqlCommand("Select quantity from Items where id = '" + itemId + "'", adoClass.sqlcn);
+                SqlDataAdapter da = new SqlDataAdapter(cmd);
+                da.Fill(dt);
+
+                int oldQuantity = int.Parse(dt.Rows[0][0].ToString());
+
+                int totalQuantity = oldQuantity - deletedQuantity;
+
+                cmd = new SqlCommand("update Items set quantity = '" + totalQuantity + "' where id = '" + itemId + "'", adoClass.sqlcn);
+                cmd.ExecuteNonQuery();
+
+            }
+
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+
+        }
+
+
+
+
+        public static void DeleteditemsEndShift(int itemId, int quantity, string shftId)
+        {
+            try
+            {
+
+                SqlCommand cmd;
+                DataTable dt = new DataTable();
+                cmd = new SqlCommand("Select quan from ItemQuantityEndShift where itemId = '" + itemId + "' and shiftId = '" + shftId + "'", adoClass.sqlcn);
+                SqlDataAdapter da = new SqlDataAdapter(cmd);
+                da.Fill(dt);
+
+                if (dt.Rows.Count > 0)
+                {
+                    DataRow row = dt.Rows[0];
+                    object tableQuantity = row["quan"];
+
+                    if (tableQuantity != DBNull.Value)
+                    {
+                        int totalQuantity = 0;
+                        int oldQuan = 0;
+                        int.TryParse(tableQuantity.ToString(), out oldQuan);
+
+                        totalQuantity = oldQuan - quantity;
+
+                        cmd = new SqlCommand("update ItemQuantityEndShift set quan = '" + totalQuantity + "' where itemId = '" + itemId + "' and shiftId = '" + shftId + "'", adoClass.sqlcn);
+                        cmd.ExecuteNonQuery();
+
+
+                    }
+
+                }
+            }
+
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+
+        }
+
     }
 }
