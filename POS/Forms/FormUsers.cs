@@ -21,6 +21,7 @@ namespace POS.Forms
 
         private SqlCommand cmd;
         private TextBox txtHidden;
+        //Database db = new Database();
 
         //private DataTable loadTable()
         //{
@@ -246,27 +247,32 @@ namespace POS.Forms
                     }
                     try
                     {
+                        adoClass.executeData("delete from Users Where id = '" + txtHidden.Text + "'", "تم الحذف بنجاح");
+                        //cmd = new SqlCommand("delete from Users Where id = '" + txtHidden.Text + "'", adoClass.sqlcn);
 
-                        cmd = new SqlCommand("delete from Users Where id = '" + txtHidden.Text + "'", adoClass.sqlcn);
+                        //if (adoClass.sqlcn.State != ConnectionState.Open)
+                        //{
+                        //    adoClass.sqlcn.Open();
+                        //}
 
-                        if (adoClass.sqlcn.State != ConnectionState.Open)
+                        //cmd.ExecuteNonQuery();
+
+                        DataTable tblUser = new DataTable();
+                        tblUser = adoClass.readData("select * from Users where privilege = 'Admin'", "");
+                        if (tblUser.Rows.Count <= 0)
                         {
-                            adoClass.sqlcn.Open();
+                            adoClass.executeData("Insert into Users (userName,password,fullName,privilege) values ('"+123+"','"+123+"','"+123+"','Admin')", "");
+
                         }
-
-                        cmd.ExecuteNonQuery();
-
-                        MessageBox.Show("تم الحذف بنجاح");
-
                     }
                     catch
                     {
                         MessageBox.Show("خطا في الحذف");
                     }
-                    finally
-                    {
-                        adoClass.sqlcn.Close();
-                    }
+                    //finally
+                    //{
+                    //    adoClass.sqlcn.Close();
+                    //}
 
                     loadTable("Select * from Users");
 

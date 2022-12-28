@@ -8,5 +8,8 @@
     <Setting Name="Product_Key" Type="System.String" Scope="User">
       <Value Profile="(Default)">NO</Value>
     </Setting>
+    <Setting Name="PrinterName" Type="System.String" Scope="User">
+      <Value Profile="(Default)" />
+    </Setting>
   </Settings>
 </SettingsFile>

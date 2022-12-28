@@ -60,6 +60,7 @@ namespace POS.Forms
             this.tableLayoutPanel4 = new System.Windows.Forms.TableLayoutPanel();
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
             this.txtSearch = new System.Windows.Forms.TextBox();
+            this.btnDeleteAll = new System.Windows.Forms.Button();
             this.pnlParent.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvLoading)).BeginInit();
             this.panel2.SuspendLayout();
@@ -343,9 +344,10 @@ namespace POS.Forms
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 20F));
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 20F));
             this.tableLayoutPanel1.Controls.Add(this.lblTotal, 0, 0);
-            this.tableLayoutPanel1.Controls.Add(this.btnPrint, 3, 0);
-            this.tableLayoutPanel1.Controls.Add(this.btnReload, 2, 0);
             this.tableLayoutPanel1.Controls.Add(this.label4, 1, 0);
+            this.tableLayoutPanel1.Controls.Add(this.btnPrint, 4, 0);
+            this.tableLayoutPanel1.Controls.Add(this.btnReload, 3, 0);
+            this.tableLayoutPanel1.Controls.Add(this.btnDeleteAll, 2, 0);
             this.tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel1.Location = new System.Drawing.Point(0, 63);
             this.tableLayoutPanel1.Margin = new System.Windows.Forms.Padding(0);
@@ -370,12 +372,12 @@ namespace POS.Forms
             // 
             // btnPrint
             // 
+            this.btnPrint.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.btnPrint.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btnPrint.BackgroundImage")));
             this.btnPrint.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.btnPrint.Dock = System.Windows.Forms.DockStyle.Fill;
             this.btnPrint.FlatAppearance.BorderSize = 0;
             this.btnPrint.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnPrint.Location = new System.Drawing.Point(829, 4);
+            this.btnPrint.Location = new System.Drawing.Point(1104, 4);
             this.btnPrint.Name = "btnPrint";
             this.btnPrint.Size = new System.Drawing.Size(268, 55);
             this.btnPrint.TabIndex = 9;
@@ -384,12 +386,12 @@ namespace POS.Forms
             // 
             // btnReload
             // 
+            this.btnReload.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.btnReload.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btnReload.BackgroundImage")));
             this.btnReload.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.btnReload.Dock = System.Windows.Forms.DockStyle.Fill;
             this.btnReload.FlatAppearance.BorderSize = 0;
             this.btnReload.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnReload.Location = new System.Drawing.Point(554, 4);
+            this.btnReload.Location = new System.Drawing.Point(829, 4);
             this.btnReload.Name = "btnReload";
             this.btnReload.Size = new System.Drawing.Size(268, 55);
             this.btnReload.TabIndex = 10;
@@ -450,6 +452,23 @@ namespace POS.Forms
             this.txtSearch.TabIndex = 2;
             this.txtSearch.TextChanged += new System.EventHandler(this.txtSearch_TextChanged);
             // 
+            // btnDeleteAll
+            // 
+            this.btnDeleteAll.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.btnDeleteAll.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.btnDeleteAll.Font = new System.Drawing.Font("Microsoft Sans Serif", 17F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnDeleteAll.ForeColor = System.Drawing.Color.Red;
+            this.btnDeleteAll.Image = global::POS.Properties.Resources.delete2;
+            this.btnDeleteAll.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnDeleteAll.Location = new System.Drawing.Point(593, 4);
+            this.btnDeleteAll.Name = "btnDeleteAll";
+            this.btnDeleteAll.Size = new System.Drawing.Size(190, 55);
+            this.btnDeleteAll.TabIndex = 17;
+            this.btnDeleteAll.Text = "حذف الكل";
+            this.btnDeleteAll.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.btnDeleteAll.UseVisualStyleBackColor = true;
+            this.btnDeleteAll.Click += new System.EventHandler(this.btnDeleteAll_Click);
+            // 
             // FormReportStore
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -506,5 +525,6 @@ namespace POS.Forms
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel4;
         private System.Windows.Forms.PictureBox pictureBox2;
         private System.Windows.Forms.TextBox txtSearch;
+        private System.Windows.Forms.Button btnDeleteAll;
     }
 }

@@ -69,6 +69,8 @@ namespace POS.Classes
             {
                 printDoc.PrintPage += new PrintPageEventHandler(PrintPage);
                 m_currentPageIndex = 0;
+                // set printer name
+                printDoc.PrinterSettings.PrinterName = Properties.Settings.Default.PrinterName;
                 printDoc.Print();
             }
         }

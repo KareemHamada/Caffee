@@ -294,6 +294,7 @@ namespace POS.Forms
                     report.ReportPath = path;
                     report.DataSources.Clear();
                     report.DataSources.Add(new ReportDataSource("DataSet1", tbl.Tables["dtShowCategories"]));
+                    
                     PrintersClass.PrintToPrinter(report);
                 }
                 else if (bool.Parse(declarations.systemOptions["showBeforePrint"].ToString()))

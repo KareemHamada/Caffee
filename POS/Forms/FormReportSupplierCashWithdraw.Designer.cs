@@ -57,6 +57,7 @@ namespace POS.Forms
             this.tableLayoutPanel4 = new System.Windows.Forms.TableLayoutPanel();
             this.txtSearch = new System.Windows.Forms.TextBox();
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
+            this.btnDeleteAll = new System.Windows.Forms.Button();
             this.pnlParent.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvLoading)).BeginInit();
             this.panel2.SuspendLayout();
@@ -79,8 +80,8 @@ namespace POS.Forms
             this.pnlParent.Name = "pnlParent";
             this.pnlParent.RowCount = 3;
             this.pnlParent.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 9.192201F));
-            this.pnlParent.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 22.56267F));
-            this.pnlParent.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 68.24512F));
+            this.pnlParent.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 29.11612F));
+            this.pnlParent.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 61.69844F));
             this.pnlParent.Size = new System.Drawing.Size(1359, 577);
             this.pnlParent.TabIndex = 1;
             // 
@@ -107,7 +108,7 @@ namespace POS.Forms
             this.id,
             this.del});
             this.dgvLoading.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.dgvLoading.Location = new System.Drawing.Point(3, 186);
+            this.dgvLoading.Location = new System.Drawing.Point(3, 223);
             this.dgvLoading.Name = "dgvLoading";
             this.dgvLoading.ReadOnly = true;
             dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
@@ -124,7 +125,7 @@ namespace POS.Forms
             this.dgvLoading.RowTemplate.DefaultCellStyle.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
             this.dgvLoading.RowTemplate.DefaultCellStyle.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.dgvLoading.RowTemplate.Height = 35;
-            this.dgvLoading.Size = new System.Drawing.Size(1353, 388);
+            this.dgvLoading.Size = new System.Drawing.Size(1353, 351);
             this.dgvLoading.TabIndex = 24;
             this.dgvLoading.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvLoading_CellDoubleClick);
             // 
@@ -229,11 +230,12 @@ namespace POS.Forms
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 33.33333F));
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 33.33333F));
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 33.33333F));
-            this.tableLayoutPanel2.Size = new System.Drawing.Size(1359, 130);
+            this.tableLayoutPanel2.Size = new System.Drawing.Size(1359, 167);
             this.tableLayoutPanel2.TabIndex = 19;
             // 
             // tableLayoutPanel3
             // 
+            this.tableLayoutPanel3.CellBorderStyle = System.Windows.Forms.TableLayoutPanelCellBorderStyle.Single;
             this.tableLayoutPanel3.ColumnCount = 5;
             this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 20F));
             this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 20F));
@@ -251,7 +253,7 @@ namespace POS.Forms
             this.tableLayoutPanel3.Name = "tableLayoutPanel3";
             this.tableLayoutPanel3.RowCount = 1;
             this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel3.Size = new System.Drawing.Size(1359, 43);
+            this.tableLayoutPanel3.Size = new System.Drawing.Size(1359, 55);
             this.tableLayoutPanel3.TabIndex = 0;
             // 
             // btnSearch
@@ -261,9 +263,9 @@ namespace POS.Forms
             this.btnSearch.Dock = System.Windows.Forms.DockStyle.Fill;
             this.btnSearch.FlatAppearance.BorderSize = 0;
             this.btnSearch.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnSearch.Location = new System.Drawing.Point(3, 3);
+            this.btnSearch.Location = new System.Drawing.Point(4, 4);
             this.btnSearch.Name = "btnSearch";
-            this.btnSearch.Size = new System.Drawing.Size(265, 37);
+            this.btnSearch.Size = new System.Drawing.Size(264, 47);
             this.btnSearch.TabIndex = 7;
             this.btnSearch.UseVisualStyleBackColor = true;
             this.btnSearch.Click += new System.EventHandler(this.btnSearch_Click);
@@ -273,7 +275,7 @@ namespace POS.Forms
             this.label1.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 16.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(1193, 5);
+            this.label1.Location = new System.Drawing.Point(1193, 11);
             this.label1.Name = "label1";
             this.label1.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
             this.label1.Size = new System.Drawing.Size(56, 32);
@@ -285,11 +287,11 @@ namespace POS.Forms
             this.dtpFrom.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
             this.dtpFrom.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.dtpFrom.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.dtpFrom.Location = new System.Drawing.Point(816, 4);
+            this.dtpFrom.Location = new System.Drawing.Point(817, 10);
             this.dtpFrom.Name = "dtpFrom";
             this.dtpFrom.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
             this.dtpFrom.RightToLeftLayout = true;
-            this.dtpFrom.Size = new System.Drawing.Size(265, 34);
+            this.dtpFrom.Size = new System.Drawing.Size(264, 34);
             this.dtpFrom.TabIndex = 4;
             // 
             // label3
@@ -297,7 +299,7 @@ namespace POS.Forms
             this.label3.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 16.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.Location = new System.Drawing.Point(647, 5);
+            this.label3.Location = new System.Drawing.Point(648, 11);
             this.label3.Name = "label3";
             this.label3.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
             this.label3.Size = new System.Drawing.Size(60, 32);
@@ -309,15 +311,16 @@ namespace POS.Forms
             this.dtpTo.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
             this.dtpTo.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.dtpTo.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.dtpTo.Location = new System.Drawing.Point(274, 4);
+            this.dtpTo.Location = new System.Drawing.Point(275, 10);
             this.dtpTo.Name = "dtpTo";
             this.dtpTo.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
             this.dtpTo.RightToLeftLayout = true;
-            this.dtpTo.Size = new System.Drawing.Size(265, 34);
+            this.dtpTo.Size = new System.Drawing.Size(264, 34);
             this.dtpTo.TabIndex = 6;
             // 
             // tableLayoutPanel1
             // 
+            this.tableLayoutPanel1.CellBorderStyle = System.Windows.Forms.TableLayoutPanelCellBorderStyle.Single;
             this.tableLayoutPanel1.ColumnCount = 5;
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 20F));
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 20F));
@@ -326,13 +329,14 @@ namespace POS.Forms
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 20F));
             this.tableLayoutPanel1.Controls.Add(this.btnPrint, 3, 0);
             this.tableLayoutPanel1.Controls.Add(this.btnReload, 2, 0);
+            this.tableLayoutPanel1.Controls.Add(this.btnDeleteAll, 1, 0);
             this.tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tableLayoutPanel1.Location = new System.Drawing.Point(0, 43);
+            this.tableLayoutPanel1.Location = new System.Drawing.Point(0, 55);
             this.tableLayoutPanel1.Margin = new System.Windows.Forms.Padding(0);
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
             this.tableLayoutPanel1.RowCount = 1;
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel1.Size = new System.Drawing.Size(1359, 43);
+            this.tableLayoutPanel1.Size = new System.Drawing.Size(1359, 55);
             this.tableLayoutPanel1.TabIndex = 1;
             // 
             // btnPrint
@@ -342,9 +346,9 @@ namespace POS.Forms
             this.btnPrint.Dock = System.Windows.Forms.DockStyle.Fill;
             this.btnPrint.FlatAppearance.BorderSize = 0;
             this.btnPrint.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnPrint.Location = new System.Drawing.Point(816, 3);
+            this.btnPrint.Location = new System.Drawing.Point(817, 4);
             this.btnPrint.Name = "btnPrint";
-            this.btnPrint.Size = new System.Drawing.Size(265, 37);
+            this.btnPrint.Size = new System.Drawing.Size(264, 47);
             this.btnPrint.TabIndex = 9;
             this.btnPrint.UseVisualStyleBackColor = true;
             this.btnPrint.Click += new System.EventHandler(this.btnPrint_Click);
@@ -356,9 +360,9 @@ namespace POS.Forms
             this.btnReload.Dock = System.Windows.Forms.DockStyle.Fill;
             this.btnReload.FlatAppearance.BorderSize = 0;
             this.btnReload.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnReload.Location = new System.Drawing.Point(545, 3);
+            this.btnReload.Location = new System.Drawing.Point(546, 4);
             this.btnReload.Name = "btnReload";
-            this.btnReload.Size = new System.Drawing.Size(265, 37);
+            this.btnReload.Size = new System.Drawing.Size(264, 47);
             this.btnReload.TabIndex = 10;
             this.btnReload.UseVisualStyleBackColor = true;
             this.btnReload.Click += new System.EventHandler(this.btnReload_Click);
@@ -371,13 +375,13 @@ namespace POS.Forms
             this.tableLayoutPanel4.Controls.Add(this.txtSearch, 0, 0);
             this.tableLayoutPanel4.Controls.Add(this.pictureBox2, 1, 0);
             this.tableLayoutPanel4.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tableLayoutPanel4.Location = new System.Drawing.Point(0, 86);
+            this.tableLayoutPanel4.Location = new System.Drawing.Point(0, 110);
             this.tableLayoutPanel4.Margin = new System.Windows.Forms.Padding(0);
             this.tableLayoutPanel4.Name = "tableLayoutPanel4";
             this.tableLayoutPanel4.RowCount = 1;
             this.tableLayoutPanel4.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.tableLayoutPanel4.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 44F));
-            this.tableLayoutPanel4.Size = new System.Drawing.Size(1359, 44);
+            this.tableLayoutPanel4.Size = new System.Drawing.Size(1359, 57);
             this.tableLayoutPanel4.TabIndex = 2;
             // 
             // txtSearch
@@ -385,7 +389,7 @@ namespace POS.Forms
             this.txtSearch.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
             this.txtSearch.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txtSearch.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtSearch.Location = new System.Drawing.Point(3, 3);
+            this.txtSearch.Location = new System.Drawing.Point(3, 8);
             this.txtSearch.Name = "txtSearch";
             this.txtSearch.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
             this.txtSearch.Size = new System.Drawing.Size(1146, 41);
@@ -399,9 +403,26 @@ namespace POS.Forms
             this.pictureBox2.Dock = System.Windows.Forms.DockStyle.Fill;
             this.pictureBox2.Location = new System.Drawing.Point(1155, 3);
             this.pictureBox2.Name = "pictureBox2";
-            this.pictureBox2.Size = new System.Drawing.Size(201, 38);
+            this.pictureBox2.Size = new System.Drawing.Size(201, 51);
             this.pictureBox2.TabIndex = 1;
             this.pictureBox2.TabStop = false;
+            // 
+            // btnDeleteAll
+            // 
+            this.btnDeleteAll.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.btnDeleteAll.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.btnDeleteAll.Font = new System.Drawing.Font("Microsoft Sans Serif", 17F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnDeleteAll.ForeColor = System.Drawing.Color.Red;
+            this.btnDeleteAll.Image = global::POS.Properties.Resources.delete2;
+            this.btnDeleteAll.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnDeleteAll.Location = new System.Drawing.Point(312, 4);
+            this.btnDeleteAll.Name = "btnDeleteAll";
+            this.btnDeleteAll.Size = new System.Drawing.Size(190, 47);
+            this.btnDeleteAll.TabIndex = 18;
+            this.btnDeleteAll.Text = "حذف الكل";
+            this.btnDeleteAll.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.btnDeleteAll.UseVisualStyleBackColor = true;
+            this.btnDeleteAll.Click += new System.EventHandler(this.btnDeleteAll_Click);
             // 
             // FormReportSupplierCashWithdraw
             // 
@@ -456,5 +477,6 @@ namespace POS.Forms
         private System.Windows.Forms.DataGridViewTextBoxColumn supplier;
         private System.Windows.Forms.DataGridViewTextBoxColumn id;
         private System.Windows.Forms.DataGridViewImageColumn del;
+        private System.Windows.Forms.Button btnDeleteAll;
     }
 }

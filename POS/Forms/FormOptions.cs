@@ -9,6 +9,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Data.SqlClient;
 using POS.Classes;
+using System.Drawing.Printing;
 
 namespace POS.Forms
 {
@@ -23,10 +24,31 @@ namespace POS.Forms
         private DataTable dataTable;
         private DataRow Row;
 
-        
+        string printerName = "";
+        //call to show printers name in combo
+        private void showPrinters()
+        {
+
+            for (int i = 0; i < PrinterSettings.InstalledPrinters.Count; i++)
+            {
+                printerName = PrinterSettings.InstalledPrinters[i];
+                cbxPrinter.Items.Add(printerName);
+            }
+
+            if (Properties.Settings.Default.PrinterName == "")
+                cbxPrinter.SelectedIndex = 0;
+            else
+                cbxPrinter.Text = Properties.Settings.Default.PrinterName;
+        }
 
         private void FormOptions_Load(object sender, EventArgs e)
         {
+            try
+            {
+                showPrinters();
+            }
+            catch (Exception) { }
+
             adapter = new SqlDataAdapter("Select Top 1 * From Options", adoClass.sqlcn);
             dataTable = new DataTable();
 
@@ -45,10 +67,10 @@ namespace POS.Forms
                         txtLine1.Text = dataTable.Rows[i]["line1"].ToString();
                         txtLine2.Text = dataTable.Rows[i]["line2"].ToString();
                         txtPass.Text = dataTable.Rows[i]["pass"].ToString();
-                        if (dataTable.Rows[i]["image"] != DBNull.Value)
-                        {
-                            picBox.BackgroundImage = Helper.ByteToImage(dataTable.Rows[i]["image"]);
-                        }
+                        //if (dataTable.Rows[i]["image"] != DBNull.Value)
+                        //{
+                        //    picBox.BackgroundImage = Helper.ByteToImage(dataTable.Rows[i]["image"]);
+                        //}
 
                         bool directPrintValue = false;
                         bool.TryParse(dataTable.Rows[i]["directPrint"].ToString(), out directPrintValue);
@@ -126,10 +148,10 @@ namespace POS.Forms
             Row["line1"] = txtLine1.Text;
             Row["line2"] = txtLine2.Text;
             Row["pass"] = txtPass.Text;
-            if (picBox.BackgroundImage != null)
-            {
-                Row["image"] = Helper.ImageTOByte(picBox.BackgroundImage);
-            }
+            //if (picBox.BackgroundImage != null)
+            //{
+            //    Row["image"] = Helper.ImageTOByte(picBox.BackgroundImage);
+            //}
             Row["directPrint"] = rdoDirectPrint.Checked.ToString();
             Row["showBeforePrint"] = rdoShowBeforePrint.Checked.ToString();
             Row["dontShow"] = rdoDontShow.Checked.ToString();
@@ -141,6 +163,16 @@ namespace POS.Forms
         {
             if (MessageBox.Show("حفظ البيانات", "?", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
             {
+                if (cbxPrinter.Text == "")
+                {
+                    MessageBox.Show("من فضلك تاكد من بيانات الطابعة", "تاكيد");
+                    return;
+                }
+
+
+                Properties.Settings.Default.PrinterName = cbxPrinter.Text;
+                Properties.Settings.Default.Save();
+
                 saveData();
                 ClassLoading loading = new ClassLoading();
                 loading.loadSystemOptions();
@@ -148,16 +180,16 @@ namespace POS.Forms
         }
 
 
-        private void btnChoose_Click(object sender, EventArgs e)
-        {
-            OpenFileDialog fileDialog = new OpenFileDialog();
-            //fileDialog.Filter = "Images|*.png";
-            if (fileDialog.ShowDialog() == DialogResult.OK)
-            {
-                txtImage.Text = fileDialog.FileName;
-                picBox.BackgroundImage = new Bitmap(txtImage.Text);
-            }
-        }
+        //private void btnChoose_Click(object sender, EventArgs e)
+        //{
+        //    OpenFileDialog fileDialog = new OpenFileDialog();
+        //    //fileDialog.Filter = "Images|*.png";
+        //    if (fileDialog.ShowDialog() == DialogResult.OK)
+        //    {
+        //        txtImage.Text = fileDialog.FileName;
+        //        picBox.BackgroundImage = new Bitmap(txtImage.Text);
+        //    }
+        //}
 
         
     }

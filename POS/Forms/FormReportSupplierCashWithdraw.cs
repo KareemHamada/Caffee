@@ -183,5 +183,19 @@ namespace POS.Forms
 
             }
         }
+
+        private void btnDeleteAll_Click(object sender, EventArgs e)
+        {
+            if (dgvLoading.Rows.Count > 0)
+            {
+                if (MessageBox.Show("هل متاكد من حذف الكل", "?", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+                {
+
+                    adoClass.executeData("delete from SupplierCashWithdraw DBCC CHECKIDENT (SupplierCashWithdraw,RESEED,0)", "تم الحذف بنجاح");
+
+                    loadTable("select SupplierCashWithdraw.id,Suppliers.name,SupplierCashWithdraw.operationType,SupplierCashWithdraw.money,SupplierCashWithdraw.dateTime from SupplierCashWithdraw LEFT JOIN Suppliers on SupplierCashWithdraw.supplierId = Suppliers.id");
+                }
+            }
+        }
     }
 }

@@ -210,6 +210,21 @@ namespace POS.Forms
             }
         }
 
+        private void btnDeleteAll_Click(object sender, EventArgs e)
+        {
+            if (dgvLoading.Rows.Count > 0)
+            {
+                if (MessageBox.Show("هل متاكد من حذف الكل", "?", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+                {
+                    adoClass.executeData("delete from storeOrderItems DBCC CHECKIDENT (storeOrderItems,RESEED,0)", "");
+                    
+                    adoClass.executeData("delete from Stores DBCC CHECKIDENT (Stores,RESEED,0)", "تم الحذف بنجاح");
+                    
+                    
+                    loadTable("select Stores.id,Stores.dateTime,Stores.total,Suppliers.name,Users.fullName from Stores LEFT JOIN Users on Stores.userId = Users.id LEFT JOIN Suppliers on Stores.supplierId = Suppliers.id");
+                }
+            }
+        }
     }
 }
 
