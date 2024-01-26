@@ -23,6 +23,7 @@ namespace POS.Forms
         private SqlCommand cmd;
         private TextBox txtHidden;
         private string storesId;
+        private Database db = new Database();
 
 
         private void FormAddStores_Load(object sender, EventArgs e)
@@ -147,20 +148,20 @@ namespace POS.Forms
                 cmd.Parameters.AddWithValue("@storeId", id);
                 cmd.Parameters.AddWithValue("@storeItemId", dgvItems[0, i].Value);
                 cmd.Parameters.AddWithValue("@price", dgvItems[1, i].Value);
-
-
-                if (dgvItems[2, i].Value.ToString() != "")
-                {
-                    cmd.Parameters.AddWithValue("@quantity", dgvItems[2, i].Value);
-                }
-                else
-                {
-                    cmd.Parameters.AddWithValue("@quantity", DBNull.Value);
-                }
-
+                cmd.Parameters.AddWithValue("@quantity", dgvItems[2, i].Value);
                 cmd.ExecuteNonQuery();
                 cmd.Parameters.Clear();
-                
+
+
+                // check if it has relation with item sale
+                DataTable tbl = new DataTable();
+                tbl.Clear();
+                tbl = db.readData("select * from ItemsStoreRelation where ItemStoreID=" + dgvItems[0, i].Value + "", "");
+                if(tbl.Rows.Count > 0)
+                {
+                    // add to store item qty
+                    db.readData("update storeItems set Qty+=" + dgvItems[2, i].Value + " where id = "+ dgvItems[0, i].Value + "", "");
+                }
             }
         }
 
@@ -172,9 +173,14 @@ namespace POS.Forms
                 return;
             }
 
-            if (txtPrice.Text == "")
+            if (txtPrice.Text == "" || txtPrice.Text == "0")
             {
                 MessageBox.Show("ادخل السعر");
+                return;
+            }
+            if (txtQuantity.Text == "" || txtQuantity.Text == "0")
+            {
+                MessageBox.Show("من فضلك ادخل كمية ");
                 return;
             }
 
@@ -258,7 +264,7 @@ namespace POS.Forms
                         reportParameters[0] = new ReportParameter("dateTime", DateTime.Now.ToString());
                         reportParameters[1] = new ReportParameter("supplier", comboSuppliers.Text);
 
-                        if (bool.Parse(declarations.systemOptions["directPrint"].ToString()))
+                        if (Properties.Settings.Default.DirectPrint)
                         {
                             LocalReport report = new LocalReport();
                             string path = Application.StartupPath + @"\Reports\ReportAddStore.rdlc";
@@ -266,9 +272,10 @@ namespace POS.Forms
                             report.DataSources.Clear();
                             report.DataSources.Add(new ReportDataSource("DataSet1", storeItems.Tables["dtAddStore"]));
                             report.SetParameters(reportParameters);
-                            PrintersClass.PrintToPrinter(report);
+                            PrintersClass pC = new PrintersClass(Properties.Settings.Default.PrinterName);
+                            pC.PrintToPrinter(report);
                         }
-                        else if (bool.Parse(declarations.systemOptions["showBeforePrint"].ToString()))
+                        else if (Properties.Settings.Default.ShowBeforePrint)
                         {
                             rptForm.mainReport.LocalReport.SetParameters(reportParameters);
                             rptForm.ShowDialog();

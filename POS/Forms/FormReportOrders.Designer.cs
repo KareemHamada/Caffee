@@ -441,6 +441,7 @@ namespace POS.Forms
             this.btnDeleteAll.Text = "حذف الكل";
             this.btnDeleteAll.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.btnDeleteAll.UseVisualStyleBackColor = true;
+            this.btnDeleteAll.Visible = false;
             this.btnDeleteAll.Click += new System.EventHandler(this.btnDeleteAll_Click);
             // 
             // tableLayoutPanel1

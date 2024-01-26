@@ -58,5 +58,113 @@ namespace POS.Properties {
                 this["PrinterName"] = value;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("False")]
+        public bool ShowBeforePrint {
+            get {
+                return ((bool)(this["ShowBeforePrint"]));
+            }
+            set {
+                this["ShowBeforePrint"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("True")]
+        public bool DirectPrint {
+            get {
+                return ((bool)(this["DirectPrint"]));
+            }
+            set {
+                this["DirectPrint"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("False")]
+        public bool NotPrint {
+            get {
+                return ((bool)(this["NotPrint"]));
+            }
+            set {
+                this["NotPrint"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("1")]
+        public int FatoraNumber {
+            get {
+                return ((int)(this["FatoraNumber"]));
+            }
+            set {
+                this["FatoraNumber"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("1")]
+        public int KitchenNumber {
+            get {
+                return ((int)(this["KitchenNumber"]));
+            }
+            set {
+                this["KitchenNumber"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("")]
+        public string KitchenPrinter {
+            get {
+                return ((string)(this["KitchenPrinter"]));
+            }
+            set {
+                this["KitchenPrinter"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("")]
+        public string PasswordLockWardia {
+            get {
+                return ((string)(this["PasswordLockWardia"]));
+            }
+            set {
+                this["PasswordLockWardia"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("False")]
+        public bool PrintKitchen {
+            get {
+                return ((bool)(this["PrintKitchen"]));
+            }
+            set {
+                this["PrintKitchen"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("False")]
+        public bool PrintFatoraToKitchen {
+            get {
+                return ((bool)(this["PrintFatoraToKitchen"]));
+            }
+            set {
+                this["PrintFatoraToKitchen"] = value;
+            }
+        }
     }
 }

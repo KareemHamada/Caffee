@@ -18,7 +18,8 @@ namespace POS.Forms
         {
             InitializeComponent();
         }
-
+        Database db = new Database();
+        DataTable tbl = new DataTable();
         private SqlCommand cmd;
         private TextBox txtHidden;
         //Database db = new Database();
@@ -120,6 +121,19 @@ namespace POS.Forms
                 MessageBox.Show("حدد الصلاحية");
                 return;
             }
+            ////////////////////
+            DataTable tblCheckIfExist = new DataTable();
+            tblCheckIfExist.Clear();
+            tblCheckIfExist = db.readData("select * from Users where userName=N'" + txtUserName.Text + "' and password=N'" + txtPassword.Text + "'", "");
+            if (tblCheckIfExist.Rows.Count > 0)
+            {
+                MessageBox.Show("اسم المستخدم و كلمة السر تم اختيارهم من قبل");
+                return;
+            }
+
+
+
+            ///////////////////////////////////////////
             try
             {
                 cmd = new SqlCommand("Insert into Users (userName,password,fullName,privilege,phone,address) values (@userName,@password,@fullName,@privilege,@phone,@address)", adoClass.sqlcn);
@@ -248,14 +262,6 @@ namespace POS.Forms
                     try
                     {
                         adoClass.executeData("delete from Users Where id = '" + txtHidden.Text + "'", "تم الحذف بنجاح");
-                        //cmd = new SqlCommand("delete from Users Where id = '" + txtHidden.Text + "'", adoClass.sqlcn);
-
-                        //if (adoClass.sqlcn.State != ConnectionState.Open)
-                        //{
-                        //    adoClass.sqlcn.Open();
-                        //}
-
-                        //cmd.ExecuteNonQuery();
 
                         DataTable tblUser = new DataTable();
                         tblUser = adoClass.readData("select * from Users where privilege = 'Admin'", "");
@@ -269,11 +275,6 @@ namespace POS.Forms
                     {
                         MessageBox.Show("خطا في الحذف");
                     }
-                    //finally
-                    //{
-                    //    adoClass.sqlcn.Close();
-                    //}
-
                     loadTable("Select * from Users");
 
                     txtUserName.Text = "";

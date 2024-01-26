@@ -41,6 +41,16 @@ namespace POS.Forms
             frm.Show();
         }
 
-        
+        private void btnRelation_Click(object sender, EventArgs e)
+        {
+            Frm_StoreRelation frm = new Frm_StoreRelation();
+            frm.Show();
+        }
+
+        private void btnItemsLowQty_Click(object sender, EventArgs e)
+        {
+            Frm_StoreItemsLowQty frm = new Frm_StoreItemsLowQty();
+            frm.Show();
+        }
     }
 }

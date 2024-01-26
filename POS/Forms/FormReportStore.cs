@@ -21,6 +21,7 @@ namespace POS.Forms
             InitializeComponent();
         }
         private SqlCommand cmd;
+        Database db = new Database();
         private void FormReportStore_Load(object sender, EventArgs e)
         {
             loadTable("select Stores.id,Stores.dateTime,Stores.total,Suppliers.name,Users.fullName from Stores LEFT JOIN Users on Stores.userId = Users.id LEFT JOIN Suppliers on Stores.supplierId = Suppliers.id");
@@ -108,7 +109,7 @@ namespace POS.Forms
                 reportParameters[1] = new ReportParameter("To", dgvLoading[2, dgvLoading.Rows.Count - 1].Value.ToString());
 
 
-                if (bool.Parse(declarations.systemOptions["directPrint"].ToString()))
+                if (Properties.Settings.Default.DirectPrint)
                 {
                     LocalReport report = new LocalReport();
                     string path = Application.StartupPath + @"\Reports\ReportStoreOrders.rdlc";
@@ -116,9 +117,10 @@ namespace POS.Forms
                     report.DataSources.Clear();
                     report.DataSources.Add(new ReportDataSource("DataSet1", storeOrders.Tables["dtStoreOrders"]));
                     report.SetParameters(reportParameters);
-                    PrintersClass.PrintToPrinter(report);
+                    PrintersClass pC = new PrintersClass(Properties.Settings.Default.PrinterName);
+                    pC.PrintToPrinter(report);
                 }
-                else if (bool.Parse(declarations.systemOptions["showBeforePrint"].ToString()))
+                else if (Properties.Settings.Default.ShowBeforePrint)
                 {
                     rptForm.mainReport.LocalReport.SetParameters(reportParameters);
                     rptForm.ShowDialog();
@@ -153,32 +155,34 @@ namespace POS.Forms
                     string storeId = dgvLoading.CurrentRow.Cells[5].Value.ToString();
                     if (MessageBox.Show("هل تريد حذف الفاتورة", "?", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
                     {
-                        try
+
+
+                        DataTable tblCheck = new DataTable();
+                        tblCheck.Clear();
+                        tblCheck = db.readData("select * from storeOrderItems where storeId = '" + storeId + "'", "");
+                        if(tblCheck.Rows.Count > 0)
                         {
-                            if (adoClass.sqlcn.State != ConnectionState.Open)
+                            for(int x = 0; x < tblCheck.Rows.Count; x++)
                             {
-                                adoClass.sqlcn.Open();
+                                DataTable tbl = new DataTable();
+                                tbl.Clear();
+                                tbl = db.readData("select * from ItemsStoreRelation where ItemStoreID=" + tblCheck.Rows[x][3] + "", "");
+                                if (tbl.Rows.Count > 0)
+                                {
+                                    // add to store item qty
+                                    db.readData("update storeItems set Qty-=" + tblCheck.Rows[x][2] + " where id = " + tblCheck.Rows[x][3] + "", "");
+                                }
                             }
-
-                            cmd = new SqlCommand("delete from storeOrderItems where storeId = '" + storeId + "'", adoClass.sqlcn);
-                            cmd.ExecuteNonQuery();
-
-                            cmd = new SqlCommand("delete from Stores where id = '" + storeId + "'", adoClass.sqlcn);
-                            cmd.ExecuteNonQuery();
-
-                            MessageBox.Show("تم الحذف بنجاح");
-
-                            loadTable("select Stores.id,Stores.dateTime,Stores.total,Suppliers.name,Users.fullName from Stores LEFT JOIN Users on Stores.userId = Users.id LEFT JOIN Suppliers on Stores.supplierId = Suppliers.id");
-
+                            
                         }
-                        catch (Exception ex)
-                        {
-                            MessageBox.Show(ex.Message);
-                        }
-                        finally
-                        {
-                            adoClass.sqlcn.Close();
-                        }
+
+                        db.readData("update storeItems set Qty=0 where Qty < 0", "");
+
+                        db.executeData("delete from storeOrderItems where storeId = '" + storeId + "'", "", "");
+                        db.executeData("delete from Stores where id = '" + storeId + "'", "تم الحذف بنجاح", "");
+
+
+                        loadTable("select Stores.id,Stores.dateTime,Stores.total,Suppliers.name,Users.fullName from Stores LEFT JOIN Users on Stores.userId = Users.id LEFT JOIN Suppliers on Stores.supplierId = Suppliers.id");
 
                     }
 

@@ -38,6 +38,17 @@ namespace POS.Forms
             this.dataGridViewImageColumn3 = new System.Windows.Forms.DataGridViewImageColumn();
             this.pnlParent = new System.Windows.Forms.TableLayoutPanel();
             this.dgvLoading = new System.Windows.Forms.DataGridView();
+            this.itemstable = new System.Windows.Forms.DataGridViewImageColumn();
+            this.expensesItems = new System.Windows.Forms.DataGridViewImageColumn();
+            this.shiftOrders = new System.Windows.Forms.DataGridViewImageColumn();
+            this.total = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.expenses = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.wared = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dateTimeEnd = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dateTimeStart = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.user = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.id = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column1 = new System.Windows.Forms.DataGridViewImageColumn();
             this.panel2 = new System.Windows.Forms.Panel();
             this.label2 = new System.Windows.Forms.Label();
             this.btnClose = new System.Windows.Forms.Button();
@@ -57,17 +68,6 @@ namespace POS.Forms
             this.tableLayoutPanel4 = new System.Windows.Forms.TableLayoutPanel();
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
             this.txtSearch = new System.Windows.Forms.TextBox();
-            this.itemstable = new System.Windows.Forms.DataGridViewImageColumn();
-            this.expensesItems = new System.Windows.Forms.DataGridViewImageColumn();
-            this.shiftOrders = new System.Windows.Forms.DataGridViewImageColumn();
-            this.total = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.expenses = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.wared = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dateTimeEnd = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dateTimeStart = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.user = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.id = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column1 = new System.Windows.Forms.DataGridViewImageColumn();
             this.pnlParent.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvLoading)).BeginInit();
             this.panel2.SuspendLayout();
@@ -177,6 +177,106 @@ namespace POS.Forms
             this.dgvLoading.Size = new System.Drawing.Size(1461, 505);
             this.dgvLoading.TabIndex = 20;
             this.dgvLoading.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvLoading_CellDoubleClick);
+            // 
+            // itemstable
+            // 
+            this.itemstable.FillWeight = 50F;
+            this.itemstable.HeaderText = "العناصر المباعة";
+            this.itemstable.Image = global::POS.Properties.Resources.dgv;
+            this.itemstable.MinimumWidth = 6;
+            this.itemstable.Name = "itemstable";
+            this.itemstable.ReadOnly = true;
+            // 
+            // expensesItems
+            // 
+            this.expensesItems.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.expensesItems.FillWeight = 50F;
+            this.expensesItems.HeaderText = "عناصر المصروفات";
+            this.expensesItems.Image = global::POS.Properties.Resources.expenses;
+            this.expensesItems.MinimumWidth = 6;
+            this.expensesItems.Name = "expensesItems";
+            this.expensesItems.ReadOnly = true;
+            this.expensesItems.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.expensesItems.Width = 204;
+            // 
+            // shiftOrders
+            // 
+            this.shiftOrders.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.shiftOrders.FillWeight = 50F;
+            this.shiftOrders.HeaderText = "فواتير الوردية";
+            this.shiftOrders.Image = global::POS.Properties.Resources.dgv;
+            this.shiftOrders.MinimumWidth = 6;
+            this.shiftOrders.Name = "shiftOrders";
+            this.shiftOrders.ReadOnly = true;
+            this.shiftOrders.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.shiftOrders.Width = 150;
+            // 
+            // total
+            // 
+            this.total.HeaderText = "الاجمالي";
+            this.total.MinimumWidth = 6;
+            this.total.Name = "total";
+            this.total.ReadOnly = true;
+            this.total.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            // 
+            // expenses
+            // 
+            this.expenses.HeaderText = "مصروفات";
+            this.expenses.MinimumWidth = 6;
+            this.expenses.Name = "expenses";
+            this.expenses.ReadOnly = true;
+            this.expenses.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            // 
+            // wared
+            // 
+            this.wared.HeaderText = "الوارد";
+            this.wared.MinimumWidth = 6;
+            this.wared.Name = "wared";
+            this.wared.ReadOnly = true;
+            this.wared.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            // 
+            // dateTimeEnd
+            // 
+            this.dateTimeEnd.HeaderText = "تاريخ النهاية";
+            this.dateTimeEnd.MinimumWidth = 6;
+            this.dateTimeEnd.Name = "dateTimeEnd";
+            this.dateTimeEnd.ReadOnly = true;
+            this.dateTimeEnd.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            // 
+            // dateTimeStart
+            // 
+            this.dateTimeStart.HeaderText = "تاريخ البداية";
+            this.dateTimeStart.MinimumWidth = 6;
+            this.dateTimeStart.Name = "dateTimeStart";
+            this.dateTimeStart.ReadOnly = true;
+            this.dateTimeStart.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            // 
+            // user
+            // 
+            this.user.HeaderText = "المستخدم";
+            this.user.MinimumWidth = 6;
+            this.user.Name = "user";
+            this.user.ReadOnly = true;
+            this.user.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            // 
+            // id
+            // 
+            this.id.HeaderText = "رقم الوردية";
+            this.id.MinimumWidth = 6;
+            this.id.Name = "id";
+            this.id.ReadOnly = true;
+            this.id.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            // 
+            // Column1
+            // 
+            this.Column1.FillWeight = 50F;
+            this.Column1.HeaderText = "حذف وردية";
+            this.Column1.Image = global::POS.Properties.Resources.delete;
+            this.Column1.MinimumWidth = 6;
+            this.Column1.Name = "Column1";
+            this.Column1.ReadOnly = true;
+            this.Column1.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.Column1.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
             // 
             // panel2
             // 
@@ -412,6 +512,7 @@ namespace POS.Forms
             this.btnDeleteAll.Text = "حذف الكل";
             this.btnDeleteAll.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.btnDeleteAll.UseVisualStyleBackColor = true;
+            this.btnDeleteAll.Visible = false;
             this.btnDeleteAll.Click += new System.EventHandler(this.btnDeleteAll_Click);
             // 
             // tableLayoutPanel4
@@ -454,106 +555,6 @@ namespace POS.Forms
             this.txtSearch.Size = new System.Drawing.Size(1235, 49);
             this.txtSearch.TabIndex = 2;
             this.txtSearch.TextChanged += new System.EventHandler(this.txtSearch_TextChanged);
-            // 
-            // itemstable
-            // 
-            this.itemstable.FillWeight = 50F;
-            this.itemstable.HeaderText = "العناصر المباعة";
-            this.itemstable.Image = global::POS.Properties.Resources.dgv;
-            this.itemstable.MinimumWidth = 6;
-            this.itemstable.Name = "itemstable";
-            this.itemstable.ReadOnly = true;
-            // 
-            // expensesItems
-            // 
-            this.expensesItems.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
-            this.expensesItems.FillWeight = 50F;
-            this.expensesItems.HeaderText = "عناصر المصروفات";
-            this.expensesItems.Image = global::POS.Properties.Resources.expenses;
-            this.expensesItems.MinimumWidth = 6;
-            this.expensesItems.Name = "expensesItems";
-            this.expensesItems.ReadOnly = true;
-            this.expensesItems.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.expensesItems.Width = 204;
-            // 
-            // shiftOrders
-            // 
-            this.shiftOrders.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
-            this.shiftOrders.FillWeight = 50F;
-            this.shiftOrders.HeaderText = "فواتير الوردية";
-            this.shiftOrders.Image = global::POS.Properties.Resources.dgv;
-            this.shiftOrders.MinimumWidth = 6;
-            this.shiftOrders.Name = "shiftOrders";
-            this.shiftOrders.ReadOnly = true;
-            this.shiftOrders.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.shiftOrders.Width = 150;
-            // 
-            // total
-            // 
-            this.total.HeaderText = "الاجمالي";
-            this.total.MinimumWidth = 6;
-            this.total.Name = "total";
-            this.total.ReadOnly = true;
-            this.total.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
-            // 
-            // expenses
-            // 
-            this.expenses.HeaderText = "مصروفات";
-            this.expenses.MinimumWidth = 6;
-            this.expenses.Name = "expenses";
-            this.expenses.ReadOnly = true;
-            this.expenses.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
-            // 
-            // wared
-            // 
-            this.wared.HeaderText = "الوارد";
-            this.wared.MinimumWidth = 6;
-            this.wared.Name = "wared";
-            this.wared.ReadOnly = true;
-            this.wared.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
-            // 
-            // dateTimeEnd
-            // 
-            this.dateTimeEnd.HeaderText = "تاريخ النهاية";
-            this.dateTimeEnd.MinimumWidth = 6;
-            this.dateTimeEnd.Name = "dateTimeEnd";
-            this.dateTimeEnd.ReadOnly = true;
-            this.dateTimeEnd.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
-            // 
-            // dateTimeStart
-            // 
-            this.dateTimeStart.HeaderText = "تاريخ البداية";
-            this.dateTimeStart.MinimumWidth = 6;
-            this.dateTimeStart.Name = "dateTimeStart";
-            this.dateTimeStart.ReadOnly = true;
-            this.dateTimeStart.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
-            // 
-            // user
-            // 
-            this.user.HeaderText = "المستخدم";
-            this.user.MinimumWidth = 6;
-            this.user.Name = "user";
-            this.user.ReadOnly = true;
-            this.user.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
-            // 
-            // id
-            // 
-            this.id.HeaderText = "رقم الوردية";
-            this.id.MinimumWidth = 6;
-            this.id.Name = "id";
-            this.id.ReadOnly = true;
-            this.id.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
-            // 
-            // Column1
-            // 
-            this.Column1.FillWeight = 50F;
-            this.Column1.HeaderText = "حذف وردية";
-            this.Column1.Image = global::POS.Properties.Resources.delete;
-            this.Column1.MinimumWidth = 6;
-            this.Column1.Name = "Column1";
-            this.Column1.ReadOnly = true;
-            this.Column1.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.Column1.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
             // 
             // FormReportShifts
             // 

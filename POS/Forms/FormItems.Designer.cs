@@ -49,6 +49,7 @@ namespace POS.Forms
             this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
             this.btnClose = new System.Windows.Forms.ToolStripButton();
             this.btnPrint = new System.Windows.Forms.ToolStripButton();
+            this.btnDeleteAll = new System.Windows.Forms.ToolStripButton();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
             this.txtSearch = new System.Windows.Forms.TextBox();
@@ -70,7 +71,6 @@ namespace POS.Forms
             this.checkPrice = new System.Windows.Forms.CheckBox();
             this.txtImage = new System.Windows.Forms.TextBox();
             this.btnRemoveImage = new System.Windows.Forms.Button();
-            this.btnDeleteAll = new System.Windows.Forms.ToolStripButton();
             this.parient.SuspendLayout();
             this.tableLayoutPanel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvItems)).BeginInit();
@@ -294,6 +294,20 @@ namespace POS.Forms
             this.btnPrint.Text = "طباعة";
             this.btnPrint.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
             this.btnPrint.Click += new System.EventHandler(this.btnPrint_Click);
+            // 
+            // btnDeleteAll
+            // 
+            this.btnDeleteAll.Alignment = System.Windows.Forms.ToolStripItemAlignment.Right;
+            this.btnDeleteAll.Font = new System.Drawing.Font("Segoe UI", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnDeleteAll.ForeColor = System.Drawing.Color.Red;
+            this.btnDeleteAll.Image = ((System.Drawing.Image)(resources.GetObject("btnDeleteAll.Image")));
+            this.btnDeleteAll.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.btnDeleteAll.Name = "btnDeleteAll";
+            this.btnDeleteAll.Size = new System.Drawing.Size(118, 91);
+            this.btnDeleteAll.Text = "حذف الكل";
+            this.btnDeleteAll.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
+            this.btnDeleteAll.Visible = false;
+            this.btnDeleteAll.Click += new System.EventHandler(this.btnDeleteAll_Click);
             // 
             // tableLayoutPanel1
             // 
@@ -580,19 +594,6 @@ namespace POS.Forms
             this.btnRemoveImage.TabIndex = 29;
             this.btnRemoveImage.UseVisualStyleBackColor = false;
             this.btnRemoveImage.Click += new System.EventHandler(this.btnRemoveImage_Click);
-            // 
-            // btnDeleteAll
-            // 
-            this.btnDeleteAll.Alignment = System.Windows.Forms.ToolStripItemAlignment.Right;
-            this.btnDeleteAll.Font = new System.Drawing.Font("Segoe UI", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnDeleteAll.ForeColor = System.Drawing.Color.Red;
-            this.btnDeleteAll.Image = ((System.Drawing.Image)(resources.GetObject("btnDeleteAll.Image")));
-            this.btnDeleteAll.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.btnDeleteAll.Name = "btnDeleteAll";
-            this.btnDeleteAll.Size = new System.Drawing.Size(118, 91);
-            this.btnDeleteAll.Text = "حذف الكل";
-            this.btnDeleteAll.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
-            this.btnDeleteAll.Click += new System.EventHandler(this.btnDeleteAll_Click);
             // 
             // FormItems
             // 

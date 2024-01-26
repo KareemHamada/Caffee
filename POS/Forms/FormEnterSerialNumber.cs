@@ -72,5 +72,10 @@ namespace POS.Forms
                 Application.Exit();
             }
         }
+
+        private void FormEnterSerialNumber_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }

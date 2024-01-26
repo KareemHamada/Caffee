@@ -108,7 +108,9 @@ namespace POS.Forms
 
         private void btnOptions_Click(object sender, EventArgs e)
         {
-            OpenChildForm(new FormOptions(), sender);
+            //OpenChildForm(new FormOptions(), sender);
+            frm_Settings frm = new frm_Settings();
+            frm.Show();
         }
 
         private void btnStore_Click(object sender, EventArgs e)

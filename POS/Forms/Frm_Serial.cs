@@ -49,7 +49,8 @@ namespace POS.Forms
             string signature = identifier("Win32_DiskDrive", "Signature");
             lbl2.Text = signature;
             lbl1.Text = serial;
-            x = (Convert.ToDecimal(signature) * 12345 - 3).ToString();
+            x = (((Convert.ToDecimal(signature) * 12345 - 3) * 21 - 9) * 2000).ToString();
+
         }
 
         private void btnSave_Click(object sender, EventArgs e)
@@ -62,7 +63,7 @@ namespace POS.Forms
 
             if(txtBox.Text == x)
             {
-                Properties.Settings.Default.Product_Key = "YES";
+                Properties.Settings.Default.Product_Key = x;
                 Properties.Settings.Default.Save();
 
                 MessageBox.Show("تم تفعيل البرنامج بنجاح", "تاكيد");

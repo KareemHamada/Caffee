@@ -31,7 +31,6 @@ namespace POS.Forms
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormOptions));
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.label1 = new System.Windows.Forms.Label();
             this.txtPlace = new System.Windows.Forms.TextBox();
             this.label6 = new System.Windows.Forms.Label();
@@ -45,14 +44,15 @@ namespace POS.Forms
             this.label9 = new System.Windows.Forms.Label();
             this.txtPass = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
-            this.chBoxTable = new System.Windows.Forms.CheckBox();
-            this.label3 = new System.Windows.Forms.Label();
-            this.rdoDirectPrint = new System.Windows.Forms.RadioButton();
-            this.rdoShowBeforePrint = new System.Windows.Forms.RadioButton();
             this.rdoDontShow = new System.Windows.Forms.RadioButton();
-            this.btnSave = new System.Windows.Forms.Button();
-            this.cbxPrinter = new System.Windows.Forms.ComboBox();
             this.label8 = new System.Windows.Forms.Label();
+            this.cbxPrinter = new System.Windows.Forms.ComboBox();
+            this.rdoShowBeforePrint = new System.Windows.Forms.RadioButton();
+            this.rdoDirectPrint = new System.Windows.Forms.RadioButton();
+            this.label3 = new System.Windows.Forms.Label();
+            this.chBoxTable = new System.Windows.Forms.CheckBox();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.btnSave = new System.Windows.Forms.Button();
             this.tableLayoutPanel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
@@ -105,17 +105,6 @@ namespace POS.Forms
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
             this.tableLayoutPanel1.Size = new System.Drawing.Size(1521, 700);
             this.tableLayoutPanel1.TabIndex = 3;
-            // 
-            // pictureBox1
-            // 
-            this.pictureBox1.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("pictureBox1.BackgroundImage")));
-            this.pictureBox1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.pictureBox1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.pictureBox1.Location = new System.Drawing.Point(1176, 4);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(341, 54);
-            this.pictureBox1.TabIndex = 20;
-            this.pictureBox1.TabStop = false;
             // 
             // label1
             // 
@@ -279,44 +268,45 @@ namespace POS.Forms
             this.label2.Text = "الاعدادات";
             this.label2.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
-            // chBoxTable
+            // rdoDontShow
             // 
-            this.chBoxTable.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.chBoxTable.AutoSize = true;
-            this.chBoxTable.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.chBoxTable.Location = new System.Drawing.Point(1246, 432);
-            this.chBoxTable.Name = "chBoxTable";
-            this.chBoxTable.Size = new System.Drawing.Size(201, 40);
-            this.chBoxTable.TabIndex = 48;
-            this.chBoxTable.Text = "طباعة بعد الصالة";
-            this.chBoxTable.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            this.chBoxTable.UseVisualStyleBackColor = true;
+            this.rdoDontShow.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.rdoDontShow.AutoSize = true;
+            this.rdoDontShow.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.rdoDontShow.Location = new System.Drawing.Point(115, 339);
+            this.rdoDontShow.Name = "rdoDontShow";
+            this.rdoDontShow.Size = new System.Drawing.Size(150, 40);
+            this.rdoDontShow.TabIndex = 46;
+            this.rdoDontShow.TabStop = true;
+            this.rdoDontShow.Text = "عدم الطباعة";
+            this.rdoDontShow.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.rdoDontShow.UseVisualStyleBackColor = true;
             // 
-            // label3
+            // label8
             // 
-            this.label3.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.label3.AutoSize = true;
-            this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.Location = new System.Drawing.Point(1306, 341);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(81, 36);
-            this.label3.TabIndex = 47;
-            this.label3.Text = "الطابعة";
-            this.label3.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.label8.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.label8.AutoSize = true;
+            this.label8.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label8.ForeColor = System.Drawing.Color.Black;
+            this.label8.Location = new System.Drawing.Point(1193, 250);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(306, 58);
+            this.label8.TabIndex = 50;
+            this.label8.Text = "اختر طابعة لكى تكون هى الطابعة الرئيسية للبرنامج";
+            this.label8.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
-            // rdoDirectPrint
+            // cbxPrinter
             // 
-            this.rdoDirectPrint.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.rdoDirectPrint.AutoSize = true;
-            this.rdoDirectPrint.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.rdoDirectPrint.Location = new System.Drawing.Point(883, 339);
-            this.rdoDirectPrint.Name = "rdoDirectPrint";
-            this.rdoDirectPrint.Size = new System.Drawing.Size(167, 40);
-            this.rdoDirectPrint.TabIndex = 44;
-            this.rdoDirectPrint.TabStop = true;
-            this.rdoDirectPrint.Text = "طباعة مباشرة";
-            this.rdoDirectPrint.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            this.rdoDirectPrint.UseVisualStyleBackColor = true;
+            this.cbxPrinter.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+            this.cbxPrinter.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
+            this.cbxPrinter.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
+            this.cbxPrinter.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cbxPrinter.Font = new System.Drawing.Font("Microsoft Sans Serif", 17F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cbxPrinter.FormattingEnabled = true;
+            this.cbxPrinter.Location = new System.Drawing.Point(764, 258);
+            this.cbxPrinter.Name = "cbxPrinter";
+            this.cbxPrinter.Size = new System.Drawing.Size(405, 40);
+            this.cbxPrinter.TabIndex = 49;
             // 
             // rdoShowBeforePrint
             // 
@@ -332,19 +322,55 @@ namespace POS.Forms
             this.rdoShowBeforePrint.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.rdoShowBeforePrint.UseVisualStyleBackColor = true;
             // 
-            // rdoDontShow
+            // rdoDirectPrint
             // 
-            this.rdoDontShow.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.rdoDontShow.AutoSize = true;
-            this.rdoDontShow.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.rdoDontShow.Location = new System.Drawing.Point(115, 339);
-            this.rdoDontShow.Name = "rdoDontShow";
-            this.rdoDontShow.Size = new System.Drawing.Size(150, 40);
-            this.rdoDontShow.TabIndex = 46;
-            this.rdoDontShow.TabStop = true;
-            this.rdoDontShow.Text = "عدم الطباعة";
-            this.rdoDontShow.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            this.rdoDontShow.UseVisualStyleBackColor = true;
+            this.rdoDirectPrint.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.rdoDirectPrint.AutoSize = true;
+            this.rdoDirectPrint.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.rdoDirectPrint.Location = new System.Drawing.Point(883, 339);
+            this.rdoDirectPrint.Name = "rdoDirectPrint";
+            this.rdoDirectPrint.Size = new System.Drawing.Size(167, 40);
+            this.rdoDirectPrint.TabIndex = 44;
+            this.rdoDirectPrint.TabStop = true;
+            this.rdoDirectPrint.Text = "طباعة مباشرة";
+            this.rdoDirectPrint.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.rdoDirectPrint.UseVisualStyleBackColor = true;
+            // 
+            // label3
+            // 
+            this.label3.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.label3.AutoSize = true;
+            this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label3.Location = new System.Drawing.Point(1306, 341);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(81, 36);
+            this.label3.TabIndex = 47;
+            this.label3.Text = "الطابعة";
+            this.label3.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // chBoxTable
+            // 
+            this.chBoxTable.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.chBoxTable.AutoSize = true;
+            this.chBoxTable.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.chBoxTable.Location = new System.Drawing.Point(1246, 432);
+            this.chBoxTable.Name = "chBoxTable";
+            this.chBoxTable.Size = new System.Drawing.Size(201, 40);
+            this.chBoxTable.TabIndex = 48;
+            this.chBoxTable.Text = "طباعة بعد الصالة";
+            this.chBoxTable.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.chBoxTable.UseVisualStyleBackColor = true;
+            // 
+            // pictureBox1
+            // 
+            this.pictureBox1.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("pictureBox1.BackgroundImage")));
+            this.pictureBox1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.pictureBox1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.pictureBox1.Location = new System.Drawing.Point(1176, 4);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(341, 54);
+            this.pictureBox1.TabIndex = 20;
+            this.pictureBox1.TabStop = false;
             // 
             // btnSave
             // 
@@ -363,31 +389,6 @@ namespace POS.Forms
             this.btnSave.Text = "حفظ البيانات";
             this.btnSave.UseVisualStyleBackColor = false;
             this.btnSave.Click += new System.EventHandler(this.btnSave_Click);
-            // 
-            // cbxPrinter
-            // 
-            this.cbxPrinter.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-            this.cbxPrinter.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
-            this.cbxPrinter.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
-            this.cbxPrinter.Font = new System.Drawing.Font("Microsoft Sans Serif", 17F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.cbxPrinter.FormattingEnabled = true;
-            this.cbxPrinter.Location = new System.Drawing.Point(764, 259);
-            this.cbxPrinter.Name = "cbxPrinter";
-            this.cbxPrinter.Size = new System.Drawing.Size(405, 40);
-            this.cbxPrinter.TabIndex = 49;
-            // 
-            // label8
-            // 
-            this.label8.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.label8.AutoSize = true;
-            this.label8.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label8.ForeColor = System.Drawing.Color.Black;
-            this.label8.Location = new System.Drawing.Point(1193, 250);
-            this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(306, 58);
-            this.label8.TabIndex = 50;
-            this.label8.Text = "اختر طابعة لكى تكون هى الطابعة الرئيسية للبرنامج";
-            this.label8.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // FormOptions
             // 

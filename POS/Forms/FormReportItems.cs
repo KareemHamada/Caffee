@@ -132,16 +132,17 @@ namespace POS.Forms
                     rptForm.mainReport.LocalReport.DataSources.Add(new ReportDataSource("DataSet1", items.Tables["dtItems"]));
 
 
-                    if (bool.Parse(declarations.systemOptions["directPrint"].ToString()))
+                    if (Properties.Settings.Default.DirectPrint)
                     {
                         LocalReport report = new LocalReport();
                         string path = Application.StartupPath + @"\Reports\ReportItems.rdlc";
                         report.ReportPath = path;
                         report.DataSources.Clear();
                         report.DataSources.Add(new ReportDataSource("DataSet1", items.Tables["dtItems"]));
-                        PrintersClass.PrintToPrinter(report);
+                        PrintersClass pC = new PrintersClass(Properties.Settings.Default.PrinterName);
+                        pC.PrintToPrinter(report);
                     }
-                    else if (bool.Parse(declarations.systemOptions["showBeforePrint"].ToString()))
+                    else if (Properties.Settings.Default.ShowBeforePrint)
                     {
                         rptForm.ShowDialog();
                     }

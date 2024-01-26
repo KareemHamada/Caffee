@@ -110,7 +110,7 @@ namespace POS.Forms
                 rdr = cmd.ExecuteReader();
                 while (rdr.Read())
                 {
-                    if (rdr.GetString(0) == "POS")
+                    if (rdr.GetString(0) == "Lojy")
                     {
                         return true;
                         break;
@@ -137,7 +137,7 @@ namespace POS.Forms
             {
                 try
                 {
-                    var fileContent = File.ReadAllText(Application.StartupPath + @"\sqlScript.sql");
+                    var fileContent = File.ReadAllText(Application.StartupPath + @"\Lojy.sql");
                     var sqlqueries = fileContent.Split(new[] { "GO" }, StringSplitOptions.RemoveEmptyEntries);
 
                     var con = new SqlConnection(@"Data Source=.\SQLEXPRESS;Integrated Security=True");

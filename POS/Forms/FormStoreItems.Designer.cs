@@ -37,15 +37,14 @@ namespace POS.Forms
             this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
             this.toolStrip1 = new System.Windows.Forms.ToolStrip();
             this.btnAdd = new System.Windows.Forms.ToolStripButton();
+            this.btnNew = new System.Windows.Forms.ToolStripButton();
             this.btnUpdate = new System.Windows.Forms.ToolStripButton();
             this.btnDelete = new System.Windows.Forms.ToolStripButton();
             this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
             this.btnClose = new System.Windows.Forms.ToolStripButton();
             this.btnPrint = new System.Windows.Forms.ToolStripButton();
-            this.dgvItems = new System.Windows.Forms.DataGridView();
-            this.image = new System.Windows.Forms.DataGridViewImageColumn();
-            this.name = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.id = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.btnDeleteAll = new System.Windows.Forms.ToolStripButton();
+            this.DgvSearch = new System.Windows.Forms.DataGridView();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
             this.txtSearch = new System.Windows.Forms.TextBox();
@@ -61,11 +60,18 @@ namespace POS.Forms
             this.btnChoose = new System.Windows.Forms.Button();
             this.txtImage = new System.Windows.Forms.TextBox();
             this.btnRemoveImage = new System.Windows.Forms.Button();
-            this.btnDeleteAll = new System.Windows.Forms.ToolStripButton();
+            this.label3 = new System.Windows.Forms.Label();
+            this.txtID = new System.Windows.Forms.TextBox();
+            this.label5 = new System.Windows.Forms.Label();
+            this.label6 = new System.Windows.Forms.Label();
+            this.txtUnit = new System.Windows.Forms.TextBox();
+            this.txtQty = new System.Windows.Forms.TextBox();
+            this.txtLowQty = new System.Windows.Forms.TextBox();
+            this.label7 = new System.Windows.Forms.Label();
             this.parient.SuspendLayout();
             this.tableLayoutPanel2.SuspendLayout();
             this.toolStrip1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dgvItems)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.DgvSearch)).BeginInit();
             this.tableLayoutPanel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             this.tableLayoutPanel3.SuspendLayout();
@@ -95,7 +101,7 @@ namespace POS.Forms
             this.tableLayoutPanel2.ColumnCount = 1;
             this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.tableLayoutPanel2.Controls.Add(this.toolStrip1, 0, 0);
-            this.tableLayoutPanel2.Controls.Add(this.dgvItems, 0, 2);
+            this.tableLayoutPanel2.Controls.Add(this.DgvSearch, 0, 2);
             this.tableLayoutPanel2.Controls.Add(this.tableLayoutPanel1, 0, 1);
             this.tableLayoutPanel2.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel2.Location = new System.Drawing.Point(3, 3);
@@ -115,6 +121,7 @@ namespace POS.Forms
             this.toolStrip1.ImageScalingSize = new System.Drawing.Size(64, 64);
             this.toolStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.btnAdd,
+            this.btnNew,
             this.btnUpdate,
             this.btnDelete,
             this.toolStripSeparator1,
@@ -139,6 +146,19 @@ namespace POS.Forms
             this.btnAdd.Text = "اضافة";
             this.btnAdd.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
             this.btnAdd.Click += new System.EventHandler(this.btnAdd_Click);
+            // 
+            // btnNew
+            // 
+            this.btnNew.Alignment = System.Windows.Forms.ToolStripItemAlignment.Right;
+            this.btnNew.Font = new System.Drawing.Font("Segoe UI", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnNew.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(192)))));
+            this.btnNew.Image = global::POS.Properties.Resources.add_file;
+            this.btnNew.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.btnNew.Name = "btnNew";
+            this.btnNew.Size = new System.Drawing.Size(68, 87);
+            this.btnNew.Text = "جديد";
+            this.btnNew.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
+            this.btnNew.Click += new System.EventHandler(this.btnNew_Click);
             // 
             // btnUpdate
             // 
@@ -196,12 +216,26 @@ namespace POS.Forms
             this.btnPrint.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
             this.btnPrint.Click += new System.EventHandler(this.btnPrint_Click);
             // 
-            // dgvItems
+            // btnDeleteAll
             // 
-            this.dgvItems.AllowUserToAddRows = false;
-            this.dgvItems.AllowUserToDeleteRows = false;
-            this.dgvItems.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
-            this.dgvItems.BackgroundColor = System.Drawing.Color.White;
+            this.btnDeleteAll.Alignment = System.Windows.Forms.ToolStripItemAlignment.Right;
+            this.btnDeleteAll.Font = new System.Drawing.Font("Segoe UI", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnDeleteAll.ForeColor = System.Drawing.Color.Red;
+            this.btnDeleteAll.Image = ((System.Drawing.Image)(resources.GetObject("btnDeleteAll.Image")));
+            this.btnDeleteAll.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.btnDeleteAll.Name = "btnDeleteAll";
+            this.btnDeleteAll.Size = new System.Drawing.Size(118, 87);
+            this.btnDeleteAll.Text = "حذف الكل";
+            this.btnDeleteAll.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
+            this.btnDeleteAll.Visible = false;
+            this.btnDeleteAll.Click += new System.EventHandler(this.btnDeleteAll_Click);
+            // 
+            // DgvSearch
+            // 
+            this.DgvSearch.AllowUserToAddRows = false;
+            this.DgvSearch.AllowUserToDeleteRows = false;
+            this.DgvSearch.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.DgvSearch.BackgroundColor = System.Drawing.Color.White;
             dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
             dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
             dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -209,12 +243,8 @@ namespace POS.Forms
             dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
             dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
             dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgvItems.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
-            this.dgvItems.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvItems.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.image,
-            this.name,
-            this.id});
+            this.DgvSearch.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
+            this.DgvSearch.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
             dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Window;
             dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 16.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -222,42 +252,20 @@ namespace POS.Forms
             dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
             dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
             dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dgvItems.DefaultCellStyle = dataGridViewCellStyle2;
-            this.dgvItems.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.dgvItems.Location = new System.Drawing.Point(3, 183);
-            this.dgvItems.Name = "dgvItems";
-            this.dgvItems.ReadOnly = true;
-            this.dgvItems.RowHeadersWidth = 51;
+            this.DgvSearch.DefaultCellStyle = dataGridViewCellStyle2;
+            this.DgvSearch.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.DgvSearch.Location = new System.Drawing.Point(3, 183);
+            this.DgvSearch.Name = "DgvSearch";
+            this.DgvSearch.ReadOnly = true;
+            this.DgvSearch.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
+            this.DgvSearch.RowHeadersWidth = 51;
             dataGridViewCellStyle3.Font = new System.Drawing.Font("Microsoft Sans Serif", 13F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.dgvItems.RowsDefaultCellStyle = dataGridViewCellStyle3;
-            this.dgvItems.RowTemplate.Height = 35;
-            this.dgvItems.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvItems.Size = new System.Drawing.Size(1041, 714);
-            this.dgvItems.TabIndex = 4;
-            this.dgvItems.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvItems_CellDoubleClick);
-            // 
-            // image
-            // 
-            this.image.HeaderText = "";
-            this.image.MinimumWidth = 6;
-            this.image.Name = "image";
-            this.image.ReadOnly = true;
-            // 
-            // name
-            // 
-            this.name.HeaderText = "العنصر";
-            this.name.MinimumWidth = 6;
-            this.name.Name = "name";
-            this.name.ReadOnly = true;
-            this.name.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.name.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
-            // 
-            // id
-            // 
-            this.id.HeaderText = "#";
-            this.id.MinimumWidth = 6;
-            this.id.Name = "id";
-            this.id.ReadOnly = true;
+            this.DgvSearch.RowsDefaultCellStyle = dataGridViewCellStyle3;
+            this.DgvSearch.RowTemplate.Height = 35;
+            this.DgvSearch.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.DgvSearch.Size = new System.Drawing.Size(1041, 714);
+            this.DgvSearch.TabIndex = 4;
+            this.DgvSearch.MouseClick += new System.Windows.Forms.MouseEventHandler(this.DgvSearch_MouseClick);
             // 
             // tableLayoutPanel1
             // 
@@ -364,6 +372,14 @@ namespace POS.Forms
             this.tableLayoutPanel5.Controls.Add(this.btnChoose, 1, 3);
             this.tableLayoutPanel5.Controls.Add(this.txtImage, 0, 4);
             this.tableLayoutPanel5.Controls.Add(this.btnRemoveImage, 0, 3);
+            this.tableLayoutPanel5.Controls.Add(this.label3, 1, 0);
+            this.tableLayoutPanel5.Controls.Add(this.txtID, 0, 0);
+            this.tableLayoutPanel5.Controls.Add(this.label5, 1, 6);
+            this.tableLayoutPanel5.Controls.Add(this.label6, 1, 7);
+            this.tableLayoutPanel5.Controls.Add(this.txtUnit, 0, 6);
+            this.tableLayoutPanel5.Controls.Add(this.txtQty, 0, 7);
+            this.tableLayoutPanel5.Controls.Add(this.txtLowQty, 0, 8);
+            this.tableLayoutPanel5.Controls.Add(this.label7, 1, 8);
             this.tableLayoutPanel5.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel5.Location = new System.Drawing.Point(0, 193);
             this.tableLayoutPanel5.Margin = new System.Windows.Forms.Padding(0);
@@ -386,10 +402,10 @@ namespace POS.Forms
             // 
             this.label1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
             this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(304, 88);
+            this.label1.Font = new System.Drawing.Font("Arabic Typesetting", 19.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.Location = new System.Drawing.Point(304, 87);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(125, 36);
+            this.label1.Size = new System.Drawing.Size(125, 39);
             this.label1.TabIndex = 7;
             this.label1.Text = "الاسم";
             this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -411,10 +427,10 @@ namespace POS.Forms
             // 
             this.label4.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
             this.label4.AutoSize = true;
-            this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label4.Location = new System.Drawing.Point(304, 211);
+            this.label4.Font = new System.Drawing.Font("Arabic Typesetting", 19.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label4.Location = new System.Drawing.Point(304, 210);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(125, 36);
+            this.label4.Size = new System.Drawing.Size(125, 39);
             this.label4.TabIndex = 10;
             this.label4.Text = "الصورة";
             this.label4.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -465,18 +481,108 @@ namespace POS.Forms
             this.btnRemoveImage.UseVisualStyleBackColor = false;
             this.btnRemoveImage.Click += new System.EventHandler(this.btnRemoveImage_Click);
             // 
-            // btnDeleteAll
+            // label3
             // 
-            this.btnDeleteAll.Alignment = System.Windows.Forms.ToolStripItemAlignment.Right;
-            this.btnDeleteAll.Font = new System.Drawing.Font("Segoe UI", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnDeleteAll.ForeColor = System.Drawing.Color.Red;
-            this.btnDeleteAll.Image = ((System.Drawing.Image)(resources.GetObject("btnDeleteAll.Image")));
-            this.btnDeleteAll.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.btnDeleteAll.Name = "btnDeleteAll";
-            this.btnDeleteAll.Size = new System.Drawing.Size(118, 87);
-            this.btnDeleteAll.Text = "حذف الكل";
-            this.btnDeleteAll.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
-            this.btnDeleteAll.Click += new System.EventHandler(this.btnDeleteAll_Click);
+            this.label3.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+            this.label3.AutoSize = true;
+            this.label3.Font = new System.Drawing.Font("Arabic Typesetting", 20F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label3.Location = new System.Drawing.Point(304, 15);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(125, 40);
+            this.label3.TabIndex = 20;
+            this.label3.Text = "رقم العنصر";
+            this.label3.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // txtID
+            // 
+            this.txtID.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+            this.txtID.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.txtID.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtID.ForeColor = System.Drawing.Color.DimGray;
+            this.txtID.Location = new System.Drawing.Point(3, 15);
+            this.txtID.Name = "txtID";
+            this.txtID.ReadOnly = true;
+            this.txtID.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
+            this.txtID.Size = new System.Drawing.Size(295, 41);
+            this.txtID.TabIndex = 21;
+            this.txtID.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // label5
+            // 
+            this.label5.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+            this.label5.AutoSize = true;
+            this.label5.Font = new System.Drawing.Font("Arabic Typesetting", 19.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label5.Location = new System.Drawing.Point(304, 442);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(125, 39);
+            this.label5.TabIndex = 22;
+            this.label5.Text = "الوحدة";
+            this.label5.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // label6
+            // 
+            this.label6.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+            this.label6.AutoSize = true;
+            this.label6.Font = new System.Drawing.Font("Arabic Typesetting", 19.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label6.Location = new System.Drawing.Point(304, 513);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(125, 39);
+            this.label6.TabIndex = 23;
+            this.label6.Text = "الكمية";
+            this.label6.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // txtUnit
+            // 
+            this.txtUnit.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+            this.txtUnit.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.txtUnit.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtUnit.ForeColor = System.Drawing.Color.DimGray;
+            this.txtUnit.Location = new System.Drawing.Point(3, 441);
+            this.txtUnit.Name = "txtUnit";
+            this.txtUnit.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
+            this.txtUnit.Size = new System.Drawing.Size(295, 41);
+            this.txtUnit.TabIndex = 24;
+            this.txtUnit.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // txtQty
+            // 
+            this.txtQty.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+            this.txtQty.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.txtQty.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtQty.ForeColor = System.Drawing.Color.DimGray;
+            this.txtQty.Location = new System.Drawing.Point(3, 512);
+            this.txtQty.Name = "txtQty";
+            this.txtQty.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
+            this.txtQty.Size = new System.Drawing.Size(295, 41);
+            this.txtQty.TabIndex = 25;
+            this.txtQty.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.txtQty.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtQty_KeyPress);
+            // 
+            // txtLowQty
+            // 
+            this.txtLowQty.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+            this.txtLowQty.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.txtLowQty.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtLowQty.ForeColor = System.Drawing.Color.DimGray;
+            this.txtLowQty.Location = new System.Drawing.Point(3, 583);
+            this.txtLowQty.Name = "txtLowQty";
+            this.txtLowQty.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
+            this.txtLowQty.Size = new System.Drawing.Size(295, 41);
+            this.txtLowQty.TabIndex = 26;
+            this.txtLowQty.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.txtLowQty.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtLowQty_KeyPress);
+            // 
+            // label7
+            // 
+            this.label7.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+            this.label7.AutoSize = true;
+            this.label7.Font = new System.Drawing.Font("Arabic Typesetting", 19.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label7.Location = new System.Drawing.Point(304, 584);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(125, 39);
+            this.label7.TabIndex = 27;
+            this.label7.Text = "الحد الادني";
+            this.label7.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // FormStoreItems
             // 
@@ -496,7 +602,7 @@ namespace POS.Forms
             this.tableLayoutPanel2.PerformLayout();
             this.toolStrip1.ResumeLayout(false);
             this.toolStrip1.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dgvItems)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.DgvSearch)).EndInit();
             this.tableLayoutPanel1.ResumeLayout(false);
             this.tableLayoutPanel1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
@@ -515,7 +621,7 @@ namespace POS.Forms
 
         private System.Windows.Forms.TableLayoutPanel parient;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel2;
-        private System.Windows.Forms.DataGridView dgvItems;
+        private System.Windows.Forms.DataGridView DgvSearch;
         private System.Windows.Forms.ToolStrip toolStrip1;
         private System.Windows.Forms.ToolStripButton btnAdd;
         private System.Windows.Forms.ToolStripButton btnUpdate;
@@ -534,13 +640,19 @@ namespace POS.Forms
         private System.Windows.Forms.Button btnChoose;
         private System.Windows.Forms.TextBox txtImage;
         private System.Windows.Forms.Button btnRemoveImage;
-        private System.Windows.Forms.DataGridViewImageColumn image;
-        private System.Windows.Forms.DataGridViewTextBoxColumn name;
-        private System.Windows.Forms.DataGridViewTextBoxColumn id;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
         private System.Windows.Forms.PictureBox pictureBox2;
         private System.Windows.Forms.TextBox txtSearch;
         private System.Windows.Forms.ToolStripButton btnPrint;
         private System.Windows.Forms.ToolStripButton btnDeleteAll;
+        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.TextBox txtID;
+        private System.Windows.Forms.ToolStripButton btnNew;
+        private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.Label label6;
+        private System.Windows.Forms.TextBox txtUnit;
+        private System.Windows.Forms.TextBox txtQty;
+        private System.Windows.Forms.TextBox txtLowQty;
+        private System.Windows.Forms.Label label7;
     }
 }

@@ -25,7 +25,7 @@ namespace POS.Forms
                 MessageBox.Show("ادخل كلمة المرور");
                 return;
             }
-            if (txtPass.Text == declarations.systemOptions["pass"].ToString())
+            if (txtPass.Text == Properties.Settings.Default.PasswordLockWardia)
             {
                 FormEndShift frm = new FormEndShift();
                 frm.Show();

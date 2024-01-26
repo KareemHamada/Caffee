@@ -262,7 +262,7 @@ namespace POS.Forms
                 reportParameters[1] = new ReportParameter("To", dgvLoading[7, dgvLoading.Rows.Count - 1].Value.ToString());
 
 
-                if (bool.Parse(declarations.systemOptions["directPrint"].ToString()))
+                if (Properties.Settings.Default.DirectPrint)
                 {
                     LocalReport report = new LocalReport();
                     string path = Application.StartupPath + @"\Reports\ReportShifts.rdlc";
@@ -270,9 +270,10 @@ namespace POS.Forms
                     report.DataSources.Clear();
                     report.DataSources.Add(new ReportDataSource("DataSet1", shifts.Tables["dtShifts"]));
                     report.SetParameters(reportParameters);
-                    PrintersClass.PrintToPrinter(report);
+                    PrintersClass pC = new PrintersClass(Properties.Settings.Default.PrinterName);
+                    pC.PrintToPrinter(report);
                 }
-                else if (bool.Parse(declarations.systemOptions["showBeforePrint"].ToString()))
+                else if (Properties.Settings.Default.ShowBeforePrint)
                 {
                     rptForm.mainReport.LocalReport.SetParameters(reportParameters);
                     rptForm.ShowDialog();

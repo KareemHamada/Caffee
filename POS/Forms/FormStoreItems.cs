@@ -21,48 +21,64 @@ namespace POS.Forms
             InitializeComponent();
         }
         private SqlCommand cmd;
-        private TextBox txtHidden;
 
-        private void loadTable(string query)
+        Database db = new Database();
+        DataTable tbl = new DataTable();
+        DataTable tblItem = new DataTable();
+        private void AutoNumber()
         {
-            dgvItems.Rows.Clear();
-            DataTable dt = new DataTable();
+            tblItem.Clear();
+            tblItem = db.readData("SELECT [id] as 'رقم العنصر',[name] as 'العنصر',[image] as 'الصورة',[Unit] as 'الوحدة',[Qty] as 'الكمية',[LowQty] as 'الحد الادني' FROM [dbo].[storeItems]", "");
+            DgvSearch.DataSource = tblItem;
+            //foreach (DataGridViewRow s in DgvSearch.Rows)
+            //{
+            //    if (Convert.ToInt32(s.Cells[5].Value) >= 1)
+            //    {
+            //        if (Convert.ToInt32(s.Cells[4].Value) <= Convert.ToInt32(s.Cells[5].Value))
+            //        {
+            //            s.DefaultCellStyle.BackColor = Color.Red;
+            //        }
+            //    }
+            //}
 
-            if (adoClass.sqlcn.State != ConnectionState.Open)
-            {
-                adoClass.sqlcn.Open();
-            }
-            cmd = new SqlCommand(query, adoClass.sqlcn);
-            SqlDataAdapter da = new SqlDataAdapter(cmd);
-            da.Fill(dt);
-            adoClass.sqlcn.Close();
-            if (dt.Rows.Count > 0)
-            {
-                foreach (DataRow row in dt.Rows)
-                {
+            tbl.Clear();
+            tbl = db.readData("select max (id) from storeItems", "");
 
-                    dgvItems.Rows.Add
-                        (new object[]
-                            {
-                            row["image"],
-                            row["name"],
-                            row["id"],
-                            }
-                        ); ;
-                }
+            if ((tbl.Rows[0][0].ToString() == DBNull.Value.ToString()))
+            {
+
+                txtID.Text = "1";
             }
+            else
+            {
+
+                txtID.Text = (Convert.ToInt32(tbl.Rows[0][0]) + 1).ToString();
+            }
+            picBox.BackgroundImage = null;
+            txtImage.Text = "";
+            txtName.Clear();
+            txtLowQty.Clear();
+            txtQty.Clear();
+            txtUnit.Clear();
+            btnAdd.Enabled = true;
+            btnDelete.Enabled = false;
+            btnDeleteAll.Enabled = false;
+            btnUpdate.Enabled = false;
+            btnNew.Enabled = true;
 
         }
 
         private void FormStoreItems_Load(object sender, EventArgs e)
         {
 
+            try
+            {
+                AutoNumber();
+            }
+            catch (Exception)
+            {
 
-            loadTable("Select * from storeItems");
-
-            // hidden text box
-            txtHidden = new TextBox();
-            txtHidden.Visible = false;
+            }
         }
 
         private void btnAdd_Click(object sender, EventArgs e)
@@ -72,19 +88,31 @@ namespace POS.Forms
                 MessageBox.Show("ادخل اسم العنصر");
                 return;
             }
-
+            if (txtUnit.Text == "")
+            {
+                MessageBox.Show("من فضلك ادخل وحدة");
+                return;
+            }
             try
             {
                 if (picBox.BackgroundImage != null)
                 {
-                    cmd = new SqlCommand("Insert into storeItems (name,image) values (@name,@image)", adoClass.sqlcn);
+                    cmd = new SqlCommand("Insert into storeItems (name,image,id,Unit,Qty,LowQty) values (@name,@image,@id,@Unit,@Qty,@LowQty)", adoClass.sqlcn);
+                    cmd.Parameters.AddWithValue("@id", txtID.Text);
                     cmd.Parameters.AddWithValue("@name", txtName.Text);
+                    cmd.Parameters.AddWithValue("@Unit", txtUnit.Text);
+                    cmd.Parameters.AddWithValue("@Qty", txtQty.Text);
+                    cmd.Parameters.AddWithValue("@LowQty", txtLowQty.Text);
                     cmd.Parameters.AddWithValue("@image", Helper.ImageTOByte(picBox.BackgroundImage));
                 }
                 else
                 {
-                    cmd = new SqlCommand("Insert into storeItems (name) values (@name)", adoClass.sqlcn);
+                    cmd = new SqlCommand("Insert into storeItems (name,id,Unit,Qty,LowQty) values (@name,@id,@Unit,@Qty,@LowQty)", adoClass.sqlcn);
+                    cmd.Parameters.AddWithValue("@id", txtID.Text);
                     cmd.Parameters.AddWithValue("@name", txtName.Text);
+                    cmd.Parameters.AddWithValue("@Unit", txtUnit.Text);
+                    cmd.Parameters.AddWithValue("@Qty", txtQty.Text);
+                    cmd.Parameters.AddWithValue("@LowQty", txtLowQty.Text);
                 }
                 if (adoClass.sqlcn.State != ConnectionState.Open)
                 {
@@ -92,38 +120,23 @@ namespace POS.Forms
                 }
 
                 cmd.ExecuteNonQuery();
-
-
                 MessageBox.Show("تم اضافة العنصر بنجاح");
-                //Form_Alert frm = new Form_Alert();
-                //frm.showAlert("Success Alert", Form_Alert.enmType.Success);
-
             }
             catch (Exception ex)
             {
-                MessageBox.Show(ex.Message);
             }
             finally
             {
                 adoClass.sqlcn.Close();
             }
 
-            loadTable("Select * from storeItems");
+            AutoNumber();
 
-            txtName.Text = "";
-            picBox.BackgroundImage = null;
-            txtImage.Text = "";
-            txtHidden.Text = "";
-        }
+            
+        } 
 
         private void btnUpdate_Click(object sender, EventArgs e)
         {
-            string id = txtHidden.Text;
-            if (id == "")
-            {
-                MessageBox.Show("حدد العنصر المراد تعديلة");
-                return;
-            }
             if (txtName.Text == "")
             {
                 MessageBox.Show("ادخل اسم العنصر");
@@ -134,16 +147,22 @@ namespace POS.Forms
             {
                 if (picBox.BackgroundImage != null)
                 {
-                    cmd = new SqlCommand("Update storeItems set name = @name,image=@image Where id = '" + id + "'", adoClass.sqlcn);
+                    cmd = new SqlCommand("Update storeItems set name = @name,image=@image,Unit=@Unit,Qty=@Qty,LowQty=@LowQty Where id = '" + txtID.Text + "'", adoClass.sqlcn);
 
                     cmd.Parameters.AddWithValue("@name", txtName.Text);
+                    cmd.Parameters.AddWithValue("@Unit", txtUnit.Text);
+                    cmd.Parameters.AddWithValue("@Qty", txtQty.Text);
+                    cmd.Parameters.AddWithValue("@LowQty", txtLowQty.Text);
                     cmd.Parameters.AddWithValue("@image", Helper.ImageTOByte(picBox.BackgroundImage));
                 }
                 else
                 {
-                    cmd = new SqlCommand("Update storeItems set name = @name,image=@image Where id = '" + id + "'", adoClass.sqlcn);
+                    cmd = new SqlCommand("Update storeItems set name = @name,image=@image,Unit=@Unit,Qty=@Qty,LowQty=@LowQty Where id = '" + txtID.Text + "'", adoClass.sqlcn);
 
                     cmd.Parameters.AddWithValue("@name", txtName.Text);
+                    cmd.Parameters.AddWithValue("@Unit", txtUnit.Text);
+                    cmd.Parameters.AddWithValue("@Qty", txtQty.Text);
+                    cmd.Parameters.AddWithValue("@LowQty", txtLowQty.Text);
                     cmd.Parameters.Add("@Image", SqlDbType.VarBinary).Value = DBNull.Value;
                 }
 
@@ -160,64 +179,25 @@ namespace POS.Forms
             }
             catch (Exception ex)
             {
-                MessageBox.Show(ex.Message);
             }
             finally
             {
                 adoClass.sqlcn.Close();
             }
-
-            loadTable("Select * from storeItems");
-
-            txtName.Text = "";
-            picBox.BackgroundImage = null;
-            txtImage.Text = "";
-            txtHidden.Text = "";
+            AutoNumber();
         }
 
         private void btnDelete_Click(object sender, EventArgs e)
         {
-            if (dgvItems.Rows.Count > 0)
+            if (DgvSearch.Rows.Count > 0)
             {
-                if (MessageBox.Show("هل تريد الحذف", "?", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+                if (MessageBox.Show("هل انتا متاكد من مسح البيانات", "تاكيد", MessageBoxButtons.YesNo, MessageBoxIcon.Warning) == DialogResult.Yes)
                 {
-                    txtHidden.Text = dgvItems.CurrentRow.Cells[2].Value.ToString();
-                    MessageBox.Show(txtHidden.Text);
-                    if (txtHidden.Text == "")
-                    {
-                        MessageBox.Show("حدد العنصر المراد حذفه");
-                        return;
-                    }
-                    try
-                    {
-
-                        cmd = new SqlCommand("delete from storeItems Where id = '" + txtHidden.Text + "'", adoClass.sqlcn);
-
-                        if (adoClass.sqlcn.State != ConnectionState.Open)
-                        {
-                            adoClass.sqlcn.Open();
-                        }
-
-                        cmd.ExecuteNonQuery();
-
-                        MessageBox.Show("تم الحذف بنجاح");
-
-                    }
-                    catch
-                    {
-                        MessageBox.Show("خطا في الحذف");
-                    }
-                    finally
-                    {
-                        adoClass.sqlcn.Close();
-                    }
-
-                    loadTable("Select * from storeItems");
-                    txtName.Text = "";
-                    picBox.BackgroundImage = null;
-                    txtImage.Text = "";
-                    txtHidden.Text = "";
+                    db.executeData("delete from storeItems where id=" + txtID.Text + "", "تم مسح البيانات بنجاح", "لا يمكن حذف هذا العنصر قد يكون هذا العنصر متعلق بعمليات اخري عند حذفها يتم حذف هذا العنصر");
+                    AutoNumber();
                 }
+
+                
             }
         }
 
@@ -234,12 +214,6 @@ namespace POS.Forms
             }
         }
 
-        private void dgvItems_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
-        {
-            picBox.BackgroundImage = Helper.ByteToImage(dgvItems.CurrentRow.Cells[0].Value);
-            txtName.Text = dgvItems.CurrentRow.Cells[1].Value.ToString();
-            txtHidden.Text = dgvItems.CurrentRow.Cells[2].Value.ToString();
-        }
 
         private void btnClose_Click(object sender, EventArgs e)
         {
@@ -253,13 +227,16 @@ namespace POS.Forms
 
         private void btnPrint_Click(object sender, EventArgs e)
         {
-            if (dgvItems.Rows.Count > 0)
+            if (DgvSearch.Rows.Count > 0)
             {
                 dsShowStoreItems tbl = new dsShowStoreItems();
-                for (int i = 0; i < dgvItems.Rows.Count; i++)
+                for (int i = 0; i < DgvSearch.Rows.Count; i++)
                 {
                     DataRow dro = tbl.Tables["dtShowStoreItems"].NewRow();
-                    dro["name"] = dgvItems[1, i].Value;
+                    dro["name"] = DgvSearch[1, i].Value;
+                    dro["Unit"] = DgvSearch[3, i].Value;
+                    dro["Qty"] = DgvSearch[4, i].Value;
+                    dro["LowQty"] = DgvSearch[5, i].Value;
                     tbl.Tables["dtShowStoreItems"].Rows.Add(dro);
                 }
 
@@ -269,16 +246,17 @@ namespace POS.Forms
                 rptForm.mainReport.LocalReport.DataSources.Add(new ReportDataSource("DataSet1", tbl.Tables["dtShowStoreItems"]));
 
 
-                if (bool.Parse(declarations.systemOptions["directPrint"].ToString()))
+                if (Properties.Settings.Default.DirectPrint)
                 {
                     LocalReport report = new LocalReport();
                     string path = Application.StartupPath + @"\Reports\ReportShowStoreItems.rdlc";
                     report.ReportPath = path;
                     report.DataSources.Clear();
                     report.DataSources.Add(new ReportDataSource("DataSet1", tbl.Tables["dtShowStoreItems"]));
-                    PrintersClass.PrintToPrinter(report);
+                    PrintersClass pC = new PrintersClass(Properties.Settings.Default.PrinterName);
+                    pC.PrintToPrinter(report);
                 }
-                else if (bool.Parse(declarations.systemOptions["showBeforePrint"].ToString()))
+                else if (Properties.Settings.Default.ShowBeforePrint)
                 {
                     rptForm.ShowDialog();
                 }
@@ -300,51 +278,79 @@ namespace POS.Forms
         {
             if (string.IsNullOrEmpty(text))
             {
-                loadTable("Select * from storeItems");
+                AutoNumber();
             }
             else
             {
-                loadTable("Select * from storeItems where name like '%" + text + "%'");
+                //loadTable("Select * from storeItems where name like '%" + text + "%'");
+                tblItem.Clear();
+                tblItem = db.readData("SELECT [id] as 'رقم العنصر',[name] as 'العنصر',[image] as 'الصورة',[Unit] as 'الوحدة',[Qty] as 'الكمية',[LowQty] as 'الحد الادني' FROM [dbo].[storeItems] where name like '%" + text + "%'", "");
+                DgvSearch.DataSource = tblItem;
             }
         }
 
         private void btnDeleteAll_Click(object sender, EventArgs e)
         {
-            if (dgvItems.Rows.Count > 0)
+            
+            if (DgvSearch.Rows.Count > 0)
             {
-                if (MessageBox.Show("هل متاكد من حذف الكل", "?", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+                if (MessageBox.Show("هل انتا متاكد من مسح البيانات", "تاكيد", MessageBoxButtons.YesNo, MessageBoxIcon.Warning) == DialogResult.Yes)
                 {
-
-                    try
-                    {
-
-                        cmd = new SqlCommand("delete from storeItems DBCC CHECKIDENT (storeItems,RESEED,0)", adoClass.sqlcn);
-
-                        if (adoClass.sqlcn.State != ConnectionState.Open)
-                        {
-                            adoClass.sqlcn.Open();
-                        }
-
-                        cmd.ExecuteNonQuery();
-
-                        MessageBox.Show("تم الحذف بنجاح");
-
-                    }
-                    catch
-                    {
-                        MessageBox.Show("خطا في الحذف");
-                    }
-                    finally
-                    {
-                        adoClass.sqlcn.Close();
-                    }
-
-                    loadTable("Select * from storeItems");
-                    txtName.Text = "";
-                    picBox.BackgroundImage = null;
-                    txtImage.Text = "";
-                    txtHidden.Text = "";
+                    db.executeData("delete from storeItems ", "تم مسح البيانات بنجاح", "لا يمكن حذف جميع العناصر قد يكون هناك عنصر متعلق بعمليات اخري عند حذفها يتم حذف هذا العنصر");
+                    AutoNumber();
                 }
+            }
+        }
+
+        private void DgvSearch_MouseClick(object sender, MouseEventArgs e)
+        {
+            try
+            {
+                if (DgvSearch.Rows.Count >= 1)
+                {
+                    DataTable tblShow = new DataTable();
+                    tblShow.Clear();
+                    tblShow = db.readData("select * from storeItems where id=" + DgvSearch.CurrentRow.Cells[0].Value + "", "");
+
+                    txtID.Text = tblShow.Rows[0][0].ToString();
+                    txtName.Text = tblShow.Rows[0][1].ToString();
+                    picBox.BackgroundImage = Helper.ByteToImage(tblShow.Rows[0][2]);
+                    txtUnit.Text = tblShow.Rows[0][3].ToString();
+                    txtQty.Text = tblShow.Rows[0][4].ToString();
+                    txtLowQty.Text = tblShow.Rows[0][5].ToString();
+
+                    btnAdd.Enabled = false;
+                    btnDelete.Enabled = true;
+                    btnDeleteAll.Enabled = true;
+                    btnUpdate.Enabled = true;
+                    btnNew.Enabled = true;
+
+                }
+
+            }
+            catch (Exception) { }
+        }
+
+        private void btnNew_Click(object sender, EventArgs e)
+        {
+            AutoNumber();
+        }
+
+        private void txtQty_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            char ch = e.KeyChar;
+            if (!Char.IsDigit(ch) && ch != 8 && ch != 46)
+            {
+                e.Handled = true;
+            }
+        }
+
+        private void txtLowQty_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            char ch = e.KeyChar;
+            if (!Char.IsDigit(ch) && ch != 8 && ch != 46)
+            {
+                e.Handled = true;
             }
         }
     }

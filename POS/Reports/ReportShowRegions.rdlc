@@ -110,15 +110,17 @@
         </Style>
       </Tablix>
     </ReportItems>
-    <Height>1.31818in</Height>
+    <Height>3.34818cm</Height>
     <Style />
   </Body>
-  <Width>2.66414in</Width>
+  <Width>6.76692cm</Width>
   <Page>
-    <LeftMargin>1in</LeftMargin>
-    <RightMargin>1in</RightMargin>
-    <TopMargin>1in</TopMargin>
-    <BottomMargin>1in</BottomMargin>
+    <PageHeight>45cm</PageHeight>
+    <PageWidth>8cm</PageWidth>
+    <RightMargin>0cm</RightMargin>
+    <TopMargin>0cm</TopMargin>
+    <BottomMargin>0cm</BottomMargin>
+    <ColumnSpacing>1.27cm</ColumnSpacing>
     <Style />
   </Page>
   <AutoRefresh>0</AutoRefresh>
@@ -153,6 +155,6 @@
       </rd:DataSetInfo>
     </DataSet>
   </DataSets>
-  <rd:ReportUnitType>Inch</rd:ReportUnitType>
+  <rd:ReportUnitType>Cm</rd:ReportUnitType>
   <rd:ReportID>51bdd069-5e76-4a78-bf85-e6c23d114c2c</rd:ReportID>
 </Report>

@@ -9,6 +9,8 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Data.SqlClient;
+using POS.Tools;
+using Microsoft.Reporting.WinForms;
 
 namespace POS.Forms
 {
@@ -94,6 +96,14 @@ namespace POS.Forms
                             cmd.ExecuteNonQuery();
                         }
                     }
+
+
+
+                    // update store and items relation
+                    int qty = Convert.ToInt32(FormPOSResponsive.instance.dgvItems[3, i].Value);
+                    int itemID = Convert.ToInt32(FormPOSResponsive.instance.dgvItems[0, i].Value);
+                    Helper.checkRelation(itemID,qty);
+
                 }
 
             }
@@ -387,6 +397,60 @@ namespace POS.Forms
                         orderId = cmd.Parameters["@orderId"].Value.ToString();
                         saveItems(orderId);
 
+
+                        printChecks checks = new printChecks();
+                        for(int i = 0; i < Properties.Settings.Default.FatoraNumber; i++)
+                        {
+                            checks.runPrintCheck(int.Parse(orderId));
+                        }
+
+                        // print to kitchen
+                        if (Properties.Settings.Default.PrintFatoraToKitchen)
+                        {
+                            for (int p = 0; p < Properties.Settings.Default.KitchenNumber; p++)
+                            {
+                                dsTables tables = new dsTables();
+                                for (int i = 0; i < FormPOSResponsive.instance.dgvItems.Rows.Count; i++)
+                                {
+                                    DataRow dro = tables.Tables["dtTables"].NewRow();
+                                    dro["itemName"] = FormPOSResponsive.instance.dgvItems[5, i].Value;
+                                    dro["itemQuantity"] = FormPOSResponsive.instance.dgvItems[3, i].Value;
+                                    dro["notes"] = FormPOSResponsive.instance.dgvItems[1, i].Value;
+                                    tables.Tables["dtTables"].Rows.Add(dro);
+                                }
+
+                                FormReports rptForm = new FormReports();
+                                rptForm.mainReport.LocalReport.ReportEmbeddedResource = "POS.Reports.Reportkitchen.rdlc";
+                                rptForm.mainReport.LocalReport.DataSources.Clear();
+                                rptForm.mainReport.LocalReport.DataSources.Add(new ReportDataSource("DataSet1", tables.Tables["dtTables"]));
+
+                                ReportParameter[] reportParameters = new ReportParameter[2];
+                                reportParameters[0] = new ReportParameter("orderId", txtFatoraOrderId.Text);
+                                reportParameters[1] = new ReportParameter("dateTime", DateTime.Now.ToString());
+
+
+                                if (Properties.Settings.Default.DirectPrint && Properties.Settings.Default.PrintKitchen)
+                                {
+                                    LocalReport report = new LocalReport();
+                                    string path = Application.StartupPath + @"\Reports\Reportkitchen.rdlc";
+                                    report.ReportPath = path;
+                                    report.DataSources.Clear();
+                                    report.DataSources.Add(new ReportDataSource("DataSet1", tables.Tables["dtTables"]));
+                                    report.SetParameters(reportParameters);
+                                    PrintersClass pC = new PrintersClass(Properties.Settings.Default.KitchenPrinter);
+                                    pC.PrintToPrinter(report);
+                                }
+                                else if (Properties.Settings.Default.ShowBeforePrint && Properties.Settings.Default.PrintKitchen)
+                                {
+                                    rptForm.mainReport.LocalReport.SetParameters(reportParameters);
+                                    rptForm.ShowDialog();
+                                }
+
+                            }
+                            // end of print table order
+                        }
+
+
                         FormPOSResponsive.instance.dgvItems.Rows.Clear();
                         FormPOSResponsive.instance.txtTax.Text = "0";
                         FormPOSResponsive.instance.txtDiscount.Text = "0";
@@ -399,11 +463,8 @@ namespace POS.Forms
                         FormPOSResponsive.instance.comboOrderType.Text = "تيك اوي";
                         FormPOSResponsive.instance.txtTotal.Text = "";
 
-                        //MessageBox.Show("تم");
                         this.Close();
 
-                        printChecks checks = new printChecks();
-                        checks.runPrintCheck(int.Parse(orderId));
                     }
                     else
                     {
@@ -462,8 +523,11 @@ namespace POS.Forms
                         this.Close();
 
                         printChecks checks = new printChecks();
-
-                        checks.runPrintCheck(int.Parse(orderId));
+                        for (int i = 0; i < Properties.Settings.Default.FatoraNumber; i++)
+                        {
+                            checks.runPrintCheck(int.Parse(orderId));
+                        }
+                            
                     }
 
                 }

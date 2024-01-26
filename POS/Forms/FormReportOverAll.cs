@@ -290,14 +290,9 @@ namespace POS.Forms
             ReportParameter[] reportParameters = new ReportParameter[2];
             reportParameters[0] = new ReportParameter("From", dtpFrom.Value.ToString());
             reportParameters[1] = new ReportParameter("To", dtpTo.Value.ToString());
-            //reportParameters[2] = new ReportParameter("Wared", lblWared.ToString());
-            //reportParameters[3] = new ReportParameter("expenses", lblExpenses.ToString());
-            //reportParameters[4] = new ReportParameter("salaries", lblSalaries.ToString());
-            //reportParameters[5] = new ReportParameter("stores", lblStore.ToString());
-            //reportParameters[6] = new ReportParameter("total", lblTotal.ToString());
 
 
-            if (bool.Parse(declarations.systemOptions["directPrint"].ToString()))
+            if (Properties.Settings.Default.DirectPrint)
             {
                 LocalReport report = new LocalReport();
                 string path = Application.StartupPath + @"\Reports\ReportOverAll.rdlc";
@@ -305,9 +300,10 @@ namespace POS.Forms
                 report.DataSources.Clear();
                 report.DataSources.Add(new ReportDataSource("DataSet1", overAll.Tables["dtOverAll"]));
                 report.SetParameters(reportParameters);
-                PrintersClass.PrintToPrinter(report);
+                PrintersClass pC = new PrintersClass(Properties.Settings.Default.PrinterName);
+                pC.PrintToPrinter(report);
             }
-            else if (bool.Parse(declarations.systemOptions["showBeforePrint"].ToString()))
+            else if (Properties.Settings.Default.ShowBeforePrint)
             {
                 rptForm.mainReport.LocalReport.SetParameters(reportParameters);
                 rptForm.ShowDialog();

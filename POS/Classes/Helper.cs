@@ -10,6 +10,7 @@ using System.Data;
 using System.Data.SqlClient;
 using System.Windows.Forms;
 using System.Drawing.Drawing2D;
+using Tulpep.NotificationWindow;
 
 namespace POS.Classes
 {
@@ -248,13 +249,12 @@ namespace POS.Classes
 
                     deleteItems(itemId, oldQuantity);
                     DeleteditemsEndShift(itemId, oldQuantity, shiftId);
+                    deleteRelation(itemId, oldQuantity);
                 }
 
             }
 
             //deleteItems(itemId, oldQuantity);
-
-
             cmd = new SqlCommand("delete from OrderItems Where orderId = '" + orderId + "'", adoClass.sqlcn);
             cmd.ExecuteNonQuery();
 
@@ -338,5 +338,57 @@ namespace POS.Classes
 
         }
 
+        static Database db = new Database();
+        static DataTable tblCheck = new DataTable();
+        static DataTable tblItemStore = new DataTable();
+
+        // check if saled item has relation with any store items
+        public static void checkRelation(int itemID,int itemQty)
+        {
+            tblCheck.Clear();
+            tblCheck = db.readData("select * from ItemsStoreRelation where ItemSaleID =" + itemID+"", "");
+            if(tblCheck.Rows.Count > 0)
+            {
+                for(int i = 0; i < tblCheck.Rows.Count; i++)
+                {
+                    db.executeData("update storeItems set Qty=Qty-"+ Convert.ToDecimal(tblCheck.Rows[i][2]) * itemQty + " where id ="+tblCheck.Rows[i][1]+"", "", "");
+                    // check if qty at storeItems table < 0
+                    if (Convert.ToDecimal(db.readData("select Qty from storeItems where id =" + tblCheck.Rows[i][1] + "", "").Rows[0][0]) < 0)
+                    {
+                        db.executeData("update storeItems set Qty=" + 0 + " where id =" + tblCheck.Rows[i][1] + "", "", "");
+                    }
+                    if(Convert.ToDecimal(db.readData("select LowQty from storeItems where id =" + tblCheck.Rows[i][1] + "", "").Rows[0][0]) > 0)
+                    {
+                        if (Convert.ToDecimal(db.readData("select Qty from storeItems where id =" + tblCheck.Rows[i][1] + "", "").Rows[0][0]) <= Convert.ToDecimal(db.readData("select LowQty from storeItems where id =" + tblCheck.Rows[i][1] + "", "").Rows[0][0]))
+                        {
+                            PopupNotifier popup = new PopupNotifier();
+                            popup.Image = Properties.Resources.war;
+                            popup.TitleText = "تنبيه مخازن";
+                            string pro = db.readData("select name from Items where id =" + itemID + "", "").Rows[0][0].ToString();
+
+                            popup.ContentText = pro + " قل عن الحد الادني";
+                            popup.Popup();
+                        }
+                    }
+                    
+                    
+                }
+            }
+        }
+
+        // when delete add to store 
+        public static void deleteRelation(int itemID, int itemQty)
+        {
+            tblCheck.Clear();
+            tblCheck = db.readData("select * from ItemsStoreRelation where ItemSaleID =" + itemID + "", "");
+            if (tblCheck.Rows.Count > 0)
+            {
+                for (int i = 0; i < tblCheck.Rows.Count; i++)
+                {
+                    db.executeData("update storeItems set Qty=Qty+" + Convert.ToDecimal(tblCheck.Rows[i][2]) * itemQty + " where id =" + tblCheck.Rows[i][1] + "", "", "");
+
+                }
+            }
+        }
     }
 }

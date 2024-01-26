@@ -1213,13 +1213,18 @@
             </Style>
           </Tablix>
         </ReportItems>
-        <Height>1.45652in</Height>
+        <Height>3.69956cm</Height>
         <Style />
       </Body>
-      <Width>2.85271in</Width>
+      <Width>7.24588cm</Width>
       <Page>
-        <PageHeight>4.33071in</PageHeight>
-        <PageWidth>3.14961in</PageWidth>
+        <PageHeight>45cm</PageHeight>
+        <PageWidth>8.00001cm</PageWidth>
+        <LeftMargin>0cm</LeftMargin>
+        <RightMargin>0cm</RightMargin>
+        <TopMargin>0cm</TopMargin>
+        <BottomMargin>0cm</BottomMargin>
+        <ColumnSpacing>1.27cm</ColumnSpacing>
         <Style />
       </Page>
     </ReportSection>
@@ -1252,6 +1257,6 @@
       </CellDefinitions>
     </GridLayoutDefinition>
   </ReportParametersLayout>
-  <rd:ReportUnitType>Inch</rd:ReportUnitType>
+  <rd:ReportUnitType>Cm</rd:ReportUnitType>
   <rd:ReportID>e5a88a94-5257-44ee-8c6d-68bf73b47034</rd:ReportID>
 </Report>

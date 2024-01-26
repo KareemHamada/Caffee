@@ -11,6 +11,7 @@ using System.Data.SqlClient;
 using POS.Classes;
 using POS.Tools;
 using Microsoft.Reporting.WinForms;
+using Tulpep.NotificationWindow;
 
 namespace POS.Forms
 {
@@ -596,50 +597,29 @@ namespace POS.Forms
 
             return orderShiftId;
         }
-
+        Database db = new Database();
         private void btnDone_Click(object sender, EventArgs e)
         {
+            DataTable checkPrinter = new DataTable();
+            checkPrinter.Clear();
+            checkPrinter = db.readData("select * from Options", "");
+            if(checkPrinter.Rows.Count <= 0)
+            {
+                MessageBox.Show("من فضلك اكمل اعدادت الطباعة");
+                return;
+            }
+            // لو مش مختار ترابيزات
             if (dgvItems.Rows.Count > 0 && tableIdHidden.Text == "")
             {
                 FormFatora frm = new FormFatora();
-                //DataTable dt = new DataTable();
-                //cmd = new SqlCommand("Select TOP 1 * from Orders order by id DESC", adoClass.sqlcn);
-                //SqlDataAdapter da = new SqlDataAdapter(cmd);
-                //da.Fill(dt);
-                //double nextOrderId = 0;
-                //if (dt.Rows.Count > 0)
-                //{
-                //    DataRow row = dt.Rows[0];
-                //    object orderId = row["id"];
-
-                //    if (orderId != DBNull.Value)
-                //    {
-                //        double oldOrderId = 0;
-                //        double.TryParse(orderId.ToString(), out oldOrderId);
-                //        nextOrderId = oldOrderId + 1;
-                //    }
-                //    else
-                //    {
-                //        double oldOrderId = 0;
-                //        nextOrderId = oldOrderId + 1;
-                //    }
-                //}
-                //else
-                //{
-                //    nextOrderId = 1;
-                //}
-                
-                //////////////////////////////
                 frm.txtFatoraOrderId.Text = returnOrderShiftID().ToString();
                 frm.txtFatoraClientName.Text = txtName.Text;
                 frm.txtFatoraTotal.Text = TotalCalculations().ToString();
                 frm.Show();
             }
+            // لو مختار ترابيزات
             else if (dgvItems.Rows.Count > 0 && tableIdHidden.Text != "")
             {
-
-                //MessageBox.Show("there is a table here");
-
                 DataTable table = new DataTable();
                 cmd = new SqlCommand("select * from vwTablesRoom where id = '" + tableIdHidden.Text + "'", adoClass.sqlcn);
                 SqlDataAdapter da = new SqlDataAdapter(cmd);
@@ -651,21 +631,24 @@ namespace POS.Forms
                     string status = row["status"].ToString();
                     string orderId = row["O_Id"].ToString();
                     string orderShiftId = row["orderShiftId"].ToString();
+                    // لو محجوزة طلع الحساب
                     if (status == "O")
                     {
 
                         FormFatora frm = new FormFatora();
                         frm.txtFatoraOrderId.Text = orderShiftId;
-                        //frm.txtFatoraClientName.Text = txtName.Text;
                         frm.txtFatoraTotal.Text = TotalCalculations().ToString();
                         frm.tableOrder = true;
                         frm.TableOrderIDToPrint = orderId;
                         frm.Show();
                     }
+                    // لو مش محجوزة احجزها
                     else
                     {
                         // table is V
+                       
                         tableCalculations();
+                           
                         comboOrderType.Text = "تيك اوي";
 
                     }
@@ -727,45 +710,50 @@ namespace POS.Forms
                 saveItems(tableOrderId);
 
 
-
+               
 
                 if (dgvItems.Rows.Count > 0)
                 {
-                    dsTables tables = new dsTables();
-                    for (int i = 0; i < dgvItems.Rows.Count; i++)
+                    for (int p = 0; p < Properties.Settings.Default.KitchenNumber; p++)
                     {
-                        DataRow dro = tables.Tables["dtTables"].NewRow();
-                        dro["itemName"] = dgvItems[5, i].Value;
-                        dro["itemQuantity"] = dgvItems[3, i].Value;
-                        dro["notes"] = dgvItems[1, i].Value;
-                        tables.Tables["dtTables"].Rows.Add(dro);
-                    }
+                        dsTables tables = new dsTables();
+                        for (int i = 0; i < dgvItems.Rows.Count; i++)
+                        {
+                            DataRow dro = tables.Tables["dtTables"].NewRow();
+                            dro["itemName"] = dgvItems[5, i].Value;
+                            dro["itemQuantity"] = dgvItems[3, i].Value;
+                            dro["notes"] = dgvItems[1, i].Value;
+                            tables.Tables["dtTables"].Rows.Add(dro);
+                        }
 
-                    FormReports rptForm = new FormReports();
-                    rptForm.mainReport.LocalReport.ReportEmbeddedResource = "POS.Reports.ReportTable.rdlc";
-                    rptForm.mainReport.LocalReport.DataSources.Clear();
-                    rptForm.mainReport.LocalReport.DataSources.Add(new ReportDataSource("DataSet1", tables.Tables["dtTables"]));
+                        FormReports rptForm = new FormReports();
+                        rptForm.mainReport.LocalReport.ReportEmbeddedResource = "POS.Reports.ReportTable.rdlc";
+                        rptForm.mainReport.LocalReport.DataSources.Clear();
+                        rptForm.mainReport.LocalReport.DataSources.Add(new ReportDataSource("DataSet1", tables.Tables["dtTables"]));
 
-                    ReportParameter[] reportParameters = new ReportParameter[3];
-                    reportParameters[0] = new ReportParameter("orderId", insertOrderShiftId.ToString());
-                    reportParameters[1] = new ReportParameter("TableId", tableIdHidden.Text);
-                    reportParameters[2] = new ReportParameter("dateTime", DateTime.Now.ToString());
+                        ReportParameter[] reportParameters = new ReportParameter[3];
+                        reportParameters[0] = new ReportParameter("orderId", insertOrderShiftId.ToString());
+                        reportParameters[1] = new ReportParameter("TableId", tableIdHidden.Text);
+                        reportParameters[2] = new ReportParameter("dateTime", DateTime.Now.ToString());
 
 
-                    if (bool.Parse(declarations.systemOptions["directPrint"].ToString()) && bool.Parse(declarations.systemOptions["printTables"].ToString()))
-                    {
-                        LocalReport report = new LocalReport();
-                        string path = Application.StartupPath + @"\Reports\ReportTable.rdlc";
-                        report.ReportPath = path;
-                        report.DataSources.Clear();
-                        report.DataSources.Add(new ReportDataSource("DataSet1", tables.Tables["dtTables"]));
-                        report.SetParameters(reportParameters);
-                        PrintersClass.PrintToPrinter(report);
-                    }
-                    else if (bool.Parse(declarations.systemOptions["showBeforePrint"].ToString()) && bool.Parse(declarations.systemOptions["printTables"].ToString()))
-                    {
-                        rptForm.mainReport.LocalReport.SetParameters(reportParameters);
-                        rptForm.ShowDialog();
+                        if (Properties.Settings.Default.DirectPrint && Properties.Settings.Default.PrintKitchen)
+                        {
+
+                            LocalReport report = new LocalReport();
+                            string path = Application.StartupPath + @"\Reports\ReportTable.rdlc";
+                            report.ReportPath = path;
+                            report.DataSources.Clear();
+                            report.DataSources.Add(new ReportDataSource("DataSet1", tables.Tables["dtTables"]));
+                            report.SetParameters(reportParameters);
+                            PrintersClass pC = new PrintersClass(Properties.Settings.Default.KitchenPrinter);
+                            pC.PrintToPrinter(report);
+                        }
+                        else if (Properties.Settings.Default.ShowBeforePrint && Properties.Settings.Default.PrintKitchen)
+                        {
+                            rptForm.mainReport.LocalReport.SetParameters(reportParameters);
+                            rptForm.ShowDialog();
+                        }
                     }
 
                 }
@@ -787,7 +775,6 @@ namespace POS.Forms
 
                 tableIdHidden.Text = "";
                 btnUpdateTable.Visible = false;
-                //MessageBox.Show("تم");
 
 
 
@@ -852,7 +839,6 @@ namespace POS.Forms
                     adoClass.sqlcn.Open();
                 }
 
-                
                 DataTable table = new DataTable();
                 cmd = new SqlCommand("select * from vwTablesRoom where id = '" + tableIdHidden.Text + "'", adoClass.sqlcn);
                 SqlDataAdapter da = new SqlDataAdapter(cmd);
@@ -889,41 +875,47 @@ namespace POS.Forms
 
 
                     // print table order
-                    dsTables tables = new dsTables();
-                    for (int i = 0; i < dgvItems.Rows.Count; i++)
+
+                    for (int p = 0; p < Properties.Settings.Default.KitchenNumber; p++)
                     {
-                        DataRow dro = tables.Tables["dtTables"].NewRow();
-                        dro["itemName"] = dgvItems[5, i].Value;
-                        dro["itemQuantity"] = dgvItems[3, i].Value;
-                        dro["notes"] = dgvItems[1, i].Value;
-                        tables.Tables["dtTables"].Rows.Add(dro);
-                    }
+                        dsTables tables = new dsTables();
+                        for (int i = 0; i < dgvItems.Rows.Count; i++)
+                        {
+                            DataRow dro = tables.Tables["dtTables"].NewRow();
+                            dro["itemName"] = dgvItems[5, i].Value;
+                            dro["itemQuantity"] = dgvItems[3, i].Value;
+                            dro["notes"] = dgvItems[1, i].Value;
+                            tables.Tables["dtTables"].Rows.Add(dro);
+                        }
 
-                    FormReports rptForm = new FormReports();
-                    rptForm.mainReport.LocalReport.ReportEmbeddedResource = "POS.Reports.ReportTable.rdlc";
-                    rptForm.mainReport.LocalReport.DataSources.Clear();
-                    rptForm.mainReport.LocalReport.DataSources.Add(new ReportDataSource("DataSet1", tables.Tables["dtTables"]));
+                        FormReports rptForm = new FormReports();
+                        rptForm.mainReport.LocalReport.ReportEmbeddedResource = "POS.Reports.ReportTable.rdlc";
+                        rptForm.mainReport.LocalReport.DataSources.Clear();
+                        rptForm.mainReport.LocalReport.DataSources.Add(new ReportDataSource("DataSet1", tables.Tables["dtTables"]));
 
-                    ReportParameter[] reportParameters = new ReportParameter[3];
-                    reportParameters[0] = new ReportParameter("orderId", orderShiftId);
-                    reportParameters[1] = new ReportParameter("TableId", tableIdHidden.Text);
-                    reportParameters[2] = new ReportParameter("dateTime", DateTime.Now.ToString());
+                        ReportParameter[] reportParameters = new ReportParameter[3];
+                        reportParameters[0] = new ReportParameter("orderId", orderShiftId);
+                        reportParameters[1] = new ReportParameter("TableId", tableIdHidden.Text);
+                        reportParameters[2] = new ReportParameter("dateTime", DateTime.Now.ToString());
 
 
-                    if (bool.Parse(declarations.systemOptions["directPrint"].ToString()))
-                    {
-                        LocalReport report = new LocalReport();
-                        string path = Application.StartupPath + @"\Reports\ReportTable.rdlc";
-                        report.ReportPath = path;
-                        report.DataSources.Clear();
-                        report.DataSources.Add(new ReportDataSource("DataSet1", tables.Tables["dtTables"]));
-                        report.SetParameters(reportParameters);
-                        PrintersClass.PrintToPrinter(report);
-                    }
-                    else if (bool.Parse(declarations.systemOptions["showBeforePrint"].ToString()))
-                    {
-                        rptForm.mainReport.LocalReport.SetParameters(reportParameters);
-                        rptForm.ShowDialog();
+                        if (Properties.Settings.Default.DirectPrint && Properties.Settings.Default.PrintKitchen)
+                        {
+                            LocalReport report = new LocalReport();
+                            string path = Application.StartupPath + @"\Reports\ReportTable.rdlc";
+                            report.ReportPath = path;
+                            report.DataSources.Clear();
+                            report.DataSources.Add(new ReportDataSource("DataSet1", tables.Tables["dtTables"]));
+                            report.SetParameters(reportParameters);
+                            PrintersClass pC = new PrintersClass(Properties.Settings.Default.KitchenPrinter);
+                            pC.PrintToPrinter(report);
+                        }
+                        else if (Properties.Settings.Default.ShowBeforePrint && Properties.Settings.Default.PrintKitchen)
+                        {
+                            rptForm.mainReport.LocalReport.SetParameters(reportParameters);
+                            rptForm.ShowDialog();
+                        }
+                        
                     }
                     // end of print table order
                 }
@@ -936,6 +928,8 @@ namespace POS.Forms
             {
                 adoClass.sqlcn.Close();
             }
+            
+                
 
             dgvItems.Rows.Clear();
             txtTax.Text = "0";
@@ -949,7 +943,6 @@ namespace POS.Forms
             comboOrderType.Text = "تيك اوي";
             tableIdHidden.Text = "";
             btnUpdateTable.Visible = false;
-            MessageBox.Show("تم");
             btnUpdateTable.Visible = false;
         }
 

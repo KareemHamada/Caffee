@@ -54,10 +54,10 @@ namespace POS.Forms
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.btnPrint = new System.Windows.Forms.Button();
             this.btnReload = new System.Windows.Forms.Button();
+            this.btnDeleteAll = new System.Windows.Forms.Button();
             this.tableLayoutPanel4 = new System.Windows.Forms.TableLayoutPanel();
             this.txtSearch = new System.Windows.Forms.TextBox();
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
-            this.btnDeleteAll = new System.Windows.Forms.Button();
             this.pnlParent.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvLoading)).BeginInit();
             this.panel2.SuspendLayout();
@@ -367,6 +367,24 @@ namespace POS.Forms
             this.btnReload.UseVisualStyleBackColor = true;
             this.btnReload.Click += new System.EventHandler(this.btnReload_Click);
             // 
+            // btnDeleteAll
+            // 
+            this.btnDeleteAll.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.btnDeleteAll.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.btnDeleteAll.Font = new System.Drawing.Font("Microsoft Sans Serif", 17F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnDeleteAll.ForeColor = System.Drawing.Color.Red;
+            this.btnDeleteAll.Image = global::POS.Properties.Resources.delete2;
+            this.btnDeleteAll.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnDeleteAll.Location = new System.Drawing.Point(312, 4);
+            this.btnDeleteAll.Name = "btnDeleteAll";
+            this.btnDeleteAll.Size = new System.Drawing.Size(190, 47);
+            this.btnDeleteAll.TabIndex = 18;
+            this.btnDeleteAll.Text = "حذف الكل";
+            this.btnDeleteAll.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.btnDeleteAll.UseVisualStyleBackColor = true;
+            this.btnDeleteAll.Visible = false;
+            this.btnDeleteAll.Click += new System.EventHandler(this.btnDeleteAll_Click);
+            // 
             // tableLayoutPanel4
             // 
             this.tableLayoutPanel4.ColumnCount = 2;
@@ -380,7 +398,7 @@ namespace POS.Forms
             this.tableLayoutPanel4.Name = "tableLayoutPanel4";
             this.tableLayoutPanel4.RowCount = 1;
             this.tableLayoutPanel4.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel4.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 44F));
+            this.tableLayoutPanel4.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 57F));
             this.tableLayoutPanel4.Size = new System.Drawing.Size(1359, 57);
             this.tableLayoutPanel4.TabIndex = 2;
             // 
@@ -406,23 +424,6 @@ namespace POS.Forms
             this.pictureBox2.Size = new System.Drawing.Size(201, 51);
             this.pictureBox2.TabIndex = 1;
             this.pictureBox2.TabStop = false;
-            // 
-            // btnDeleteAll
-            // 
-            this.btnDeleteAll.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.btnDeleteAll.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.btnDeleteAll.Font = new System.Drawing.Font("Microsoft Sans Serif", 17F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnDeleteAll.ForeColor = System.Drawing.Color.Red;
-            this.btnDeleteAll.Image = global::POS.Properties.Resources.delete2;
-            this.btnDeleteAll.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnDeleteAll.Location = new System.Drawing.Point(312, 4);
-            this.btnDeleteAll.Name = "btnDeleteAll";
-            this.btnDeleteAll.Size = new System.Drawing.Size(190, 47);
-            this.btnDeleteAll.TabIndex = 18;
-            this.btnDeleteAll.Text = "حذف الكل";
-            this.btnDeleteAll.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.btnDeleteAll.UseVisualStyleBackColor = true;
-            this.btnDeleteAll.Click += new System.EventHandler(this.btnDeleteAll_Click);
             // 
             // FormReportSupplierCashWithdraw
             // 

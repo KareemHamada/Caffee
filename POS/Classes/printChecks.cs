@@ -77,32 +77,18 @@ namespace POS.Classes
             reportParameters[3] = new ReportParameter("RestPhone", declarations.systemOptions["phone"].ToString());
             reportParameters[4] = new ReportParameter("RestAddress", declarations.systemOptions["address"].ToString());
 
-            if (bool.Parse(declarations.systemOptions["directPrint"].ToString()))
+            if (Properties.Settings.Default.DirectPrint)
             {
-                //
-                //String query = File.ReadAllText(Path.Combine(path, "files\\Test.txt"));
-
-                //LocalReport report = new LocalReport();
-                //string appPath = Path.GetDirectoryName(System.Reflection.Assembly.GetEntryAssembly().Location);
-                //string path = appPath + "\\Reports\\rptCheck.rdlc";
-
                 LocalReport report = new LocalReport();
                 string path = Application.StartupPath + @"\Reports\rptCheck.rdlc";
                 report.ReportPath = path;
                 report.DataSources.Clear();
                 report.DataSources.Add(new ReportDataSource("DataSet1", checks.Tables["dtCheck"]));
                 report.SetParameters(reportParameters);
-                PrintersClass.PrintToPrinter(report);
-                
-                //LocalReport report = new LocalReport();
-                //string path = Path.GetDirectoryName(Application.ExecutablePath);
-                //string fullPath = Path.GetDirectoryName(Application.ExecutablePath) + @"\Reports\rptCheck.rdlc";
-                //report.ReportPath = fullPath;
-                //report.DataSources.Add(new ReportDataSource("DataSet1", checks.Tables["dtCheck"]));
-                //report.SetParameters(reportParameters);
-                //PrintersClass.PrintToPrinter(report);
+                PrintersClass pC = new PrintersClass(Properties.Settings.Default.PrinterName);
+                pC.PrintToPrinter(report);
             }
-            else if (bool.Parse(declarations.systemOptions["showBeforePrint"].ToString()))
+            else if (Properties.Settings.Default.ShowBeforePrint)
             {
                 rptForm.mainReport.LocalReport.SetParameters(reportParameters);
                 rptForm.ShowDialog();
@@ -186,7 +172,7 @@ namespace POS.Classes
             // here
             // ******************************************* // 
 
-            if (bool.Parse(declarations.systemOptions["directPrint"].ToString()))
+            if (Properties.Settings.Default.DirectPrint)
             {
 
                 LocalReport report = new LocalReport();
@@ -195,10 +181,11 @@ namespace POS.Classes
                 report.DataSources.Clear();
                 report.DataSources.Add(new ReportDataSource("DataSet1", reports.Tables["vwEndShift"]));
                 report.SetParameters(reportParameters);
-                PrintersClass.PrintToPrinter(report);
+                PrintersClass pC = new PrintersClass(Properties.Settings.Default.PrinterName);
+                pC.PrintToPrinter(report);
 
             }
-            else if (bool.Parse(declarations.systemOptions["showBeforePrint"].ToString()))
+            else if (Properties.Settings.Default.ShowBeforePrint)
             {
                 rptForm.mainReport.LocalReport.SetParameters(reportParameters);
                 rptForm.ShowDialog();
@@ -228,7 +215,7 @@ namespace POS.Classes
             rptForm.mainReport.LocalReport.DataSources.Clear();
             rptForm.mainReport.LocalReport.DataSources.Add(new ReportDataSource("DataSet1", reports.Tables["EndShiftItemsQuantity"]));
 
-            if (bool.Parse(declarations.systemOptions["directPrint"].ToString()))
+            if (Properties.Settings.Default.DirectPrint)
             {
 
                 LocalReport report = new LocalReport();
@@ -236,10 +223,11 @@ namespace POS.Classes
                 report.ReportPath = path;
                 report.DataSources.Clear();
                 report.DataSources.Add(new ReportDataSource("DataSet1", reports.Tables["EndShiftItemsQuantity"]));
-                PrintersClass.PrintToPrinter(report);
+                PrintersClass pC = new PrintersClass(Properties.Settings.Default.PrinterName);
+                pC.PrintToPrinter(report);
 
             }
-            else if (bool.Parse(declarations.systemOptions["showBeforePrint"].ToString()))
+            else if (Properties.Settings.Default.ShowBeforePrint)
             {
                 rptForm.ShowDialog();
             }
@@ -269,7 +257,7 @@ namespace POS.Classes
             rptForm.mainReport.LocalReport.DataSources.Clear();
             rptForm.mainReport.LocalReport.DataSources.Add(new ReportDataSource("DataSet1", reports.Tables["EndShiftExpenses"]));
 
-            if (bool.Parse(declarations.systemOptions["directPrint"].ToString()))
+            if (Properties.Settings.Default.DirectPrint)
             {
 
                 LocalReport report = new LocalReport();
@@ -277,10 +265,10 @@ namespace POS.Classes
                 report.ReportPath = path;
                 report.DataSources.Clear();
                 report.DataSources.Add(new ReportDataSource("DataSet1", reports.Tables["EndShiftExpenses"]));
-                PrintersClass.PrintToPrinter(report);
-
+                PrintersClass pC = new PrintersClass(Properties.Settings.Default.PrinterName);
+                pC.PrintToPrinter(report);
             }
-            else if (bool.Parse(declarations.systemOptions["showBeforePrint"].ToString()))
+            else if (Properties.Settings.Default.ShowBeforePrint)
             {
                 rptForm.ShowDialog();
             }

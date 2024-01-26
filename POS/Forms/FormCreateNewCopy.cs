@@ -29,8 +29,8 @@ namespace POS.Forms
             {
                 SqlCommand cmd;
 
-                string fileName = txtBackup.Text + "\\POS" + DateTime.Now.ToShortDateString().Replace("/", "-") + " - " + DateTime.Now.ToLongTimeString().Replace(":", "-");
-                string strQuery = "Backup Database POS to Disk='" + fileName + ".bak'";
+                string fileName = txtBackup.Text + "\\Lojy" + DateTime.Now.ToShortDateString().Replace("/", "-") + " - " + DateTime.Now.ToLongTimeString().Replace(":", "-");
+                string strQuery = "Backup Database Lojy to Disk='" + fileName + ".bak'";
                 cmd = new SqlCommand(strQuery, adoClass.sqlcn);
                 if (adoClass.sqlcn.State != ConnectionState.Open)
                 {

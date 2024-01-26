@@ -15,6 +15,13 @@ namespace POS.Classes
     {
         private static List<Stream> m_streams;
         private static int m_currentPageIndex = 0;
+        private static string printerName;
+
+        public PrintersClass(string pName)
+        {
+            printerName = pName;
+        }
+
         //==========================
 
         //LocalReport report = new LocalReport();
@@ -25,10 +32,9 @@ namespace POS.Classes
         //  PrintToPrinter(report);
         //========================================================
 
-        public static void PrintToPrinter(LocalReport report)
+        public void PrintToPrinter(LocalReport report)
         {
             Export(report);
-
         }
 
         public static void Export(LocalReport report, bool print = true)
@@ -70,7 +76,7 @@ namespace POS.Classes
                 printDoc.PrintPage += new PrintPageEventHandler(PrintPage);
                 m_currentPageIndex = 0;
                 // set printer name
-                printDoc.PrinterSettings.PrinterName = Properties.Settings.Default.PrinterName;
+                printDoc.PrinterSettings.PrinterName = printerName;
                 printDoc.Print();
             }
         }
