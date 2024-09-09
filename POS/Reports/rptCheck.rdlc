@@ -755,40 +755,6 @@
               <PaddingBottom>2pt</PaddingBottom>
             </Style>
           </Textbox>
-          <Textbox Name="Textbox25">
-            <CanGrow>true</CanGrow>
-            <KeepTogether>true</KeepTogether>
-            <Paragraphs>
-              <Paragraph>
-                <TextRuns>
-                  <TextRun>
-                    <Value>  للبرمجيات 01090802802 Pytech شركة   </Value>
-                    <Style>
-                      <FontSize>8pt</FontSize>
-                    </Style>
-                  </TextRun>
-                </TextRuns>
-                <Style>
-                  <TextAlign>Center</TextAlign>
-                </Style>
-              </Paragraph>
-            </Paragraphs>
-            <rd:DefaultName>Textbox16</rd:DefaultName>
-            <Top>1.24111in</Top>
-            <Left>0.1828in</Left>
-            <Height>0.18377in</Height>
-            <Width>2.365in</Width>
-            <ZIndex>7</ZIndex>
-            <Style>
-              <Border>
-                <Style>None</Style>
-              </Border>
-              <PaddingLeft>2pt</PaddingLeft>
-              <PaddingRight>2pt</PaddingRight>
-              <PaddingTop>2pt</PaddingTop>
-              <PaddingBottom>2pt</PaddingBottom>
-            </Style>
-          </Textbox>
           <Textbox Name="Textbox26">
             <CanGrow>true</CanGrow>
             <KeepTogether>true</KeepTogether>
@@ -813,7 +779,7 @@
             <Left>2.441in</Left>
             <Height>0.22064in</Height>
             <Width>0.32568in</Width>
-            <ZIndex>8</ZIndex>
+            <ZIndex>7</ZIndex>
             <Style>
               <Border>
                 <Style>None</Style>
@@ -848,7 +814,7 @@
             <Left>1.23112in</Left>
             <Height>0.20518in</Height>
             <Width>0.43834in</Width>
-            <ZIndex>9</ZIndex>
+            <ZIndex>8</ZIndex>
             <Style>
               <Border>
                 <Style>None</Style>
@@ -882,7 +848,7 @@
             <Left>1.16556cm</Left>
             <Height>0.52116cm</Height>
             <Width>1.7907cm</Width>
-            <ZIndex>10</ZIndex>
+            <ZIndex>9</ZIndex>
             <Style>
               <Border>
                 <Style>None</Style>
@@ -912,7 +878,7 @@
             <Left>4.31098cm</Left>
             <Height>0.52117cm</Height>
             <Width>1.78332cm</Width>
-            <ZIndex>11</ZIndex>
+            <ZIndex>10</ZIndex>
             <Style>
               <Border>
                 <Style>None</Style>
@@ -920,7 +886,7 @@
             </Style>
           </Textbox>
         </ReportItems>
-        <Height>3.6594cm</Height>
+        <Height>3.16653cm</Height>
         <Style />
       </Body>
       <Width>7.34009cm</Width>
@@ -1201,36 +1167,6 @@
                 </Border>
               </Style>
             </Textbox>
-            <Textbox Name="RestPhone">
-              <CanGrow>true</CanGrow>
-              <KeepTogether>true</KeepTogether>
-              <Paragraphs>
-                <Paragraph>
-                  <TextRuns>
-                    <TextRun>
-                      <Value>=Parameters!RestPhone.Value</Value>
-                      <Style>
-                        <FontSize>8pt</FontSize>
-                      </Style>
-                    </TextRun>
-                  </TextRuns>
-                  <Style>
-                    <TextAlign>Center</TextAlign>
-                  </Style>
-                </Paragraph>
-              </Paragraphs>
-              <rd:DefaultName>RestPhone</rd:DefaultName>
-              <Top>0.17444in</Top>
-              <Left>0.185in</Left>
-              <Height>0.1521in</Height>
-              <Width>2.57in</Width>
-              <ZIndex>9</ZIndex>
-              <Style>
-                <Border>
-                  <Style>None</Style>
-                </Border>
-              </Style>
-            </Textbox>
             <Textbox Name="casherName">
               <CanGrow>true</CanGrow>
               <KeepTogether>true</KeepTogether>
@@ -1254,7 +1190,7 @@
               <Left>1.45278in</Left>
               <Height>0.1942in</Height>
               <Width>0.96499in</Width>
-              <ZIndex>10</ZIndex>
+              <ZIndex>9</ZIndex>
               <Style>
                 <Border>
                   <Style>None</Style>
@@ -1288,7 +1224,7 @@
               <Left>0.02778in</Left>
               <Height>0.19839in</Height>
               <Width>1.02433in</Width>
-              <ZIndex>11</ZIndex>
+              <ZIndex>10</ZIndex>
               <Style>
                 <Border>
                   <Style>None</Style>
@@ -1318,7 +1254,7 @@
               <Left>0.02778in</Left>
               <Height>0.16768in</Height>
               <Width>0.71875in</Width>
-              <ZIndex>12</ZIndex>
+              <ZIndex>11</ZIndex>
               <Style>
                 <Border>
                   <Style>None</Style>
@@ -1348,7 +1284,7 @@
               <Left>1.4899in</Left>
               <Height>0.15798in</Height>
               <Width>0.98732in</Width>
-              <ZIndex>13</ZIndex>
+              <ZIndex>12</ZIndex>
               <Style>
                 <Border>
                   <Style>None</Style>
@@ -1374,11 +1310,11 @@
                 </Paragraph>
               </Paragraphs>
               <rd:DefaultName>RestAddress</rd:DefaultName>
-              <Top>0.86469cm</Top>
+              <Top>0.54719cm</Top>
               <Left>0.4699cm</Left>
               <Height>0.38833cm</Height>
               <Width>6.5278cm</Width>
-              <ZIndex>14</ZIndex>
+              <ZIndex>13</ZIndex>
               <Style>
                 <Border>
                   <Style>None</Style>

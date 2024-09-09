@@ -828,7 +828,6 @@ namespace POS.Forms
             }
         }
 
-        
 
         private void btnUpdateTable_Click(object sender, EventArgs e)
         {
@@ -857,6 +856,48 @@ namespace POS.Forms
                     cmd.Parameters.AddWithValue("@discount", double.Parse(txtDiscount.Text));
                     cmd.ExecuteNonQuery();
 
+                    // old data in order 
+                    DataTable oldDataTable = new DataTable();
+
+
+                    cmd = new SqlCommand("select * from OrderItems where orderId = '" + orderId + "'", adoClass.sqlcn);
+                    SqlDataAdapter oldDataAdapter = new SqlDataAdapter(cmd);
+                    oldDataAdapter.Fill(oldDataTable);
+                    // end of old data in order
+
+                    //foreach (DataRow r in dgvItems.Rows)
+                    //{
+                    //    if(oldDataTable.Rows.Contains())
+                    //}
+
+                    DataTable newPrintingTable = new DataTable();
+                    newPrintingTable.Columns.Add("Column1");
+                    newPrintingTable.Columns.Add("Column2");
+                    newPrintingTable.Columns.Add("Column3");
+
+                    int quan = 0;
+                    bool founded = false;
+                    for (int i = 0; i < dgvItems.Rows.Count; i++)
+                    {
+                        founded = false;
+                        foreach (DataRow rr in oldDataTable.Rows)
+                        {
+                            if (Convert.ToInt32(dgvItems[0, i].Value) == Convert.ToInt32(rr[2]))
+                            {
+                                if(Convert.ToInt32(dgvItems[3, i].Value) > Convert.ToInt32(rr[3]))
+                                {
+                                    quan = Convert.ToInt32(dgvItems[3, i].Value) - Convert.ToInt32(rr[3]);
+                                    newPrintingTable.Rows.Add(dgvItems[5, i].Value, quan, dgvItems[1, i].Value);
+                                }
+                                founded = true;
+                                break;
+                            }
+                        }
+                        if (!founded)
+                        {
+                            newPrintingTable.Rows.Add(dgvItems[5, i].Value, dgvItems[3, i].Value, dgvItems[1, i].Value);
+                        }
+                    }
 
                     cmd = new SqlCommand("delete from OrderItems where orderId = '" + orderId + "'", adoClass.sqlcn);
                     cmd.ExecuteNonQuery();
@@ -872,21 +913,36 @@ namespace POS.Forms
                         cmd.ExecuteNonQuery();
                         cmd.Parameters.Clear();
                     }
-
-
                     // print table order
 
                     for (int p = 0; p < Properties.Settings.Default.KitchenNumber; p++)
                     {
                         dsTables tables = new dsTables();
-                        for (int i = 0; i < dgvItems.Rows.Count; i++)
+                        foreach (DataRow rrr in newPrintingTable.Rows)
                         {
                             DataRow dro = tables.Tables["dtTables"].NewRow();
-                            dro["itemName"] = dgvItems[5, i].Value;
-                            dro["itemQuantity"] = dgvItems[3, i].Value;
-                            dro["notes"] = dgvItems[1, i].Value;
+                            dro["itemName"] = rrr[0];
+                            dro["itemQuantity"] = rrr[1];
+                            dro["notes"] = rrr[2];
+
+                            //dro["itemName"] = dgvItems[5, i].Value;
+                            //dro["itemQuantity"] = dgvItems[3, i].Value;
+                            //dro["notes"] = dgvItems[1, i].Value;
                             tables.Tables["dtTables"].Rows.Add(dro);
                         }
+
+                        //for (int i = 0; i < dgvItems.Rows.Count; i++)
+                        //{
+                        //    DataRow dro = tables.Tables["dtTables"].NewRow();
+                        //    dro["itemName"] = dgvItems[5, i].Value;
+                        //    dro["itemQuantity"] = dgvItems[3, i].Value;
+                        //    dro["notes"] = dgvItems[1, i].Value;
+
+                        //    //dro["itemName"] = dgvItems[5, i].Value;
+                        //    //dro["itemQuantity"] = dgvItems[3, i].Value;
+                        //    //dro["notes"] = dgvItems[1, i].Value;
+                        //    tables.Tables["dtTables"].Rows.Add(dro);
+                        //}
 
                         FormReports rptForm = new FormReports();
                         rptForm.mainReport.LocalReport.ReportEmbeddedResource = "POS.Reports.ReportTable.rdlc";

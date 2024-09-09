@@ -23,7 +23,7 @@ namespace POS.Classes
         {
             try
             {
-                sqlcn = new SqlConnection(@"Data Source=.\SQLEXPRESS;Initial Catalog=Lojy;Integrated Security=True");
+                sqlcn = new SqlConnection(@"Data Source=.\SQLEXPRESS;Initial Catalog=POS;Integrated Security=True");
             }
             catch (Exception ex)
             {

@@ -73,43 +73,45 @@ namespace POS.Forms
             // 
             this.txtPassword.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txtPassword.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtPassword.Location = new System.Drawing.Point(212, 241);
+            this.txtPassword.Location = new System.Drawing.Point(23, 241);
             this.txtPassword.Name = "txtPassword";
             this.txtPassword.PasswordChar = '*';
             this.txtPassword.Size = new System.Drawing.Size(254, 34);
             this.txtPassword.TabIndex = 11;
             this.txtPassword.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.txtPassword.UseSystemPasswordChar = true;
+            this.txtPassword.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtPassword_KeyPress);
             // 
             // label2
             // 
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(18, 241);
+            this.label2.Location = new System.Drawing.Point(331, 243);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(120, 29);
+            this.label2.Size = new System.Drawing.Size(104, 29);
             this.label2.TabIndex = 10;
-            this.label2.Text = "Password";
+            this.label2.Text = "كلمة المرور";
             // 
             // txtUserName
             // 
             this.txtUserName.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txtUserName.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtUserName.Location = new System.Drawing.Point(212, 185);
+            this.txtUserName.Location = new System.Drawing.Point(23, 196);
             this.txtUserName.Name = "txtUserName";
             this.txtUserName.Size = new System.Drawing.Size(254, 34);
             this.txtUserName.TabIndex = 9;
             this.txtUserName.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.txtUserName.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtUserName_KeyPress);
             // 
             // label1
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(18, 185);
+            this.label1.Location = new System.Drawing.Point(331, 201);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(135, 29);
+            this.label1.Size = new System.Drawing.Size(112, 29);
             this.label1.TabIndex = 8;
-            this.label1.Text = "User Name";
+            this.label1.Text = "اسم المستخدم";
             // 
             // pictureBox1
             // 

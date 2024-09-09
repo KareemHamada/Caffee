@@ -12,7 +12,7 @@ namespace POS.Classes
     class Database
     {
         // connection to database == connection string
-        SqlConnection conn = new SqlConnection(@"Data Source=.\SQLEXPRESS;Initial Catalog=Lojy;Integrated Security=True");
+        SqlConnection conn = new SqlConnection(@"Data Source=.\SQLEXPRESS;Initial Catalog=POS;Integrated Security=True");
         SqlCommand cmd = new SqlCommand();
 
 

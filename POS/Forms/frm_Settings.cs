@@ -169,7 +169,24 @@ namespace POS.Forms
             }
         }
 
-        private void btnSave_Click(object sender, EventArgs e)
+
+
+        private void showFatoraData()
+        {
+            tbl.Clear();
+            tbl = db.readData("select * from Options", "");
+
+            if (tbl.Rows.Count >= 1)
+            {
+                txtName.Text = tbl.Rows[0][1].ToString();
+                txtPhone.Text = tbl.Rows[0][2].ToString();
+                txtAddress.Text = tbl.Rows[0][3].ToString();
+                txtLine1.Text = tbl.Rows[0][4].ToString();
+                txtLine2.Text = tbl.Rows[0][5].ToString();
+            }
+        }
+
+        private void btnSave_Click_1(object sender, EventArgs e)
         {
             tbl.Clear();
             tbl = db.readData("select * from Options", "");
@@ -196,22 +213,6 @@ namespace POS.Forms
             Properties.Settings.Default.Save();
 
             MessageBox.Show("تم الحفظ بنجاح", "تاكيد", MessageBoxButtons.OK, MessageBoxIcon.Information);
-        }
-
-
-        private void showFatoraData()
-        {
-            tbl.Clear();
-            tbl = db.readData("select * from Options", "");
-
-            if (tbl.Rows.Count >= 1)
-            {
-                txtName.Text = tbl.Rows[0][1].ToString();
-                txtPhone.Text = tbl.Rows[0][2].ToString();
-                txtAddress.Text = tbl.Rows[0][3].ToString();
-                txtLine1.Text = tbl.Rows[0][4].ToString();
-                txtLine2.Text = tbl.Rows[0][5].ToString();
-            }
         }
     }
 }

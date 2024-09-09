@@ -32,18 +32,18 @@ namespace POS.Forms
             this.tabControler = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
             this.tblParentFatora = new System.Windows.Forms.TableLayoutPanel();
-            this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
-            this.label1 = new System.Windows.Forms.Label();
-            this.txtName = new System.Windows.Forms.TextBox();
-            this.label4 = new System.Windows.Forms.Label();
-            this.label5 = new System.Windows.Forms.Label();
-            this.txtAddress = new System.Windows.Forms.TextBox();
-            this.txtPhone = new System.Windows.Forms.TextBox();
-            this.label6 = new System.Windows.Forms.Label();
-            this.label7 = new System.Windows.Forms.Label();
-            this.txtLine1 = new System.Windows.Forms.TextBox();
-            this.txtLine2 = new System.Windows.Forms.TextBox();
+            this.tableLayoutPanel7 = new System.Windows.Forms.TableLayoutPanel();
             this.btnSave = new System.Windows.Forms.Button();
+            this.label7 = new System.Windows.Forms.Label();
+            this.txtAddress = new System.Windows.Forms.TextBox();
+            this.txtLine2 = new System.Windows.Forms.TextBox();
+            this.txtLine1 = new System.Windows.Forms.TextBox();
+            this.label5 = new System.Windows.Forms.Label();
+            this.label4 = new System.Windows.Forms.Label();
+            this.txtName = new System.Windows.Forms.TextBox();
+            this.txtPhone = new System.Windows.Forms.TextBox();
+            this.label1 = new System.Windows.Forms.Label();
+            this.label6 = new System.Windows.Forms.Label();
             this.tabPage2 = new System.Windows.Forms.TabPage();
             this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
             this.tableLayoutPanel4 = new System.Windows.Forms.TableLayoutPanel();
@@ -61,18 +61,18 @@ namespace POS.Forms
             this.label2 = new System.Windows.Forms.Label();
             this.nudFatoraNumber = new System.Windows.Forms.NumericUpDown();
             this.btnSavePrintingOptions = new System.Windows.Forms.Button();
+            this.cbxPrintFatoraToKitchen = new System.Windows.Forms.CheckBox();
             this.tabPage3 = new System.Windows.Forms.TabPage();
             this.tplParentPrinter = new System.Windows.Forms.TableLayoutPanel();
             this.tableLayoutPanel5 = new System.Windows.Forms.TableLayoutPanel();
             this.tableLayoutPanel6 = new System.Windows.Forms.TableLayoutPanel();
             this.label10 = new System.Windows.Forms.Label();
-            this.txtPassword = new System.Windows.Forms.TextBox();
             this.btnSavePassword = new System.Windows.Forms.Button();
-            this.cbxPrintFatoraToKitchen = new System.Windows.Forms.CheckBox();
+            this.txtPassword = new System.Windows.Forms.TextBox();
             this.tabControler.SuspendLayout();
             this.tabPage1.SuspendLayout();
             this.tblParentFatora.SuspendLayout();
-            this.tableLayoutPanel1.SuspendLayout();
+            this.tableLayoutPanel7.SuspendLayout();
             this.tabPage2.SuspendLayout();
             this.tableLayoutPanel2.SuspendLayout();
             this.tableLayoutPanel4.SuspendLayout();
@@ -117,7 +117,7 @@ namespace POS.Forms
             this.tblParentFatora.ColumnCount = 2;
             this.tblParentFatora.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.tblParentFatora.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tblParentFatora.Controls.Add(this.tableLayoutPanel1, 0, 0);
+            this.tblParentFatora.Controls.Add(this.tableLayoutPanel7, 0, 0);
             this.tblParentFatora.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tblParentFatora.Location = new System.Drawing.Point(5, 7);
             this.tblParentFatora.Name = "tblParentFatora";
@@ -126,163 +126,38 @@ namespace POS.Forms
             this.tblParentFatora.Size = new System.Drawing.Size(1906, 989);
             this.tblParentFatora.TabIndex = 1;
             // 
-            // tableLayoutPanel1
+            // tableLayoutPanel7
             // 
-            this.tableLayoutPanel1.ColumnCount = 2;
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel1.Controls.Add(this.label1, 0, 0);
-            this.tableLayoutPanel1.Controls.Add(this.txtName, 1, 0);
-            this.tableLayoutPanel1.Controls.Add(this.label4, 0, 1);
-            this.tableLayoutPanel1.Controls.Add(this.label5, 0, 2);
-            this.tableLayoutPanel1.Controls.Add(this.txtAddress, 1, 2);
-            this.tableLayoutPanel1.Controls.Add(this.txtPhone, 1, 1);
-            this.tableLayoutPanel1.Controls.Add(this.label6, 0, 3);
-            this.tableLayoutPanel1.Controls.Add(this.label7, 0, 4);
-            this.tableLayoutPanel1.Controls.Add(this.txtLine1, 1, 3);
-            this.tableLayoutPanel1.Controls.Add(this.txtLine2, 1, 4);
-            this.tableLayoutPanel1.Controls.Add(this.btnSave, 0, 5);
-            this.tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tableLayoutPanel1.Location = new System.Drawing.Point(956, 3);
-            this.tableLayoutPanel1.Name = "tableLayoutPanel1";
-            this.tableLayoutPanel1.RowCount = 10;
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 9.999203F));
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 9.9992F));
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 9.9992F));
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 9.9992F));
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 9.9992F));
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 9.999203F));
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 10.0012F));
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 10.0012F));
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 10.0012F));
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 10.0012F));
-            this.tableLayoutPanel1.Size = new System.Drawing.Size(947, 983);
-            this.tableLayoutPanel1.TabIndex = 0;
-            // 
-            // label1
-            // 
-            this.label1.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(654, 31);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(114, 36);
-            this.label1.TabIndex = 23;
-            this.label1.Text = "اسم المكان";
-            this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // txtName
-            // 
-            this.txtName.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.txtName.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.txtName.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtName.ForeColor = System.Drawing.Color.DimGray;
-            this.txtName.Location = new System.Drawing.Point(21, 28);
-            this.txtName.Name = "txtName";
-            this.txtName.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
-            this.txtName.Size = new System.Drawing.Size(433, 41);
-            this.txtName.TabIndex = 24;
-            this.txtName.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            // 
-            // label4
-            // 
-            this.label4.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.label4.AutoSize = true;
-            this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label4.Location = new System.Drawing.Point(595, 129);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(232, 36);
-            this.label4.TabIndex = 29;
-            this.label4.Text = "اضافة اسفل اسم المكان";
-            this.label4.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // label5
-            // 
-            this.label5.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.label5.AutoSize = true;
-            this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label5.Location = new System.Drawing.Point(670, 227);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(81, 36);
-            this.label5.TabIndex = 33;
-            this.label5.Text = "العنوان";
-            this.label5.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // txtAddress
-            // 
-            this.txtAddress.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.txtAddress.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.txtAddress.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtAddress.ForeColor = System.Drawing.Color.DimGray;
-            this.txtAddress.Location = new System.Drawing.Point(21, 224);
-            this.txtAddress.Name = "txtAddress";
-            this.txtAddress.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
-            this.txtAddress.Size = new System.Drawing.Size(433, 41);
-            this.txtAddress.TabIndex = 34;
-            this.txtAddress.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            // 
-            // txtPhone
-            // 
-            this.txtPhone.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.txtPhone.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.txtPhone.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtPhone.ForeColor = System.Drawing.Color.DimGray;
-            this.txtPhone.Location = new System.Drawing.Point(21, 126);
-            this.txtPhone.Name = "txtPhone";
-            this.txtPhone.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
-            this.txtPhone.Size = new System.Drawing.Size(433, 41);
-            this.txtPhone.TabIndex = 30;
-            this.txtPhone.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            // 
-            // label6
-            // 
-            this.label6.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.label6.AutoSize = true;
-            this.label6.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label6.Location = new System.Drawing.Point(579, 325);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(264, 36);
-            this.label6.TabIndex = 35;
-            this.label6.Text = "السطر الاول اسفل الفاتورة";
-            this.label6.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // label7
-            // 
-            this.label7.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.label7.AutoSize = true;
-            this.label7.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label7.Location = new System.Drawing.Point(578, 423);
-            this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(265, 36);
-            this.label7.TabIndex = 36;
-            this.label7.Text = "السطر الثاني اسفل الفاتورة";
-            this.label7.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // txtLine1
-            // 
-            this.txtLine1.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.txtLine1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.txtLine1.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtLine1.ForeColor = System.Drawing.Color.DimGray;
-            this.txtLine1.Location = new System.Drawing.Point(21, 322);
-            this.txtLine1.Name = "txtLine1";
-            this.txtLine1.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
-            this.txtLine1.Size = new System.Drawing.Size(433, 41);
-            this.txtLine1.TabIndex = 37;
-            this.txtLine1.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            // 
-            // txtLine2
-            // 
-            this.txtLine2.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.txtLine2.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.txtLine2.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtLine2.ForeColor = System.Drawing.Color.DimGray;
-            this.txtLine2.Location = new System.Drawing.Point(21, 420);
-            this.txtLine2.Name = "txtLine2";
-            this.txtLine2.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
-            this.txtLine2.Size = new System.Drawing.Size(433, 41);
-            this.txtLine2.TabIndex = 38;
-            this.txtLine2.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.tableLayoutPanel7.ColumnCount = 2;
+            this.tableLayoutPanel7.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanel7.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanel7.Controls.Add(this.btnSave, 0, 4);
+            this.tableLayoutPanel7.Controls.Add(this.label7, 0, 3);
+            this.tableLayoutPanel7.Controls.Add(this.txtAddress, 1, 1);
+            this.tableLayoutPanel7.Controls.Add(this.txtLine2, 1, 3);
+            this.tableLayoutPanel7.Controls.Add(this.txtLine1, 1, 2);
+            this.tableLayoutPanel7.Controls.Add(this.label5, 0, 1);
+            this.tableLayoutPanel7.Controls.Add(this.label4, 0, 6);
+            this.tableLayoutPanel7.Controls.Add(this.txtName, 1, 0);
+            this.tableLayoutPanel7.Controls.Add(this.txtPhone, 1, 6);
+            this.tableLayoutPanel7.Controls.Add(this.label1, 0, 0);
+            this.tableLayoutPanel7.Controls.Add(this.label6, 0, 2);
+            this.tableLayoutPanel7.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.tableLayoutPanel7.Location = new System.Drawing.Point(956, 3);
+            this.tableLayoutPanel7.Name = "tableLayoutPanel7";
+            this.tableLayoutPanel7.RowCount = 8;
+            this.tableLayoutPanel7.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 12.49938F));
+            this.tableLayoutPanel7.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 12.49938F));
+            this.tableLayoutPanel7.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 12.49938F));
+            this.tableLayoutPanel7.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 12.49938F));
+            this.tableLayoutPanel7.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 12.49938F));
+            this.tableLayoutPanel7.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 12.49938F));
+            this.tableLayoutPanel7.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 12.50187F));
+            this.tableLayoutPanel7.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 12.50187F));
+            this.tableLayoutPanel7.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
+            this.tableLayoutPanel7.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
+            this.tableLayoutPanel7.Size = new System.Drawing.Size(947, 983);
+            this.tableLayoutPanel7.TabIndex = 2;
             // 
             // btnSave
             // 
@@ -294,13 +169,140 @@ namespace POS.Forms
             this.btnSave.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnSave.Image = global::POS.Properties.Resources.floppy_disk;
             this.btnSave.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnSave.Location = new System.Drawing.Point(555, 494);
+            this.btnSave.Location = new System.Drawing.Point(555, 504);
             this.btnSave.Name = "btnSave";
             this.btnSave.Size = new System.Drawing.Size(312, 89);
             this.btnSave.TabIndex = 44;
             this.btnSave.Text = "حفظ البيانات";
             this.btnSave.UseVisualStyleBackColor = false;
-            this.btnSave.Click += new System.EventHandler(this.btnSave_Click);
+            this.btnSave.Click += new System.EventHandler(this.btnSave_Click_1);
+            // 
+            // label7
+            // 
+            this.label7.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.label7.AutoSize = true;
+            this.label7.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label7.Location = new System.Drawing.Point(578, 409);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(265, 36);
+            this.label7.TabIndex = 36;
+            this.label7.Text = "السطر الثاني اسفل الفاتورة";
+            this.label7.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // txtAddress
+            // 
+            this.txtAddress.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.txtAddress.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.txtAddress.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtAddress.ForeColor = System.Drawing.Color.DimGray;
+            this.txtAddress.Location = new System.Drawing.Point(21, 162);
+            this.txtAddress.Name = "txtAddress";
+            this.txtAddress.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
+            this.txtAddress.Size = new System.Drawing.Size(433, 41);
+            this.txtAddress.TabIndex = 34;
+            this.txtAddress.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // txtLine2
+            // 
+            this.txtLine2.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.txtLine2.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.txtLine2.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtLine2.ForeColor = System.Drawing.Color.DimGray;
+            this.txtLine2.Location = new System.Drawing.Point(21, 406);
+            this.txtLine2.Name = "txtLine2";
+            this.txtLine2.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
+            this.txtLine2.Size = new System.Drawing.Size(433, 41);
+            this.txtLine2.TabIndex = 38;
+            this.txtLine2.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // txtLine1
+            // 
+            this.txtLine1.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.txtLine1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.txtLine1.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtLine1.ForeColor = System.Drawing.Color.DimGray;
+            this.txtLine1.Location = new System.Drawing.Point(21, 284);
+            this.txtLine1.Name = "txtLine1";
+            this.txtLine1.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
+            this.txtLine1.Size = new System.Drawing.Size(433, 41);
+            this.txtLine1.TabIndex = 37;
+            this.txtLine1.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // label5
+            // 
+            this.label5.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.label5.AutoSize = true;
+            this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label5.Location = new System.Drawing.Point(670, 165);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(81, 36);
+            this.label5.TabIndex = 33;
+            this.label5.Text = "العنوان";
+            this.label5.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // label4
+            // 
+            this.label4.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.label4.AutoSize = true;
+            this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label4.Location = new System.Drawing.Point(595, 775);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(232, 36);
+            this.label4.TabIndex = 29;
+            this.label4.Text = "اضافة اسفل اسم المكان";
+            this.label4.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.label4.Visible = false;
+            // 
+            // txtName
+            // 
+            this.txtName.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.txtName.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.txtName.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtName.ForeColor = System.Drawing.Color.DimGray;
+            this.txtName.Location = new System.Drawing.Point(21, 40);
+            this.txtName.Name = "txtName";
+            this.txtName.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
+            this.txtName.Size = new System.Drawing.Size(433, 41);
+            this.txtName.TabIndex = 24;
+            this.txtName.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // txtPhone
+            // 
+            this.txtPhone.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.txtPhone.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.txtPhone.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtPhone.ForeColor = System.Drawing.Color.DimGray;
+            this.txtPhone.Location = new System.Drawing.Point(21, 772);
+            this.txtPhone.Name = "txtPhone";
+            this.txtPhone.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
+            this.txtPhone.Size = new System.Drawing.Size(433, 41);
+            this.txtPhone.TabIndex = 30;
+            this.txtPhone.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.txtPhone.Visible = false;
+            // 
+            // label1
+            // 
+            this.label1.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.Location = new System.Drawing.Point(654, 43);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(114, 36);
+            this.label1.TabIndex = 23;
+            this.label1.Text = "اسم المكان";
+            this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // label6
+            // 
+            this.label6.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.label6.AutoSize = true;
+            this.label6.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label6.Location = new System.Drawing.Point(579, 287);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(264, 36);
+            this.label6.TabIndex = 35;
+            this.label6.Text = "السطر الاول اسفل الفاتورة";
+            this.label6.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // tabPage2
             // 
@@ -335,7 +337,7 @@ namespace POS.Forms
             this.tableLayoutPanel4.ColumnCount = 3;
             this.tableLayoutPanel4.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 40.09077F));
             this.tableLayoutPanel4.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 59.90923F));
-            this.tableLayoutPanel4.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 127F));
+            this.tableLayoutPanel4.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 131F));
             this.tableLayoutPanel4.Controls.Add(this.label8, 0, 0);
             this.tableLayoutPanel4.Controls.Add(this.cbxKitchenPrinter, 1, 0);
             this.tableLayoutPanel4.Controls.Add(this.label9, 0, 1);
@@ -363,7 +365,7 @@ namespace POS.Forms
             this.label8.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.label8.AutoSize = true;
             this.label8.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label8.Location = new System.Drawing.Point(585, 31);
+            this.label8.Location = new System.Drawing.Point(586, 31);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(141, 36);
             this.label8.TabIndex = 49;
@@ -378,9 +380,9 @@ namespace POS.Forms
             this.cbxKitchenPrinter.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbxKitchenPrinter.Font = new System.Drawing.Font("Microsoft Sans Serif", 17F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cbxKitchenPrinter.FormattingEnabled = true;
-            this.cbxKitchenPrinter.Location = new System.Drawing.Point(131, 29);
+            this.cbxKitchenPrinter.Location = new System.Drawing.Point(135, 29);
             this.cbxKitchenPrinter.Name = "cbxKitchenPrinter";
-            this.cbxKitchenPrinter.Size = new System.Drawing.Size(389, 40);
+            this.cbxKitchenPrinter.Size = new System.Drawing.Size(387, 40);
             this.cbxKitchenPrinter.TabIndex = 51;
             // 
             // label9
@@ -388,7 +390,7 @@ namespace POS.Forms
             this.label9.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.label9.AutoSize = true;
             this.label9.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label9.Location = new System.Drawing.Point(531, 129);
+            this.label9.Location = new System.Drawing.Point(532, 129);
             this.label9.Name = "label9";
             this.label9.Size = new System.Drawing.Size(248, 36);
             this.label9.TabIndex = 55;
@@ -398,7 +400,7 @@ namespace POS.Forms
             // nudKitchenNumber
             // 
             this.nudKitchenNumber.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.nudKitchenNumber.Location = new System.Drawing.Point(178, 124);
+            this.nudKitchenNumber.Location = new System.Drawing.Point(181, 124);
             this.nudKitchenNumber.Name = "nudKitchenNumber";
             this.nudKitchenNumber.Size = new System.Drawing.Size(296, 45);
             this.nudKitchenNumber.TabIndex = 56;
@@ -414,7 +416,7 @@ namespace POS.Forms
             this.cbxprintKitchen.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.cbxprintKitchen.AutoSize = true;
             this.cbxprintKitchen.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.cbxprintKitchen.Location = new System.Drawing.Point(225, 225);
+            this.cbxprintKitchen.Location = new System.Drawing.Point(228, 225);
             this.cbxprintKitchen.Name = "cbxprintKitchen";
             this.cbxprintKitchen.Size = new System.Drawing.Size(201, 40);
             this.cbxprintKitchen.TabIndex = 57;
@@ -427,7 +429,7 @@ namespace POS.Forms
             this.tableLayoutPanel3.ColumnCount = 3;
             this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 45.37158F));
             this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 54.62842F));
-            this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 338F));
+            this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 342F));
             this.tableLayoutPanel3.Controls.Add(this.label3, 0, 0);
             this.tableLayoutPanel3.Controls.Add(this.cbxMainPrinter, 1, 0);
             this.tableLayoutPanel3.Controls.Add(this.rdoDirectPrint, 0, 1);
@@ -459,7 +461,7 @@ namespace POS.Forms
             this.label3.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.Location = new System.Drawing.Point(858, 31);
+            this.label3.Location = new System.Drawing.Point(859, 31);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(145, 36);
             this.label3.TabIndex = 48;
@@ -474,9 +476,9 @@ namespace POS.Forms
             this.cbxMainPrinter.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbxMainPrinter.Font = new System.Drawing.Font("Microsoft Sans Serif", 17F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cbxMainPrinter.FormattingEnabled = true;
-            this.cbxMainPrinter.Location = new System.Drawing.Point(342, 29);
+            this.cbxMainPrinter.Location = new System.Drawing.Point(346, 29);
             this.cbxMainPrinter.Name = "cbxMainPrinter";
-            this.cbxMainPrinter.Size = new System.Drawing.Size(412, 40);
+            this.cbxMainPrinter.Size = new System.Drawing.Size(410, 40);
             this.cbxMainPrinter.TabIndex = 50;
             // 
             // rdoDirectPrint
@@ -484,7 +486,7 @@ namespace POS.Forms
             this.rdoDirectPrint.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.rdoDirectPrint.AutoSize = true;
             this.rdoDirectPrint.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.rdoDirectPrint.Location = new System.Drawing.Point(847, 127);
+            this.rdoDirectPrint.Location = new System.Drawing.Point(848, 127);
             this.rdoDirectPrint.Name = "rdoDirectPrint";
             this.rdoDirectPrint.Size = new System.Drawing.Size(167, 40);
             this.rdoDirectPrint.TabIndex = 51;
@@ -498,7 +500,7 @@ namespace POS.Forms
             this.rdoShowBeforePrint.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.rdoShowBeforePrint.AutoSize = true;
             this.rdoShowBeforePrint.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.rdoShowBeforePrint.Location = new System.Drawing.Point(440, 127);
+            this.rdoShowBeforePrint.Location = new System.Drawing.Point(443, 127);
             this.rdoShowBeforePrint.Name = "rdoShowBeforePrint";
             this.rdoShowBeforePrint.Size = new System.Drawing.Size(216, 40);
             this.rdoShowBeforePrint.TabIndex = 52;
@@ -512,7 +514,7 @@ namespace POS.Forms
             this.rdoDontShow.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.rdoDontShow.AutoSize = true;
             this.rdoDontShow.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.rdoDontShow.Location = new System.Drawing.Point(95, 127);
+            this.rdoDontShow.Location = new System.Drawing.Point(97, 127);
             this.rdoDontShow.Name = "rdoDontShow";
             this.rdoDontShow.Size = new System.Drawing.Size(150, 40);
             this.rdoDontShow.TabIndex = 53;
@@ -526,7 +528,7 @@ namespace POS.Forms
             this.label2.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(805, 227);
+            this.label2.Location = new System.Drawing.Point(806, 227);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(252, 36);
             this.label2.TabIndex = 54;
@@ -536,7 +538,7 @@ namespace POS.Forms
             // nudFatoraNumber
             // 
             this.nudFatoraNumber.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.nudFatoraNumber.Location = new System.Drawing.Point(424, 222);
+            this.nudFatoraNumber.Location = new System.Drawing.Point(427, 222);
             this.nudFatoraNumber.Name = "nudFatoraNumber";
             this.nudFatoraNumber.Size = new System.Drawing.Size(249, 45);
             this.nudFatoraNumber.TabIndex = 55;
@@ -557,13 +559,26 @@ namespace POS.Forms
             this.btnSavePrintingOptions.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnSavePrintingOptions.Image = global::POS.Properties.Resources.floppy_disk;
             this.btnSavePrintingOptions.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnSavePrintingOptions.Location = new System.Drawing.Point(775, 396);
+            this.btnSavePrintingOptions.Location = new System.Drawing.Point(776, 396);
             this.btnSavePrintingOptions.Name = "btnSavePrintingOptions";
             this.btnSavePrintingOptions.Size = new System.Drawing.Size(312, 89);
             this.btnSavePrintingOptions.TabIndex = 44;
             this.btnSavePrintingOptions.Text = "حفظ البيانات";
             this.btnSavePrintingOptions.UseVisualStyleBackColor = false;
             this.btnSavePrintingOptions.Click += new System.EventHandler(this.btnSavePrintingOptions_Click);
+            // 
+            // cbxPrintFatoraToKitchen
+            // 
+            this.cbxPrintFatoraToKitchen.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.cbxPrintFatoraToKitchen.AutoSize = true;
+            this.cbxPrintFatoraToKitchen.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cbxPrintFatoraToKitchen.Location = new System.Drawing.Point(424, 323);
+            this.cbxPrintFatoraToKitchen.Name = "cbxPrintFatoraToKitchen";
+            this.cbxPrintFatoraToKitchen.Size = new System.Drawing.Size(254, 40);
+            this.cbxPrintFatoraToKitchen.TabIndex = 58;
+            this.cbxPrintFatoraToKitchen.Text = "طباعة ايضا في المطبخ";
+            this.cbxPrintFatoraToKitchen.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.cbxPrintFatoraToKitchen.UseVisualStyleBackColor = true;
             // 
             // tabPage3
             // 
@@ -595,7 +610,7 @@ namespace POS.Forms
             this.tableLayoutPanel5.ColumnCount = 3;
             this.tableLayoutPanel5.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 21.69492F));
             this.tableLayoutPanel5.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 78.30508F));
-            this.tableLayoutPanel5.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 191F));
+            this.tableLayoutPanel5.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 195F));
             this.tableLayoutPanel5.Controls.Add(this.tableLayoutPanel6, 1, 0);
             this.tableLayoutPanel5.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel5.Location = new System.Drawing.Point(0, 0);
@@ -611,10 +626,10 @@ namespace POS.Forms
             this.tableLayoutPanel6.ColumnCount = 1;
             this.tableLayoutPanel6.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.tableLayoutPanel6.Controls.Add(this.label10, 0, 0);
-            this.tableLayoutPanel6.Controls.Add(this.txtPassword, 0, 1);
             this.tableLayoutPanel6.Controls.Add(this.btnSavePassword, 0, 2);
+            this.tableLayoutPanel6.Controls.Add(this.txtPassword, 0, 1);
             this.tableLayoutPanel6.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tableLayoutPanel6.Location = new System.Drawing.Point(192, 0);
+            this.tableLayoutPanel6.Location = new System.Drawing.Point(196, 0);
             this.tableLayoutPanel6.Margin = new System.Windows.Forms.Padding(0);
             this.tableLayoutPanel6.Name = "tableLayoutPanel6";
             this.tableLayoutPanel6.RowCount = 4;
@@ -622,7 +637,7 @@ namespace POS.Forms
             this.tableLayoutPanel6.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 25F));
             this.tableLayoutPanel6.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 25F));
             this.tableLayoutPanel6.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 25F));
-            this.tableLayoutPanel6.Size = new System.Drawing.Size(1346, 590);
+            this.tableLayoutPanel6.Size = new System.Drawing.Size(1342, 590);
             this.tableLayoutPanel6.TabIndex = 0;
             // 
             // label10
@@ -630,25 +645,12 @@ namespace POS.Forms
             this.label10.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.label10.AutoSize = true;
             this.label10.ForeColor = System.Drawing.Color.Red;
-            this.label10.Location = new System.Drawing.Point(587, 54);
+            this.label10.Location = new System.Drawing.Point(585, 54);
             this.label10.Name = "label10";
             this.label10.Size = new System.Drawing.Size(172, 39);
             this.label10.TabIndex = 12;
             this.label10.Text = "باسورد تقفيل الوردية";
             this.label10.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // txtPassword
-            // 
-            this.txtPassword.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.txtPassword.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.txtPassword.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtPassword.ForeColor = System.Drawing.Color.DimGray;
-            this.txtPassword.Location = new System.Drawing.Point(457, 200);
-            this.txtPassword.Name = "txtPassword";
-            this.txtPassword.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
-            this.txtPassword.Size = new System.Drawing.Size(433, 41);
-            this.txtPassword.TabIndex = 31;
-            this.txtPassword.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // btnSavePassword
             // 
@@ -660,7 +662,7 @@ namespace POS.Forms
             this.btnSavePassword.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnSavePassword.Image = global::POS.Properties.Resources.floppy_disk;
             this.btnSavePassword.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnSavePassword.Location = new System.Drawing.Point(517, 323);
+            this.btnSavePassword.Location = new System.Drawing.Point(515, 323);
             this.btnSavePassword.Name = "btnSavePassword";
             this.btnSavePassword.Size = new System.Drawing.Size(312, 89);
             this.btnSavePassword.TabIndex = 44;
@@ -668,18 +670,18 @@ namespace POS.Forms
             this.btnSavePassword.UseVisualStyleBackColor = false;
             this.btnSavePassword.Click += new System.EventHandler(this.btnSavePassword_Click);
             // 
-            // cbxPrintFatoraToKitchen
+            // txtPassword
             // 
-            this.cbxPrintFatoraToKitchen.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.cbxPrintFatoraToKitchen.AutoSize = true;
-            this.cbxPrintFatoraToKitchen.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.cbxPrintFatoraToKitchen.Location = new System.Drawing.Point(421, 323);
-            this.cbxPrintFatoraToKitchen.Name = "cbxPrintFatoraToKitchen";
-            this.cbxPrintFatoraToKitchen.Size = new System.Drawing.Size(254, 40);
-            this.cbxPrintFatoraToKitchen.TabIndex = 58;
-            this.cbxPrintFatoraToKitchen.Text = "طباعة ايضا في المظبخ";
-            this.cbxPrintFatoraToKitchen.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            this.cbxPrintFatoraToKitchen.UseVisualStyleBackColor = true;
+            this.txtPassword.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.txtPassword.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.txtPassword.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtPassword.ForeColor = System.Drawing.Color.DimGray;
+            this.txtPassword.Location = new System.Drawing.Point(455, 200);
+            this.txtPassword.Name = "txtPassword";
+            this.txtPassword.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
+            this.txtPassword.Size = new System.Drawing.Size(433, 41);
+            this.txtPassword.TabIndex = 31;
+            this.txtPassword.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // frm_Settings
             // 
@@ -697,8 +699,8 @@ namespace POS.Forms
             this.tabControler.ResumeLayout(false);
             this.tabPage1.ResumeLayout(false);
             this.tblParentFatora.ResumeLayout(false);
-            this.tableLayoutPanel1.ResumeLayout(false);
-            this.tableLayoutPanel1.PerformLayout();
+            this.tableLayoutPanel7.ResumeLayout(false);
+            this.tableLayoutPanel7.PerformLayout();
             this.tabPage2.ResumeLayout(false);
             this.tableLayoutPanel2.ResumeLayout(false);
             this.tableLayoutPanel4.ResumeLayout(false);
@@ -722,18 +724,6 @@ namespace POS.Forms
         private System.Windows.Forms.TabPage tabPage1;
         private System.Windows.Forms.TabPage tabPage2;
         private System.Windows.Forms.TableLayoutPanel tblParentFatora;
-        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
-        private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.TextBox txtName;
-        private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.TextBox txtPhone;
-        private System.Windows.Forms.Label label5;
-        private System.Windows.Forms.TextBox txtAddress;
-        private System.Windows.Forms.Label label6;
-        private System.Windows.Forms.Label label7;
-        private System.Windows.Forms.TextBox txtLine1;
-        private System.Windows.Forms.TextBox txtLine2;
-        private System.Windows.Forms.Button btnSave;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel2;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel4;
         private System.Windows.Forms.Label label8;
@@ -758,5 +748,17 @@ namespace POS.Forms
         private System.Windows.Forms.Button btnSavePassword;
         private System.Windows.Forms.CheckBox cbxprintKitchen;
         private System.Windows.Forms.CheckBox cbxPrintFatoraToKitchen;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.TextBox txtName;
+        private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.TextBox txtAddress;
+        private System.Windows.Forms.TextBox txtPhone;
+        private System.Windows.Forms.Label label6;
+        private System.Windows.Forms.Label label7;
+        private System.Windows.Forms.TextBox txtLine1;
+        private System.Windows.Forms.TextBox txtLine2;
+        private System.Windows.Forms.Button btnSave;
+        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel7;
     }
 }

@@ -31,7 +31,7 @@ namespace POS.Forms
 
                 try
                 {
-                    var fileContent = File.ReadAllText(Application.StartupPath + @"\Lojy.sql");
+                    var fileContent = File.ReadAllText(Application.StartupPath + @"\POS.sql");
                     var sqlqueries = fileContent.Split(new[] { "GO" }, StringSplitOptions.RemoveEmptyEntries);
                     var con = new SqlConnection(@"Data Source=.\SQLEXPRESS;Integrated Security=True");
                     var cmd = new SqlCommand("query", con);
@@ -62,7 +62,7 @@ namespace POS.Forms
                 rdr = cmd.ExecuteReader();
                 while (rdr.Read())
                 {
-                    if (rdr.GetString(0) == "Lojy")
+                    if (rdr.GetString(0) == "POS")
                     {
                         return true;
                         break;
@@ -152,7 +152,7 @@ namespace POS.Forms
             string signature = identifier("Win32_DiskDrive", "Signature"); // for hard drive
             //label2.Text = signature;
             //label1.Text = serial;
-            x = (((Convert.ToDecimal(signature) * 12345 - 3) * 21 - 9) * 2000).ToString();
+            x = (((Convert.ToInt64(signature) * 12345 - 3) * 21 - 9) * 2000).ToString();
 
             if (Properties.Settings.Default.Product_Key != x)
             {
@@ -234,6 +234,23 @@ namespace POS.Forms
             catch (Exception) { }
             txtUserName.Clear();
             txtUserName.Focus();
+        }
+
+        private void txtUserName_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (e.KeyChar == 13)
+            {
+
+                txtPassword.Focus();
+            }
+        }
+
+        private void txtPassword_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (e.KeyChar == 13)
+            {
+                btnOk_Click(null, null);
+            }
         }
     }
 }
